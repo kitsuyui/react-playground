@@ -1,5 +1,7 @@
 import React from 'react'
+
 import ReactDOM from 'react-dom/client'
+
 import './index.css'
 import Clock from './Clock'
 import reportWebVitals from './reportWebVitals'

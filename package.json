@@ -1,0 +1,12 @@
+{
+  "name": "react-playground",
+  "private": true,
+  "version": "1.0.0",
+  "repository": "git@github.com:kitsuyui/react-playground.git",
+  "author": "kitsuyui <kitsuyui@kitsuyui.com>",
+  "license": "MIT",
+  "workspaces": [
+    "clock",
+    "eslint-config"
+  ]
+}

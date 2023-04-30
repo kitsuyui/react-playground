@@ -1,8 +1,10 @@
 import React from 'react'
+
 import {
   render,
   // screen
 } from '@testing-library/react'
+
 import Clock from './Clock'
 
 test('renders learn react link', () => {
