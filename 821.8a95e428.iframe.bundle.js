@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkstorybook=self.webpackChunkstorybook||[]).push([[821],{"../../node_modules/@storybook/components/dist/syntaxhighlighter-QTQ2UBB4.mjs":(o,s,t)=>{t.r(s),t.d(s,{SyntaxHighlighter:()=>e.d3,createCopyToClipboardFunction:()=>e.xV,default:()=>e.qG});var e=t("../../node_modules/@storybook/components/dist/chunk-RDJSMFWU.mjs")}}]);
