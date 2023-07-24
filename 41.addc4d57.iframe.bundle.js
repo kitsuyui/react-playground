@@ -1,4 +1,4 @@
-"use strict";(self.webpackChunkstorybook=self.webpackChunkstorybook||[]).push([[995],{"../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].use[1]!../../node_modules/bulma/css/bulma.css":(e,i,a)=>{a.d(i,{Z:()=>s});var o=a("../../node_modules/css-loader/dist/runtime/noSourceMaps.js"),t=a.n(o),r=a("../../node_modules/css-loader/dist/runtime/api.js"),n=a.n(r)()(t());n.push([e.id,`/*! bulma.io v0.9.4 | MIT License | github.com/jgthms/bulma */
+"use strict";(self.webpackChunkstorybook=self.webpackChunkstorybook||[]).push([[41],{"../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].use[1]!../../node_modules/bulma/css/bulma.css":(e,i,a)=>{a.d(i,{Z:()=>s});var o=a("../../node_modules/css-loader/dist/runtime/noSourceMaps.js"),t=a.n(o),r=a("../../node_modules/css-loader/dist/runtime/api.js"),n=a.n(r)()(t());n.push([e.id,`/*! bulma.io v0.9.4 | MIT License | github.com/jgthms/bulma */
 /* Bulma Utilities */
 .button, .input, .textarea, .select select, .file-cta,
 .file-name, .pagination-previous,
