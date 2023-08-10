@@ -20,6 +20,12 @@ npm install @kitsuyui/react-stopwatch
 yarn add @kitsuyui/react-stopwatch
 ```
 
+### pnpm
+
+```sh
+pnpm add @kitsuyui/react-stopwatch
+```
+
 ## Usage
 
 ```tsx

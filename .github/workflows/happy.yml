@@ -1,6 +1,7 @@
 name: happy-commit
 on:
-  - pull_request
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: read

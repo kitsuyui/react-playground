@@ -2,6 +2,7 @@ name: Release
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened]
   release:
     # "released" events are emitted either when directly be released or be edited from pre-released.
     types: [prereleased, released]
@@ -19,18 +20,22 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - uses: pnpm/action-setup@v2.4.0
+        with:
+          version: 8
+    
       - uses: actions/setup-node@v3
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
-          cache: yarn
-          cache-dependency-path: yarn.lock
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
 
       - name: install and build
         run: |
-          yarn install
-          ./yarn.links.sh
-          yarn build
+          pnpm install
+          ./pnpm.links.sh
+          pnpm build
 
       - name: update version
         working-directory: packages/${{ matrix.package_name }}
@@ -52,7 +57,7 @@ jobs:
           built_dir=$(pwd)
           tempdir=$(mktemp -d)
           cd $tempdir
-          yarn add $built_dir/*.tgz
+          pnpm add $built_dir/*.tgz
           cd $built_dir
           rm -rf $tempdir
 

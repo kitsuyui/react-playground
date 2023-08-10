@@ -8,7 +8,6 @@
     "dev": "turbo run dev --parallel",
     "build": "turbo build",
     "test": "turbo test",
-    "lint": "turbo lint",
     "test:vrt": "turbo test:vrt",
     "test:vrt:update": "turbo test:vrt:update",
     "format:prettier": "prettier --write .",
@@ -23,6 +22,6 @@
   ],
   "devDependencies": {
     "eslint-plugin-unused-imports": "^3.0.0",
-    "turbo": "^1.9.3"
+    "turbo": "^1.10.12"
   }
 }
