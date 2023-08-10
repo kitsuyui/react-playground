@@ -6,10 +6,10 @@
   "private": true,
   "devDependencies": {
     "@kitsuyui/react-clock": "file:../../packages/clock",
+    "@kitsuyui/react-dekamoji": "file:../../packages/dekamoji",
     "@kitsuyui/react-stopwatch": "file:../../packages/stopwatch",
     "@kitsuyui/react-timer": "file:../../packages/timer",
-    "@kitsuyui/react-dekamoji": "file:../../packages/dekamoji",
-    "@playwright/test": "^1.34.0",
+    "@playwright/test": "^1.36.2",
     "@storybook/addon-essentials": "^7.0.17",
     "@storybook/addon-interactions": "^7.0.17",
     "@storybook/addon-links": "^7.0.17",
@@ -27,8 +27,8 @@
   },
   "scripts": {
     "dev": "storybook dev -p 6006 --ci",
-    "test:vrt": "playwright test",
-    "test:vrt:update": "playwright test --update-snapshots",
+    "test:vrt": "pnpm exec playwright test",
+    "test:vrt:update": "pnpm exec playwright test --update-snapshots",
     "build": "storybook build"
   },
   "dependencies": {

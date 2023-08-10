@@ -1,6 +1,7 @@
 name: Spellcheck
 on:
-  - pull_request
+  pull_request:
+    types: [opened, synchronize, reopened]
 permissions:
   contents: read
 jobs:

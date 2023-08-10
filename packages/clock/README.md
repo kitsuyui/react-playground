@@ -20,6 +20,12 @@ npm install @kitsuyui/react-clock
 yarn add @kitsuyui/react-clock
 ```
 
+### pnpm
+
+```sh
+pnpm add @kitsuyui/react-clock
+```
+
 ## Usage
 
 ```tsx

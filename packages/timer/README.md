@@ -20,6 +20,12 @@ npm install @kitsuyui/react-timer
 yarn add @kitsuyui/react-timer
 ```
 
+### pnpm
+
+```sh
+pnpm add @kitsuyui/react-timer
+```
+
 ## Usage
 
 ```tsx

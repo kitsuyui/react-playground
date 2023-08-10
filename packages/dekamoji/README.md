@@ -20,6 +20,12 @@ npm install @kitsuyui/react-dekamoji
 yarn add @kitsuyui/react-dekamoji
 ```
 
+### pnpm
+
+```sh
+pnpm add @kitsuyui/react-dekamoji
+```
+
 ## License
 
 MIT

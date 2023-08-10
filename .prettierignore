@@ -10,3 +10,4 @@ logs
 .DS_Store
 coverage
 storybook-static
+pnpm-lock.yaml
