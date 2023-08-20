@@ -13,7 +13,7 @@
     "@kitsuyui/react-stopwatch#build": {
       "outputs": ["packages/react-stopwatch/dist/**"]
     },
-    "@kitsuyui/react-dekamoji": {
+    "@kitsuyui/react-dekamoji#build": {
       "outputs": ["packages/react-dekamoji/dist/**"]
     },
     "@kitsuyui/react-components#build": {
