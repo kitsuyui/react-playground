@@ -21,8 +21,8 @@ jobs:
 
       - name: Install dependencies
         run: |
+          pnpm prune
           pnpm install
-          npx playwright install
           ./pnpm.links.sh
 
       - name: Test
