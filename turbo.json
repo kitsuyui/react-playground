@@ -44,10 +44,11 @@
       "dependsOn": ["^test"]
     },
     "test:vrt": {
-      "dependsOn": ["^test:vrt:update"]
+      "dependsOn": ["^test:vrt:install", "^test:vrt:update"]
     },
     "test:vrt:update": {
       "outputs": ["examples/storybook/tests/**/*.png"]
-    }
+    },
+    "test:vrt:install": {}
   }
 }

@@ -10,6 +10,7 @@
     "test": "turbo test",
     "test:vrt": "turbo test:vrt",
     "test:vrt:update": "turbo test:vrt:update",
+    "test:vrt:install": "turbo test:vrt:install",
     "format:prettier": "prettier --write .",
     "format:eslint": "eslint . --ext .js,.jsx,.ts,.tsx --ignore-path .gitignore --fix",
     "lint:prettier": "prettier --check .",

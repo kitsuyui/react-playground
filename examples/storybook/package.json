@@ -27,8 +27,9 @@
   },
   "scripts": {
     "dev": "storybook dev -p 6006 --ci",
-    "test:vrt": "pnpm exec playwright test",
-    "test:vrt:update": "pnpm exec playwright test --update-snapshots",
+    "test:vrt": "pnpm playwright test",
+    "test:vrt:update": "pnpm playwright test --update-snapshots",
+    "test:vrt:install": "pnpm dlx playwright install",
     "build": "storybook build"
   },
   "dependencies": {
