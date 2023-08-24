@@ -25,7 +25,7 @@ jobs:
           pnpm install
           ./pnpm.links.sh
 
-      - name: Test
+      - name: Test build
         run: pnpm build
 
       - name: Visual Regression Test
