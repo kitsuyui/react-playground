@@ -1,0 +1,33 @@
+import { Measure } from '@kitsuyui/react-measure'
+import React from 'react'
+
+import type { Meta, StoryObj } from '@storybook/react'
+
+const MeasureExample = () => {
+  return (
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+      }}
+    >
+      <Measure />
+    </div>
+  )
+}
+
+const meta: Meta<typeof MeasureExample> = {
+  title: 'Base/Measure/Example',
+  component: MeasureExample,
+}
+
+export default meta
+type Story = StoryObj<typeof MeasureExample>
+
+export const Default: Story = {
+  args: {},
+  parameters: {
+    layout: 'fullscreen',
+    flexDirection: 'column',
+  },
+}
