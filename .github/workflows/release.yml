@@ -43,12 +43,12 @@ jobs:
         run: |
           git config user.email "dummy@dummy"
           git config user.name "dummy"
-          npm version from-git --allow-same-version --no-git-tag-version
+          pnpm version from-git --allow-same-version --no-git-tag-version
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - working-directory: packages/${{ matrix.package_name }}
-        run: npm pack
+        run: pnpm pack
 
       - name: Test installation
         working-directory: packages/${{ matrix.package_name }}
@@ -61,7 +61,7 @@ jobs:
           cd $built_dir
           rm -rf $tempdir
 
-      - run: npm publish --access=public
+      - run: pnpm publish --access=public --no-git-checks
         working-directory: packages/${{ matrix.package_name }}
         if: github.event_name == 'release' && !github.event.release.prerelease
         env:
