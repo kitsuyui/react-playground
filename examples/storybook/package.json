@@ -9,6 +9,7 @@
     "@kitsuyui/react-dekamoji": "file:../../packages/dekamoji",
     "@kitsuyui/react-stopwatch": "file:../../packages/stopwatch",
     "@kitsuyui/react-timer": "file:../../packages/timer",
+    "@kitsuyui/react-treemap": "file:../../packages/treemap",
     "@playwright/test": "^1.36.2",
     "@storybook/addon-essentials": "^7.0.17",
     "@storybook/addon-interactions": "^7.0.17",

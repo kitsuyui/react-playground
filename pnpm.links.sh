@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # components
-components=(clock timer stopwatch dekamoji measure)
+components=(clock timer stopwatch dekamoji measure treemap)
 
 # @kitsuyui/react-components depends each components
 cd ./packages/components

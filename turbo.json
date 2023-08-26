@@ -16,12 +16,20 @@
     "@kitsuyui/react-dekamoji#build": {
       "outputs": ["packages/react-dekamoji/dist/**"]
     },
+    "@kitsuyui/react-measure#build": {
+      "outputs": ["packages/react-measure/dist/**"]
+    },
+    "@kitsuyui/react-treemap#build": {
+      "outputs": ["packages/react-treemap/dist/**"]
+    },
     "@kitsuyui/react-components#build": {
       "dependsOn": [
         "@kitsuyui/react-clock#build",
         "@kitsuyui/react-timer#build",
         "@kitsuyui/react-stopwatch#build",
-        "@kitsuyui/react-dekamoji#build"
+        "@kitsuyui/react-dekamoji#build",
+        "@kitsuyui/react-measure#build",
+        "@kitsuyui/react-treemap#build"
       ],
       "outputs": ["packages/react-components/dist/**"]
     },

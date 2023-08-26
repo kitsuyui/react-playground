@@ -1,5 +1,5 @@
 {
-  "name": "@kitsuyui/react-components",
+  "name": "@kitsuyui/react-treemap",
   "version": "0.0.0",
   "files": [
     "dist",
@@ -16,11 +16,6 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "dependencies": {
-    "@kitsuyui/react-clock": "latest",
-    "@kitsuyui/react-stopwatch": "latest",
-    "@kitsuyui/react-timer": "latest",
-    "@kitsuyui/react-measure": "latest",
-    "@kitsuyui/react-treemap": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-use": "^17.4.0"
@@ -60,5 +55,5 @@
   },
   "license": "MIT",
   "author": "Yui Kitsu <kitsuyui@kitsuyui.com>",
-  "description": "A react components."
+  "description": "A react component to display a clock."
 }
