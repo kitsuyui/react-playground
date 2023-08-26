@@ -1,4 +1,3 @@
-import { Measure } from '@kitsuyui/react-measure'
 import { Treemap } from '@kitsuyui/react-treemap'
 import React from 'react'
 
