@@ -1,5 +1,5 @@
 {
-  "name": "@kitsuyui/react-eslint-config-custom",
+  "name": "@kitsuyui/eslint-config",
   "version": "0.0.0",
   "private": true,
   "dependencies": {

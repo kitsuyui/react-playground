@@ -44,8 +44,6 @@ jobs:
           git config user.email "dummy@dummy"
           git config user.name "dummy"
           pnpm version from-git --allow-same-version --no-git-tag-version
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - working-directory: packages/${{ matrix.package_name }}
         run: pnpm pack

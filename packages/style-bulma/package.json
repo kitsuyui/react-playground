@@ -16,12 +16,10 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "dependencies": {
-    "@kitsuyui/react-clock": "file:../../packages/clock",
-    "@kitsuyui/react-components": "file:../../packages/components",
-    "@kitsuyui/react-measure": "file:../../packages/measure",
-    "@kitsuyui/react-stopwatch": "file:../../packages/stopwatch",
-    "@kitsuyui/react-timer": "file:../../packages/timer",
-    "@kitsuyui/react-treemap": "file:../../packages/treemap",
+    "@kitsuyui/react-clock": "^0.0.11",
+    "@kitsuyui/react-components": "^0.0.11",
+    "@kitsuyui/react-stopwatch": "^0.0.11",
+    "@kitsuyui/react-timer": "^0.0.11",
     "bulma": "^0.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

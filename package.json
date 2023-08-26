@@ -21,6 +21,9 @@
     "packages/*",
     "examples/*"
   ],
+  "dependencies": {
+    "@kitsuyui/eslint-config": "link:./config/eslint-config-custom"
+  },
   "devDependencies": {
     "eslint-plugin-unused-imports": "^3.0.0",
     "turbo": "^1.10.13"
