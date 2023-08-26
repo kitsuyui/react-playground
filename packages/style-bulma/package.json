@@ -20,6 +20,8 @@
     "@kitsuyui/react-components": "latest",
     "@kitsuyui/react-stopwatch": "latest",
     "@kitsuyui/react-timer": "latest",
+    "@kitsuyui/react-measure": "latest",
+    "@kitsuyui/react-treemap": "latest",
     "bulma": "^0.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
