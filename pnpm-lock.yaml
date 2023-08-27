@@ -4757,7 +4757,7 @@ packages:
   /@types/node-fetch@2.6.4:
     resolution: {integrity: sha512-1ZX9fcN4Rvkvgv4E6PAY5WXUFWFcRWxZa3EW83UjycOB9ljJCedb2CupIP4RZMEwF/M3eTcCihbBRgwtGbg5Rg==}
     dependencies:
-      '@types/node': 16.18.46
+      '@types/node': 20.5.6
       form-data: 3.0.1
     dev: true
 
@@ -8861,7 +8861,7 @@ packages:
     resolution: {integrity: sha512-7vuh85V5cdDofPyxn58nrPjBktZo0u9x1g8WtjQol+jZDaE+fhN+cIvTj11GndBnMnyfrUOG1sZQxCdjKh+DKg==}
     engines: {node: '>= 10.13.0'}
     dependencies:
-      '@types/node': 16.18.46
+      '@types/node': 20.5.6
       merge-stream: 2.0.0
       supports-color: 8.1.1
     dev: true
@@ -11696,7 +11696,6 @@ packages:
   /turbo@1.10.13:
     resolution: {integrity: sha512-vOF5IPytgQPIsgGtT0n2uGZizR2N3kKuPIn4b5p5DdeLoI0BV7uNiydT7eSzdkPRpdXNnO8UwS658VaI4+YSzQ==}
     hasBin: true
-    requiresBuild: true
     optionalDependencies:
       turbo-darwin-64: 1.10.13
       turbo-darwin-arm64: 1.10.13
