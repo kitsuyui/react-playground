@@ -9,6 +9,7 @@ const MeasureExample = () => {
       style={{
         width: '100%',
         height: '100%',
+        position: 'absolute',
       }}
     >
       <Measure />
@@ -29,5 +30,11 @@ export const Default: Story = {
   parameters: {
     layout: 'fullscreen',
     flexDirection: 'column',
+    docs: {
+      story: {
+        inline: false,
+        iframeHeight: 200,
+      },
+    },
   },
 }

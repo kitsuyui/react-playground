@@ -9,9 +9,10 @@ const DekamojiExample = () => {
       style={{
         width: '100%',
         height: '100%',
+        position: 'absolute',
       }}
     >
-      <Dekamoji>あ</Dekamoji>
+      <Dekamoji text="あいうえお" />
     </div>
   )
 }
@@ -29,5 +30,11 @@ export const Default: Story = {
   parameters: {
     layout: 'fullscreen',
     flexDirection: 'column',
+    docs: {
+      story: {
+        inline: false,
+        iframeHeight: 200,
+      },
+    },
   },
 }

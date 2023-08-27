@@ -12,7 +12,7 @@ export const Measure: React.FC = (): JSX.Element => {
       style={{
         width: '100%',
         height: '100%',
-        position: 'relative',
+        position: 'absolute',
         overflow: 'hidden',
       }}
     >

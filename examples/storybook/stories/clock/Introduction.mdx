@@ -1,0 +1,65 @@
+# Clock
+
+import { Canvas, Meta } from '@storybook/blocks'
+
+import * as ClockStories from './Example.stories'
+
+<Meta title="Base/Clock/Introduction" />
+<Canvas of={ClockStories.Default} />
+
+## Installation
+
+Each component is published as a separate package.
+
+Use npm, yarn or pnpm to install.
+
+```sh
+$ npm install @kitsuyui/react-clock
+```
+
+```sh
+$ yarn add @kitsuyui/react-clock
+```
+
+```sh
+$ pnpm add @kitsuyui/react-clock
+```
+
+## Usage
+
+Clock components consists of two parts:
+
+1. The surface of the clock (AnalogClock, DigitalClock, etc.)
+2. The state of the clock (ClockContainer, DateContext, etc.)
+
+If you want to modify the appearance of the clock, you can use the surface of the clock.
+If you want to change the state of the clock, you can use the state of the clock.
+
+```tsx
+import {
+  AnalogClock,
+  ClockContainer,
+  DateContext,
+  DigitalClock,
+} from '@kitsuyui/react-clock'
+import React from 'react'
+
+const Clock = () => {
+  return (
+    <ClockContainer refreshInterval={10}>
+      <DateContext.Consumer>
+        {(date) => (
+          <>
+            <AnalogClock timezone="Asia/Tokyo" date={date} />
+            <DigitalClock timezone="Asia/Tokyo" date={date} />
+          </>
+        )}
+      </DateContext.Consumer>
+    </ClockContainer>
+  )
+}
+```
+
+`ClockContainer` is a component that manages the state of the clock.
+The `refreshInterval` property is the interval at which the clock is updated.
+`AnalogClock` and `DigitalClock` are components that display the clock. These components are independent of the state of the clock.

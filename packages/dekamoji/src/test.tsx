@@ -4,7 +4,7 @@ import React from 'react'
 import { Dekamoji } from './dekamoji'
 
 test('render Dekamoji', () => {
-  render(<Dekamoji>あ</Dekamoji>)
+  render(<Dekamoji text="あ" />)
   const element = screen.getByText(/あ/)
   expect(element).not.toBeNull()
 })

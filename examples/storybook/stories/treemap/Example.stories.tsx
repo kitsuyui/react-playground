@@ -1,28 +1,25 @@
+import { Measure } from '@kitsuyui/react-measure'
 import { Treemap } from '@kitsuyui/react-treemap'
 import React from 'react'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
-const DummyElement = ({ color }: { color: string }) => (
-  <div style={{ backgroundColor: color, height: '100%', width: '100%' }} />
-)
-
 const WeightedItems = [
   {
     weight: 4,
-    element: <DummyElement color="red" />,
+    element: <Measure />,
   },
   {
     weight: 3,
-    element: <DummyElement color="green" />,
+    element: <Measure />,
   },
   {
     weight: 2,
-    element: <DummyElement color="blue" />,
+    element: <Measure />,
   },
   {
     weight: 1,
-    element: <DummyElement color="yellow" />,
+    element: <Measure />,
   },
 ]
 
@@ -43,5 +40,11 @@ export const Default: Story = {
   parameters: {
     layout: 'fullscreen',
     flexDirection: 'column',
+    docs: {
+      story: {
+        inline: false,
+        iframeHeight: 800,
+      },
+    },
   },
 }

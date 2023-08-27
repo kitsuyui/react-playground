@@ -1,6 +1,22 @@
-import { Stopwatch } from '@kitsuyui/react-components'
+import {
+  StopwatchContainer,
+  MinimalStopwatch,
+  StopwatchContext,
+  StopwatchProps,
+} from '@kitsuyui/react-stopwatch'
+import React from 'react'
 
 import type { Meta, StoryObj } from '@storybook/react'
+
+const Stopwatch = () => {
+  return (
+    <StopwatchContainer>
+      <StopwatchContext.Consumer>
+        {(props: StopwatchProps) => <MinimalStopwatch {...props} />}
+      </StopwatchContext.Consumer>
+    </StopwatchContainer>
+  )
+}
 
 const meta: Meta<typeof Stopwatch> = {
   title: 'Base/Stopwatch/Example',

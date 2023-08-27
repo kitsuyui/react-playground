@@ -6,10 +6,10 @@
 
 React components collection.
 
-- @kitsuyui/react-clock
-- @kitsuyui/react-stopwatch
-- @kitsuyui/react-timer
-- @kitsuyui/react-dekamoji
+- [@kitsuyui/react-clock](https://www.npmjs.com/package/@kitsuyui/react-clock)
+- [@kitsuyui/react-stopwatch](https://www.npmjs.com/package/@kitsuyui/react-stopwatch)
+- [@kitsuyui/react-timer](https://www.npmjs.com/package/@kitsuyui/react-timer)
+- [@kitsuyui/react-dekamoji](https://www.npmjs.com/package/@kitsuyui/react-dekamoji)
 
 and more. This package includes all of this series.
 
