@@ -1,1 +1,1 @@
-{ "extends": ["@react-playground/eslint-config-custom"] }
+{ "extends": ["@kitsuyui/eslint-config"] }

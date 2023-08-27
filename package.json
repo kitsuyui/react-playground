@@ -1,6 +1,6 @@
 {
   "name": "react-playground",
-  "version": "1.2.3",
+  "version": "0.0.15",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -21,8 +21,11 @@
     "packages/*",
     "examples/*"
   ],
+  "dependencies": {
+    "@kitsuyui/eslint-config": "link:./config/eslint-config-custom"
+  },
   "devDependencies": {
     "eslint-plugin-unused-imports": "^3.0.0",
-    "turbo": "^1.10.12"
+    "turbo": "^1.10.13"
   }
 }
