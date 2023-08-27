@@ -9,9 +9,10 @@ const DekamojiExample = () => {
       style={{
         width: '100%',
         height: '100%',
+        position: 'absolute',
       }}
     >
-      <Dekamoji>あ</Dekamoji>
+      <Dekamoji text="あいうえお" />
     </div>
   )
 }

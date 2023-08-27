@@ -1,21 +1,33 @@
 import React from 'react'
+import { useMeasure } from 'react-use'
 
 type Props = {
-  children: React.ReactNode
+  text: string
 }
 
-export const Dekamoji: React.FC<Props> = (props): JSX.Element => {
+export const Dekamoji: React.FC<Props> = ({ text }): JSX.Element => {
+  const [ref, { width, height }] = useMeasure<HTMLDivElement>()
+  const fontSize = Math.min(height, width / Math.max(text.length, 1))
   return (
     <div
+      ref={ref}
       style={{
-        // Display characters as wide as the screen size.
         width: '100%',
         height: '100%',
-        lineHeight: '100%',
-        fontSize: '100%',
+        position: 'absolute',
       }}
     >
-      {props.children}
+      <svg width="100%" height="100%" viewBox={`0 0 ${width} ${height}`}>
+        <text
+          x="50%"
+          y="50%"
+          dominantBaseline="middle"
+          textAnchor="middle"
+          fontSize={`${fontSize}px`}
+        >
+          {text}
+        </text>
+      </svg>
     </div>
   )
 }
