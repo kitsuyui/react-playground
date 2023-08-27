@@ -43,7 +43,7 @@ jobs:
         run: |
           git config user.email "dummy@dummy"
           git config user.name "dummy"
-          pnpm version from-git --allow-same-version --no-git-tag-version
+          pnpm version from-git --allow-same-version --no-git-tag-version || true
 
       - working-directory: packages/${{ matrix.package_name }}
         run: pnpm pack
