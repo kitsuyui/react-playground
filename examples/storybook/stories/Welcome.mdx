@@ -30,32 +30,3 @@ $ npm install @kitsuyui/react-style-bulma
 Clock, Stopwatch, Timer, etc. change their state depending on the time.
 To separate the change of the state and the representation of the UI, I use React Context.
 For example, the following code is a clock that displays the current time in Tokyo.
-
-```tsx
-import {
-  AnalogClock,
-  ClockContainer,
-  DateContext,
-  DigitalClock,
-} from '@kitsuyui/react-clock'
-import React from 'react'
-
-const Clock = () => {
-  return (
-    <ClockContainer refreshInterval={10}>
-      <DateContext.Consumer>
-        {(date) => (
-          <>
-            <AnalogClock timezone="Asia/Tokyo" date={date} />
-            <DigitalClock timezone="Asia/Tokyo" date={date} />
-          </>
-        )}
-      </DateContext.Consumer>
-    </ClockContainer>
-  )
-}
-```
-
-`ClockContainer` is a component that manages the state of the clock.
-The `refreshInterval` property is the interval at which the clock is updated.
-`AnalogClock` and `DigitalClock` are components that display the clock. These components are independent of the state of the clock.

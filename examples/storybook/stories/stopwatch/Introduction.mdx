@@ -1,0 +1,59 @@
+# Stopwatch
+
+import { Canvas, Meta } from '@storybook/blocks'
+
+import * as StopwatchStories from './Example.stories'
+
+<Meta title="Base/Stopwatch/Introduction" />
+<Canvas of={StopwatchStories.Default} />
+
+```jsx
+import {
+  StopwatchContainer,
+  MinimalStopwatch,
+  StopwatchContext,
+  StopwatchProps,
+} from '@kitsuyui/react-stopwatch'
+
+const Stopwatch = () => {
+  return (
+    <StopwatchContainer>
+      <StopwatchContext.Consumer>
+        {(props: StopwatchProps) => <MinimalStopwatch {...props} />}
+      </StopwatchContext.Consumer>
+    </StopwatchContainer>
+  )
+}
+```
+
+## Installation
+
+Each component is published as a separate package.
+
+Use npm, yarn or pnpm to install.
+
+```sh
+$ npm install @kitsuyui/react-stopwatch
+```
+
+```sh
+$ yarn add @kitsuyui/react-stopwatch
+```
+
+```sh
+$ pnpm add @kitsuyui/react-stopwatch
+```
+
+## Usage
+
+Stopwatch components consists of two parts:
+
+1. The surface of the clock ()
+2. The state of the clock ()
+
+If you want to modify the appearance of the clock, you can use the surface of the clock.
+If you want to change the state of the clock, you can use the state of the clock.
+
+```tsx
+
+```
