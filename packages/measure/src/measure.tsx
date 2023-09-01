@@ -17,6 +17,16 @@ export const Measure: React.FC = (): JSX.Element => {
       }}
     >
       <svg width={width} height={height}>
+        <rect
+          x={0}
+          y={0}
+          width={width}
+          height={height}
+          fill="none"
+          stroke="black"
+          strokeWidth={1}
+          strokeDasharray={2}
+        />
         <line
           x1={0}
           y1={0}
