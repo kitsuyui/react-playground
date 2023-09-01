@@ -9,7 +9,7 @@ export * from './container'
 export function toLabel(value: number) {
   const minutes = Math.floor(value / 60)
   const seconds = value % 60 | 0
-  const milliseconds = (value % 1) * 1000
+  const milliseconds = ((value % 1) * 1000) | 0
   return `${zeroPad2(minutes)}:${zeroPad2(seconds)}.${zeroPad3(milliseconds)}`
 }
 
