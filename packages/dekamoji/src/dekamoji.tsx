@@ -14,7 +14,7 @@ export const Dekamoji: React.FC<Props> = ({ text }): JSX.Element => {
       style={{
         width: '100%',
         height: '100%',
-        position: 'absolute',
+        overflow: 'hidden',
       }}
     >
       <svg width="100%" height="100%" viewBox={`0 0 ${width} ${height}`}>
