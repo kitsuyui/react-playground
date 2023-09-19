@@ -15,36 +15,34 @@ export const Dekamoji: React.FC<Props> = ({
 }): JSX.Element => {
   const [ref, { width, height }] = useMeasure<HTMLDivElement>()
   const maxFontSize = Math.max(width, height)
-  const minFontSize = 0
-  const maxIterations = iterations ?? (Math.log2(maxFontSize) + 1) | 1 // for binary search
-  const [fontSize, setFontSize] = useState<number>(maxFontSize)
+  const maxIterations = iterations ?? (Math.log2(maxFontSize) + 1) | 0 // for binary search
+  const [fontSize, setFontSize] = useState<number>(maxFontSize / 2)
   const ref2 = React.useRef<HTMLDivElement>(null)
   const [iter, setIter] = useState<number>(0)
 
   function calcFontSize() {
     if (!ref2.current) return
-    if (iter === 0) return
+    if (iter > maxIterations) return
     if (text.length === 0) return
     const { current } = ref2
     const overflowHeight = current.scrollHeight - height
     const overflowWidth = current.scrollWidth - width
 
     // binary search
-    const delta = (maxFontSize - minFontSize) / 2 ** (maxIterations - iter - 1)
+    const delta = maxFontSize / 2 ** (iter + 2)
 
     // If the text is too large, reduce the font size
     if (overflowHeight > 0 || overflowWidth > 0) {
       setFontSize(Math.max(fontSize - delta, 0))
-    }
-    // If the text is too small, increase the font size
-    if (overflowHeight <= 0 && overflowWidth <= 0) {
+    } else if (overflowHeight <= 0 && overflowWidth <= 0) {
+      // If the text is too small, increase the font size
       setFontSize(Math.min(fontSize + delta, maxFontSize))
     }
-    setIter(iter - 1)
+    setIter(iter + 1)
   }
 
   useEffect(() => {
-    setIter(maxIterations)
+    setIter(0)
     calcFontSize()
   }, [text, width, height, fontSize, maxFontSize])
 
