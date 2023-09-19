@@ -26,6 +26,6 @@
   },
   "devDependencies": {
     "eslint-plugin-unused-imports": "^3.0.0",
-    "turbo": "^1.10.13"
+    "turbo": "^1.10.14"
   }
 }
