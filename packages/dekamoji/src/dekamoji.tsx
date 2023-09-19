@@ -13,9 +13,10 @@ export const Dekamoji: React.FC<Props> = ({
   text: string
   iterations?: number
 }): JSX.Element => {
-  const maxIterations = iterations ?? 20
   const [ref, { width, height }] = useMeasure<HTMLDivElement>()
   const maxFontSize = Math.max(width, height)
+  const minFontSize = 0
+  const maxIterations = iterations ?? (Math.log2(maxFontSize) + 1) | 1 // for binary search
   const [fontSize, setFontSize] = useState<number>(maxFontSize)
   const ref2 = React.useRef<HTMLDivElement>(null)
   const [iter, setIter] = useState<number>(0)
@@ -23,19 +24,21 @@ export const Dekamoji: React.FC<Props> = ({
   function calcFontSize() {
     if (!ref2.current) return
     if (iter === 0) return
+    if (text.length === 0) return
     const { current } = ref2
-    const overflowHeight = current.scrollHeight - 1 - height
-    const overflowWidth = current.scrollWidth - 1 - width
+    const overflowHeight = current.scrollHeight - height
+    const overflowWidth = current.scrollWidth - width
+
+    // binary search
+    const delta = (maxFontSize - minFontSize) / 2 ** (maxIterations - iter - 1)
+
     // If the text is too large, reduce the font size
-    if (overflowHeight >= 0 || overflowWidth >= 0) {
-      setFontSize(Math.max(fontSize - iter, 0))
+    if (overflowHeight > 0 || overflowWidth > 0) {
+      setFontSize(Math.max(fontSize - delta, 0))
     }
-    // Don't expand font size at the last iteration
-    if (iter > 1) {
-      // If the text is too small, increase the font size
-      if (overflowHeight <= 0 && overflowWidth <= 0) {
-        setFontSize(Math.min(fontSize + iter, maxFontSize))
-      }
+    // If the text is too small, increase the font size
+    if (overflowHeight <= 0 && overflowWidth <= 0) {
+      setFontSize(Math.min(fontSize + delta, maxFontSize))
     }
     setIter(iter - 1)
   }
@@ -58,9 +61,12 @@ export const Dekamoji: React.FC<Props> = ({
       <div
         ref={ref2}
         style={{
+          position: 'relative',
+          width: '100%',
+          height: '100%',
           fontSize: fontSize + 'px',
           textAlign: 'center',
-          margin: 'auto 0',
+          margin: '0 auto',
           whiteSpace: 'pre-wrap',
         }}
       >
