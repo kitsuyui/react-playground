@@ -22,7 +22,7 @@
     "examples/*"
   ],
   "dependencies": {
-    "@kitsuyui/eslint-config": "link:config/eslint-config-custom"
+    "@kitsuyui/eslint-config": "workspace:^"
   },
   "devDependencies": {
     "eslint-plugin-unused-imports": "^3.0.0",

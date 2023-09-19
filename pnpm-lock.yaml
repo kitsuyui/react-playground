@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@kitsuyui/eslint-config':
-        specifier: link:config/eslint-config-custom
-        version: link:config/eslint-config-custom
+        specifier: workspace:^
+        version: link:config/eslint-config
     devDependencies:
       eslint-plugin-unused-imports:
         specifier: ^3.0.0
@@ -21,6 +21,9 @@ importers:
 
   config/eslint-config:
     dependencies:
+      '@types/react':
+        specifier: ^18.2.22
+        version: 18.2.22
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.5.0
         version: 6.7.0(@typescript-eslint/parser@6.7.0)(eslint@8.49.0)(typescript@5.2.2)
@@ -48,6 +51,9 @@ importers:
       prettier:
         specifier: ^3.0.3
         version: 3.0.3
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
 
   examples/storybook:
     dependencies:
@@ -2599,7 +2605,7 @@ packages:
       react: '>=16'
     dependencies:
       '@types/mdx': 2.0.7
-      '@types/react': 17.0.65
+      '@types/react': 18.2.21
       react: 18.2.0
     dev: true
 
@@ -4827,7 +4833,6 @@ packages:
 
   /@types/prop-types@15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
-    dev: true
 
   /@types/qs@6.9.8:
     resolution: {integrity: sha512-u95svzDlTysU5xecFNTgfFG5RUWu1A9P0VzgpcIiGZA9iraHOdSzcxMxQ55DyeRaGCSxQi7LxXDI4rzq/MYfdg==}
@@ -4859,6 +4864,14 @@ packages:
       csstype: 3.1.2
     dev: true
 
+  /@types/react@18.2.22:
+    resolution: {integrity: sha512-60fLTOLqzarLED2O3UQImc/lsNRgG0jE/a1mPW9KjMemY0LMITWEsbS4VvZ4p6rorEHd5YKxxmMKSDK505GHpA==}
+    dependencies:
+      '@types/prop-types': 15.7.5
+      '@types/scheduler': 0.16.3
+      csstype: 3.1.2
+    dev: false
+
   /@types/responselike@1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
     dependencies:
@@ -4867,7 +4880,6 @@ packages:
 
   /@types/scheduler@0.16.3:
     resolution: {integrity: sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==}
-    dev: true
 
   /@types/semver@7.5.2:
     resolution: {integrity: sha512-7aqorHYgdNO4DM36stTiGO3DvKoex9TQRwsJU6vMaFGyqpBA1MNZkz+PG3gaNUPpTAOYhT1WR7M1JyA3fbS9Cw==}
