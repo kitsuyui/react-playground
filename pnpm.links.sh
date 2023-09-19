@@ -3,7 +3,7 @@
 pnpm link ./config/eslint-config
 
 # components
-components=(clock timer stopwatch dekamoji measure treemap)
+components=(clock timer stopwatch dekamoji measure treemap wavebox)
 for component in "${components[@]}"; do
   pnpm link "./packages/$component"
 done
