@@ -3,23 +3,9 @@ import React from 'react'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
-const DekamojiExample = ({ text }: { text: string }) => {
-  return (
-    <div
-      style={{
-        width: '100%',
-        height: '100%',
-        position: 'absolute',
-      }}
-    >
-      <Dekamoji text={text} />
-    </div>
-  )
-}
-
-const meta: Meta<typeof DekamojiExample> = {
+const meta: Meta<typeof Dekamoji> = {
   title: 'Base/Dekamoji/Example',
-  component: DekamojiExample,
+  component: Dekamoji,
   argTypes: {
     text: {
       control: {
@@ -30,12 +16,27 @@ const meta: Meta<typeof DekamojiExample> = {
 }
 
 export default meta
-type Story = StoryObj<typeof DekamojiExample>
+type Story = StoryObj<typeof Dekamoji>
 
 export const Default: Story = {
   args: {
     text: 'あいうえお',
   },
+  decorators: [
+    (Story) => {
+      return (
+        <div
+          style={{
+            width: '100%',
+            height: '100%',
+            position: 'absolute',
+          }}
+        >
+          <Story />
+        </div>
+      )
+    },
+  ],
   parameters: {
     layout: 'fullscreen',
     flexDirection: 'column',
