@@ -3,7 +3,7 @@ import React from 'react'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
-const DekamojiExample = () => {
+const DekamojiExample = ({ text }: { text: string }) => {
   return (
     <div
       style={{
@@ -12,7 +12,7 @@ const DekamojiExample = () => {
         position: 'absolute',
       }}
     >
-      <Dekamoji text="あいうえお" />
+      <Dekamoji text={text} />
     </div>
   )
 }
@@ -20,13 +20,22 @@ const DekamojiExample = () => {
 const meta: Meta<typeof DekamojiExample> = {
   title: 'Base/Dekamoji/Example',
   component: DekamojiExample,
+  argTypes: {
+    text: {
+      control: {
+        type: 'text',
+      },
+    },
+  },
 }
 
 export default meta
 type Story = StoryObj<typeof DekamojiExample>
 
 export const Default: Story = {
-  args: {},
+  args: {
+    text: 'あいうえお',
+  },
   parameters: {
     layout: 'fullscreen',
     flexDirection: 'column',
