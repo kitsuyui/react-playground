@@ -25,9 +25,9 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "test": "jest --watchAll=false --collect-coverage",
-    "format:prettier": "prettier --write .",
+    "format:prettier": "prettier --write . --ignore-path ../../.gitignore",
     "format:eslint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "lint:prettier": "prettier --check .",
+    "lint:prettier": "prettier --check . --ignore-path ../../.gitignore",
     "lint:eslint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "browserslist": {
@@ -58,7 +58,8 @@
     "ts-node": "^10.9.1",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2",
-    "@kitsuyui/eslint-config": "workspace:^"
+    "@kitsuyui/eslint-config": "workspace:^",
+    "@kitsuyui/prettier-config": "workspace:^"
   },
   "license": "MIT",
   "author": "Yui Kitsu <kitsuyui@kitsuyui.com>",

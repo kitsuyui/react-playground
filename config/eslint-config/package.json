@@ -13,7 +13,7 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unused-imports": "^3.0.0",
-    "prettier": "^3.0.3",
+    "@kitsuyui/prettier-config": "workspace:^",
     "react": "^18.2.0"
   },
   "main": "index.js",
