@@ -2,9 +2,9 @@
   "name": "@kitsuyui/tsup-config",
   "version": "0.0.0",
   "private": true,
+  "license": "MIT",
+  "main": "index.js",
   "dependencies": {
     "tsup": "^7.2.0"
-  },
-  "main": "index.js",
-  "license": "MIT"
+  }
 }

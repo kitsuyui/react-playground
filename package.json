@@ -3,27 +3,30 @@
   "version": "0.0.15",
   "private": true,
   "license": "MIT",
-  "scripts": {
-    "start": "turbo run dev --parallel",
-    "dev": "turbo run dev --parallel",
-    "build": "turbo build",
-    "test": "turbo test",
-    "test:vrt": "turbo test:vrt",
-    "test:vrt:update": "turbo test:vrt:update",
-    "test:vrt:install": "turbo test:vrt:install",
-    "format": "turbo run format --parallel",
-    "lint": "turbo run lint --parallel"
-  },
   "workspaces": [
     "config/*",
     "packages/*",
     "examples/*"
   ],
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo run dev --parallel",
+    "format": "turbo run format --parallel",
+    "format:package-json": "sort-package-json \"package.json\" \"packages/*/package.json\" \"config/*/package.json\"",
+    "lint": "turbo run lint --parallel",
+    "lint:package-json": "sort-package-json --check \"package.json\" \"packages/*/package.json\" \"config/*/package.json\"",
+    "start": "turbo run dev --parallel",
+    "test": "turbo test",
+    "test:vrt": "turbo test:vrt",
+    "test:vrt:install": "turbo test:vrt:install",
+    "test:vrt:update": "turbo test:vrt:update"
+  },
   "dependencies": {
     "@kitsuyui/eslint-config": "workspace:^"
   },
   "devDependencies": {
     "eslint-plugin-unused-imports": "^3.0.0",
+    "sort-package-json": "^2.5.1",
     "turbo": "^1.10.14"
   }
 }

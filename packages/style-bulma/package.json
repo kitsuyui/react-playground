@@ -1,10 +1,9 @@
 {
   "name": "@kitsuyui/react-style-bulma",
   "version": "0.0.0",
-  "files": [
-    "dist",
-    "package.json"
-  ],
+  "description": "A react components for bulma style",
+  "license": "MIT",
+  "author": "Yui Kitsu <kitsuyui@kitsuyui.com>",
   "exports": {
     ".": {
       "require": "./dist/index.js",
@@ -15,23 +14,18 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "dependencies": {
-    "@kitsuyui/react-clock": "workspace:^",
-    "@kitsuyui/react-components": "workspace:^",
-    "@kitsuyui/react-stopwatch": "workspace:^",
-    "@kitsuyui/react-timer": "workspace:^",
-    "bulma": "^0.9.4",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
+  "files": [
+    "dist",
+    "package.json"
+  ],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "test": "jest --watchAll=false --collect-coverage",
-    "format:prettier": "prettier --write . --ignore-path ../../.gitignore",
     "format:eslint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format:prettier": "prettier --write . --ignore-path ../../.gitignore",
+    "lint:eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:prettier": "prettier --check . --ignore-path ../../.gitignore",
-    "lint:eslint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "test": "jest --watchAll=false --collect-coverage"
   },
   "browserslist": {
     "production": [
@@ -45,19 +39,25 @@
       "last 1 safari version"
     ]
   },
+  "dependencies": {
+    "@kitsuyui/react-clock": "workspace:^",
+    "@kitsuyui/react-components": "workspace:^",
+    "@kitsuyui/react-stopwatch": "workspace:^",
+    "@kitsuyui/react-timer": "workspace:^",
+    "bulma": "^0.9.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "devDependencies": {
+    "@kitsuyui/eslint-config": "workspace:^",
+    "@kitsuyui/jest-config": "workspace:^",
+    "@kitsuyui/prettier-config": "workspace:^",
+    "@kitsuyui/tsup-config": "workspace:^",
     "@types/node": "^20.5.7",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
-    "typescript": "^5.2.2",
     "jest": "^29.6.4",
     "tsup": "^7.2.0",
-    "@kitsuyui/tsup-config": "workspace:^",
-    "@kitsuyui/jest-config": "workspace:^",
-    "@kitsuyui/eslint-config": "workspace:^",
-    "@kitsuyui/prettier-config": "workspace:^"
-  },
-  "license": "MIT",
-  "author": "Yui Kitsu <kitsuyui@kitsuyui.com>",
-  "description": "A react components for bulma style"
+    "typescript": "^5.2.2"
+  }
 }
