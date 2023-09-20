@@ -3,7 +3,7 @@ import React from 'react'
 
 import { WaveBox } from './wavebox'
 
-test('render Dekamoji', () => {
+test('render WaveBox', () => {
   render(
     <WaveBox
       minHeight={100}
