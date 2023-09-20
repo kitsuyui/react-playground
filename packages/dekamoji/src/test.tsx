@@ -6,5 +6,5 @@ import { Dekamoji } from './dekamoji'
 test('render Dekamoji', () => {
   render(<Dekamoji text="あ" />)
   const element = screen.getAllByText(/あ/)
-  expect(element).toHaveLength(2)
+  expect(element).toHaveLength(1)
 })

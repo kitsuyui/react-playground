@@ -13,16 +13,11 @@ export const Dekamoji: React.FC<Props> = React.memo(function Dekamoji({
   const [ref, { width, height }] = useMeasure<HTMLDivElement>()
   const [fontSize, setFontSize] = React.useState(0)
   const ref2 = useRef<HTMLDivElement>(null)
-  const ref3 = useRef<HTMLDivElement>(null)
 
   useMemo(() => {
-    if (!ref3.current) return
-    const size = calcFontSize(width, height, text, ref3.current)
-    if (size !== 0) {
-      // Jittering prevention (HTML element is not ready yet)
-      setFontSize(size)
-    }
-  }, [text, width, height])
+    const size = calcFontSize(width, height, text)
+    setFontSize(size)
+  }, [width, height, text])
 
   return (
     <div
@@ -43,21 +38,7 @@ export const Dekamoji: React.FC<Props> = React.memo(function Dekamoji({
           fontSize: fontSize + 'px',
           textAlign: 'center',
           margin: '0 auto',
-          whiteSpace: 'pre-wrap',
-        }}
-      >
-        {text}
-      </div>
-      <div
-        ref={ref3}
-        style={{
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          fontSize: fontSize + 'px',
-          textAlign: 'center',
-          margin: '0 auto',
-          visibility: 'hidden', // for measure
+          boxSizing: 'border-box',
           whiteSpace: 'pre-wrap',
         }}
       >
@@ -67,31 +48,38 @@ export const Dekamoji: React.FC<Props> = React.memo(function Dekamoji({
   )
 })
 
-function calcFontSize(
-  width: number,
-  height: number,
-  text: string,
-  element: HTMLDivElement
-): number {
-  const current = element
-  if (current === null) return 0
-  current.textContent = text
+function calcFontSize(width: number, height: number, text: string): number {
+  // calculate font size without react component and raw dom
+  const outer = document.createElement('div')
+  outer.style.position = 'absolute'
+  outer.style.width = width + 'px'
+  outer.style.height = height + 'px'
+  outer.style.boxSizing = 'border-box'
+  outer.style.zIndex = '-1'
+  outer.style.overflowX = 'hidden'
+  outer.style.overflowY = 'hidden'
+  const inner = document.createElement('div')
+  inner.style.visibility = 'hidden'
+  inner.style.fontSize = '0'
+  inner.style.textAlign = 'center'
+  inner.style.margin = '0 auto'
+  inner.style.whiteSpace = 'pre-wrap'
+  inner.style.boxSizing = 'border-box'
+  inner.style.zIndex = '-1'
+  inner.textContent = text
+  outer.appendChild(inner)
+  document.body.appendChild(outer)
   const maxFontSize = Math.max(width, height)
-  let i = 0
-  let fontSize = maxFontSize / 2
-  const maxIterations = (Math.log2(maxFontSize) + 4) | 0 // for binary search
-  while (maxIterations > i++) {
-    // binary search
-    const delta = maxFontSize / 2 ** i
-    current.style.fontSize = fontSize + 'px'
-    const overflowHeight = current.scrollHeight - height
-    const overflowWidth = current.scrollWidth - width
-    // If the text is too large, reduce the font size
-    if (overflowHeight > 0 || overflowWidth > 0) {
-      fontSize = Math.max(fontSize - delta, 0)
-    } else if (overflowHeight <= 0 && overflowWidth <= 0) {
-      fontSize = Math.min(fontSize + delta, maxFontSize)
+  let s = 0
+  for (; s < maxFontSize; s += 1) {
+    inner.style.fontSize = s + 'px'
+    const overflowHeight = inner.scrollHeight - height
+    const overflowWidth = inner.scrollWidth - width
+    const scrollbarWidth = 2
+    if (overflowHeight > scrollbarWidth || overflowWidth > scrollbarWidth) {
+      break
     }
   }
-  return fontSize | 0
+  document.body.removeChild(outer)
+  return s - 4
 }
