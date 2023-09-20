@@ -34,7 +34,6 @@ jobs:
       - name: install and build
         run: |
           pnpm install
-          ./pnpm.links.sh
           pnpm build
 
       - name: update version
