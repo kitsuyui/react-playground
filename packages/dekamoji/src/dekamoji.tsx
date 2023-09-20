@@ -12,10 +12,12 @@ export const Dekamoji: React.FC<Props> = React.memo(function Dekamoji({
 }): JSX.Element {
   const [ref, { width, height }] = useMeasure<HTMLDivElement>()
   const [fontSize, setFontSize] = React.useState(0)
-  const ref2 = useRef<HTMLDivElement>(null!)
-  const ref3 = useRef<HTMLDivElement>(null!)
+  const ref2 = useRef<HTMLDivElement>(null)
+  const ref3 = useRef<HTMLDivElement>(null)
+
   useMemo(() => {
-    const size = calcFontSize(width, height, ref3.current)
+    if (!ref3.current) return
+    const size = calcFontSize(width, height, text, ref3.current)
     if (size !== 0) {
       // Jittering prevention (HTML element is not ready yet)
       setFontSize(size)
@@ -68,9 +70,12 @@ export const Dekamoji: React.FC<Props> = React.memo(function Dekamoji({
 function calcFontSize(
   width: number,
   height: number,
+  text: string,
   element: HTMLDivElement
 ): number {
   const current = element
+  if (current === null) return 0
+  current.textContent = text
   const maxFontSize = Math.max(width, height)
   let i = 0
   let fontSize = maxFontSize / 2

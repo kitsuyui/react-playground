@@ -2,28 +2,44 @@
   "$schema": "https://turborepo.org/schema.json",
   "pipeline": {
     "dev": {
-      "dependsOn": ["^dev"]
+      "dependsOn": [
+        "^dev"
+      ]
     },
     "@kitsuyui/react-clock#build": {
-      "outputs": ["packages/react-clock/dist/**"]
+      "outputs": [
+        "packages/react-clock/dist/**"
+      ]
     },
     "@kitsuyui/react-timer#build": {
-      "outputs": ["packages/react-timer/dist/**"]
+      "outputs": [
+        "packages/react-timer/dist/**"
+      ]
     },
     "@kitsuyui/react-stopwatch#build": {
-      "outputs": ["packages/react-stopwatch/dist/**"]
+      "outputs": [
+        "packages/react-stopwatch/dist/**"
+      ]
     },
     "@kitsuyui/react-dekamoji#build": {
-      "outputs": ["packages/react-dekamoji/dist/**"]
+      "outputs": [
+        "packages/react-dekamoji/dist/**"
+      ]
     },
     "@kitsuyui/react-measure#build": {
-      "outputs": ["packages/react-measure/dist/**"]
+      "outputs": [
+        "packages/react-measure/dist/**"
+      ]
     },
     "@kitsuyui/react-treemap#build": {
-      "outputs": ["packages/react-treemap/dist/**"]
+      "outputs": [
+        "packages/react-treemap/dist/**"
+      ]
     },
     "@kitsuyui/react-wavebox#build": {
-      "outputs": ["packages/react-wavebox/dist/**"]
+      "outputs": [
+        "packages/react-wavebox/dist/**"
+      ]
     },
     "@kitsuyui/react-components#build": {
       "dependsOn": [
@@ -35,32 +51,71 @@
         "@kitsuyui/react-treemap#build",
         "@kitsuyui/react-wavebox#build"
       ],
-      "outputs": ["packages/react-components/dist/**"]
+      "outputs": [
+        "packages/react-components/dist/**"
+      ]
     },
     "@kitsuyui/react-style-bulma#build": {
-      "dependsOn": ["@kitsuyui/react-components#build"],
-      "outputs": ["packages/react-style-bulma/dist/**"]
+      "dependsOn": [
+        "@kitsuyui/react-components#build"
+      ],
+      "outputs": [
+        "packages/react-style-bulma/dist/**"
+      ]
     },
     "storybook#build": {
       "dependsOn": [
         "@kitsuyui/react-components#build",
         "@kitsuyui/react-style-bulma#build"
       ],
-      "outputs": ["packages/storybook/dist/**"]
+      "outputs": [
+        "packages/storybook/dist/**"
+      ]
     },
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["packages/*/dist/**"]
+      "dependsOn": [
+        "^build"
+      ],
+      "outputs": [
+        "packages/*/dist/**"
+      ]
     },
     "test": {
-      "dependsOn": ["^test"]
+      "dependsOn": [
+        "^test"
+      ]
     },
     "test:vrt": {
-      "dependsOn": ["^test:vrt:install", "^test:vrt:update"]
+      "dependsOn": [
+        "^test:vrt:install",
+        "^test:vrt:update"
+      ]
     },
     "test:vrt:update": {
-      "outputs": ["examples/storybook/tests/**/*.png"]
+      "outputs": [
+        "examples/storybook/tests/**/*.png"
+      ]
     },
-    "test:vrt:install": {}
+    "test:vrt:install": {},
+    "format:eslint": {},
+    "format:prettier": {
+      "dependsOn": [
+        "format:eslint"
+      ]
+    },
+    "lint:eslint": {},
+    "lint:prettier": {},
+    "format": {
+      "dependsOn": [
+        "format:eslint",
+        "format:prettier"
+      ]
+    },
+    "lint": {
+      "dependsOn": [
+        "lint:eslint",
+        "lint:prettier"
+      ]
+    }
   }
 }

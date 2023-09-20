@@ -1,21 +1,7 @@
 // https://jestjs.io/docs/configuration
+// https://jestjs.io/docs/configuration
 export default {
-  extensionsToTreatAsEsm: ['.ts', '.tsx'],
-  testPathIgnorePatterns: ['/node_modules/', '/dist/'],
-  testEnvironment: 'jsdom',
-  transform: {
-    '^.+.(t|j)sx?$': [
-      '@swc/jest',
-      {
-        sourceMaps: true,
-        jsc: {
-          parser: {
-            syntax: 'typescript',
-          },
-        },
-      },
-    ],
-  },
+  ...require('@kitsuyui/jest-config'),
   moduleNameMapper: {
     '\\.css$': '<rootDir>/__mocks__/styleMock.js',
   },
