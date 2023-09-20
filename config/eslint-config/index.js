@@ -7,7 +7,13 @@ module.exports = {
     'prettier',
     'plugin:import/typescript',
   ],
-  plugins: ['react', '@typescript-eslint', 'unused-imports', 'import'],
+  plugins: [
+    'react',
+    '@typescript-eslint',
+    'unused-imports',
+    'import',
+    'react-hooks',
+  ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     sourceType: 'module',
@@ -16,6 +22,8 @@ module.exports = {
   ignorePatterns: ['node_modules/', 'dist/', 'build/', 'storybook-static/'],
   rules: {
     '@typescript-eslint/no-unused-vars': 'off',
+    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/rules-of-hooks': 'error',
     'unused-imports/no-unused-imports': 'error',
     'unused-imports/no-unused-vars': [
       'warn',
