@@ -2,7 +2,7 @@ import React from 'react'
 import { useInterval } from 'react-use'
 
 type Props = {
-  children: React.ReactElement | React.ReactElement[]
+  children: React.ReactElement | React.ReactElement[] | string
   maxWidth: number
   maxHeight: number
   minWidth: number
