@@ -22,6 +22,9 @@
     "@kitsuyui/react-treemap#build": {
       "outputs": ["packages/react-treemap/dist/**"]
     },
+    "@kitsuyui/react-wavebox#build": {
+      "outputs": ["packages/react-wavebox/dist/**"]
+    },
     "@kitsuyui/react-components#build": {
       "dependsOn": [
         "@kitsuyui/react-clock#build",
@@ -29,7 +32,8 @@
         "@kitsuyui/react-stopwatch#build",
         "@kitsuyui/react-dekamoji#build",
         "@kitsuyui/react-measure#build",
-        "@kitsuyui/react-treemap#build"
+        "@kitsuyui/react-treemap#build",
+        "@kitsuyui/react-wavebox#build"
       ],
       "outputs": ["packages/react-components/dist/**"]
     },

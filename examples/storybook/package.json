@@ -12,6 +12,7 @@
     "@kitsuyui/react-stopwatch": "workspace:^",
     "@kitsuyui/react-timer": "workspace:^",
     "@kitsuyui/react-treemap": "workspace:^",
+    "@kitsuyui/react-wavebox": "workspace:^",
     "@playwright/test": "^1.37.1",
     "@storybook/addon-essentials": "^7.4.0",
     "@storybook/addon-interactions": "^7.4.0",
