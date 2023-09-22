@@ -23,6 +23,7 @@
     "dev": "tsup --watch",
     "format:eslint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "format:prettier": "prettier --write . --ignore-path ../../.gitignore",
+    "lint:type": "tsc --noEmit --project .",
     "lint:eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:prettier": "prettier --check . --ignore-path ../../.gitignore",
     "test": "jest --watchAll=false --collect-coverage"

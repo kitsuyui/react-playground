@@ -103,6 +103,7 @@
         "format:eslint"
       ]
     },
+    "lint:type": {},
     "lint:eslint": {},
     "lint:prettier": {},
     "format": {
@@ -113,6 +114,7 @@
     },
     "lint": {
       "dependsOn": [
+        "lint:type",
         "lint:eslint",
         "lint:prettier"
       ]

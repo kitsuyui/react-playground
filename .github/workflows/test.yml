@@ -29,11 +29,12 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
-      - name: Lint
-        run: pnpm lint
-
+      # Build must be run before linting and testing because some packages depends on the build output of other packages
       - name: Build
         run: pnpm build
+
+      - name: Lint
+        run: pnpm lint
 
       - name: Test
         run: pnpm test
