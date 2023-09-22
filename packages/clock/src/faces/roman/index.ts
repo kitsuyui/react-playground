@@ -1,4 +1,4 @@
-export function face(num: number): string {
+export const face = (num: number): string => {
   switch (num) {
     case 0:
       return 'Ⅻ'

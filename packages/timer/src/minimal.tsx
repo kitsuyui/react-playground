@@ -6,7 +6,7 @@ import type { TimerProps } from './types'
 export type * from './types'
 export * from './container'
 
-export function toLabel(value: number) {
+export const toLabel = (value: number) => {
   const minutes = Math.floor(value / 60)
   const seconds = value % 60 | 0
   const milliseconds = ((value % 1) * 1000) | 0
