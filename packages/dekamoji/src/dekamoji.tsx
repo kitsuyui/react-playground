@@ -48,7 +48,7 @@ export const Dekamoji: React.FC<Props> = React.memo(function Dekamoji({
   )
 })
 
-function calcFontSize(width: number, height: number, text: string): number {
+const calcFontSize = (width: number, height: number, text: string): number => {
   // calculate font size without react component and raw dom
   const outer = document.createElement('div')
   outer.style.position = 'absolute'

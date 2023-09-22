@@ -29,7 +29,7 @@ export const TimerContext = React.createContext({
   },
 })
 
-export function calcRemaining(targetDate: Date) {
+export const calcRemaining = (targetDate: Date) => {
   return (targetDate.getTime() - new Date().getTime()) / 1000
 }
 
@@ -54,7 +54,7 @@ export const TimerContainer: React.FC<TimerContainerProps> = (
     tick()
   }, refreshInterval)
 
-  function tick() {
+  const tick = () => {
     // It can't be ticked if it is not running.
     if (running) {
       const remaining = calcRemaining(targetDate)
@@ -67,7 +67,7 @@ export const TimerContainer: React.FC<TimerContainerProps> = (
     }
   }
 
-  function toggle() {
+  const toggle = () => {
     if (running) {
       stop()
     } else {
@@ -75,7 +75,7 @@ export const TimerContainer: React.FC<TimerContainerProps> = (
     }
   }
 
-  function reset() {
+  const reset = () => {
     // First, stop the timer if it is running.
     if (running) {
       stop()
@@ -84,7 +84,7 @@ export const TimerContainer: React.FC<TimerContainerProps> = (
     onReset(new CustomEvent('reset', {}))
   }
 
-  function start() {
+  const start = () => {
     // It can't be started if the remaining time is 0.
     if (remaining <= 0) {
       return
@@ -98,7 +98,7 @@ export const TimerContainer: React.FC<TimerContainerProps> = (
     onStart(new CustomEvent('start', {}))
   }
 
-  function stop() {
+  const stop = () => {
     // It can't be stopped if it is not running.
     if (!running) {
       return

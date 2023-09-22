@@ -23,11 +23,11 @@ export const StopwatchContext = React.createContext({
   },
 })
 
-export function calcTimeDiff(startTime: Date, endTime: Date) {
+export const calcTimeDiff = (startTime: Date, endTime: Date) => {
   return (endTime.getTime() - startTime.getTime()) / 1000
 }
 
-function calcElapsedTime(startTime: Date) {
+const calcElapsedTime = (startTime: Date) => {
   return calcTimeDiff(startTime, new Date())
 }
 
@@ -54,16 +54,16 @@ export const StopwatchContainer: React.FC<StopwatchContainerProps> = (
     }
   }, refreshInterval)
 
-  function updateElapsedTime() {
+  const updateElapsedTime = () => {
     setElapsedTimeInLap(calcElapsedTime(startTime))
   }
 
-  function moveLapToTotal() {
+  const moveLapToTotal = () => {
     setElapsedTimeTotal(elapsedTimeTotal + elapsedTimeInLap)
     setElapsedTimeInLap(0)
   }
 
-  function start() {
+  const start = () => {
     if (running) {
       return
     }
@@ -72,7 +72,7 @@ export const StopwatchContainer: React.FC<StopwatchContainerProps> = (
     setRunning(true)
   }
 
-  function stop() {
+  const stop = () => {
     if (!running) {
       return
     }
@@ -82,7 +82,7 @@ export const StopwatchContainer: React.FC<StopwatchContainerProps> = (
     moveLapToTotal()
   }
 
-  function toggle() {
+  const toggle = () => {
     if (running) {
       stop()
     } else {
@@ -90,7 +90,7 @@ export const StopwatchContainer: React.FC<StopwatchContainerProps> = (
     }
   }
 
-  function reset() {
+  const reset = () => {
     if (running) {
       stop()
     }
