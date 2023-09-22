@@ -23,10 +23,12 @@ Storybook: https://react-playground.storybook.kitsuyui.com/
 
 ## Features
 
-- [x] `@kitsuyui/react-components` ... [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-components.svg)](https://www.npmjs.com/package/@kitsuyui/react-components)
-  - [x] `@kitsuyui/react-clock` ... [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-clock.svg)](https://www.npmjs.com/package/@kitsuyui/react-clock)
-  - [x] `@kitsuyui/react-timer` ... [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-timer.svg)](https://www.npmjs.com/package/@kitsuyui/react-timer)
-  - [x] `@kitsuyui/react-stopwatch` ... [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-stopwatch.svg)](https://www.npmjs.com/package/@kitsuyui/react-stopwatch)
+- [x] `@kitsuyui/react-components` ... [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-components.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-components)
+  - [x] `@kitsuyui/react-clock` ... [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-clock.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-clock)
+  - [x] `@kitsuyui/react-timer` ... [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-timer.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-timer)
+  - [x] `@kitsuyui/react-stopwatch` ... [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-stopwatch.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-stopwatch)
+  - [x] `@kitsuyui/react-dekamoji` ... [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-dekamoji.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-dekamoji)
+  - [x] `@kitsuyui/react-wavebox` ... [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-wavebox.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-wavebox)
 - [ ] Alarm
 - [ ] Dice
 
