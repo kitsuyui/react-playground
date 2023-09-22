@@ -26,7 +26,7 @@
     "@kitsuyui/eslint-config": "workspace:^",
     "@kitsuyui/jest-config": "workspace:^",
     "@types/jest": "^29.5.4",
-    "@testing-library/react": "^11.2.5",
+    "@testing-library/react": "^14.0.0",
     "eslint-plugin-unused-imports": "^3.0.0",
     "sort-package-json": "^2.5.1",
     "@types/react": "^17.0.3",
