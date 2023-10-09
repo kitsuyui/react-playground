@@ -36,6 +36,11 @@
         "packages/react-treemap/dist/**"
       ]
     },
+    "@kitsuyui/react-textfield#build": {
+      "outputs": [
+        "packages/react-textfield/dist/**"
+      ]
+    },
     "@kitsuyui/react-wavebox#build": {
       "outputs": [
         "packages/react-wavebox/dist/**"
@@ -47,6 +52,7 @@
         "@kitsuyui/react-timer#build",
         "@kitsuyui/react-stopwatch#build",
         "@kitsuyui/react-dekamoji#build",
+        "@kitsuyui/react-textfield#build",
         "@kitsuyui/react-measure#build",
         "@kitsuyui/react-treemap#build",
         "@kitsuyui/react-wavebox#build"

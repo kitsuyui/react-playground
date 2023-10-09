@@ -150,6 +150,9 @@ importers:
       '@kitsuyui/react-style-bulma':
         specifier: workspace:^
         version: link:../../packages/style-bulma
+      '@kitsuyui/react-textfield':
+        specifier: workspace:^
+        version: link:../../packages/textfield
       '@kitsuyui/react-timer':
         specifier: workspace:^
         version: link:../../packages/timer
@@ -461,6 +464,49 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+    devDependencies:
+      '@kitsuyui/eslint-config':
+        specifier: workspace:^
+        version: link:../../config/eslint-config
+      '@kitsuyui/jest-config':
+        specifier: workspace:^
+        version: link:../../config/jest-config
+      '@kitsuyui/prettier-config':
+        specifier: workspace:^
+        version: link:../../config/prettier-config
+      '@kitsuyui/tsup-config':
+        specifier: workspace:^
+        version: link:../../config/tsup-config
+      '@types/node':
+        specifier: ^20.5.7
+        version: 20.6.4
+      '@types/react':
+        specifier: ^18.2.21
+        version: 18.2.22
+      '@types/react-dom':
+        specifier: ^18.2.7
+        version: 18.2.7
+      jest:
+        specifier: ^29.6.4
+        version: 29.7.0(@types/node@20.6.4)(ts-node@10.9.1)
+      tsup:
+        specifier: ^7.2.0
+        version: 7.2.0(typescript@5.2.2)
+      typescript:
+        specifier: ^5.2.2
+        version: 5.2.2
+
+  packages/textfield:
+    dependencies:
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      react-use:
+        specifier: ^17.4.0
+        version: 17.4.0(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@kitsuyui/eslint-config':
         specifier: workspace:^
