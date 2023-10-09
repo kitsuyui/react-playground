@@ -10,25 +10,21 @@ type WrappedProps = React.DetailedHTMLProps<
 >
 type alternateProps = {
   ref?: Ref<HTMLInputElement>
-  onInput?: (value: string) => void
+  onInputChunk?: (value: string) => void
   value: string
 }
 
 type excludeProps =
   | 'onChange'
   | 'onCompositionStart'
-  | 'onCompositionUpdate'
   | 'onCompositionEnd'
-  | 'onCompositionStartCapture'
-  | 'onCompositionUpdateCapture'
-  | 'onCompositionEndCapture'
   | 'value'
   | 'type'
 
 type WrapperProps = Omit<WrappedProps, excludeProps> & alternateProps
 
 export const TextField = (props: WrapperProps) => {
-  const { onInput } = props
+  const { onInputChunk } = props
   const [inputtingValue, setInputtingValue] = useState(props.value ?? '')
   const [isInputting, setIsInputting] = useState(false)
 
@@ -39,15 +35,15 @@ export const TextField = (props: WrapperProps) => {
     ...props,
     ref: undefined,
     value: undefined,
-    onInput: undefined,
+    onInputChunk: undefined,
   }
 
   const handle = useCallback(() => {
     const text = innerRef.current.value
     setInputtingValue(text)
     if (isInputting) return
-    onInput?.(text)
-  }, [isInputting, onInput])
+    onInputChunk?.(text)
+  }, [isInputting, onInputChunk])
 
   return (
     <input
@@ -58,7 +54,7 @@ export const TextField = (props: WrapperProps) => {
       onCompositionStart={() => setIsInputting(true)}
       onCompositionEnd={() => {
         setIsInputting(false)
-        onInput?.(inputtingValue)
+        onInputChunk?.(inputtingValue)
       }}
       onChange={handle}
     />
