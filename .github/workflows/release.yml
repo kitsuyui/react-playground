@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        package_name: [clock, timer, stopwatch, dekamoji, wavebox, measure, treemap, components, style-bulma]
+        package_name: [clock, timer, stopwatch, dekamoji, textfield, wavebox, measure, treemap, components, style-bulma]
 
     steps:
       - uses: actions/checkout@v4
