@@ -21,15 +21,14 @@
     "test:vrt:install": "turbo test:vrt:install",
     "test:vrt:update": "turbo test:vrt:update"
   },
-  "dependencies": {},
   "devDependencies": {
     "@kitsuyui/eslint-config": "workspace:^",
     "@kitsuyui/jest-config": "workspace:^",
-    "@types/jest": "^29.5.4",
     "@testing-library/react": "^14.0.0",
+    "@types/jest": "^29.5.5",
+    "@types/react": "^18.2.27",
     "eslint-plugin-unused-imports": "^3.0.0",
-    "sort-package-json": "^2.5.1",
-    "@types/react": "^18.0.0",
-    "turbo": "^1.10.14"
+    "sort-package-json": "^2.6.0",
+    "turbo": "^1.10.15"
   }
 }
