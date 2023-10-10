@@ -41,7 +41,7 @@
     ]
   },
   "dependencies": {
-    "luxon": "^3.4.2",
+    "luxon": "^3.4.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-use": "^17.4.0"
@@ -52,10 +52,10 @@
     "@kitsuyui/prettier-config": "workspace:^",
     "@kitsuyui/tsup-config": "workspace:^",
     "@types/luxon": "^3.3.2",
-    "@types/node": "^20.5.7",
-    "@types/react": "^18.2.21",
-    "@types/react-dom": "^18.2.7",
-    "jest": "^29.6.4",
+    "@types/node": "^20.8.4",
+    "@types/react": "^18.2.27",
+    "@types/react-dom": "^18.2.12",
+    "jest": "^29.7.0",
     "tsup": "^7.2.0",
     "typescript": "^5.2.2"
   }
