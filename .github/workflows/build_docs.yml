@@ -4,9 +4,10 @@ on:
   push:
     branches:
       - main
+      - typedoc
 
 jobs:
-  deploy:
+  deploy_storybook:
     name: Publish Storybook
     runs-on: ubuntu-latest
     permissions:
@@ -24,10 +25,17 @@ jobs:
 
       - run: pnpm install
 
-      - run: pnpm build
+      - run: |
+          pnpm build
+          pnpm typedoc
+
+      - run: |
+          mkdir -p build/sites
+          mv  ./examples/storybook/storybook-static ./build/sites/storybook
+          mv ./build/typedocs ./build/sites/typedocs
 
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./examples/storybook/storybook-static
-          cname: react-playground.storybook.kitsuyui.com
+          publish_dir: ./build/sites
+          cname: react-playground.docs.kitsuyui.com
