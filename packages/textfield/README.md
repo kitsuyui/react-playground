@@ -19,7 +19,7 @@ This means, if this component is re-created by parent component, the input may l
 
 ## Demo
 
-Storybook: https://react-playground.storybook.kitsuyui.com/
+Storybook: https://react-playground.docs.kitsuyui.com/storybook/
 
 ## Installation
 
