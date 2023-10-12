@@ -8,10 +8,12 @@ This is a repository for practicing React.
 Create React components and check them with Storybook or write tests.
 It only deals with content that is closed to React. It does not handle Next.js, etc.
 For Next.js, see https://github.com/kitsuyui/nextjs-playground/ .
+For TypeScript, see https://github.com/kitsuyui/ts-playground/ .
 
-## Demo
+## Demo & Documentations
 
-Storybook: https://react-playground.storybook.kitsuyui.com/
+- [x] [Storybook](https://react-playground.docs.kitsuyui.com/storybook/)
+- [x] [typedocs](https://react-playground.docs.kitsuyui.com/typedocs/)
 
 ## Goal
 

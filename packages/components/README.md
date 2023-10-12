@@ -15,7 +15,7 @@ and more. This package includes all of this series.
 
 ## Demo
 
-Storybook: https://react-playground.storybook.kitsuyui.com/
+Storybook: https://react-playground.docs.kitsuyui.com/storybook/
 
 ## License
 

@@ -80,7 +80,8 @@
     },
     "build": {
       "dependsOn": [
-        "^build"
+        "^build",
+        "typedoc"
       ],
       "outputs": [
         "packages/*/dist/**"
@@ -112,6 +113,7 @@
     "lint:type": {},
     "lint:eslint": {},
     "lint:prettier": {},
+    "typedoc": {},
     "format": {
       "dependsOn": [
         "format:eslint",

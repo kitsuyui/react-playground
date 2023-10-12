@@ -19,7 +19,8 @@
     "test": "turbo test",
     "test:vrt": "turbo test:vrt",
     "test:vrt:install": "turbo test:vrt:install",
-    "test:vrt:update": "turbo test:vrt:update"
+    "test:vrt:update": "turbo test:vrt:update",
+    "typedoc": "typedoc"
   },
   "devDependencies": {
     "@kitsuyui/eslint-config": "workspace:^",
@@ -29,6 +30,7 @@
     "@types/react": "^18.2.27",
     "eslint-plugin-unused-imports": "^3.0.0",
     "sort-package-json": "^2.6.0",
-    "turbo": "^1.10.15"
+    "turbo": "^1.10.15",
+    "typedoc": "^0.25.2"
   }
 }
