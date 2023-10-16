@@ -1,6 +1,5 @@
-const tsup = require("tsup");
-
-module.exports = tsup.defineConfig({
+import { defineConfig } from "tsup";
+export default defineConfig({
   target: "es2020",
   format: ["cjs", "esm"],
   entry: [

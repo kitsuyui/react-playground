@@ -2,9 +2,18 @@ import {
   StopwatchContainer,
   MinimalStopwatch,
   StopwatchContext,
-  StopwatchProps,
 } from '@kitsuyui/react-stopwatch'
 import React from 'react'
+
+
+interface StopwatchProps {
+  running: boolean
+  elapsedTime: number
+  start: () => void
+  stop: () => void
+  reset: () => void
+  toggle: () => void
+}
 
 import type { Meta, StoryObj } from '@storybook/react'
 

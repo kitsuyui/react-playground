@@ -12,7 +12,7 @@ const Clock = () => {
   return (
     <ClockContainer refreshInterval={10}>
       <DateContext.Consumer>
-        {(date) => (
+        {(date: Date) => (
           <>
             <AnalogClock timezone="Asia/Tokyo" date={date} />
             <DigitalClock timezone="Asia/Tokyo" date={date} />

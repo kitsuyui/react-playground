@@ -17,7 +17,7 @@ module.exports = {
   parser: "@typescript-eslint/parser",
   parserOptions: {
     sourceType: "module",
-    project: "./tsconfig.json",
+    project: ["./tsconfig.json"],
   },
   ignorePatterns: [
     "node_modules/",
@@ -25,10 +25,7 @@ module.exports = {
     "build/",
     "storybook-static/",
     "coverage/",
-    "__mocks__/",
-    "jest.config.ts",
-    "tsup.config.ts",
-    "stylelint.config.js",
+    "__mocks__/"
   ],
   rules: {
     "@typescript-eslint/no-unused-vars": "off",
