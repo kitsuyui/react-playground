@@ -1,4 +1,4 @@
-# Dekamoji
+# WaveBox
 
 import { Canvas, Meta } from '@storybook/blocks'
 
@@ -8,8 +8,11 @@ import * as WaveBoxExample from './Example.stories'
 <Canvas of={WaveBoxExample.Default} />
 
 ```jsx
-<Dekamoji text="あいうえお" />
+<WaveBox />
 ```
+
+WaveBox is a box component that keep moving like a wave.
+This is useful for testing the inner component flexibility.
 
 ## Installation
 
@@ -18,15 +21,28 @@ Each component is published as a separate package.
 Use npm, yarn or pnpm to install.
 
 ```sh
-$ npm install @kitsuyui/react-dekamoji
+$ npm install @kitsuyui/react-wavebox
 ```
 
 ```sh
-$ yarn add @kitsuyui/react-dekamoji
+$ yarn add @kitsuyui/react-wavebox
 ```
 
 ```sh
-$ pnpm add @kitsuyui/react-dekamoji
+$ pnpm add @kitsuyui/react-wavebox
 ```
 
 ## Usage
+
+```jsx
+import { WaveBox } from '@kitsuyui/react-wavebox'
+
+<WaveBox
+  minHeight={/* minimum height of the wave box */}
+  maxHeight={/* maximum height of the wave box */}
+  minWidth={/* minimum width of the wave box */}
+  maxWidth={/* maximum width of the wave box */}
+  heightCycle={/* height cycle of the wave box */}
+  widthCycle={/* width cycle of the wave box */}
+>
+```
