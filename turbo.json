@@ -110,21 +110,25 @@
         "format:eslint"
       ]
     },
+    "format:stylelint": {},
     "lint:type": {},
     "lint:eslint": {},
     "lint:prettier": {},
+    "lint:stylelint": {},
     "typedoc": {},
     "format": {
       "dependsOn": [
         "format:eslint",
-        "format:prettier"
+        "format:prettier",
+        "format:stylelint"
       ]
     },
     "lint": {
       "dependsOn": [
         "lint:type",
         "lint:eslint",
-        "lint:prettier"
+        "lint:prettier",
+        "lint:stylelint"
       ]
     }
   }

@@ -28,6 +28,7 @@ module.exports = {
     "__mocks__/",
     "jest.config.ts",
     "tsup.config.ts",
+    "stylelint.config.js",
   ],
   rules: {
     "@typescript-eslint/no-unused-vars": "off",

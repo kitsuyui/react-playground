@@ -25,7 +25,9 @@
   "devDependencies": {
     "@kitsuyui/eslint-config": "workspace:^",
     "@kitsuyui/jest-config": "workspace:^",
+    "@kitsuyui/stylelint-config": "workspace:^",
     "@testing-library/react": "^14.0.0",
+    "stylelint": "^14.0.0",
     "@types/jest": "^29.5.5",
     "@types/react": "^18.2.27",
     "eslint-plugin-unused-imports": "^3.0.0",

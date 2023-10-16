@@ -23,9 +23,11 @@
     "dev": "tsup --watch",
     "format:eslint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "format:prettier": "prettier --write . --ignore-path ../../.gitignore",
+    "format:stylelint": "stylelint --config stylelint.config.js 'src/**/*.css' --allow-empty-input --fix",
     "lint:type": "tsc --noEmit --project .",
     "lint:eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:prettier": "prettier --check . --ignore-path ../../.gitignore",
+    "lint:stylelint": "stylelint --config stylelint.config.js 'src/**/*.css' --allow-empty-input",
     "test": "jest --watchAll=false --collect-coverage"
   },
   "browserslist": {
@@ -49,6 +51,7 @@
     "@kitsuyui/jest-config": "workspace:^",
     "@kitsuyui/prettier-config": "workspace:^",
     "@kitsuyui/tsup-config": "workspace:^",
+    "@kitsuyui/stylelint-config": "workspace:^",
     "@types/node": "^20.8.4",
     "@types/react": "^18.2.27",
     "@types/react-dom": "^18.2.12",
