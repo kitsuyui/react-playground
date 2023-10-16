@@ -50,6 +50,10 @@ export const TextField = (props: WrapperProps): JSX.Element => {
       ref={ref}
       value={inputtingValue}
       onCompositionStart={() => setIsInputting(true)}
+      onBlur={(e) => {
+        setIsInputting(false)
+        propsExcludedWrapperProps.onBlur?.(e)
+      }}
       onCompositionEnd={() => {
         setIsInputting(false)
         onInputChunk?.(inputtingValue)
