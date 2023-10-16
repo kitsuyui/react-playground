@@ -50,6 +50,10 @@ export const TextArea = (props: WrapperProps): JSX.Element => {
         setIsInputting(false)
         onInputChunk?.(inputtingValue)
       }}
+      onBlur={(e) => {
+        setIsInputting(false)
+        propsExcludedWrapperProps.onBlur?.(e)
+      }}
       onChange={handle}
       value={inputtingValue}
     ></textarea>
