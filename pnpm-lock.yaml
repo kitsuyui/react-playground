@@ -220,12 +220,21 @@ importers:
       '@kitsuyui/react-clock':
         specifier: workspace:^
         version: link:../clock
+      '@kitsuyui/react-dekamoji':
+        specifier: workspace:^
+        version: link:../dekamoji
+      '@kitsuyui/react-measure':
+        specifier: workspace:^
+        version: link:../measure
       '@kitsuyui/react-stopwatch':
         specifier: workspace:^
         version: link:../stopwatch
       '@kitsuyui/react-timer':
         specifier: workspace:^
         version: link:../timer
+      '@kitsuyui/react-treemap':
+        specifier: workspace:^
+        version: link:../treemap
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -308,15 +317,21 @@ importers:
       '@kitsuyui/react-clock':
         specifier: workspace:^
         version: link:../clock
-      '@kitsuyui/react-components':
+      '@kitsuyui/react-dekamoji':
         specifier: workspace:^
-        version: link:../components
+        version: link:../dekamoji
+      '@kitsuyui/react-measure':
+        specifier: workspace:^
+        version: link:../measure
       '@kitsuyui/react-stopwatch':
         specifier: workspace:^
         version: link:../stopwatch
       '@kitsuyui/react-timer':
         specifier: workspace:^
         version: link:../timer
+      '@kitsuyui/react-treemap':
+        specifier: workspace:^
+        version: link:../treemap
       bulma:
         specifier: ^0.9.4
         version: 0.9.4

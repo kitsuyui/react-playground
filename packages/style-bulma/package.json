@@ -19,14 +19,16 @@
     "package.json"
   ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch"
+    "build": "tsup --config ../../tsup.config.mjs",
+    "dev": "tsup --config ../../tsup.config.mjs --watch"
   },
   "dependencies": {
     "@kitsuyui/react-clock": "workspace:^",
-    "@kitsuyui/react-components": "workspace:^",
+    "@kitsuyui/react-dekamoji": "workspace:^",
+    "@kitsuyui/react-measure": "workspace:^",
     "@kitsuyui/react-stopwatch": "workspace:^",
     "@kitsuyui/react-timer": "workspace:^",
+    "@kitsuyui/react-treemap": "workspace:^",
     "bulma": "^0.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
