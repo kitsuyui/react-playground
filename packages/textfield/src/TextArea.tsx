@@ -21,7 +21,7 @@ type excludeProps =
 
 type WrapperProps = Omit<WrappedProps, excludeProps> & alternateProps
 
-export const TextArea = (props: WrapperProps) => {
+export const TextArea = (props: WrapperProps): JSX.Element => {
   const { onInputChunk } = props
   const [inputtingValue, setInputtingValue] = useState(props.value ?? '')
   const [isInputting, setIsInputting] = useState(false)
@@ -29,11 +29,10 @@ export const TextArea = (props: WrapperProps) => {
   const innerRef = useRef<HTMLTextAreaElement>(null!)
   const ref = useCombinedRefs(innerRef, props.ref)
 
-  const propsExcludedWrapperProps = {
-    ...props,
-    ref: undefined,
-    onInputChunk: undefined,
-  }
+  // Use Object.assign({}, props) instead of { ...props } because it must create deep copy.
+  const propsExcludedWrapperProps = Object.assign({}, props)
+  delete propsExcludedWrapperProps.ref
+  delete propsExcludedWrapperProps.onInputChunk
 
   const handle = useCallback(() => {
     const text = innerRef.current.value

@@ -87,11 +87,6 @@
         "packages/*/dist/**"
       ]
     },
-    "test": {
-      "dependsOn": [
-        "^test"
-      ]
-    },
     "test:vrt": {
       "dependsOn": [
         "^test:vrt:install",
@@ -104,28 +99,6 @@
       ]
     },
     "test:vrt:install": {},
-    "format:eslint": {},
-    "format:prettier": {
-      "dependsOn": [
-        "format:eslint"
-      ]
-    },
-    "lint:type": {},
-    "lint:eslint": {},
-    "lint:prettier": {},
-    "typedoc": {},
-    "format": {
-      "dependsOn": [
-        "format:eslint",
-        "format:prettier"
-      ]
-    },
-    "lint": {
-      "dependsOn": [
-        "lint:type",
-        "lint:eslint",
-        "lint:prettier"
-      ]
-    }
+    "typedoc": {}
   }
 }

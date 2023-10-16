@@ -1,12 +1,18 @@
 import {
   StopwatchContainer,
   StopwatchContext,
-  StopwatchProps,
   utils,
 } from '@kitsuyui/react-stopwatch'
 import React from 'react'
 
 import 'bulma/css/bulma.css'
+
+interface StopwatchProps {
+  running: boolean
+  elapsedTime: number
+  reset: () => void
+  toggle: () => void
+}
 
 export const StopwatchElement = (props: StopwatchProps) => {
   const { running, elapsedTime, reset, toggle } = props

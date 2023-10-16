@@ -1,7 +1,5 @@
 // https://jestjs.io/docs/configuration
-
-// eslint-disable-next-line no-undef
-module.exports = {
+export default {
   extensionsToTreatAsEsm: [".ts", ".tsx"],
   testPathIgnorePatterns: ["/node_modules/", "/dist/"],
   testEnvironment: "jsdom",
@@ -17,5 +15,9 @@ module.exports = {
         },
       },
     ],
+    '^.+\\.(css|scss)$': 'jest-transform-stub',
+  },
+  moduleNameMapper: {
+    "^.+\\.(css|scss)$": "identity-obj-proxy",
   },
 };
