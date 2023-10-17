@@ -19,8 +19,8 @@
     "package.json"
   ],
   "scripts": {
-    "build": "tsup",
-    "dev": "tsup --watch"
+    "build": "tsup --config ../../tsup.config.mjs",
+    "dev": "tsup --config ../../tsup.config.mjs --watch"
   },
   "dependencies": {
     "react": "^18.2.0",

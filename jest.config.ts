@@ -1,16 +1,16 @@
 // https://jestjs.io/docs/configuration
 export default {
-  extensionsToTreatAsEsm: [".ts", ".tsx"],
-  testPathIgnorePatterns: ["/node_modules/", "/dist/"],
-  testEnvironment: "jsdom",
+  extensionsToTreatAsEsm: ['.ts', '.tsx'],
+  testPathIgnorePatterns: ['/node_modules/', '/dist/'],
+  testEnvironment: 'jsdom',
   transform: {
-    "^.+.(t|j)sx?$": [
-      "@swc/jest",
+    '^.+.(t|j)sx?$': [
+      '@swc/jest',
       {
         sourceMaps: true,
         jsc: {
           parser: {
-            syntax: "typescript",
+            syntax: 'typescript',
           },
         },
       },
@@ -18,6 +18,6 @@ export default {
     '^.+\\.(css|scss)$': 'jest-transform-stub',
   },
   moduleNameMapper: {
-    "^.+\\.(css|scss)$": "identity-obj-proxy",
+    '^.+\\.(css|scss)$': 'identity-obj-proxy',
   },
-};
+}

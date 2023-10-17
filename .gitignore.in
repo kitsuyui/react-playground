@@ -9,5 +9,7 @@ gibo dump macOS
 gibo dump Node
 gi react
 gi turbo
-echo 'packages/*/build/*'
-echo 'examples/*/build/*'
+echo packages/*/build/*
+echo examples/*/build/*
+echo storybook-static
+echo build/
