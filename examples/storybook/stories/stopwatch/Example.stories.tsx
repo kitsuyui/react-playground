@@ -5,7 +5,6 @@ import {
 } from '@kitsuyui/react-stopwatch'
 import React from 'react'
 
-
 interface StopwatchProps {
   running: boolean
   elapsedTime: number

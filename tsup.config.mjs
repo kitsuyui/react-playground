@@ -1,12 +1,12 @@
-import { defineConfig } from "tsup";
+import { defineConfig } from 'tsup'
 export default defineConfig({
-  target: "es2020",
-  format: ["cjs", "esm"],
+  target: 'es2020',
+  format: ['cjs', 'esm'],
   entry: [
-    "./src/**/*.{ts,tsx}",
-    "!./src/**/*.test.{ts,tsx}",
-    "!./src/**/test.{ts,tsx}",
+    './src/**/*.{ts,tsx}',
+    '!./src/**/*.test.{ts,tsx}',
+    '!./src/**/test.{ts,tsx}',
   ],
   clean: true,
   dts: true,
-});
+})
