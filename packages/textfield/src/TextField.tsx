@@ -1,4 +1,4 @@
-import { Ref, useCallback, useRef, useState } from 'react'
+import { Ref, useCallback, useEffect, useRef, useState } from 'react'
 import React from 'react'
 
 import { useCombinedRefs } from './utils'
@@ -17,6 +17,7 @@ type alternateProps = {
 type excludeProps =
   | 'onChange'
   | 'onCompositionStart'
+  | 'onCompositionUpdate'
   | 'onCompositionEnd'
   | 'value'
   | 'type'
@@ -24,11 +25,11 @@ type excludeProps =
 type WrapperProps = Omit<WrappedProps, excludeProps> & alternateProps
 
 export const TextField = (props: WrapperProps): JSX.Element => {
-  const { onInputChunk } = props
-  const [inputtingValue, setInputtingValue] = useState(props.value ?? '')
-  const [isInputting, setIsInputting] = useState(false)
-
   const innerRef = useRef<HTMLInputElement>(null!)
+  const { onInputChunk } = props
+  const outerValue = props.value ?? ''
+  const [internalValue, setInternalValue] = useState(props.value ?? '')
+  const [isInputting, setIsInputting] = useState(false)
   const ref = useCombinedRefs(innerRef, props.ref)
 
   // Use Object.assign({}, props) instead of { ...props } because it must create deep copy.
@@ -36,29 +37,45 @@ export const TextField = (props: WrapperProps): JSX.Element => {
   delete propsExcludedWrapperProps.ref
   delete propsExcludedWrapperProps.onInputChunk
 
-  const handle = useCallback(() => {
+  useEffect(() => {
+    if (isInputting) return
+    setInternalValue(outerValue)
+  }, [outerValue, isInputting])
+
+  const handleChange = useCallback(() => {
     const text = innerRef.current.value
-    setInputtingValue(text)
+    setInternalValue(text)
     if (isInputting) return
     onInputChunk?.(text)
   }, [isInputting, onInputChunk])
+
+  const handleCompositionChange = useCallback(() => {
+    const text = innerRef.current.value
+    setInternalValue(text)
+    setIsInputting(true)
+  }, [innerRef])
+
+  const handleCompositionEnd = useCallback(() => {
+    const text = innerRef.current.value
+    setInternalValue(text)
+    setIsInputting(false)
+    onInputChunk?.(text)
+  }, [innerRef, onInputChunk])
 
   return (
     <input
       {...propsExcludedWrapperProps}
       type="text"
       ref={ref}
-      value={inputtingValue}
-      onCompositionStart={() => setIsInputting(true)}
+      value={internalValue}
+      onCompositionStart={handleCompositionChange}
+      onCompositionUpdate={handleCompositionChange}
+      onCompositionEnd={handleCompositionEnd}
       onBlur={(e) => {
-        setIsInputting(false)
+        handleCompositionEnd()
         propsExcludedWrapperProps.onBlur?.(e)
       }}
-      onCompositionEnd={() => {
-        setIsInputting(false)
-        onInputChunk?.(inputtingValue)
-      }}
-      onChange={handle}
+      onChange={handleChange}
     />
   )
 }
