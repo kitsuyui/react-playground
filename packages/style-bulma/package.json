@@ -23,18 +23,18 @@
     "dev": "tsup --config ../../tsup.config.mjs --watch"
   },
   "dependencies": {
-    "@kitsuyui/react-clock": "workspace:^",
-    "@kitsuyui/react-dekamoji": "workspace:^",
-    "@kitsuyui/react-measure": "workspace:^",
-    "@kitsuyui/react-stopwatch": "workspace:^",
-    "@kitsuyui/react-timer": "workspace:^",
-    "@kitsuyui/react-treemap": "workspace:^",
+    "@kitsuyui/react-clock": "workspace:latest",
+    "@kitsuyui/react-dekamoji": "workspace:latest",
+    "@kitsuyui/react-measure": "workspace:latest",
+    "@kitsuyui/react-stopwatch": "workspace:latest",
+    "@kitsuyui/react-timer": "workspace:latest",
+    "@kitsuyui/react-treemap": "workspace:latest",
     "bulma": "^0.9.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.27",
-    "@types/react-dom": "^18.2.12"
+    "@types/react": "^18.2.29",
+    "@types/react-dom": "^18.2.14"
   }
 }

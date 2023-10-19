@@ -23,12 +23,12 @@
     "dev": "tsup --config ../../tsup.config.mjs --watch"
   },
   "dependencies": {
-    "@kitsuyui/react-textfield": "workspace:^",
+    "@kitsuyui/react-textfield": "workspace:latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.27",
-    "@types/react-dom": "^18.2.12"
+    "@types/react": "^18.2.29",
+    "@types/react-dom": "^18.2.14"
   }
 }
