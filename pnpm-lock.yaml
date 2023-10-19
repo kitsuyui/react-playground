@@ -221,22 +221,22 @@ importers:
   packages/components:
     dependencies:
       '@kitsuyui/react-clock':
-        specifier: workspace:^
+        specifier: workspace:latest
         version: link:../clock
       '@kitsuyui/react-dekamoji':
-        specifier: workspace:^
+        specifier: workspace:latest
         version: link:../dekamoji
       '@kitsuyui/react-measure':
-        specifier: workspace:^
+        specifier: workspace:latest
         version: link:../measure
       '@kitsuyui/react-stopwatch':
-        specifier: workspace:^
+        specifier: workspace:latest
         version: link:../stopwatch
       '@kitsuyui/react-timer':
-        specifier: workspace:^
+        specifier: workspace:latest
         version: link:../timer
       '@kitsuyui/react-treemap':
-        specifier: workspace:^
+        specifier: workspace:latest
         version: link:../treemap
       react:
         specifier: ^18.2.0
@@ -280,7 +280,7 @@ importers:
   packages/editablelabel:
     dependencies:
       '@kitsuyui/react-textfield':
-        specifier: workspace:^
+        specifier: workspace:latest
         version: link:../textfield
       react:
         specifier: ^18.2.0
@@ -337,22 +337,22 @@ importers:
   packages/style-bulma:
     dependencies:
       '@kitsuyui/react-clock':
-        specifier: workspace:^
+        specifier: workspace:latest
         version: link:../clock
       '@kitsuyui/react-dekamoji':
-        specifier: workspace:^
+        specifier: workspace:latest
         version: link:../dekamoji
       '@kitsuyui/react-measure':
-        specifier: workspace:^
+        specifier: workspace:latest
         version: link:../measure
       '@kitsuyui/react-stopwatch':
-        specifier: workspace:^
+        specifier: workspace:latest
         version: link:../stopwatch
       '@kitsuyui/react-timer':
-        specifier: workspace:^
+        specifier: workspace:latest
         version: link:../timer
       '@kitsuyui/react-treemap':
-        specifier: workspace:^
+        specifier: workspace:latest
         version: link:../treemap
       bulma:
         specifier: ^0.9.4
