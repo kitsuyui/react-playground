@@ -15,6 +15,7 @@
     "@kitsuyui/react-timer": "workspace:^",
     "@kitsuyui/react-treemap": "workspace:^",
     "@kitsuyui/react-wavebox": "workspace:^",
+    "@kitsuyui/react-editablelabel": "workspace:^",
     "@playwright/test": "^1.38.1",
     "@storybook/addon-essentials": "^7.4.6",
     "@storybook/addon-interactions": "^7.4.6",
