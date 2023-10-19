@@ -1,14 +1,17 @@
-import { Ref, useCallback, useEffect, useRef, useState } from 'react'
+import {
+  ComponentPropsWithoutRef,
+  forwardRef,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 import React from 'react'
 
 import { useCombinedRefs } from './utils'
 
-type WrappedProps = React.DetailedHTMLProps<
-  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
-  HTMLTextAreaElement
->
+type WrappedProps = ComponentPropsWithoutRef<'textarea'>
 type alternateProps = {
-  ref?: Ref<HTMLTextAreaElement>
   onInputChunk?: (value: string) => void
   value?: string
 }
@@ -22,57 +25,60 @@ type excludeProps =
 
 type WrapperProps = Omit<WrappedProps, excludeProps> & alternateProps
 
-export const TextArea = (props: WrapperProps): JSX.Element => {
-  const { onInputChunk } = props
-  const outerValue = props.value ?? ''
-  const [internalValue, setInternalValue] = useState(props.value ?? '')
-  const [isInputting, setIsInputting] = useState(false)
-  const innerRef = useRef<HTMLTextAreaElement>(null!)
-  const ref = useCombinedRefs(innerRef, props.ref)
+export const TextArea = forwardRef<HTMLTextAreaElement, WrapperProps>(
+  (props, ref) => {
+    const { onInputChunk } = props
+    const outerValue = props.value ?? ''
+    const [internalValue, setInternalValue] = useState(props.value ?? '')
+    const [isInputting, setIsInputting] = useState(false)
+    const innerRef = useRef<HTMLTextAreaElement>(null!)
+    const compbinedRef = useCombinedRefs(innerRef, ref)
 
-  // Use Object.assign({}, props) instead of { ...props } because it must create deep copy.
-  const propsExcludedWrapperProps = Object.assign({}, props)
-  delete propsExcludedWrapperProps.ref
-  delete propsExcludedWrapperProps.onInputChunk
+    // Use Object.assign({}, props) instead of { ...props } because it must create deep copy.
+    const propsExcludedWrapperProps = Object.assign({}, props)
+    delete propsExcludedWrapperProps.onInputChunk
 
-  useEffect(() => {
-    if (isInputting) return
-    setInternalValue(outerValue)
-  }, [outerValue, isInputting])
+    useEffect(() => {
+      if (isInputting) return
+      setInternalValue(outerValue)
+    }, [outerValue, isInputting])
 
-  const handleChange = useCallback(() => {
-    const text = innerRef.current.value
-    setInternalValue(text)
-    if (isInputting) return
-    onInputChunk?.(text)
-  }, [isInputting, onInputChunk])
+    const handleChange = useCallback(() => {
+      const text = innerRef.current.value
+      setInternalValue(text)
+      if (isInputting) return
+      onInputChunk?.(text)
+    }, [isInputting, onInputChunk])
 
-  const handleCompositionChange = useCallback(() => {
-    const text = innerRef.current.value
-    setInternalValue(text)
-    setIsInputting(true)
-  }, [innerRef])
+    const handleCompositionChange = useCallback(() => {
+      const text = innerRef.current.value
+      setInternalValue(text)
+      setIsInputting(true)
+    }, [innerRef])
 
-  const handleCompositionEnd = useCallback(() => {
-    const text = innerRef.current.value
-    setInternalValue(text)
-    setIsInputting(false)
-    onInputChunk?.(text)
-  }, [innerRef, onInputChunk])
+    const handleCompositionEnd = useCallback(() => {
+      const text = innerRef.current.value
+      setInternalValue(text)
+      setIsInputting(false)
+      onInputChunk?.(text)
+    }, [innerRef, onInputChunk])
 
-  return (
-    <textarea
-      {...propsExcludedWrapperProps}
-      ref={ref}
-      value={internalValue}
-      onCompositionStart={handleCompositionChange}
-      onCompositionUpdate={handleCompositionChange}
-      onCompositionEnd={handleCompositionEnd}
-      onBlur={(e) => {
-        handleCompositionEnd()
-        propsExcludedWrapperProps.onBlur?.(e)
-      }}
-      onChange={handleChange}
-    />
-  )
-}
+    return (
+      <textarea
+        {...propsExcludedWrapperProps}
+        ref={compbinedRef}
+        value={internalValue}
+        onCompositionStart={handleCompositionChange}
+        onCompositionUpdate={handleCompositionChange}
+        onCompositionEnd={handleCompositionEnd}
+        onBlur={(e) => {
+          handleCompositionEnd()
+          propsExcludedWrapperProps.onBlur?.(e)
+        }}
+        onChange={handleChange}
+      />
+    )
+  }
+)
+
+TextArea.displayName = 'TextArea'

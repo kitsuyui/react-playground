@@ -25,6 +25,7 @@ jobs:
             wavebox,
             measure,
             treemap,
+            editablelabel,
             components,
             style-bulma,
           ]
