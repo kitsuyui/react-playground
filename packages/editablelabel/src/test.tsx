@@ -22,7 +22,7 @@ test('render EditableLabel', async () => {
   render(<EditableLabelExample onEditComplete={handleEditComplete} />)
 
   const firstMessage = "Let's edit me!"
-  const additonalMessage = 'Hello World!'
+  const additionalMessage = 'Hello World!'
 
   // view mode (initial state)
   const element = screen.getByText(firstMessage)
@@ -34,14 +34,14 @@ test('render EditableLabel', async () => {
   await screen.findByDisplayValue(firstMessage)
   const element2 = screen.getByDisplayValue(firstMessage)
   expect(element2.tagName).toBe('INPUT')
-  await userEvent.type(element2, additonalMessage)
-  expect(element2).toHaveProperty('value', firstMessage + additonalMessage)
+  await userEvent.type(element2, additionalMessage)
+  expect(element2).toHaveProperty('value', firstMessage + additionalMessage)
 
   // press enter to submit
   await userEvent.type(element2, '{enter}')
 
   // back to view mode
-  expect(element.textContent).toBe(firstMessage + additonalMessage)
+  expect(element.textContent).toBe(firstMessage + additionalMessage)
   expect(element.tagName).toBe('SPAN')
   // onEditComplete is called
   expect(handleEditComplete).toBeCalledTimes(1)
