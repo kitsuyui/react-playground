@@ -20,4 +20,5 @@ export default {
   moduleNameMapper: {
     '^.+\\.(css|scss)$': 'identity-obj-proxy',
   },
+  collectCoverageFrom: ['packages/*/src/**/*.(tsx|ts)'],
 }
