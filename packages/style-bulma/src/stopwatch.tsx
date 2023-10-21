@@ -18,10 +18,10 @@ export const StopwatchElement = (props: StopwatchProps) => {
   const { running, elapsedTime, reset, toggle } = props
   const minutes = Math.floor(elapsedTime / 60)
   const seconds = elapsedTime % 60 | 0
-  const milliseconds = (elapsedTime % 1) * 1000
+  const milliseconds = ((elapsedTime % 1) * 1000) | 0
   const elapsedTimeStr = `${utils.zeroPad2(minutes)}:${utils.zeroPad2(
     seconds
-  )}:${utils.zeroPad3(milliseconds)}`
+  )}.${utils.zeroPad3(milliseconds)}`
   return (
     <div className="card">
       <div className="card-content">

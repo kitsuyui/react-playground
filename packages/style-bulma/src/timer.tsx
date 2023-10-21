@@ -13,10 +13,10 @@ export const TimerElement = (props: TimerProps) => {
   const { reset, toggle, incrementTimerValue } = props
   const minutes = Math.floor(remaining / 60)
   const seconds = remaining % 60 | 0
-  const milliseconds = (remaining % 1) * 1000
+  const milliseconds = ((remaining % 1) * 1000) | 0
   const remainingString = `${utils.zeroPad2(minutes)}:${utils.zeroPad2(
     seconds
-  )}:${utils.zeroPad3(milliseconds)}`
+  )}.${utils.zeroPad3(milliseconds)}`
 
   return (
     <div className="card">
