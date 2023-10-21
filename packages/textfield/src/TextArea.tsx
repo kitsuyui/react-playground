@@ -13,6 +13,7 @@ import { useCombinedRefs } from './utils'
 type WrappedProps = ComponentPropsWithoutRef<'textarea'>
 type alternateProps = {
   onInputChunk?: (value: string) => void
+  onChangeInputting?: (inputting: boolean) => void
   value?: string
 }
 
@@ -27,7 +28,7 @@ type WrapperProps = Omit<WrappedProps, excludeProps> & alternateProps
 
 export const TextArea = forwardRef<HTMLTextAreaElement, WrapperProps>(
   (props, ref) => {
-    const { onInputChunk } = props
+    const { onInputChunk, onChangeInputting } = props
     const outerValue = props.value ?? ''
     const [internalValue, setInternalValue] = useState(props.value ?? '')
     const [isInputting, setIsInputting] = useState(false)
@@ -37,6 +38,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, WrapperProps>(
     // Use Object.assign({}, props) instead of { ...props } because it must create deep copy.
     const propsExcludedWrapperProps = Object.assign({}, props)
     delete propsExcludedWrapperProps.onInputChunk
+    delete propsExcludedWrapperProps.onChangeInputting
 
     useEffect(() => {
       if (isInputting) return
@@ -54,14 +56,16 @@ export const TextArea = forwardRef<HTMLTextAreaElement, WrapperProps>(
       const text = innerRef.current.value
       setInternalValue(text)
       setIsInputting(true)
-    }, [innerRef])
+      onChangeInputting?.(true)
+    }, [innerRef, onChangeInputting])
 
     const handleCompositionEnd = useCallback(() => {
       const text = innerRef.current.value
       setInternalValue(text)
       setIsInputting(false)
+      onChangeInputting?.(false)
       onInputChunk?.(text)
-    }, [innerRef, onInputChunk])
+    }, [innerRef, onInputChunk, onChangeInputting])
 
     return (
       <textarea
