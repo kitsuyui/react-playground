@@ -16,6 +16,7 @@ export const EditableLabel = (props: {
 }): JSX.Element => {
   const { text, onEditComplete } = props
   const inputRef = useRef<HTMLInputElement>(null!)
+  const [inputting, setInputting] = useState(false)
   const [mode, setMode] = useState<Mode>('view')
   const enterToCommit = props.enterToSubmit ?? true
 
@@ -56,11 +57,14 @@ export const EditableLabel = (props: {
         onInputChunk={(text: string) => {
           setEditingText(text)
         }}
+        onChangeInputting={(inputting: boolean) => {
+          setInputting(inputting)
+        }}
         onSubmit={() => {
           handleEditToView()
         }}
         onKeyUp={(e: KeyboardEvent<HTMLInputElement>) => {
-          if (enterToCommit && e.key === 'Enter') {
+          if (enterToCommit && e.key === 'Enter' && !inputting) {
             handleEditToView()
           }
         }}
