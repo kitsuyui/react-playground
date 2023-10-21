@@ -7,4 +7,5 @@ test('render Dekamoji', () => {
   render(<Dekamoji text="あ" />)
   const element = screen.getAllByText(/あ/)
   expect(element).toHaveLength(1)
+  expect(element).toMatchSnapshot()
 })
