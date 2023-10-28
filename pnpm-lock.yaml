@@ -408,6 +408,9 @@ importers:
 
   packages/treemap:
     dependencies:
+      '@kitsuyui/js-rectangle-dividing':
+        specifier: ^0.2.0
+        version: 0.2.0
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -2489,6 +2492,10 @@ packages:
   /@juggle/resize-observer@3.4.0:
     resolution: {integrity: sha512-dfLbk+PwWvFzSxwk3n5ySL0hfBog779o8h68wK/7/APo/7cgyWp5jcXockbxdk5kFRkbeXWm4Fbi9FrdN381sA==}
     dev: true
+
+  /@kitsuyui/js-rectangle-dividing@0.2.0:
+    resolution: {integrity: sha512-1OuctJN7j0ZoNXMtaTQ6ozLqZxfwA3HkIgbVt5zI7K2sTm9mnuxrPyTXdjnD8MgBs3oLzyBICRZgkcaavLXPHg==}
+    dev: false
 
   /@mdx-js/react@2.3.0(react@18.2.0):
     resolution: {integrity: sha512-zQH//gdOmuu7nt2oJR29vFhDv88oGPmVw6BggmrHeMI+xgEkp1B2dX9/bMBSYtK0dyLX/aOmesKS09g222K1/g==}
