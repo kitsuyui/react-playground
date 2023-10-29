@@ -20,11 +20,11 @@ const splitAreaByStrategy = (
   splitStrategy: SplitStrategy
 ) => {
   if (splitStrategy === 'vertical') {
-    return divide.divideCoordinatedrectangleVertiacally(size, weights)
+    return divide.divideVertically(size, weights)
   } else if (splitStrategy === 'horizontal') {
-    return divide.divideCoordinatedrectangleHorizontally(size, weights)
+    return divide.divideHorizontally(size, weights)
   } else {
-    return divide.divideCoordinatedrectangleByAspectRatio({
+    return divide.divideByAspectRatio({
       size,
       weights,
       tobeAspectRatio: 1.78, // 16:9
