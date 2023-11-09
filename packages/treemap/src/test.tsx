@@ -14,8 +14,6 @@ test('render Treemap', () => {
       element: <div />,
     },
   ]
-  const { container } = render(
-    <Treemap weightedItems={weightedItems} splitStrategy={'both'} />
-  )
+  const { container } = render(<Treemap weightedItems={weightedItems} />)
   expect(container).toMatchSnapshot()
 })
