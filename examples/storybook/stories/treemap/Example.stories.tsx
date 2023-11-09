@@ -4,10 +4,10 @@ import React from 'react'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
-const WeightedItems = Array(100)
-  .fill(0)
-  .map(() => ({
-    weight: Math.random() * 100,
+const WeightedItems = [...Array(10)]
+  .map((_, i) => i + 1)
+  .map((i) => ({
+    weight: 1.1 ** i,
     element: <Measure />,
   }))
 WeightedItems.sort((a, b) => b.weight - a.weight)
