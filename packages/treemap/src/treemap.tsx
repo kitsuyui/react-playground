@@ -1,5 +1,5 @@
-import { divide } from '@kitsuyui/js-rectangle-dividing'
-import React from 'react'
+import * as dividing from '@kitsuyui/rectangle-dividing'
+import React, { useMemo } from 'react'
 import { useMeasure } from 'react-use'
 
 interface WeightedItem {
@@ -7,44 +7,36 @@ interface WeightedItem {
   element: JSX.Element
 }
 
-type Size = {
-  width: number
-  height: number
+interface Rect {
+  x: number
+  y: number
+  w: number
+  h: number
 }
 
-type SplitStrategy = 'vertical' | 'horizontal' | 'both'
-
-const splitAreaByStrategy = (
-  size: Size,
-  weights: number[],
-  splitStrategy: SplitStrategy
-) => {
-  if (splitStrategy === 'vertical') {
-    return divide.divideVertically(size, weights)
-  } else if (splitStrategy === 'horizontal') {
-    return divide.divideHorizontally(size, weights)
-  } else {
-    return divide.divideByAspectRatio({
-      size,
-      weights,
-      tobeAspectRatio: 1.78, // 16:9
-    })
-  }
-}
-
-export const Treemap = ({
-  weightedItems,
-  splitStrategy = 'both',
-}: {
+export const Treemap = (props: {
   weightedItems: WeightedItem[]
-  splitStrategy?: SplitStrategy
+  verticalFirst?: boolean
+  aspectRatio?: number
+  boustrophedon?: boolean
 }) => {
   const [ref, { width, height }] = useMeasure<HTMLDivElement>()
-  const inAreas = splitAreaByStrategy(
-    { width, height },
-    weightedItems.map(({ weight }) => weight),
-    splitStrategy
-  )
+  const { weightedItems } = props
+  const verticalFirst = props.verticalFirst ?? true
+  const aspectRatio = props.aspectRatio ?? 16 / 9
+  const boustrophedon = props.boustrophedon ?? false
+  const inAreas: Rect[] = useMemo(() => {
+    const rect: Rect = { x: 0, y: 0, w: width, h: height }
+    const weights = new Float32Array(weightedItems.map(({ weight }) => weight))
+    const ia: Rect[] = dividing.dividing(
+      rect,
+      weights,
+      aspectRatio,
+      verticalFirst,
+      boustrophedon
+    )
+    return ia.map((r) => ({ x: r.x | 0, y: r.y | 0, w: r.w | 0, h: r.h | 0 }))
+  }, [width, height, weightedItems, aspectRatio, verticalFirst, boustrophedon])
   return (
     <div
       ref={ref}
@@ -56,29 +48,21 @@ export const Treemap = ({
       }}
     >
       {inAreas &&
-        inAreas.map(
-          (
-            {
-              size: { width: itemWidth, height: itemHeight },
-              origin: { x, y },
-            },
-            i
-          ) => (
-            <div
-              key={i}
-              style={{
-                width: `${itemWidth}px`,
-                height: `${itemHeight}px`,
-                position: 'absolute',
-                overflow: 'hidden',
-                left: `${x}px`,
-                top: `${y}px`,
-              }}
-            >
-              {weightedItems[i].element}
-            </div>
-          )
-        )}
+        inAreas.map(({ x, y, w: itemWidth, h: itemHeight }, i) => (
+          <div
+            key={i}
+            style={{
+              width: `${itemWidth}px`,
+              height: `${itemHeight}px`,
+              position: 'absolute',
+              overflow: 'hidden',
+              left: `${x}px`,
+              top: `${y}px`,
+            }}
+          >
+            {weightedItems[i].element}
+          </div>
+        ))}
     </div>
   )
 }

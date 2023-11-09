@@ -4,27 +4,26 @@ import React from 'react'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
-const WeightedItems = [
-  {
-    weight: 4,
+const WeightedItems = [...Array(10)]
+  .map((_, i) => i + 1)
+  .map((i) => ({
+    weight: 1.1 ** i,
     element: <Measure />,
-  },
-  {
-    weight: 3,
-    element: <Measure />,
-  },
-  {
-    weight: 2,
-    element: <Measure />,
-  },
-  {
-    weight: 1,
-    element: <Measure />,
-  },
-]
+  }))
+WeightedItems.sort((a, b) => b.weight - a.weight)
 
-const TreemapExample = () => {
-  return <Treemap weightedItems={WeightedItems} splitStrategy={'both'} />
+const TreemapExample = (
+  props: {
+    verticalFirst?: boolean
+    aspectRatio?: number
+    boustrophedon?: boolean
+  } = {
+    verticalFirst: true,
+    aspectRatio: 16 / 9,
+    boustrophedon: false,
+  }
+) => {
+  return <Treemap weightedItems={WeightedItems} {...props} />
 }
 
 const meta: Meta<typeof TreemapExample> = {
@@ -36,7 +35,11 @@ export default meta
 type Story = StoryObj<typeof TreemapExample>
 
 export const Default: Story = {
-  args: {},
+  args: {
+    verticalFirst: true,
+    aspectRatio: 16 / 9,
+    boustrophedon: false,
+  },
   parameters: {
     layout: 'fullscreen',
     flexDirection: 'column',

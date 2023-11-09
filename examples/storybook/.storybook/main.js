@@ -15,5 +15,12 @@ const config = {
     autodocs: 'tag',
   },
   staticDirs: ['../public'],
+  webpack: async (config) => {
+    config.experiments = {
+      asyncWebAssembly: true,
+      syncWebAssembly: true,
+    }
+    return config
+  },
 }
 export default config
