@@ -23,13 +23,13 @@
     "dev": "tsup --config ../../tsup.config.mjs --watch"
   },
   "dependencies": {
-    "@kitsuyui/rectangle-dividing": "^0.1.1",
+    "@kitsuyui/rectangle-dividing": "^0.1.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-use": "^17.4.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.29",
-    "@types/react-dom": "^18.2.14"
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15"
   }
 }
