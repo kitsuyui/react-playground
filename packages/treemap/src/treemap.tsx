@@ -1,5 +1,4 @@
-import * as dividing from '@kitsuyui/rectangle-dividing'
-import React, { useMemo } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useMeasure } from 'react-use'
 
 interface WeightedItem {
@@ -25,7 +24,16 @@ export const Treemap = (props: {
   const verticalFirst = props.verticalFirst ?? true
   const aspectRatio = props.aspectRatio ?? 16 / 9
   const boustrophedon = props.boustrophedon ?? false
-  const inAreas: Rect[] = useMemo(() => {
+  const [inAreas, setInAreas] = useState<Rect[]>([])
+  const [dividing, setDividing] = useState<
+    typeof import('@kitsuyui/rectangle-dividing') | null
+  >(null)
+
+  useEffect(() => {
+    if (!dividing) {
+      setInAreas([])
+      return
+    }
     const rect: Rect = { x: 0, y: 0, w: width, h: height }
     const weights = new Float32Array(weightedItems.map(({ weight }) => weight))
     const ia: Rect[] = dividing.dividing(
@@ -35,8 +43,26 @@ export const Treemap = (props: {
       verticalFirst,
       boustrophedon
     )
-    return ia.map((r) => ({ x: r.x | 0, y: r.y | 0, w: r.w | 0, h: r.h | 0 }))
-  }, [width, height, weightedItems, aspectRatio, verticalFirst, boustrophedon])
+    setInAreas(
+      ia.map((r) => ({ x: r.x | 0, y: r.y | 0, w: r.w | 0, h: r.h | 0 }))
+    )
+  }, [
+    width,
+    height,
+    weightedItems,
+    aspectRatio,
+    verticalFirst,
+    boustrophedon,
+    dividing,
+  ])
+
+  useEffect(() => {
+    ;(async () => {
+      const dividing = await import('@kitsuyui/rectangle-dividing')
+      setDividing(dividing)
+    })()
+  })
+
   return (
     <div
       ref={ref}
@@ -47,22 +73,26 @@ export const Treemap = (props: {
         overflow: 'hidden',
       }}
     >
-      {inAreas &&
-        inAreas.map(({ x, y, w: itemWidth, h: itemHeight }, i) => (
-          <div
-            key={i}
-            style={{
-              width: `${itemWidth}px`,
-              height: `${itemHeight}px`,
-              position: 'absolute',
-              overflow: 'hidden',
-              left: `${x}px`,
-              top: `${y}px`,
-            }}
-          >
-            {weightedItems[i].element}
-          </div>
-        ))}
+      {inAreas.length > 0 &&
+        weightedItems.map(({ element }, i) => {
+          if (i >= inAreas.length) return null
+          const { x, y, w: itemWidth, h: itemHeight } = inAreas[i]
+          return (
+            <div
+              key={i}
+              style={{
+                width: `${itemWidth}px`,
+                height: `${itemHeight}px`,
+                position: 'absolute',
+                overflow: 'hidden',
+                left: `${x}px`,
+                top: `${y}px`,
+              }}
+            >
+              {element}
+            </div>
+          )
+        })}
     </div>
   )
 }
