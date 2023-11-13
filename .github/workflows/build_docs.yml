@@ -31,7 +31,7 @@ jobs:
 
       - run: |
           mkdir -p build/sites
-          mv  ./examples/storybook/storybook-static ./build/sites/storybook
+          mv ./examples/storybook/storybook-static ./build/sites/storybook
           mv ./build/typedocs ./build/sites/typedocs
 
       - uses: peaceiris/actions-gh-pages@v3
