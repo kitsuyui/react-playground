@@ -22,6 +22,10 @@
     "@kitsuyui/react-treemap#build": {
       "outputs": ["packages/react-treemap/dist/**"]
     },
+    "@kitsuyui/react-editablelabel#build": {
+      "dependsOn": ["@kitsuyui/react-textfield#build"],
+      "outputs": ["packages/react-editablelabel/dist/**"]
+    },
     "@kitsuyui/react-textfield#build": {
       "outputs": ["packages/react-textfield/dist/**"]
     },
@@ -47,6 +51,15 @@
     },
     "storybook#build": {
       "dependsOn": [
+        "@kitsuyui/react-clock#build",
+        "@kitsuyui/react-timer#build",
+        "@kitsuyui/react-stopwatch#build",
+        "@kitsuyui/react-dekamoji#build",
+        "@kitsuyui/react-textfield#build",
+        "@kitsuyui/react-measure#build",
+        "@kitsuyui/react-treemap#build",
+        "@kitsuyui/react-wavebox#build",
+        "@kitsuyui/react-editablelabel#build",
         "@kitsuyui/react-components#build",
         "@kitsuyui/react-style-bulma#build"
       ],
