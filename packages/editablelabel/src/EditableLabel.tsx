@@ -19,7 +19,6 @@ export const EditableLabel = (props: {
   const [inputting, setInputting] = useState(false)
   const [mode, setMode] = useState<Mode>('view')
   const enterToCommit = props.enterToSubmit ?? true
-
   const [editingText, setEditingText] = useState(text)
 
   const handleEditToView = useCallback(() => {
@@ -38,6 +37,16 @@ export const EditableLabel = (props: {
     }
   }, [mode])
 
+  const handleKeyDown = useCallback(
+    (e: KeyboardEvent<HTMLInputElement>) => {
+      // not onKeyUp. onKeyUp is fired after onChangeInputting
+      if (enterToCommit && e.key === 'Enter' && !inputting) {
+        handleEditToView()
+      }
+    },
+    [enterToCommit, inputting, handleEditToView]
+  )
+
   return (
     <>
       <span
@@ -54,21 +63,11 @@ export const EditableLabel = (props: {
           display: mode === 'edit' ? 'inline' : 'none',
         }}
         value={text}
-        onInputChunk={(text: string) => {
-          setEditingText(text)
-        }}
-        onChangeInputting={(inputting: boolean) => {
-          setInputting(inputting)
-        }}
-        onSubmit={() => {
-          handleEditToView()
-        }}
-        onKeyUp={(e: KeyboardEvent<HTMLInputElement>) => {
-          if (enterToCommit && e.key === 'Enter' && !inputting) {
-            handleEditToView()
-          }
-        }}
-        onBlur={() => handleEditToView()}
+        onInputChunk={setEditingText}
+        onChangeInputting={setInputting}
+        onSubmit={handleEditToView}
+        onKeyDown={handleKeyDown}
+        onBlur={handleEditToView}
       />
     </>
   )
