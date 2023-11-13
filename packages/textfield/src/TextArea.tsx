@@ -2,7 +2,6 @@ import {
   ComponentPropsWithoutRef,
   forwardRef,
   useCallback,
-  useEffect,
   useRef,
   useState,
 } from 'react'
@@ -11,6 +10,7 @@ import React from 'react'
 import { useCombinedRefs } from './utils'
 
 type WrappedProps = ComponentPropsWithoutRef<'textarea'>
+
 type alternateProps = {
   onInputChunk?: (value: string) => void
   onChangeInputting?: (inputting: boolean) => void
@@ -29,7 +29,6 @@ type WrapperProps = Omit<WrappedProps, excludeProps> & alternateProps
 export const TextArea = forwardRef<HTMLTextAreaElement, WrapperProps>(
   (props, ref) => {
     const { onInputChunk, onChangeInputting } = props
-    const outerValue = props.value ?? ''
     const [internalValue, setInternalValue] = useState(props.value ?? '')
     const [isInputting, setIsInputting] = useState(false)
     const innerRef = useRef<HTMLTextAreaElement>(null!)
@@ -39,11 +38,6 @@ export const TextArea = forwardRef<HTMLTextAreaElement, WrapperProps>(
     const propsExcludedWrapperProps = Object.assign({}, props)
     delete propsExcludedWrapperProps.onInputChunk
     delete propsExcludedWrapperProps.onChangeInputting
-
-    useEffect(() => {
-      if (isInputting) return
-      setInternalValue(outerValue)
-    }, [outerValue, isInputting])
 
     const handleChange = useCallback(() => {
       const text = innerRef.current.value
@@ -67,6 +61,18 @@ export const TextArea = forwardRef<HTMLTextAreaElement, WrapperProps>(
       onInputChunk?.(text)
     }, [innerRef, onInputChunk, onChangeInputting])
 
+    const handleOnBlur = useCallback(
+      (e: React.FocusEvent<HTMLTextAreaElement>) => {
+        const text = innerRef.current.value
+        setInternalValue(text)
+        setIsInputting(false)
+        onChangeInputting?.(false)
+        onInputChunk?.(text)
+        propsExcludedWrapperProps.onBlur?.(e)
+      },
+      [innerRef, onInputChunk, onChangeInputting, propsExcludedWrapperProps]
+    )
+
     return (
       <textarea
         {...propsExcludedWrapperProps}
@@ -75,10 +81,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, WrapperProps>(
         onCompositionStart={handleCompositionChange}
         onCompositionUpdate={handleCompositionChange}
         onCompositionEnd={handleCompositionEnd}
-        onBlur={(e) => {
-          handleCompositionEnd()
-          propsExcludedWrapperProps.onBlur?.(e)
-        }}
+        onBlur={handleOnBlur}
         onChange={handleChange}
       />
     )

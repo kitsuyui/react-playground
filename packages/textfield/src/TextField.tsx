@@ -1,6 +1,5 @@
 import {
   useCallback,
-  useEffect,
   useRef,
   useState,
   forwardRef,
@@ -32,7 +31,6 @@ export const TextField = forwardRef<HTMLInputElement, WrapperProps>(
   (props, ref) => {
     const innerRef = useRef<HTMLInputElement>(null!)
     const { onInputChunk, onChangeInputting } = props
-    const outerValue = props.value ?? ''
     const [internalValue, setInternalValue] = useState(props.value ?? '')
     const [isInputting, setIsInputting] = useState(false)
     const combinedRef = useCombinedRefs(innerRef, ref)
@@ -41,11 +39,6 @@ export const TextField = forwardRef<HTMLInputElement, WrapperProps>(
     const propsExcludedWrapperProps = Object.assign({}, props)
     delete propsExcludedWrapperProps.onInputChunk
     delete propsExcludedWrapperProps.onChangeInputting
-
-    useEffect(() => {
-      if (isInputting) return
-      setInternalValue(outerValue)
-    }, [outerValue, isInputting])
 
     const handleChange = useCallback(() => {
       const text = innerRef.current.value
@@ -64,10 +57,22 @@ export const TextField = forwardRef<HTMLInputElement, WrapperProps>(
     const handleCompositionEnd = useCallback(() => {
       const text = innerRef.current.value
       setInternalValue(text)
-      setIsInputting(false)
       onChangeInputting?.(false)
       onInputChunk?.(text)
+      setIsInputting(false)
     }, [innerRef, onInputChunk, onChangeInputting])
+
+    const handleOnBlur = useCallback(
+      (e: React.FocusEvent<HTMLInputElement>) => {
+        const text = innerRef.current.value
+        setInternalValue(text)
+        setIsInputting(false)
+        onChangeInputting?.(false)
+        onInputChunk?.(text)
+        propsExcludedWrapperProps.onBlur?.(e)
+      },
+      [innerRef, onInputChunk, onChangeInputting, propsExcludedWrapperProps]
+    )
 
     return (
       <input
@@ -78,10 +83,7 @@ export const TextField = forwardRef<HTMLInputElement, WrapperProps>(
         onCompositionStart={handleCompositionChange}
         onCompositionUpdate={handleCompositionChange}
         onCompositionEnd={handleCompositionEnd}
-        onBlur={(e) => {
-          handleCompositionEnd()
-          propsExcludedWrapperProps.onBlur?.(e)
-        }}
+        onBlur={handleOnBlur}
         onChange={handleChange}
       />
     )
