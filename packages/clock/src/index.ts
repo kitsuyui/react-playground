@@ -1,5 +1,5 @@
 export * from './analog'
 export * from './digital/digital'
-export type * from './types'
+export * from './types'
 export * from './container'
 export * as utils from './utils'
