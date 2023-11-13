@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { useMeasure } from 'react-use'
 
-interface WeightedItem {
-  weight: number
-  element: JSX.Element
-}
-
 interface Rect {
   x: number
   y: number
   w: number
   h: number
+}
+
+interface WeightedItem {
+  weight: number
+  element: JSX.Element
+}
+
+interface RectItem {
+  rect: Rect
+  element: JSX.Element
 }
 
 export const Treemap = (props: {
@@ -28,6 +33,14 @@ export const Treemap = (props: {
   const [dividing, setDividing] = useState<
     typeof import('@kitsuyui/rectangle-dividing') | null
   >(null)
+
+  useEffect(() => {
+    ;(async () => {
+      if (dividing) return
+      const d = await import('@kitsuyui/rectangle-dividing')
+      setDividing(d)
+    })()
+  })
 
   useEffect(() => {
     if (!dividing) {
@@ -56,12 +69,10 @@ export const Treemap = (props: {
     dividing,
   ])
 
-  useEffect(() => {
-    ;(async () => {
-      const dividing = await import('@kitsuyui/rectangle-dividing')
-      setDividing(dividing)
-    })()
-  })
+  const items = zip(weightedItems, inAreas).map(([item, rect]) => ({
+    element: item.element,
+    rect,
+  }))
 
   return (
     <div
@@ -73,26 +84,44 @@ export const Treemap = (props: {
         overflow: 'hidden',
       }}
     >
-      {inAreas.length > 0 &&
-        weightedItems.map(({ element }, i) => {
-          if (i >= inAreas.length) return null
-          const { x, y, w: itemWidth, h: itemHeight } = inAreas[i]
-          return (
-            <div
-              key={i}
-              style={{
-                width: `${itemWidth}px`,
-                height: `${itemHeight}px`,
-                position: 'absolute',
-                overflow: 'hidden',
-                left: `${x}px`,
-                top: `${y}px`,
-              }}
-            >
-              {element}
-            </div>
-          )
-        })}
+      {TreemapByRect({ items })}
     </div>
   )
 }
+
+/**
+ * TreemapItemsByRect
+ * @param props
+ * @returns
+ */
+const TreemapByRect = (props: { items: RectItem[] }) => {
+  const { items } = props
+  return (
+    <>
+      {items.map(({ element, rect: { x, y, w, h } }, i) => (
+        <div
+          key={i}
+          style={{
+            position: 'absolute',
+            overflow: 'hidden',
+            width: `${w}px`,
+            height: `${h}px`,
+            left: `${x}px`,
+            top: `${y}px`,
+          }}
+        >
+          {element}
+        </div>
+      ))}
+    </>
+  )
+}
+
+/**
+ * zip two arrays like Python's zip()
+ * @param a
+ * @param b
+ * @returns new array of [a[i], b[i]]
+ */
+const zip = <T, S>(a: T[], b: S[]): [T, S][] =>
+  Array.from(Array(Math.min(b.length, a.length)), (_, i) => [a[i], b[i]])
