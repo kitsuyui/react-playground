@@ -15,9 +15,14 @@ export const Dekamoji: React.FC<Props> = React.memo(function Dekamoji({
   const ref2 = useRef<HTMLDivElement>(null)
 
   useMemo(() => {
-    const size = calcFontSize(width, height, text)
+    const element = ref2.current
+    let fontFamily
+    if (element) {
+      fontFamily = detectFontFamily(element)
+    }
+    const size = calcFontSize(width, height, text, fontFamily)
     setFontSize(size)
-  }, [width, height, text])
+  }, [width, height, text, ref2])
 
   return (
     <div
@@ -48,7 +53,23 @@ export const Dekamoji: React.FC<Props> = React.memo(function Dekamoji({
   )
 })
 
-const calcFontSize = (width: number, height: number, text: string): number => {
+/**
+ * Detect font family inherited from parent element
+ * @param element
+ * @returns font family
+ */
+const detectFontFamily = (element: HTMLElement): string | undefined => {
+  const style = window.getComputedStyle(element)
+  const fontFamily = style.fontFamily
+  return fontFamily
+}
+
+const calcFontSize = (
+  width: number,
+  height: number,
+  text: string,
+  fontFamily?: string
+): number => {
   // calculate font size without react component and raw dom
   const outer = document.createElement('div')
   outer.style.position = 'absolute'
@@ -66,6 +87,9 @@ const calcFontSize = (width: number, height: number, text: string): number => {
   inner.style.whiteSpace = 'pre-wrap'
   inner.style.boxSizing = 'border-box'
   inner.style.zIndex = '-1'
+  if (fontFamily) {
+    inner.style.fontFamily = fontFamily
+  }
   inner.textContent = text
   outer.appendChild(inner)
   document.body.appendChild(outer)
