@@ -4,6 +4,7 @@ import {
   useState,
   forwardRef,
   ComponentPropsWithoutRef,
+  useEffect,
 } from 'react'
 import React from 'react'
 
@@ -25,7 +26,7 @@ type excludeProps =
   | 'value'
   | 'type'
 
-type WrapperProps = Omit<WrappedProps, excludeProps> & alternateProps
+export type WrapperProps = Omit<WrappedProps, excludeProps> & alternateProps
 
 export const TextField = forwardRef<HTMLInputElement, WrapperProps>(
   (props, ref) => {
@@ -39,6 +40,10 @@ export const TextField = forwardRef<HTMLInputElement, WrapperProps>(
     const propsExcludedWrapperProps = Object.assign({}, props)
     delete propsExcludedWrapperProps.onInputChunk
     delete propsExcludedWrapperProps.onChangeInputting
+
+    useEffect(() => {
+      setInternalValue(props.value)
+    }, [props.value])
 
     const handleChange = useCallback(() => {
       const text = innerRef.current.value
