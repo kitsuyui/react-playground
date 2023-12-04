@@ -7,7 +7,6 @@ export default defineConfig({
     '!./src/**/*.test.{ts,tsx}',
     '!./src/**/test.{ts,tsx}',
   ],
-  clean: true,
   sourcemap: true,
   dts: true,
 })
