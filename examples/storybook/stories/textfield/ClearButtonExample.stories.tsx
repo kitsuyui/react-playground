@@ -1,7 +1,7 @@
 import {
-  ResetButton,
-  ResetForm,
-  TextFieldWithReset,
+  ClearButton,
+  ClearButtonProvider,
+  TextFieldWithClear,
 } from '@kitsuyui/react-textfield'
 import React from 'react'
 
@@ -9,10 +9,10 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 const Something = () => {
   return (
-    <ResetForm>
-      <TextFieldWithReset placeholder="🔍 something" />
-      <ResetButton>{'reset'}</ResetButton>
-    </ResetForm>
+    <ClearButtonProvider>
+      <TextFieldWithClear />
+      <ClearButton>{'reset'}</ClearButton>
+    </ClearButtonProvider>
   )
 }
 
