@@ -2,6 +2,7 @@ import {
   ComponentPropsWithoutRef,
   forwardRef,
   useCallback,
+  useEffect,
   useRef,
   useState,
 } from 'react'
@@ -24,7 +25,7 @@ type excludeProps =
   | 'onCompositionEnd'
   | 'value'
 
-type WrapperProps = Omit<WrappedProps, excludeProps> & alternateProps
+export type WrapperProps = Omit<WrappedProps, excludeProps> & alternateProps
 
 export const TextArea = forwardRef<HTMLTextAreaElement, WrapperProps>(
   (props, ref) => {
@@ -38,6 +39,10 @@ export const TextArea = forwardRef<HTMLTextAreaElement, WrapperProps>(
     const propsExcludedWrapperProps = Object.assign({}, props)
     delete propsExcludedWrapperProps.onInputChunk
     delete propsExcludedWrapperProps.onChangeInputting
+
+    useEffect(() => {
+      setInternalValue(props.value ?? '')
+    }, [props.value])
 
     const handleChange = useCallback(() => {
       const text = innerRef.current.value
