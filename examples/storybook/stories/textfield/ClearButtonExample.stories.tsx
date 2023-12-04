@@ -7,7 +7,7 @@ import React from 'react'
 
 import type { Meta, StoryObj } from '@storybook/react'
 
-const Something = () => {
+const ClearButtonExample = () => {
   return (
     <ClearButtonProvider>
       <TextFieldWithClear />
@@ -16,14 +16,14 @@ const Something = () => {
   )
 }
 
-const meta: Meta<typeof Something> = {
-  title: 'Base/TextField/Something/Example',
-  component: Something,
+const meta: Meta<typeof ClearButton> = {
+  title: 'Base/TextField/ClearButton/Example',
+  component: ClearButtonExample,
   argTypes: {},
 }
 
 export default meta
-type Story = StoryObj<typeof Something>
+type Story = StoryObj<typeof ClearButton>
 
 export const Default: Story = {
   args: {
