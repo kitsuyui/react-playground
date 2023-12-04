@@ -9,6 +9,7 @@ import {
 } from 'react'
 import React from 'react'
 
+import { TextArea, WrapperProps as TextAreaWrapperProps } from './TextArea'
 import { TextField, WrapperProps as TextFieldWrapperProps } from './TextField'
 
 const TextContext = createContext('')
@@ -52,6 +53,24 @@ export const TextFieldWithClear = (props: TextFieldWrapperProps) => {
   }, [props.value, setText])
 
   return <TextField {...props} value={text} onInputChunk={handleInputChunk} />
+}
+
+export const TextAreaWithClear = (props: TextAreaWrapperProps) => {
+  const text = useContext(TextContext)
+  const setText = useContext(SetTextContext)
+  const onInputChunk = props.onInputChunk
+  const handleInputChunk = useCallback(
+    (text: string) => {
+      setText(text)
+      onInputChunk?.(text)
+    },
+    [setText, onInputChunk]
+  )
+  useEffect(() => {
+    setText(props.value ?? '')
+  }, [props.value, setText])
+
+  return <TextArea {...props} value={text} onInputChunk={handleInputChunk} />
 }
 
 export const ClearButton = forwardRef<HTMLButtonElement, WrapperProps>(

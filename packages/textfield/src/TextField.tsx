@@ -15,7 +15,7 @@ type WrappedProps = ComponentPropsWithoutRef<'input'>
 type alternateProps = {
   onInputChunk?: (value: string) => void
   onChangeInputting?: (inputting: boolean) => void
-  value: string
+  value?: string
 }
 
 type excludeProps =
@@ -42,7 +42,7 @@ export const TextField = forwardRef<HTMLInputElement, WrapperProps>(
     delete propsExcludedWrapperProps.onChangeInputting
 
     useEffect(() => {
-      setInternalValue(props.value)
+      setInternalValue(props.value ?? '')
     }, [props.value])
 
     const handleChange = useCallback(() => {
