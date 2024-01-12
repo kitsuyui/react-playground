@@ -33,10 +33,10 @@
     "@kitsuyui/react-treemap": "workspace:latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-use": "^17.4.0"
+    "react-use": "^17.4.2"
   },
   "devDependencies": {
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15"
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18"
   }
 }
