@@ -23,14 +23,14 @@
     "dev": "tsup --config ../../tsup.config.mjs --watch"
   },
   "dependencies": {
-    "luxon": "^3.4.3",
+    "luxon": "^3.4.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-use": "^17.4.0"
+    "react-use": "^17.4.2"
   },
   "devDependencies": {
-    "@types/luxon": "^3.3.4",
-    "@types/react": "^18.2.37",
-    "@types/react-dom": "^18.2.15"
+    "@types/luxon": "^3.4.0",
+    "@types/react": "^18.2.47",
+    "@types/react-dom": "^18.2.18"
   }
 }
