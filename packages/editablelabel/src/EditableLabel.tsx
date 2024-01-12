@@ -15,7 +15,7 @@ export const EditableLabel = (props: {
   enterToSubmit?: boolean
 }): JSX.Element => {
   const { text, onEditComplete } = props
-  const inputRef = useRef<HTMLInputElement>(null!)
+  const inputRef = useRef<HTMLInputElement>(null)
   const [inputting, setInputting] = useState(false)
   const [mode, setMode] = useState<Mode>('view')
   const enterToCommit = props.enterToSubmit ?? true
@@ -33,7 +33,7 @@ export const EditableLabel = (props: {
   useEffect(() => {
     // focus is not working in display: none
     if (mode === 'edit') {
-      inputRef.current.focus()
+      inputRef?.current?.focus()
     }
   }, [mode])
 
@@ -49,6 +49,7 @@ export const EditableLabel = (props: {
 
   return (
     <>
+      {/* biome-ignore lint/a11y/useKeyWithClickEvents: FIXME: TODO: temporary ignore for migration */}
       <span
         onClick={handleClick}
         style={{

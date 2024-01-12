@@ -12,7 +12,7 @@ export const TimerElement = (props: TimerProps) => {
   const { remaining, running } = props
   const { reset, toggle, incrementTimerValue } = props
   const minutes = Math.floor(remaining / 60)
-  const seconds = remaining % 60 | 0
+  const seconds = (remaining % 60) | 0
   const milliseconds = ((remaining % 1) * 1000) | 0
   const remainingString = `${utils.zeroPad2(minutes)}:${utils.zeroPad2(
     seconds
@@ -24,6 +24,7 @@ export const TimerElement = (props: TimerProps) => {
         <p className="title is-family-monospace">{remainingString}</p>
       </div>
       <footer className="card-footer">
+        {/* biome-ignore lint/a11y/useKeyWithClickEvents: FIXME: TODO: temporary ignore for migration */}
         <span
           className="card-footer-item is-clickable"
           onClick={(e) => {
@@ -33,6 +34,7 @@ export const TimerElement = (props: TimerProps) => {
         >
           +1m
         </span>
+        {/* biome-ignore lint/a11y/useKeyWithClickEvents: FIXME: TODO: temporary ignore for migration */}
         <span
           className="card-footer-item is-clickable"
           onClick={(e) => {
@@ -42,15 +44,16 @@ export const TimerElement = (props: TimerProps) => {
         >
           +1s
         </span>
+        {/* biome-ignore lint/a11y/useKeyWithClickEvents: FIXME: TODO: temporary ignore for migration */}
         <span
-          className={
-            'card-footer-item ' +
-            (running || remaining !== 0 ? 'is-clickable' : 'disable')
-          }
+          className={`card-footer-item ${
+            running || remaining !== 0 ? 'is-clickable' : 'disable'
+          }`}
           onClick={reset}
         >
           Reset
         </span>
+        {/* biome-ignore lint/a11y/useKeyWithClickEvents: FIXME: TODO: temporary ignore for migration */}
         <span className="card-footer-item is-clickable" onClick={toggle}>
           {running ? 'Stop' : 'Start'}
         </span>

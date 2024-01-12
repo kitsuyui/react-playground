@@ -17,7 +17,7 @@ interface StopwatchProps {
 export const StopwatchElement = (props: StopwatchProps) => {
   const { running, elapsedTime, reset, toggle } = props
   const minutes = Math.floor(elapsedTime / 60)
-  const seconds = elapsedTime % 60 | 0
+  const seconds = (elapsedTime % 60) | 0
   const milliseconds = ((elapsedTime % 1) * 1000) | 0
   const elapsedTimeStr = `${utils.zeroPad2(minutes)}:${utils.zeroPad2(
     seconds
@@ -28,14 +28,14 @@ export const StopwatchElement = (props: StopwatchProps) => {
         <p className="title is-family-monospace">{elapsedTimeStr}</p>
       </div>
       <footer className="card-footer">
+        {/* biome-ignore lint/a11y/useKeyWithClickEvents: FIXME: TODO: temporary ignore for migration */}
         <span
-          className={
-            'card-footer-item ' + (running ? 'is-clickable' : 'disable')
-          }
+          className={`card-footer-item ${running ? 'is-clickable' : 'disable'}`}
           onClick={reset}
         >
           Reset
         </span>
+        {/* biome-ignore lint/a11y/useKeyWithClickEvents: FIXME: TODO: temporary ignore for migration */}
         <span className="card-footer-item is-clickable" onClick={toggle}>
           {running ? 'Stop' : 'Start'}
         </span>

@@ -17,6 +17,7 @@ export const Measure: React.FC = (): JSX.Element => {
       }}
     >
       <svg width={width} height={height}>
+        <title>{text}</title>
         <rect
           x={0}
           y={0}

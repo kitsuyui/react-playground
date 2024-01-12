@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { computeFace, FaceType } from './faces'
-import { calcHMS, StepStyle } from './step'
+import { FaceType, computeFace } from './faces'
+import { StepStyle, calcHMS } from './step'
 import { ClockProps } from './types'
 
 export interface AnalogClockStyle {
@@ -132,6 +132,7 @@ export const AnalogClock: React.FC<AnalogClockProps> = (props): JSX.Element => {
         width={width}
         height={height}
       >
+        <title>{`${hour}:${minute}:${second}`}</title>
         <circle
           cx={centerX}
           cy={centerY}

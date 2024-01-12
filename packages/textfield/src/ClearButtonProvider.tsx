@@ -1,11 +1,11 @@
 import {
-  useCallback,
-  useState,
-  useContext,
-  forwardRef,
-  createContext,
   ComponentPropsWithoutRef,
+  createContext,
+  forwardRef,
+  useCallback,
+  useContext,
   useEffect,
+  useState,
 } from 'react'
 import React from 'react'
 
@@ -25,7 +25,7 @@ export const ClearButtonProvider = (props: { children: React.ReactNode }) => {
   const clear = useCallback(() => {
     setText('')
     handleInputChunk?.('')
-  }, [handleInputChunk, setText])
+  }, [handleInputChunk])
   return (
     <TextContext.Provider value={text}>
       <SetTextContext.Provider value={setText}>
@@ -85,8 +85,14 @@ export const ClearButton = forwardRef<HTMLButtonElement, WrapperProps>(
       },
       [clear, onClick]
     )
+    const type = props.type ?? 'button'
     return (
-      <button {...propsExcludedWrapperProps} ref={ref} onClick={handleClick}>
+      <button
+        {...propsExcludedWrapperProps}
+        ref={ref}
+        onClick={handleClick}
+        type={type}
+      >
         {props.children}
       </button>
     )

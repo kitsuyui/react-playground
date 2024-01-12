@@ -12,6 +12,9 @@ exports[`render AnalogClock 1`] = `
       width="100"
       xmlns="http://www.w3.org/2000/svg"
     >
+      <title>
+        9:0:0
+      </title>
       <circle
         cx="50"
         cy="50"

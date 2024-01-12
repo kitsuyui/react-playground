@@ -36,7 +36,7 @@ const Example = ({
             height: '100%',
             backgroundColor: 'red',
           }}
-        ></div>
+        />
       </WaveBox>
       <WaveBox
         minHeight={minHeight}

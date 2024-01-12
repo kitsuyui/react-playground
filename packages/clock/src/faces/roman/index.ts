@@ -11,7 +11,7 @@ export const face = (num: number): string => {
     case 4:
       return 'Ⅳ'
     case 5:
-      return `Ⅴ`
+      return 'Ⅴ'
     case 6:
       return 'Ⅵ'
     case 7:
