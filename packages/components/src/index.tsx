@@ -5,8 +5,8 @@ import {
   DigitalClock,
 } from '@kitsuyui/react-clock'
 import {
-  StopwatchContainer,
   MinimalStopwatch,
+  StopwatchContainer,
   StopwatchContext,
   StopwatchProps,
 } from '@kitsuyui/react-stopwatch'

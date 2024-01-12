@@ -1,4 +1,4 @@
-import { calcHMS, tickHMS, sweepHMS } from '.'
+import { calcHMS, sweepHMS, tickHMS } from '.'
 
 test('tickHMS returns HMS', () => {
   const dt = new Date('2021-01-01T00:00:00Z')

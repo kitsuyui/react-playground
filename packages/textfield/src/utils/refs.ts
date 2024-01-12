@@ -6,7 +6,7 @@ import { ForwardedRef, useMemo } from 'react'
 
 type OptionalRef<T> = ForwardedRef<T> | undefined
 
-type Cleanup = (() => void) | undefined | void
+type Cleanup = (() => void) | undefined
 
 /**
  * This hook combines multiple refs into one.
@@ -19,12 +19,11 @@ export const useCombinedRefs = <T>(...refs: OptionalRef<T>[]) => {
       return null
     }
     return (node: T) => {
-      refs.forEach((ref) => {
+      for (const ref of refs) {
         if (ref) setRef(ref, node)
-      })
+      }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, refs)
+  }, [refs])
 }
 
 const setRef = <T>(ref: OptionalRef<T>, value: T): Cleanup => {

@@ -100,6 +100,7 @@ const TreemapByRect = (props: { items: RectItem[] }) => {
     <>
       {items.map(({ element, rect: { x, y, w, h } }, i) => (
         <div
+          // biome-ignore lint/suspicious/noArrayIndexKey: FIXME: TODO: temporary ignore for migration
           key={i}
           style={{
             position: 'absolute',

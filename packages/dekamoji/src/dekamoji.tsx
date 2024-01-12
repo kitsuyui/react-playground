@@ -16,13 +16,13 @@ export const Dekamoji: React.FC<Props> = React.memo(function Dekamoji({
 
   useMemo(() => {
     const element = ref2.current
-    let fontFamily
+    let fontFamily: string | undefined
     if (element) {
       fontFamily = detectFontFamily(element)
     }
     const size = calcFontSize(width, height, text, fontFamily)
     setFontSize(size)
-  }, [width, height, text, ref2])
+  }, [width, height, text])
 
   return (
     <div
@@ -40,7 +40,7 @@ export const Dekamoji: React.FC<Props> = React.memo(function Dekamoji({
           position: 'absolute',
           width: '100%',
           height: '100%',
-          fontSize: fontSize + 'px',
+          fontSize: `${fontSize}px`,
           textAlign: 'center',
           margin: '0 auto',
           boxSizing: 'border-box',
@@ -73,8 +73,8 @@ const calcFontSize = (
   // calculate font size without react component and raw dom
   const outer = document.createElement('div')
   outer.style.position = 'absolute'
-  outer.style.width = width + 'px'
-  outer.style.height = height + 'px'
+  outer.style.width = `${width}px`
+  outer.style.height = `${height}px`
   outer.style.boxSizing = 'border-box'
   outer.style.zIndex = '-1'
   outer.style.overflowX = 'hidden'
@@ -96,7 +96,7 @@ const calcFontSize = (
   const maxFontSize = Math.max(width, height)
   let s = 0
   for (; s < maxFontSize; s += 1) {
-    inner.style.fontSize = s + 'px'
+    inner.style.fontSize = `${s}px`
     const overflowHeight = inner.scrollHeight - height
     const overflowWidth = inner.scrollWidth - width
     const scrollbarWidth = 2

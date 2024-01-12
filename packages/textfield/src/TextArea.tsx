@@ -32,50 +32,52 @@ export const TextArea = forwardRef<HTMLTextAreaElement, WrapperProps>(
     const { onInputChunk, onChangeInputting } = props
     const [internalValue, setInternalValue] = useState(props.value ?? '')
     const [isInputting, setIsInputting] = useState(false)
-    const innerRef = useRef<HTMLTextAreaElement>(null!)
+    const innerRef = useRef<HTMLTextAreaElement>(null)
     const compbinedRef = useCombinedRefs(innerRef, ref)
 
-    // Use Object.assign({}, props) instead of { ...props } because it must create deep copy.
-    const propsExcludedWrapperProps = Object.assign({}, props)
-    delete propsExcludedWrapperProps.onInputChunk
-    delete propsExcludedWrapperProps.onChangeInputting
+    // Use Object.assign({}, props) instead of just { ...props } because it must create deep copy.
+    const {
+      onInputChunk: _1,
+      onChangeInputting: _2,
+      ...propsExcludedWrapperProps
+    } = Object.assign({}, props)
 
     useEffect(() => {
       setInternalValue(props.value ?? '')
     }, [props.value])
 
     const handleChange = useCallback(() => {
-      const text = innerRef.current.value
+      const text = innerRef?.current?.value ?? ''
       setInternalValue(text)
       if (isInputting) return
       onInputChunk?.(text)
     }, [isInputting, onInputChunk])
 
     const handleCompositionChange = useCallback(() => {
-      const text = innerRef.current.value
+      const text = innerRef?.current?.value ?? ''
       setInternalValue(text)
       setIsInputting(true)
       onChangeInputting?.(true)
-    }, [innerRef, onChangeInputting])
+    }, [onChangeInputting])
 
     const handleCompositionEnd = useCallback(() => {
-      const text = innerRef.current.value
+      const text = innerRef?.current?.value ?? ''
       setInternalValue(text)
       setIsInputting(false)
       onChangeInputting?.(false)
       onInputChunk?.(text)
-    }, [innerRef, onInputChunk, onChangeInputting])
+    }, [onInputChunk, onChangeInputting])
 
     const handleOnBlur = useCallback(
       (e: React.FocusEvent<HTMLTextAreaElement>) => {
-        const text = innerRef.current.value
+        const text = innerRef?.current?.value ?? ''
         setInternalValue(text)
         setIsInputting(false)
         onChangeInputting?.(false)
         onInputChunk?.(text)
         propsExcludedWrapperProps.onBlur?.(e)
       },
-      [innerRef, onInputChunk, onChangeInputting, propsExcludedWrapperProps]
+      [onInputChunk, onChangeInputting, propsExcludedWrapperProps]
     )
 
     return (

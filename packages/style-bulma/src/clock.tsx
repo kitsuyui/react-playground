@@ -1,8 +1,8 @@
 import {
-  ClockContainer,
-  DateContext,
-  ClockProps,
   AnalogClock as AnalogClockOriginal,
+  ClockContainer,
+  ClockProps,
+  DateContext,
 } from '@kitsuyui/react-clock'
 import React from 'react'
 

@@ -3,10 +3,10 @@ import userEvent from '@testing-library/user-event'
 import React from 'react'
 
 import {
-  TextFieldWithClear,
-  TextAreaWithClear,
-  ClearButtonProvider,
   ClearButton,
+  ClearButtonProvider,
+  TextAreaWithClear,
+  TextFieldWithClear,
 } from './ClearButtonProvider'
 import { TextArea } from './TextArea'
 import { TextField } from './TextField'
