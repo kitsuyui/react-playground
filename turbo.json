@@ -5,32 +5,32 @@
       "dependsOn": ["^dev"]
     },
     "@kitsuyui/react-clock#build": {
-      "outputs": ["packages/react-clock/dist/**"]
+      "outputs": ["packages/clock/dist/**"]
     },
     "@kitsuyui/react-timer#build": {
-      "outputs": ["packages/react-timer/dist/**"]
+      "outputs": ["packages/timer/dist/**"]
     },
     "@kitsuyui/react-stopwatch#build": {
-      "outputs": ["packages/react-stopwatch/dist/**"]
+      "outputs": ["packages/stopwatch/dist/**"]
     },
     "@kitsuyui/react-dekamoji#build": {
-      "outputs": ["packages/react-dekamoji/dist/**"]
+      "outputs": ["packages/dekamoji/dist/**"]
     },
     "@kitsuyui/react-measure#build": {
-      "outputs": ["packages/react-measure/dist/**"]
+      "outputs": ["packages/measure/dist/**"]
     },
     "@kitsuyui/react-treemap#build": {
-      "outputs": ["packages/react-treemap/dist/**"]
+      "outputs": ["packages/treemap/dist/**"]
     },
     "@kitsuyui/react-editablelabel#build": {
       "dependsOn": ["@kitsuyui/react-textfield#build"],
-      "outputs": ["packages/react-editablelabel/dist/**"]
+      "outputs": ["packages/editablelabel/dist/**"]
     },
     "@kitsuyui/react-textfield#build": {
-      "outputs": ["packages/react-textfield/dist/**"]
+      "outputs": ["packages/textfield/dist/**"]
     },
     "@kitsuyui/react-wavebox#build": {
-      "outputs": ["packages/react-wavebox/dist/**"]
+      "outputs": ["packages/wavebox/dist/**"]
     },
     "@kitsuyui/react-components#build": {
       "dependsOn": [
@@ -43,11 +43,11 @@
         "@kitsuyui/react-treemap#build",
         "@kitsuyui/react-wavebox#build"
       ],
-      "outputs": ["packages/react-components/dist/**"]
+      "outputs": ["packages/components/dist/**"]
     },
     "@kitsuyui/react-style-bulma#build": {
       "dependsOn": ["@kitsuyui/react-components#build"],
-      "outputs": ["packages/react-style-bulma/dist/**"]
+      "outputs": ["packages/style-bulma/dist/**"]
     },
     "storybook#build": {
       "dependsOn": [
