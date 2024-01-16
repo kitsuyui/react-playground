@@ -1,6 +1,6 @@
 import {
-  StopwatchContainer,
   MinimalStopwatch,
+  StopwatchContainer,
   StopwatchContext,
 } from '@kitsuyui/react-stopwatch'
 import React from 'react'

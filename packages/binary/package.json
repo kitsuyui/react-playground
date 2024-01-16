@@ -1,7 +1,7 @@
 {
-  "name": "@kitsuyui/react-clock",
+  "name": "@kitsuyui/react-binary",
   "version": "0.0.0",
-  "description": "A react component to display a clock.",
+  "description": "Binary representation of number for React",
   "license": "MIT",
   "author": "Yui Kitsu <kitsuyui@kitsuyui.com>",
   "exports": {
@@ -23,13 +23,10 @@
     "dev": "tsup --config ../../tsup.config.mjs --watch"
   },
   "dependencies": {
-    "luxon": "^3.4.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-use": "^17.4.3"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@types/luxon": "^3.4.1",
     "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18"
   }

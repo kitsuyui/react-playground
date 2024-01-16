@@ -17,6 +17,7 @@ jobs:
       matrix:
         package_name:
           [
+            binary,
             clock,
             timer,
             stopwatch,
