@@ -25,11 +25,11 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-use": "^17.4.2"
+    "react-use": "^17.4.3"
   },
   "devDependencies": {
-    "@types/node": "^20.11.0",
-    "@types/react": "^18.2.47",
+    "@types/node": "^20.11.3",
+    "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18"
   }
 }
