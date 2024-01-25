@@ -22,15 +22,18 @@
     "build": "tsup --config ../../tsup.config.mjs --clean",
     "dev": "tsup --config ../../tsup.config.mjs --watch"
   },
-  "dependencies": {
-    "luxon": "^3.4.4",
+  "devDependencies": {
+    "@types/luxon": "^3.4.2",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-use": "^17.4.3"
+    "react-use": "^17.5.0"
   },
-  "devDependencies": {
-    "@types/luxon": "^3.4.1",
-    "@types/react": "^18.2.48",
-    "@types/react-dom": "^18.2.18"
+  "peerDependencies": {
+    "luxon": "*",
+    "react": "*",
+    "react-dom": "*",
+    "react-use": "*"
   }
 }

@@ -22,7 +22,7 @@
     "build": "tsup --config ../../tsup.config.mjs --clean",
     "dev": "tsup --config ../../tsup.config.mjs --watch"
   },
-  "dependencies": {
+  "devDependencies": {
     "@kitsuyui/react-clock": "workspace:latest",
     "@kitsuyui/react-dekamoji": "workspace:latest",
     "@kitsuyui/react-editablelabel": "workspace:latest",
@@ -31,12 +31,23 @@
     "@kitsuyui/react-textfield": "workspace:latest",
     "@kitsuyui/react-timer": "workspace:latest",
     "@kitsuyui/react-treemap": "workspace:latest",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-use": "^17.4.2"
+    "react-use": "^17.5.0"
   },
-  "devDependencies": {
-    "@types/react": "^18.2.47",
-    "@types/react-dom": "^18.2.18"
+  "peerDependencies": {
+    "@kitsuyui/react-clock": "workspace:latest",
+    "@kitsuyui/react-dekamoji": "workspace:latest",
+    "@kitsuyui/react-editablelabel": "workspace:latest",
+    "@kitsuyui/react-measure": "workspace:latest",
+    "@kitsuyui/react-stopwatch": "workspace:latest",
+    "@kitsuyui/react-textfield": "workspace:latest",
+    "@kitsuyui/react-timer": "workspace:latest",
+    "@kitsuyui/react-treemap": "workspace:latest",
+    "react": "*",
+    "react-dom": "*",
+    "react-use": "*"
   }
 }
