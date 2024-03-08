@@ -58,25 +58,25 @@ importers:
         version: 2.8.0
       stylelint:
         specifier: ^16.2.0
-        version: 16.2.1(typescript@5.3.3)
+        version: 16.2.1(typescript@5.4.2)
       stylelint-config-recommended:
         specifier: ^14.0.0
         version: 14.0.0(stylelint@16.2.1)
       ts-node:
         specifier: ^10.9.2
-        version: 10.9.2(@swc/core@1.4.6)(@types/node@20.11.25)(typescript@5.3.3)
+        version: 10.9.2(@swc/core@1.4.6)(@types/node@20.11.25)(typescript@5.4.2)
       tsup:
         specifier: ^8.0.1
-        version: 8.0.2(@swc/core@1.4.6)(postcss@8.4.35)(ts-node@10.9.2)(typescript@5.3.3)
+        version: 8.0.2(@swc/core@1.4.6)(postcss@8.4.35)(ts-node@10.9.2)(typescript@5.4.2)
       turbo:
         specifier: ^1.11.3
         version: 1.12.5
       typedoc:
         specifier: ^0.25.7
-        version: 0.25.10(typescript@5.3.3)
+        version: 0.25.10(typescript@5.4.2)
       typescript:
         specifier: ^5.3.3
-        version: 5.3.3
+        version: 5.4.2
 
   examples/storybook:
     dependencies:
@@ -6063,7 +6063,7 @@ packages:
       yaml: 1.10.2
     dev: true
 
-  /cosmiconfig@9.0.0(typescript@5.3.3):
+  /cosmiconfig@9.0.0(typescript@5.4.2):
     resolution: {integrity: sha512-itvL5h8RETACmOTFc4UfIyB2RfEHi71Ax6E/PivVxq9NseKbOWpeyHEOIbmAw1rs8Ak0VursQNww7lf7YtUwzg==}
     engines: {node: '>=14'}
     peerDependencies:
@@ -6076,7 +6076,7 @@ packages:
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       parse-json: 5.2.0
-      typescript: 5.3.3
+      typescript: 5.4.2
     dev: true
 
   /create-jest@29.7.0(@types/node@20.11.25)(ts-node@10.9.2):
@@ -8260,7 +8260,7 @@ packages:
       pretty-format: 29.7.0
       slash: 3.0.0
       strip-json-comments: 3.1.1
-      ts-node: 10.9.2(@swc/core@1.4.6)(@types/node@20.11.25)(typescript@5.3.3)
+      ts-node: 10.9.2(@swc/core@1.4.6)(@types/node@20.11.25)(typescript@5.4.2)
     transitivePeerDependencies:
       - babel-plugin-macros
       - supports-color
@@ -9758,7 +9758,7 @@ packages:
     dependencies:
       lilconfig: 3.1.1
       postcss: 8.4.35
-      ts-node: 10.9.2(@swc/core@1.4.6)(@types/node@20.11.25)(typescript@5.3.3)
+      ts-node: 10.9.2(@swc/core@1.4.6)(@types/node@20.11.25)(typescript@5.4.2)
       yaml: 2.4.0
     dev: true
 
@@ -11020,10 +11020,10 @@ packages:
     peerDependencies:
       stylelint: ^16.0.0
     dependencies:
-      stylelint: 16.2.1(typescript@5.3.3)
+      stylelint: 16.2.1(typescript@5.4.2)
     dev: true
 
-  /stylelint@16.2.1(typescript@5.3.3):
+  /stylelint@16.2.1(typescript@5.4.2):
     resolution: {integrity: sha512-SfIMGFK+4n7XVAyv50CpVfcGYWG4v41y6xG7PqOgQSY8M/PgdK0SQbjWFblxjJZlN9jNq879mB4BCZHJRIJ1hA==}
     engines: {node: '>=18.12.0'}
     hasBin: true
@@ -11034,7 +11034,7 @@ packages:
       '@csstools/selector-specificity': 3.0.2(postcss-selector-parser@6.0.15)
       balanced-match: 2.0.0
       colord: 2.9.3
-      cosmiconfig: 9.0.0(typescript@5.3.3)
+      cosmiconfig: 9.0.0(typescript@5.4.2)
       css-functions-list: 3.2.1
       css-tree: 2.3.1
       debug: 4.3.4
@@ -11393,7 +11393,7 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /ts-node@10.9.2(@swc/core@1.4.6)(@types/node@20.11.25)(typescript@5.3.3):
+  /ts-node@10.9.2(@swc/core@1.4.6)(@types/node@20.11.25)(typescript@5.4.2):
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
     hasBin: true
     peerDependencies:
@@ -11420,7 +11420,7 @@ packages:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 5.3.3
+      typescript: 5.4.2
       v8-compile-cache-lib: 3.0.1
       yn: 3.1.1
     dev: true
@@ -11432,7 +11432,7 @@ packages:
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
 
-  /tsup@8.0.2(@swc/core@1.4.6)(postcss@8.4.35)(ts-node@10.9.2)(typescript@5.3.3):
+  /tsup@8.0.2(@swc/core@1.4.6)(postcss@8.4.35)(ts-node@10.9.2)(typescript@5.4.2):
     resolution: {integrity: sha512-NY8xtQXdH7hDUAZwcQdY/Vzlw9johQsaqf7iwZ6g1DOUlFYQ5/AtVAjTvihhEyeRlGo4dLRVHtrRaL35M1daqQ==}
     engines: {node: '>=18'}
     hasBin: true
@@ -11467,7 +11467,7 @@ packages:
       source-map: 0.8.0-beta.0
       sucrase: 3.35.0
       tree-kill: 1.2.2
-      typescript: 5.3.3
+      typescript: 5.4.2
     transitivePeerDependencies:
       - supports-color
       - ts-node
@@ -11575,7 +11575,7 @@ packages:
     resolution: {integrity: sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==}
     dev: true
 
-  /typedoc@0.25.10(typescript@5.3.3):
+  /typedoc@0.25.10(typescript@5.4.2):
     resolution: {integrity: sha512-v10rtOFojrjW9og3T+6wAKeJaGMuojU87DXGZ33sfs+554wgPTRG+s07Ag1BjPZI85Y5QPVouPI63JQ6fcQM5w==}
     engines: {node: '>= 16'}
     hasBin: true
@@ -11586,13 +11586,7 @@ packages:
       marked: 4.3.0
       minimatch: 9.0.3
       shiki: 0.14.7
-      typescript: 5.3.3
-    dev: true
-
-  /typescript@5.3.3:
-    resolution: {integrity: sha512-pXWcraxM0uxAS+tN0AG/BF2TyqmHO014Z070UsJ+pFvYuRSq8KH8DmWpnbXe0pEPDHXZV3FcAbJkijJ5oNEnWw==}
-    engines: {node: '>=14.17'}
-    hasBin: true
+      typescript: 5.4.2
     dev: true
 
   /typescript@5.4.2:
