@@ -1,11 +1,19 @@
 import React from 'react'
+import { createContext } from 'react'
 import { useMeasure } from 'react-use'
+import { MeasureStyle, MeasureBase, DEFAULT_MEASURE_STYLE } from './base'
 
+export const MeasureStyleContext = createContext<MeasureStyle>(DEFAULT_MEASURE_STYLE)
+
+/**
+ * Measure component
+ * 
+ * This component shows the size of the parent element.
+ * @returns {JSX.Element}
+ */
 export const Measure: React.FC = (): JSX.Element => {
   const [ref, { width, height }] = useMeasure<HTMLDivElement>()
-  const text = `${width}x${height}`
-  const textSize = text.length
-  const fontSize = Math.min(width, height) / textSize
+  const styles = React.useContext(MeasureStyleContext)
   return (
     <div
       ref={ref}
@@ -16,65 +24,7 @@ export const Measure: React.FC = (): JSX.Element => {
         overflow: 'hidden',
       }}
     >
-      <svg width={width} height={height}>
-        <title>{text}</title>
-        <rect
-          x={0}
-          y={0}
-          width={width}
-          height={height}
-          fill="none"
-          stroke="black"
-          strokeWidth={1}
-          strokeDasharray={2}
-        />
-        <line
-          x1={0}
-          y1={0}
-          x2={width / 2}
-          y2={height / 2}
-          stroke="black"
-          strokeWidth={1}
-          strokeDasharray={2}
-        />
-        <line
-          x1={width}
-          y1={0}
-          x2={width / 2}
-          y2={height / 2}
-          stroke="black"
-          strokeWidth={1}
-          strokeDasharray={2}
-        />
-        <line
-          x1={0}
-          y1={height}
-          x2={width / 2}
-          y2={height / 2}
-          stroke="black"
-          strokeWidth={1}
-          strokeDasharray={2}
-        />
-        <line
-          x1={width}
-          y1={height}
-          x2={width / 2}
-          y2={height / 2}
-          stroke="black"
-          strokeWidth={1}
-          strokeDasharray={2}
-        />
-        <text
-          x={width / 2}
-          y={height / 2}
-          textAnchor="middle"
-          dominantBaseline="middle"
-          fontSize={fontSize}
-          fontFamily="monospace"
-        >
-          {text}
-        </text>
-      </svg>
+      <MeasureBase width={width} height={height} styles={styles} />
     </div>
   )
 }
