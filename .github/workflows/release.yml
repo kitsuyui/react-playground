@@ -27,6 +27,7 @@ jobs:
             measure,
             treemap,
             editablelabel,
+            tab,
             components,
             style-bulma,
           ]
