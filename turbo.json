@@ -7,6 +7,11 @@
     "@kitsuyui/react-clock#build": {
       "outputs": ["packages/clock/dist/**"]
     },
+    "@kitsuyui/react-tab#build": {
+      "outputs": [
+        "packages/tab/dist/**"
+      ]
+    },
     "@kitsuyui/react-timer#build": {
       "outputs": ["packages/timer/dist/**"]
     },
@@ -39,6 +44,7 @@
       "dependsOn": [
         "@kitsuyui/react-binary#build",
         "@kitsuyui/react-clock#build",
+        "@kitsuyui/react-tab#build",
         "@kitsuyui/react-timer#build",
         "@kitsuyui/react-stopwatch#build",
         "@kitsuyui/react-dekamoji#build",
@@ -58,6 +64,7 @@
         "@kitsuyui/react-components#build",
         "@kitsuyui/react-binary#build",
         "@kitsuyui/react-clock#build",
+        "@kitsuyui/react-tab#build",
         "@kitsuyui/react-timer#build",
         "@kitsuyui/react-stopwatch#build",
         "@kitsuyui/react-dekamoji#build",
