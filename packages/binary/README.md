@@ -1,10 +1,8 @@
-# @kitsuyui/react-editablelabel
+# @kitsuyui/react-binary
 
-[![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-editablelabel.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-editablelabel)
+[![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-binary.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-binary)
 
-A React component that can edit text by clicking.
-What this means in DOM is usually a span tag, which becomes an input tag when clicked.
-Other than that, no CSS is applied. CSS reset / decoration must be done by the user.
+This is a React component representing a binary value.
 
 ## Demo
 
@@ -15,19 +13,19 @@ Storybook: https://react-playground.docs.kitsuyui.com/storybook/
 ### npm
 
 ```sh
-npm install @kitsuyui/react-editablelabel
+npm install @kitsuyui/react-binary
 ```
 
 ### yarn
 
 ```sh
-yarn add @kitsuyui/react-editablelabel
+yarn add @kitsuyui/react-binary
 ```
 
 ### pnpm
 
 ```sh
-pnpm add @kitsuyui/react-editablelabel
+pnpm add @kitsuyui/react-binary
 ```
 
 ## License
