@@ -2,6 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-measure.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-measure)
 
+React component that gets the size of the parent element and renders it.
+
 ## Demo
 
 Storybook: https://react-playground.docs.kitsuyui.com/storybook/
