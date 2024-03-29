@@ -2,6 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-stopwatch.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-stopwatch)
 
+Simple stopwatch React component.
+
 ## Demo
 
 Storybook: https://react-playground.docs.kitsuyui.com/storybook/

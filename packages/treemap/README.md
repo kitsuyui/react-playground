@@ -2,6 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-treemap.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-treemap)
 
+Treemap is a component that displays boxes like a tree mapping chart.
+
 ## Demo
 
 Storybook: https://react-playground.docs.kitsuyui.com/storybook/

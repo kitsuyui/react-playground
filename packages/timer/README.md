@@ -2,6 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-timer.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-timer)
 
+Simple timer React component.
+
 ## Demo
 
 Storybook: https://react-playground.docs.kitsuyui.com/storybook/
