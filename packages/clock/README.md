@@ -2,6 +2,8 @@
 
 [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-clock.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-clock)
 
+Simple clock React component.
+
 ## Demo
 
 Storybook: https://react-playground.docs.kitsuyui.com/storybook/
