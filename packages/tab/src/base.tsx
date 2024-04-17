@@ -59,6 +59,7 @@ export const TabUIBase = (props: TabControlProps & TabUIComponents) => {
       <TabBar>
         {items.map((item) => (
           <TabButtonContext.Provider
+            key={item.id}
             value={{
               id: item.id,
               title: item.title,
