@@ -63,6 +63,7 @@ export const MeasureBase = (props: { width: number, height: number, styles: Meas
       />
       {
         lines.map((line) => (
+          // biome-ignore lint/correctness/useJsxKeyInIterable: lines are always 4 items, so no need to add key
           <line
             x1={line.start.x}
             y1={line.start.y}
