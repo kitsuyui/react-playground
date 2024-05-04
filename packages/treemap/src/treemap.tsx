@@ -186,6 +186,7 @@ const TreemapByRect = (props: { items: RectItem[] }) => {
         const { x, y, w, h, index } = rect
         return (<TreemapContext.Provider value={rect} key={index}>
           <div
+            key={index}
             style={{
               position: 'absolute',
               overflow: 'hidden',
