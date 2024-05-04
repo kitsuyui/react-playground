@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useMeasure } from 'react-use'
+import { dividing } from '@kitsuyui/rectangle-dividing'
 
 interface Rect {
   x: number
@@ -113,26 +114,11 @@ export const Treemap = (props: {
   const aspectRatio = props.aspectRatio ?? DEFAULT_ASPECT_RATIO
   const boustrophedon = props.boustrophedon ?? false
   const [inAreas, setInAreas] = useState<Rect[]>([])
-  const [dividing, setDividing] = useState<
-    typeof import('@kitsuyui/rectangle-dividing') | null
-  >(null)
 
   useEffect(() => {
-    ; (async () => {
-      if (dividing) return
-      const d = await import('@kitsuyui/rectangle-dividing')
-      setDividing(d)
-    })()
-  })
-
-  useEffect(() => {
-    if (!dividing) {
-      setInAreas([])
-      return
-    }
     const rect: Rect = { x: 0, y: 0, w: width, h: height }
     const weights = new Float32Array(weightedItems.map(({ weight }) => weight))
-    const ia: Rect[] = dividing.dividing(
+    const ia: Rect[] = dividing(
       rect,
       weights,
       aspectRatio,
@@ -149,7 +135,6 @@ export const Treemap = (props: {
     aspectRatio,
     verticalFirst,
     boustrophedon,
-    dividing,
   ])
 
   const rectInfos = rectsToRectInfos(inAreas)
