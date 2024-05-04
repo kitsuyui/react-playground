@@ -68,19 +68,6 @@ const previousBoustrophedonDirection = (rect1: Rect, rect2: Rect): Direction => 
   return nextBoustrophedonDirection(rect2, rect1)
 }
 
-const invertDirection = (direction: Direction): Direction => {
-  switch (direction) {
-    case 'right':
-      return 'left'
-    case 'down':
-      return 'up'
-    case 'left':
-      return 'right'
-    case 'up':
-      return 'down'
-  }
-}
-
 const rectsToRectInfos = (rects: Rect[]): RectInfo[] => {
   const rectInfos: RectInfo[] = rects.map((rect, index) => ({
     ...rect,
@@ -111,6 +98,9 @@ const rectsToRectInfos = (rects: Rect[]): RectInfo[] => {
 }
 
 
+const DEFAULT_ASPECT_RATIO = 16 / 9
+
+
 export const Treemap = (props: {
   weightedItems: WeightedItem[]
   verticalFirst?: boolean
@@ -120,7 +110,7 @@ export const Treemap = (props: {
   const [ref, { width, height }] = useMeasure<HTMLDivElement>()
   const { weightedItems } = props
   const verticalFirst = props.verticalFirst ?? true
-  const aspectRatio = props.aspectRatio ?? 16 / 9
+  const aspectRatio = props.aspectRatio ?? DEFAULT_ASPECT_RATIO
   const boustrophedon = props.boustrophedon ?? false
   const [inAreas, setInAreas] = useState<Rect[]>([])
   const [dividing, setDividing] = useState<
