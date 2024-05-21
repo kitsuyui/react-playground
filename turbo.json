@@ -84,7 +84,8 @@
       "dependsOn": ["^test:vrt:install", "^test:vrt:update"]
     },
     "test:vrt:update": {
-      "outputs": ["examples/storybook/tests/**/*.png"]
+      "outputs": ["examples/storybook/tests/**/*.png"],
+      "cache": false
     },
     "test:vrt:install": {},
     "typedoc": {}

@@ -8,7 +8,8 @@ export const waitForStorybookFrameRendered = async ({
   path: string
 }) => {
   await page.goto(path)
-  await page.waitForSelector('iframe[data-is-loaded="true"]')
-  const iframe = await page.locator('#storybook-preview-iframe')
+  const iframeSelector = 'iframe[data-is-loaded="true"]#storybook-preview-iframe'
+  await page.waitForSelector(iframeSelector)
+  const iframe = await page.locator(iframeSelector).elementHandle()
   return iframe
 }
