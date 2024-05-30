@@ -40,6 +40,9 @@
     "@kitsuyui/react-binary#build": {
       "outputs": ["packages/binary/dist/**"]
     },
+    "@kitsuyui/react-biticon#build": {
+      "outputs": ["packages/biticon/dist/**"]
+    },
     "@kitsuyui/react-components#build": {
       "dependsOn": [
         "@kitsuyui/react-binary#build",
@@ -51,6 +54,7 @@
         "@kitsuyui/react-textfield#build",
         "@kitsuyui/react-measure#build",
         "@kitsuyui/react-treemap#build",
+        "@kitsuyui/react-biticon#build",
         "@kitsuyui/react-wavebox#build"
       ],
       "outputs": ["packages/components/dist/**"]
@@ -72,6 +76,7 @@
         "@kitsuyui/react-measure#build",
         "@kitsuyui/react-treemap#build",
         "@kitsuyui/react-wavebox#build",
+        "@kitsuyui/react-biticon#build",
         "@kitsuyui/react-editablelabel#build",
         "@kitsuyui/react-style-bulma#build"
       ],

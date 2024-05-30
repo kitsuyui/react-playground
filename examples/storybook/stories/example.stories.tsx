@@ -13,5 +13,7 @@ export default meta
 type Story = StoryObj<typeof Something>
 
 export const Default: Story = {
-  args: {},
+  args: {
+    bits: 0b10101010,
+  },
 }
