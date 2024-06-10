@@ -6,6 +6,7 @@
   "private": true,
   "devDependencies": {
     "@kitsuyui/react-binary": "workspace:^",
+    "@kitsuyui/react-biticon": "workspace:^",
     "@kitsuyui/react-clock": "workspace:^",
     "@kitsuyui/react-components": "workspace:^",
     "@kitsuyui/react-dekamoji": "workspace:^",

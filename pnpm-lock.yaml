@@ -87,6 +87,9 @@ importers:
       '@kitsuyui/react-binary':
         specifier: workspace:^
         version: link:../../packages/binary
+      '@kitsuyui/react-biticon':
+        specifier: workspace:^
+        version: link:../../packages/biticon
       '@kitsuyui/react-clock':
         specifier: workspace:^
         version: link:../../packages/clock
@@ -196,6 +199,21 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
 
+  packages/biticon:
+    devDependencies:
+      '@types/react':
+        specifier: ^18.3.3
+        version: 18.3.3
+      '@types/react-dom':
+        specifier: ^18.3.0
+        version: 18.3.0
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
+
   packages/clock:
     dependencies:
       luxon:
@@ -223,6 +241,12 @@ importers:
 
   packages/components:
     devDependencies:
+      '@kitsuyui/react-binary':
+        specifier: workspace:^
+        version: link:../binary
+      '@kitsuyui/react-biticon':
+        specifier: workspace:^
+        version: link:../biticon
       '@kitsuyui/react-clock':
         specifier: workspace:^
         version: link:../clock

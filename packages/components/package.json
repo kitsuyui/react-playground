@@ -23,6 +23,8 @@
     "dev": "tsup --config ../../tsup.config.mjs --watch"
   },
   "devDependencies": {
+    "@kitsuyui/react-binary": "workspace:^",
+    "@kitsuyui/react-biticon": "workspace:^",
     "@kitsuyui/react-clock": "workspace:^",
     "@kitsuyui/react-dekamoji": "workspace:^",
     "@kitsuyui/react-editablelabel": "workspace:^",
@@ -39,6 +41,8 @@
     "react-use": "^17.5.0"
   },
   "peerDependencies": {
+    "@kitsuyui/react-binary": "workspace:latest",
+    "@kitsuyui/react-biticon": "workspace:latest",
     "@kitsuyui/react-clock": "workspace:latest",
     "@kitsuyui/react-dekamoji": "workspace:latest",
     "@kitsuyui/react-editablelabel": "workspace:latest",

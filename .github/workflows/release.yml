@@ -28,6 +28,7 @@ jobs:
             treemap,
             editablelabel,
             tab,
+            biticon,
             components,
             style-bulma,
           ]
