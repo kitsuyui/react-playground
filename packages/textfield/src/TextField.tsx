@@ -42,6 +42,7 @@ export const TextField = forwardRef<HTMLInputElement, WrapperProps>(
       onChangeInputting: _2,
       ...propsExcludedWrapperProps
     } = Object.assign({}, props)
+    const onBlur = propsExcludedWrapperProps.onBlur
 
     useEffect(() => {
       setInternalValue(props.value ?? '')
@@ -76,9 +77,9 @@ export const TextField = forwardRef<HTMLInputElement, WrapperProps>(
         setIsInputting(false)
         onChangeInputting?.(false)
         onInputChunk?.(text)
-        propsExcludedWrapperProps.onBlur?.(e)
+        onBlur?.(e)
       },
-      [onInputChunk, onChangeInputting, propsExcludedWrapperProps]
+      [onInputChunk, onChangeInputting, onBlur]
     )
 
     return (
