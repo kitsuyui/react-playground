@@ -49,7 +49,7 @@
     "tsup": "^8.1.0",
     "turbo": "^2.0.6",
     "typedoc": "^0.26.3",
-    "typescript": "^5.5.2"
+    "typescript": "^5.5.3"
   },
   "packageManager": "pnpm@9.4.0"
 }
