@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
-    "@swc/core": "^1.6.7",
+    "@swc/core": "^1.6.12",
     "@swc/jest": "^0.2.36",
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
