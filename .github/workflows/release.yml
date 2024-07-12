@@ -29,6 +29,7 @@ jobs:
             editablelabel,
             tab,
             biticon,
+            physical-size,
             components,
             style-bulma,
           ]

@@ -2,10 +2,14 @@
   "$schema": "https://turborepo.org/schema.json",
   "tasks": {
     "dev": {
-      "dependsOn": ["^dev"]
+      "dependsOn": [
+        "^dev"
+      ]
     },
     "@kitsuyui/react-clock#build": {
-      "outputs": ["packages/clock/dist/**"]
+      "outputs": [
+        "packages/clock/dist/**"
+      ]
     },
     "@kitsuyui/react-tab#build": {
       "outputs": [
@@ -13,35 +17,62 @@
       ]
     },
     "@kitsuyui/react-timer#build": {
-      "outputs": ["packages/timer/dist/**"]
+      "outputs": [
+        "packages/timer/dist/**"
+      ]
     },
     "@kitsuyui/react-stopwatch#build": {
-      "outputs": ["packages/stopwatch/dist/**"]
+      "outputs": [
+        "packages/stopwatch/dist/**"
+      ]
     },
     "@kitsuyui/react-dekamoji#build": {
-      "outputs": ["packages/dekamoji/dist/**"]
+      "outputs": [
+        "packages/dekamoji/dist/**"
+      ]
     },
     "@kitsuyui/react-measure#build": {
-      "outputs": ["packages/measure/dist/**"]
+      "outputs": [
+        "packages/measure/dist/**"
+      ]
     },
     "@kitsuyui/react-treemap#build": {
-      "outputs": ["packages/treemap/dist/**"]
+      "outputs": [
+        "packages/treemap/dist/**"
+      ]
     },
     "@kitsuyui/react-editablelabel#build": {
-      "dependsOn": ["@kitsuyui/react-textfield#build"],
-      "outputs": ["packages/editablelabel/dist/**"]
+      "dependsOn": [
+        "@kitsuyui/react-textfield#build"
+      ],
+      "outputs": [
+        "packages/editablelabel/dist/**"
+      ]
     },
     "@kitsuyui/react-textfield#build": {
-      "outputs": ["packages/textfield/dist/**"]
+      "outputs": [
+        "packages/textfield/dist/**"
+      ]
     },
     "@kitsuyui/react-wavebox#build": {
-      "outputs": ["packages/wavebox/dist/**"]
+      "outputs": [
+        "packages/wavebox/dist/**"
+      ]
     },
     "@kitsuyui/react-binary#build": {
-      "outputs": ["packages/binary/dist/**"]
+      "outputs": [
+        "packages/binary/dist/**"
+      ]
     },
     "@kitsuyui/react-biticon#build": {
-      "outputs": ["packages/biticon/dist/**"]
+      "outputs": [
+        "packages/biticon/dist/**"
+      ]
+    },
+    "@kitsuyui/react-physical-size": {
+      "outputs": [
+        "packages/physical-size/dist/**"
+      ]
     },
     "@kitsuyui/react-components#build": {
       "dependsOn": [
@@ -55,13 +86,21 @@
         "@kitsuyui/react-measure#build",
         "@kitsuyui/react-treemap#build",
         "@kitsuyui/react-biticon#build",
-        "@kitsuyui/react-wavebox#build"
+        "@kitsuyui/react-wavebox#build",
+        "@kitsuyui/react-editablelabel#build",
+        "@kitsuyui/react-physical-size#build"
       ],
-      "outputs": ["packages/components/dist/**"]
+      "outputs": [
+        "packages/components/dist/**"
+      ]
     },
     "@kitsuyui/react-style-bulma#build": {
-      "dependsOn": ["@kitsuyui/react-components#build"],
-      "outputs": ["packages/style-bulma/dist/**"]
+      "dependsOn": [
+        "@kitsuyui/react-components#build"
+      ],
+      "outputs": [
+        "packages/style-bulma/dist/**"
+      ]
     },
     "storybook#build": {
       "dependsOn": [
@@ -78,18 +117,29 @@
         "@kitsuyui/react-wavebox#build",
         "@kitsuyui/react-biticon#build",
         "@kitsuyui/react-editablelabel#build",
-        "@kitsuyui/react-style-bulma#build"
+        "@kitsuyui/react-style-bulma#build",
+        "@kitsuyui/react-physical-size#build"
       ],
-      "outputs": ["packages/storybook/dist/**"]
+      "outputs": [
+        "packages/storybook/dist/**"
+      ]
     },
     "build": {
-      "dependsOn": ["^build", "typedoc"]
+      "dependsOn": [
+        "^build",
+        "typedoc"
+      ]
     },
     "test:vrt": {
-      "dependsOn": ["^test:vrt:install", "^test:vrt:update"]
+      "dependsOn": [
+        "^test:vrt:install",
+        "^test:vrt:update"
+      ]
     },
     "test:vrt:update": {
-      "outputs": ["examples/storybook/tests/**/*.png"],
+      "outputs": [
+        "examples/storybook/tests/**/*.png"
+      ],
       "cache": false
     },
     "test:vrt:install": {},
