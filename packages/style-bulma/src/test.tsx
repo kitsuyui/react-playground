@@ -1,8 +1,26 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 
-import { Clock } from '.'
+import { Clock } from './clock'
+import { Stopwatch } from './stopwatch'
+import { Timer } from './timer'
 
-test('render Clock', () => {
-  render(<Clock />)
+describe('Clock', () => {
+  test('render Clock', () => {
+    render(<Clock />)
+  })
+})
+
+describe('Stopwatch', () => {
+  test('render Stopwatch', () => {
+    const { asFragment } = render(<Stopwatch />)
+    expect(asFragment()).toMatchSnapshot()
+  })
+})
+
+describe('Timer', () => {
+  test('render Timer', () => {
+    const { asFragment } = render(<Timer />)
+    expect(asFragment()).toMatchSnapshot()
+  })
 })

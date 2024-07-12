@@ -1,9 +1,9 @@
 import {
   StopwatchContainer,
   StopwatchContext,
-  utils,
 } from '@kitsuyui/react-stopwatch'
-import React from 'react'
+import React, { useCallback } from 'react'
+import { timeLabelString } from './timeLabelString'
 
 import 'bulma/css/bulma.css'
 
@@ -14,36 +14,6 @@ interface StopwatchProps {
   toggle: () => void
 }
 
-export const StopwatchElement = (props: StopwatchProps) => {
-  const { running, elapsedTime, reset, toggle } = props
-  const minutes = Math.floor(elapsedTime / 60)
-  const seconds = (elapsedTime % 60) | 0
-  const milliseconds = ((elapsedTime % 1) * 1000) | 0
-  const elapsedTimeStr = `${utils.zeroPad2(minutes)}:${utils.zeroPad2(
-    seconds
-  )}.${utils.zeroPad3(milliseconds)}`
-  return (
-    <div className="card">
-      <div className="card-content">
-        <p className="title is-family-monospace">{elapsedTimeStr}</p>
-      </div>
-      <footer className="card-footer">
-        {/* biome-ignore lint/a11y/useKeyWithClickEvents: FIXME: TODO: temporary ignore for migration */}
-        <span
-          className={`card-footer-item ${running ? 'is-clickable' : 'disable'}`}
-          onClick={reset}
-        >
-          Reset
-        </span>
-        {/* biome-ignore lint/a11y/useKeyWithClickEvents: FIXME: TODO: temporary ignore for migration */}
-        <span className="card-footer-item is-clickable" onClick={toggle}>
-          {running ? 'Stop' : 'Start'}
-        </span>
-      </footer>
-    </div>
-  )
-}
-
 export const Stopwatch = () => {
   return (
     <StopwatchContainer>
@@ -51,5 +21,50 @@ export const Stopwatch = () => {
         {(stopwatch: StopwatchProps) => <StopwatchElement {...stopwatch} />}
       </StopwatchContext.Consumer>
     </StopwatchContainer>
+  )
+}
+
+export const StopwatchElement = (props: StopwatchProps) => {
+  const { running, elapsedTime, reset, toggle } = props
+  const timeLabel = timeLabelString(elapsedTime)
+  return (
+    <div className="card">
+      <div className="card-content">
+        <p className="title is-family-monospace has-text-centered">{timeLabel}</p>
+      </div>
+      <footer className="card-footer">
+        <ResetButton onClick={reset} remaining={elapsedTime} />
+        <StartStopButton running={running} toggle={toggle} />
+      </footer>
+    </div>
+  )
+}
+
+const ResetButton = (props: { onClick: () => void, remaining: number }) => {
+  const { onClick, remaining } = props
+  const disabled = remaining === 0
+  return (
+    <FooterItemButton label="Reset" onClick={onClick} disabled={disabled} />
+  )
+}
+
+const StartStopButton = (props: { running: boolean, toggle: () => void }) => {
+  const { running, toggle } = props
+  const label = running ? 'Stop' : 'Start'
+  return (
+    <FooterItemButton label={label} onClick={toggle} disabled={false} />
+  )
+}
+
+const FooterItemButton = (props: { label: string, disabled: boolean, onClick: () => void }) => {
+  const { label, onClick, disabled } = props
+  const clickHandler = useCallback((e: React.MouseEvent<HTMLSpanElement>) => {
+    e.preventDefault()
+    onClick()
+  }, [onClick])
+  return (
+    <button className="card-footer-item is-clickable is-button" onClick={clickHandler} type="button" disabled={disabled}>
+      {label}
+    </button>
   )
 }
