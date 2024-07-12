@@ -2,65 +2,12 @@ import {
   TimerContainer,
   TimerContext,
   TimerProps,
-  utils,
 } from '@kitsuyui/react-timer'
-import React from 'react'
+import React, { useCallback } from 'react'
+import { timeLabelString } from './timeLabelString'
 
 import 'bulma/css/bulma.css'
 
-export const TimerElement = (props: TimerProps) => {
-  const { remaining, running } = props
-  const { reset, toggle, incrementTimerValue } = props
-  const minutes = Math.floor(remaining / 60)
-  const seconds = (remaining % 60) | 0
-  const milliseconds = ((remaining % 1) * 1000) | 0
-  const remainingString = `${utils.zeroPad2(minutes)}:${utils.zeroPad2(
-    seconds
-  )}.${utils.zeroPad3(milliseconds)}`
-
-  return (
-    <div className="card">
-      <div className="card-content">
-        <p className="title is-family-monospace">{remainingString}</p>
-      </div>
-      <footer className="card-footer">
-        {/* biome-ignore lint/a11y/useKeyWithClickEvents: FIXME: TODO: temporary ignore for migration */}
-        <span
-          className="card-footer-item is-clickable"
-          onClick={(e) => {
-            e.preventDefault()
-            incrementTimerValue(60)
-          }}
-        >
-          +1m
-        </span>
-        {/* biome-ignore lint/a11y/useKeyWithClickEvents: FIXME: TODO: temporary ignore for migration */}
-        <span
-          className="card-footer-item is-clickable"
-          onClick={(e) => {
-            e.preventDefault()
-            incrementTimerValue(1)
-          }}
-        >
-          +1s
-        </span>
-        {/* biome-ignore lint/a11y/useKeyWithClickEvents: FIXME: TODO: temporary ignore for migration */}
-        <span
-          className={`card-footer-item ${
-            running || remaining !== 0 ? 'is-clickable' : 'disable'
-          }`}
-          onClick={reset}
-        >
-          Reset
-        </span>
-        {/* biome-ignore lint/a11y/useKeyWithClickEvents: FIXME: TODO: temporary ignore for migration */}
-        <span className="card-footer-item is-clickable" onClick={toggle}>
-          {running ? 'Stop' : 'Start'}
-        </span>
-      </footer>
-    </div>
-  )
-}
 
 export const Timer = ({ onComplete }: { onComplete?: () => void }) => {
   return (
@@ -69,5 +16,73 @@ export const Timer = ({ onComplete }: { onComplete?: () => void }) => {
         {(timer: TimerProps) => <TimerElement {...timer} />}
       </TimerContext.Consumer>
     </TimerContainer>
+  )
+}
+
+export const TimerElement = (props: TimerProps) => {
+  const { remaining, running } = props
+  const { reset, toggle, incrementTimerValue } = props
+  const timerLabel = timeLabelString(remaining)
+  return (
+    <div className="card">
+      <div className="card-content">
+        <p className="title is-family-monospace">{timerLabel}</p>
+      </div>
+      <footer className="card-footer">
+        <AddTimeButton label="+1h" value={3600} onClick={incrementTimerValue} />
+        <AddTimeButton label="+1m" value={60} onClick={incrementTimerValue} />
+        <AddTimeButton label="+1s" value={1} onClick={incrementTimerValue} />
+        <ResetButton onClick={reset} remaining={remaining} />
+        <StartStopButton running={running} toggle={toggle} remaining={remaining} />
+      </footer>
+    </div>
+  )
+}
+
+const AddTimeButton = (props: { label: string, value: number, onClick: (value: number) => void }) => {
+  const { label, value, onClick } = props
+  const clickHandler = useCallback(() => {
+    onClick(value)
+  }, [value, onClick])
+  return (
+    <FooterItemButton label={label} onClick={clickHandler} disabled={false} />
+  )
+}
+
+const StartStopButton = (props: { running: boolean, toggle: () => void, remaining: number }) => {
+  const { running, toggle, remaining } = props
+  const disabled = remaining === 0
+  const label = running ? 'Stop' : 'Start'
+  return (
+    <FooterItemButton
+      label={label}
+      onClick={toggle}
+      disabled={disabled}
+    />
+  )
+}
+
+const ResetButton = (props: { onClick: () => void, remaining: number }) => {
+  const { onClick, remaining } = props
+  const alreadyReset = remaining === 0
+  return (
+    <FooterItemButton
+      label="Reset"
+      onClick={onClick}
+      disabled={alreadyReset}
+    />
+  )
+}
+
+const FooterItemButton = (props: { label: string, disabled: boolean, onClick: () => void }) => {
+  const { label, onClick, disabled } = props
+  const clickHandler = useCallback((e: React.MouseEvent<HTMLSpanElement>) => {
+    e.preventDefault()
+    onClick()
+  }, [onClick])
+  return (
+    <button className="card-footer-item is-clickable is-button" onClick={clickHandler} type="button" disabled={disabled}>
+      {label}
+    </button>
   )
 }
