@@ -30,7 +30,7 @@ export const StopwatchElement = (props: StopwatchProps) => {
   return (
     <div className="card">
       <div className="card-content">
-        <p className="title is-family-monospace">{timeLabel}</p>
+        <p className="title is-family-monospace has-text-centered">{timeLabel}</p>
       </div>
       <footer className="card-footer">
         <ResetButton onClick={reset} remaining={elapsedTime} />

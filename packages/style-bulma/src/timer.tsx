@@ -26,7 +26,7 @@ export const TimerElement = (props: TimerProps) => {
   return (
     <div className="card">
       <div className="card-content">
-        <p className="title is-family-monospace">{timerLabel}</p>
+        <p className="title is-family-monospace has-text-centered">{timerLabel}</p>
       </div>
       <footer className="card-footer">
         <AddTimeButton label="+1h" value={3600} onClick={incrementTimerValue} />
@@ -81,8 +81,15 @@ const FooterItemButton = (props: { label: string, disabled: boolean, onClick: ()
     onClick()
   }, [onClick])
   return (
-    <button className="card-footer-item is-clickable is-button" onClick={clickHandler} type="button" disabled={disabled}>
-      {label}
-    </button>
+    <span className="card-footer-item">
+      <button
+        type="button"
+        className="is-button"
+        onClick={clickHandler}
+        disabled={disabled}
+      >
+        {label}
+      </button>
+    </span>
   )
 }
