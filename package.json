@@ -27,7 +27,7 @@
     "typedoc": "typedoc"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.1",
+    "@biomejs/biome": "^1.9.2",
     "@swc/core": "^1.7.26",
     "@swc/jest": "^0.2.36",
     "@testing-library/jest-dom": "^6.5.0",
