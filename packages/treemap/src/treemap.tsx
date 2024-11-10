@@ -125,7 +125,7 @@ export const Treemap = (props: {
       boustrophedon
     )
     setInAreas(
-      ia.map((r) => ({ x: r.x | 0, y: r.y | 0, w: r.w | 0, h: r.h | 0 }))
+      ia.map((r) => ({ x: r.x, y: r.y, w: r.w, h: r.h }))
     )
   }, [
     width,
@@ -174,6 +174,13 @@ const TreemapByRect = (props: { items: RectItem[] }) => {
             style={{
               position: 'absolute',
               overflow: 'hidden',
+              /*
+               * The following pixel values are not rounded. There are two reasons for this
+               * - Due to the concept of Device Pixel Ratio (DPR), 1px in CSS may not match 1px in reality
+               * - Due to CSS zoom and browser zoom features, pixel values may change
+               * Rounding may cause gaps in the display in these cases.
+               * Therefore, I keep the pixel values as floating point numbers.
+               */
               width: `${w}px`,
               height: `${h}px`,
               left: `${x}px`,

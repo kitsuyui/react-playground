@@ -34,7 +34,7 @@ const ExampleView = () => {
             borderBottom: rect.continueDirection.down ? continueBorderStyle : uncontinueBorderStyle,
         }}>
             {`(x, y): (${rect.x}, ${rect.y})`}<br />
-            {`W×H: ${rect.w}×${rect.h}`}<br />
+            {`W×H: ${rect.w | 0}×${rect.h | 0}`}<br />
             {`index: ${rect.index}`}<br />
             {`previousDirection: ${rect.previousDirection}`}<br />
             {`nextDirection: ${rect.nextDirection}`}<br />
