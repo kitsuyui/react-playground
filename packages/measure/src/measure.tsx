@@ -7,7 +7,7 @@ export const MeasureStyleContext = createContext<MeasureStyle>(DEFAULT_MEASURE_S
 
 /**
  * Measure component
- * 
+ *
  * This component shows the size of the parent element.
  * @returns {JSX.Element}
  */
