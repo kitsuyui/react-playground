@@ -13,7 +13,7 @@ export const toLabel = (value: number) => {
   return `${zeroPad2(minutes)}:${zeroPad2(seconds)}.${zeroPad3(milliseconds)}`
 }
 
-export const MinimalTimer: React.FC<TimerProps> = (props): JSX.Element => {
+export const MinimalTimer: React.FC<TimerProps> = (props): React.JSX.Element => {
   const { remaining, running, incrementTimerValue, toggle, reset } = props
 
   return (

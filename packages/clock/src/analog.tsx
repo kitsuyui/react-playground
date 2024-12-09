@@ -100,7 +100,7 @@ interface AnalogClockCustomize {
 
 type AnalogClockProps = ClockProps & AnalogClockCustomize
 
-export const AnalogClock: React.FC<AnalogClockProps> = (props): JSX.Element => {
+export const AnalogClock: React.FC<AnalogClockProps> = (props): React.JSX.Element => {
   const { timezone, date } = props
   const {
     width,

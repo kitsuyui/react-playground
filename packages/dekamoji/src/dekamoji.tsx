@@ -9,7 +9,7 @@ export const Dekamoji: React.FC<Props> = React.memo(function Dekamoji({
   text,
 }: {
   text: string
-}): JSX.Element {
+}): React.JSX.Element {
   const [ref, { width, height }] = useMeasure<HTMLDivElement>()
   const [fontSize, setFontSize] = React.useState(0)
   const ref2 = useRef<HTMLDivElement>(null)

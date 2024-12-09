@@ -29,12 +29,12 @@ type RectInfo = Rect & RectCursor
 
 interface WeightedItem {
   weight: number
-  element: JSX.Element
+  element: React.JSX.Element
 }
 
 interface RectItem {
   rect: RectInfo
-  element: JSX.Element
+  element: React.JSX.Element
 }
 
 const NULL_CONTINUE_DIRECTION = {

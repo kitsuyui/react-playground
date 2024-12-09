@@ -33,7 +33,7 @@ const calcElapsedTime = (startTime: Date) => {
 
 export const StopwatchContainer: React.FC<StopwatchContainerProps> = (
   props
-): JSX.Element => {
+): React.JSX.Element => {
   const { children } = props
   const emptyFn = (_event: CustomEvent) => {
     /* do nothing */

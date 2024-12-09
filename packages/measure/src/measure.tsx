@@ -7,11 +7,11 @@ export const MeasureStyleContext = createContext<MeasureStyle>(DEFAULT_MEASURE_S
 
 /**
  * Measure component
- * 
+ *
  * This component shows the size of the parent element.
- * @returns {JSX.Element}
+ * @returns {React.JSX.Element}
  */
-export const Measure: React.FC = (): JSX.Element => {
+export const Measure: React.FC = (): React.JSX.Element => {
   const [ref, { width, height }] = useMeasure<HTMLDivElement>()
   const styles = React.useContext(MeasureStyleContext)
   return (

@@ -6,7 +6,7 @@ export type DetailedBitProps = EnhancedBitProps & {
   displayBigEndianBitOrder?: boolean | undefined
 }
 
-export const DetailedBit = (props: DetailedBitProps): JSX.Element => {
+export const DetailedBit = (props: DetailedBitProps): React.JSX.Element => {
   const { stand, overflow, zeroPadding } = props
   const displayLittleEndianBitOrder = props.displayLittleEndianBitOrder ?? false
   const displayBigEndianBitOrder = props.displayBigEndianBitOrder ?? false
@@ -41,7 +41,7 @@ export const DetailedBit = (props: DetailedBitProps): JSX.Element => {
   )
 }
 
-const IndexLabel = (props: { index: number }): JSX.Element => {
+const IndexLabel = (props: { index: number }): React.JSX.Element => {
   return (
     <div
       style={{
@@ -61,7 +61,7 @@ export const DetailedBitString = (props: {
   length?: number
   showLittleEndianBitOrder?: boolean | undefined
   showBigEndianBitOrder?: boolean | undefined
-}): JSX.Element => {
+}): React.JSX.Element => {
   const showLittleEndianBitOrder = props.showLittleEndianBitOrder ?? false
   const showBigEndianBitOrder = props.showBigEndianBitOrder ?? false
   return (

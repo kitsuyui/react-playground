@@ -35,7 +35,7 @@ export const calcRemaining = (targetDate: Date) => {
 
 export const TimerContainer: React.FC<TimerContainerProps> = (
   props
-): JSX.Element => {
+): React.JSX.Element => {
   const { children } = props
   const emptyFn = (_event: CustomEvent) => {
     /* do nothing */

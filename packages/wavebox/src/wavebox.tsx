@@ -19,7 +19,7 @@ export const WaveBox = ({
   minHeight,
   widthCycle,
   heightCycle,
-}: Props): JSX.Element => {
+}: Props): React.JSX.Element => {
   const [width, setWidth] = React.useState<number>(minWidth)
   const [height, setHeight] = React.useState<number>(minHeight)
   const [t, setT] = React.useState<number>(0)
