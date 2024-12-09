@@ -1,6 +1,6 @@
 {
   "name": "@kitsuyui/react-editablelabel",
-  "version": "0.0.0",
+  "version": "0.1.6",
   "description": "A component that can edit label",
   "license": "MIT",
   "author": "Yui Kitsu <kitsuyui@kitsuyui.com>",
@@ -36,7 +36,7 @@
     "react-use": "^17.5.1"
   },
   "peerDependencies": {
-    "@kitsuyui/react-textfield": "workspace:^",
+    "@kitsuyui/react-textfield": "workspace:*",
     "react": "*",
     "react-dom": "*",
     "react-use": "*"

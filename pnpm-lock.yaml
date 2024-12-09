@@ -243,40 +243,41 @@ importers:
         version: 17.5.1(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
 
   packages/components:
-    devDependencies:
+    dependencies:
       '@kitsuyui/react-binary':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../binary
       '@kitsuyui/react-biticon':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../biticon
       '@kitsuyui/react-clock':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../clock
       '@kitsuyui/react-dekamoji':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../dekamoji
       '@kitsuyui/react-editablelabel':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../editablelabel
       '@kitsuyui/react-measure':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../measure
       '@kitsuyui/react-stopwatch':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../stopwatch
       '@kitsuyui/react-tab':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../tab
       '@kitsuyui/react-textfield':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../textfield
       '@kitsuyui/react-timer':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../timer
       '@kitsuyui/react-treemap':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../treemap
+    devDependencies:
       '@types/react':
         specifier: ^19.0.1
         version: 19.0.1
@@ -317,7 +318,7 @@ importers:
   packages/editablelabel:
     dependencies:
       '@kitsuyui/react-textfield':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../textfield
     devDependencies:
       '@types/node':
@@ -393,28 +394,28 @@ importers:
   packages/style-bulma:
     dependencies:
       '@kitsuyui/react-clock':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../clock
       '@kitsuyui/react-dekamoji':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../dekamoji
       '@kitsuyui/react-editablelabel':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../editablelabel
       '@kitsuyui/react-measure':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../measure
       '@kitsuyui/react-stopwatch':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../stopwatch
       '@kitsuyui/react-textfield':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../textfield
       '@kitsuyui/react-timer':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../timer
       '@kitsuyui/react-treemap':
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:../treemap
       bulma:
         specifier: '*'

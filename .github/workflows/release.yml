@@ -26,10 +26,10 @@ jobs:
             wavebox,
             measure,
             treemap,
-            editablelabel,
             tab,
             biticon,
             physical-size,
+            editablelabel,
             components,
             style-bulma,
           ]
@@ -69,7 +69,26 @@ jobs:
           built_dir=$(pwd)
           tempdir=$(mktemp -d)
           cd $tempdir
+          cat > package.json <<EOF
+          {
+            "pnpm": {
+              "peerDependencyRules": {
+                "ignoreMissing": [
+                  "@kitsuyui/react-clock",
+                  "@kitsuyui/react-dekamoji",
+                  "@kitsuyui/react-editablelabel",
+                  "@kitsuyui/react-measure",
+                  "@kitsuyui/react-stopwatch",
+                  "@kitsuyui/react-textfield",
+                  "@kitsuyui/react-timer",
+                  "@kitsuyui/react-treemap"
+                ]
+              }
+            }
+          }
+          EOF
           pnpm add $built_dir/*.tgz
+
           cd $built_dir
           rm -rf $tempdir
 
