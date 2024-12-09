@@ -9,7 +9,7 @@
     "examples/*"
   ],
   "scripts": {
-    "build": "turbo build",
+    "build": "turbo build --concurrency=1",
     "dev": "turbo run dev --parallel",
     "format": "concurrently pnpm:format:*",
     "format:biome": "biome lint --write ./",
