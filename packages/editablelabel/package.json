@@ -36,7 +36,7 @@
     "react-use": "^17.5.1"
   },
   "peerDependencies": {
-    "@kitsuyui/react-textfield": "workspace:*",
+    "@kitsuyui/react-textfield": "workspace:^",
     "react": "*",
     "react-dom": "*",
     "react-use": "*"
