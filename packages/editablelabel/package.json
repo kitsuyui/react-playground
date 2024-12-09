@@ -1,14 +1,19 @@
 {
   "name": "@kitsuyui/react-editablelabel",
-  "version": "0.0.0",
+  "version": "0.1.6",
   "description": "A component that can edit label",
   "license": "MIT",
   "author": "Yui Kitsu <kitsuyui@kitsuyui.com>",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "require": {
+        "type": "./dist/index.d.mts",
+        "default": "./dist/index.cjs"
+      },
+      "import": {
+        "type": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      }
     }
   },
   "main": "./dist/index.js",
@@ -31,7 +36,7 @@
     "react-use": "^17.5.1"
   },
   "peerDependencies": {
-    "@kitsuyui/react-textfield": "workspace:latest",
+    "@kitsuyui/react-textfield": "workspace:*",
     "react": "*",
     "react-dom": "*",
     "react-use": "*"

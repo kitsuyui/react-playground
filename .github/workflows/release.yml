@@ -26,10 +26,10 @@ jobs:
             wavebox,
             measure,
             treemap,
-            editablelabel,
             tab,
             biticon,
             physical-size,
+            editablelabel,
             components,
             style-bulma,
           ]
@@ -59,22 +59,16 @@ jobs:
           git config user.name "dummy"
           pnpm version from-git --allow-same-version --no-git-tag-version || true
 
-      - working-directory: packages/${{ matrix.package_name }}
-        run: pnpm pack
-
-      - name: Test installation
-        working-directory: packages/${{ matrix.package_name }}
-        run: |
-          set -eu
-          built_dir=$(pwd)
-          tempdir=$(mktemp -d)
-          cd $tempdir
-          pnpm add $built_dir/*.tgz
-          cd $built_dir
-          rm -rf $tempdir
-
-      - run: pnpm publish --access=public --no-git-checks
+      - name: deploy
+        run: pnpm publish --access=public --no-git-checks --recursive
         working-directory: packages/${{ matrix.package_name }}
         if: github.event_name == 'release' && !github.event.release.prerelease
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: deploy (dry-run)
+        run: pnpm publish --access=public --no-git-checks --dry-run --recursive
+        working-directory: packages/${{ matrix.package_name }}
+        if: github.event_name != 'release' || github.event.release.prerelease
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

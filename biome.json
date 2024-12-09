@@ -40,7 +40,7 @@
   "files": {
     "ignore": [
       "**/node_modules/**",
-      "**/dist/**",
+      "**/dist/**/*",
       "**/build/**",
       "**/storybook-static/**",
       "**/coverage/**",

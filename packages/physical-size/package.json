@@ -6,9 +6,14 @@
   "author": "Yui Kitsu <kitsuyui@kitsuyui.com>",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "require": {
+        "type": "./dist/index.d.mts",
+        "default": "./dist/index.cjs"
+      },
+      "import": {
+        "type": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      }
     }
   },
   "main": "./dist/index.js",
