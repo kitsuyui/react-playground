@@ -34,13 +34,13 @@ export interface MeasureStyle {
  * This component is a base component for Measure component.
  * It draws a rectangle, cross lines, and text.
  * It does not have any state and side effect. Pure.
- * 
+ *
  * @param props.width {number}
  * @param props.height {number}
  * @param props.styles {MeasureStyle}
- * @returns 
+ * @returns
  */
-export const MeasureBase = (props: { width: number, height: number, styles: MeasureStyle }): JSX.Element => {
+export const MeasureBase = (props: { width: number, height: number, styles: MeasureStyle }): React.JSX.Element => {
   const { width, height, styles } = props
   const text = `${width}x${height}`
   const textSize = text.length

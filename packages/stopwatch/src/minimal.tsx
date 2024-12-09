@@ -15,7 +15,7 @@ export const toLabel = (value: number) => {
 
 export const MinimalStopwatch: React.FC<StopwatchProps> = (
   props
-): JSX.Element => {
+): React.JSX.Element => {
   const { elapsedTime, running, toggle, reset } = props
 
   return (

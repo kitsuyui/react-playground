@@ -4,7 +4,7 @@ import React from 'react'
 import { ClockProps } from '../types'
 import { zeroPad2 } from '../utils'
 
-export const DigitalClock: React.FC<ClockProps> = (props): JSX.Element => {
+export const DigitalClock: React.FC<ClockProps> = (props): React.JSX.Element => {
   const { timezone, date } = props
   const dateStr = dateToDigital(date, timezone)
   return (

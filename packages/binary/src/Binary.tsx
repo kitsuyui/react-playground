@@ -31,7 +31,7 @@ export const Bits = (props: {
   value: number
   bitElement: BitElement
   length?: number | undefined
-}): JSX.Element => {
+}): React.JSX.Element => {
   const { value, bitElement } = props
   const bits = (value | 0).toString(2).split('')
   const bitLength = bits.length

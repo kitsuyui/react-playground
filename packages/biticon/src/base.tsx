@@ -3,7 +3,7 @@ import { COLORS } from './colors'
 import { applySBox128bitBigintTo128bitBigint } from './bitShuffle'
 
 
-export const UUIDIcon = (props: { uuid: string }): JSX.Element => {
+export const UUIDIcon = (props: { uuid: string }): React.JSX.Element => {
   const uuid = props.uuid
   if (!isValidUUID(uuid)) {
     return <span>Invalid UUID</span>
@@ -24,7 +24,7 @@ const uuidToBigInt = (uuid: string): bigint => {
 }
 
 
-export const BitIcon = (props: { bits: bigint }): JSX.Element => {
+export const BitIcon = (props: { bits: bigint }): React.JSX.Element => {
   const bits = props.bits
   if (!is128Bit(bits)) {
     return (<span>Invalid 128bit value</span>)
@@ -43,7 +43,7 @@ export const BitIcon = (props: { bits: bigint }): JSX.Element => {
     {Array.from(items).map((item: number, index: number) => {
       const indexOfX = index % numOfCols // 0-7
       const indexOfY = Math.floor(index / numOfCols) // 0-7
-      const x = indexOfX * itemWidth 
+      const x = indexOfX * itemWidth
       const y = indexOfY * itemHeight
       const color = valueToColor(item)
       // biome-ignore lint/suspicious/noArrayIndexKey: SVG elements require a unique key

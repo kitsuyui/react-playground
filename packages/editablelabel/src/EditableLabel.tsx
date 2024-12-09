@@ -13,7 +13,7 @@ export const EditableLabel = (props: {
   text: string
   onEditComplete?: (text: string) => void
   enterToSubmit?: boolean
-}): JSX.Element => {
+}): React.JSX.Element => {
   const { text, onEditComplete } = props
   const inputRef = useRef<HTMLInputElement>(null)
   const [inputting, setInputting] = useState(false)

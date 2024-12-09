@@ -8,7 +8,7 @@ export const DateContext = React.createContext(new Date())
 
 export const ClockContainer: React.FC<ClockContainerProps> = (
   props
-): JSX.Element => {
+): React.JSX.Element => {
   const { children } = props
   const [date, setDate] = useState(new Date())
   const refreshInterval = props.refreshInterval || 1000 // default 1 second
