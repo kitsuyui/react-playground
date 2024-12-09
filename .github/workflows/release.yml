@@ -59,41 +59,16 @@ jobs:
           git config user.name "dummy"
           pnpm version from-git --allow-same-version --no-git-tag-version || true
 
-      - working-directory: packages/${{ matrix.package_name }}
-        run: pnpm pack
-
-      - name: Test installation
-        working-directory: packages/${{ matrix.package_name }}
-        run: |
-          set -eu
-          built_dir=$(pwd)
-          tempdir=$(mktemp -d)
-          cd $tempdir
-          cat > package.json <<EOF
-          {
-            "pnpm": {
-              "peerDependencyRules": {
-                "ignoreMissing": [
-                  "@kitsuyui/react-clock",
-                  "@kitsuyui/react-dekamoji",
-                  "@kitsuyui/react-editablelabel",
-                  "@kitsuyui/react-measure",
-                  "@kitsuyui/react-stopwatch",
-                  "@kitsuyui/react-textfield",
-                  "@kitsuyui/react-timer",
-                  "@kitsuyui/react-treemap"
-                ]
-              }
-            }
-          }
-          EOF
-          pnpm add $built_dir/*.tgz
-
-          cd $built_dir
-          rm -rf $tempdir
-
-      - run: pnpm publish --access=public --no-git-checks
+      - name: deploy
+        run: pnpm publish --access=public --no-git-checks --recursive
         working-directory: packages/${{ matrix.package_name }}
         if: github.event_name == 'release' && !github.event.release.prerelease
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: deploy (dry-run)
+        run: pnpm publish --access=public --no-git-checks --dry-run --recursive
+        working-directory: packages/${{ matrix.package_name }}
+        if: github.event_name != 'release' || github.event.release.prerelease
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
