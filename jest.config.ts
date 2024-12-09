@@ -19,6 +19,10 @@ export default {
   },
   moduleNameMapper: {
     '^.+\\.(css|scss)$': 'identity-obj-proxy',
+    "@kitsuyui/react-textfield": "<rootDir>/packages/textfield/dist/",
+    "@kitsuyui/react-clock": "<rootDir>/packages/clock/dist/",
+    "@kitsuyui/react-stopwatch": "<rootDir>/packages/stopwatch/dist/",
+    "@kitsuyui/react-timer": "<rootDir>/packages/timer/dist/",
   },
   collectCoverageFrom: ['packages/*/src/**/*.(tsx|ts)'],
 }
