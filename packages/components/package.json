@@ -6,9 +6,14 @@
   "author": "Yui Kitsu <kitsuyui@kitsuyui.com>",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.ts"
+      "require": {
+        "type": "./dist/index.d.mts",
+        "default": "./dist/index.cjs"
+      },
+      "import": {
+        "type": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      }
     }
   },
   "main": "./dist/index.js",
@@ -41,17 +46,17 @@
     "react-use": "^17.5.1"
   },
   "peerDependencies": {
-    "@kitsuyui/react-binary": "workspace:latest",
-    "@kitsuyui/react-biticon": "workspace:latest",
-    "@kitsuyui/react-clock": "workspace:latest",
-    "@kitsuyui/react-dekamoji": "workspace:latest",
-    "@kitsuyui/react-editablelabel": "workspace:latest",
-    "@kitsuyui/react-measure": "workspace:latest",
-    "@kitsuyui/react-stopwatch": "workspace:latest",
-    "@kitsuyui/react-tab": "workspace:latest",
-    "@kitsuyui/react-textfield": "workspace:latest",
-    "@kitsuyui/react-timer": "workspace:latest",
-    "@kitsuyui/react-treemap": "workspace:latest",
+    "@kitsuyui/react-binary": "workspace:*",
+    "@kitsuyui/react-biticon": "workspace:*",
+    "@kitsuyui/react-clock": "workspace:*",
+    "@kitsuyui/react-dekamoji": "workspace:*",
+    "@kitsuyui/react-editablelabel": "workspace:*",
+    "@kitsuyui/react-measure": "workspace:*",
+    "@kitsuyui/react-stopwatch": "workspace:*",
+    "@kitsuyui/react-tab": "workspace:*",
+    "@kitsuyui/react-textfield": "workspace:*",
+    "@kitsuyui/react-timer": "workspace:*",
+    "@kitsuyui/react-treemap": "workspace:*",
     "react": "*",
     "react-dom": "*",
     "react-use": "*"

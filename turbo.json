@@ -8,37 +8,37 @@
     },
     "@kitsuyui/react-clock#build": {
       "outputs": [
-        "packages/clock/dist/**"
+        "./dist/**/*"
       ]
     },
     "@kitsuyui/react-tab#build": {
       "outputs": [
-        "packages/tab/dist/**"
+        "./dist/**/*"
       ]
     },
     "@kitsuyui/react-timer#build": {
       "outputs": [
-        "packages/timer/dist/**"
+        "./dist/**/*"
       ]
     },
     "@kitsuyui/react-stopwatch#build": {
       "outputs": [
-        "packages/stopwatch/dist/**"
+        "./dist/**/*"
       ]
     },
     "@kitsuyui/react-dekamoji#build": {
       "outputs": [
-        "packages/dekamoji/dist/**"
+        "./dist/**/*"
       ]
     },
     "@kitsuyui/react-measure#build": {
       "outputs": [
-        "packages/measure/dist/**"
+        "./dist/**/*"
       ]
     },
     "@kitsuyui/react-treemap#build": {
       "outputs": [
-        "packages/treemap/dist/**"
+        "./dist/**/*"
       ]
     },
     "@kitsuyui/react-editablelabel#build": {
@@ -46,32 +46,32 @@
         "@kitsuyui/react-textfield#build"
       ],
       "outputs": [
-        "packages/editablelabel/dist/**"
+        "./dist/**/*"
       ]
     },
     "@kitsuyui/react-textfield#build": {
       "outputs": [
-        "packages/textfield/dist/**"
+        "./dist/**/*"
       ]
     },
     "@kitsuyui/react-wavebox#build": {
       "outputs": [
-        "packages/wavebox/dist/**"
+        "./dist/**/*"
       ]
     },
     "@kitsuyui/react-binary#build": {
       "outputs": [
-        "packages/binary/dist/**"
+        "./dist/**/*"
       ]
     },
     "@kitsuyui/react-biticon#build": {
       "outputs": [
-        "packages/biticon/dist/**"
+        "./dist/**/*"
       ]
     },
     "@kitsuyui/react-physical-size": {
       "outputs": [
-        "packages/physical-size/dist/**"
+        "./dist/**/*"
       ]
     },
     "@kitsuyui/react-components#build": {
@@ -91,7 +91,7 @@
         "@kitsuyui/react-physical-size#build"
       ],
       "outputs": [
-        "packages/components/dist/**"
+        "./dist/**/*"
       ]
     },
     "@kitsuyui/react-style-bulma#build": {
@@ -99,7 +99,7 @@
         "@kitsuyui/react-components#build"
       ],
       "outputs": [
-        "packages/style-bulma/dist/**"
+        "./dist/**/*"
       ]
     },
     "storybook#build": {
@@ -121,7 +121,7 @@
         "@kitsuyui/react-physical-size#build"
       ],
       "outputs": [
-        "packages/storybook/dist/**"
+        "./dist/**/*"
       ]
     },
     "build": {
