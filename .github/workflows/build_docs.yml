@@ -1,14 +1,13 @@
-name: Publish Storybook
+name: Publish Storybook and Typedoc
 
 on:
   push:
     branches:
       - main
-      - typedoc
 
 jobs:
-  deploy_storybook:
-    name: Publish Storybook
+  build:
+    name: Build docs
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -19,7 +18,8 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          # https://nodejs.org/en/about/previous-releases
+          node-version: 22.x
 
       - run: pnpm install
 
@@ -32,8 +32,24 @@ jobs:
           mv ./examples/storybook/storybook-static ./build/sites/storybook
           mv ./build/typedocs ./build/sites/typedocs
 
-      - uses: peaceiris/actions-gh-pages@v4
+      - uses: actions/upload-pages-artifact@v3
+        id: deployment
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/sites
-          cname: react-playground.docs.kitsuyui.com
+          path: ./build/sites
+
+  deploy:
+    name: Deploy docs
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      # https://github.com/actions/deploy-pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
