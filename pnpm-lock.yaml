@@ -60,8 +60,8 @@ importers:
         specifier: ^16.12.0
         version: 16.13.0(typescript@5.7.3)
       stylelint-config-recommended:
-        specifier: ^14.0.1
-        version: 14.0.1(stylelint@16.13.0(typescript@5.7.3))
+        specifier: ^15.0.0
+        version: 15.0.0(stylelint@16.13.0(typescript@5.7.3))
       ts-node:
         specifier: ^10.9.2
         version: 10.9.2(@swc/core@1.10.7)(@types/node@22.10.5)(typescript@5.7.3)
@@ -4480,11 +4480,11 @@ packages:
     peerDependencies:
       webpack: ^5.0.0
 
-  stylelint-config-recommended@14.0.1:
-    resolution: {integrity: sha512-bLvc1WOz/14aPImu/cufKAZYfXs/A/owZfSMZ4N+16WGXLoX5lOir53M6odBxvhgmgdxCVnNySJmZKx73T93cg==}
+  stylelint-config-recommended@15.0.0:
+    resolution: {integrity: sha512-9LejMFsat7L+NXttdHdTq94byn25TD+82bzGRiV1Pgasl99pWnwipXS5DguTpp3nP1XjvLXVnEJIuYBfsRjRkA==}
     engines: {node: '>=18.12.0'}
     peerDependencies:
-      stylelint: ^16.1.0
+      stylelint: ^16.13.0
 
   stylelint@16.13.0:
     resolution: {integrity: sha512-muxVjMhZB8BrDFSKNva0dmvD2tM0o/szrvuZuXYcAnN9a8nQmbGLqNUOemSgumaCMCPQ+0USYyG3hA5vJjUC1Q==}
@@ -9393,7 +9393,7 @@ snapshots:
     dependencies:
       webpack: 5.97.1(@swc/core@1.10.7)(esbuild@0.24.2)
 
-  stylelint-config-recommended@14.0.1(stylelint@16.13.0(typescript@5.7.3)):
+  stylelint-config-recommended@15.0.0(stylelint@16.13.0(typescript@5.7.3)):
     dependencies:
       stylelint: 16.13.0(typescript@5.7.3)
 
