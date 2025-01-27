@@ -57,7 +57,7 @@ importers:
         specifier: ^2.14.0
         version: 2.14.0
       stylelint:
-        specifier: ^16.13.2
+        specifier: ^16.14.0
         version: 16.14.0(typescript@5.7.3)
       stylelint-config-recommended:
         specifier: ^15.0.0
