@@ -5,24 +5,24 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@playwright/test": "^1.49.0",
-    "@storybook/addon-essentials": "^8.4.7",
-    "@storybook/addon-interactions": "^8.4.7",
-    "@storybook/addon-links": "^8.4.7",
-    "@storybook/addon-webpack5-compiler-swc": "^1.0.5",
-    "@storybook/blocks": "^8.4.7",
-    "@storybook/react": "^8.4.7",
-    "@storybook/react-webpack5": "^8.4.7",
-    "@storybook/test": "^8.4.7",
-    "@storybook/test-runner": "^0.20.1",
-    "@swc/cli": "^0.5.2",
-    "@swc/core": "^1.10.1",
-    "@types/node": "^22.10.1",
-    "@types/react": "^19.0.1",
+    "@playwright/test": "^1.50.1",
+    "@storybook/addon-essentials": "^8.5.8",
+    "@storybook/addon-interactions": "^8.5.8",
+    "@storybook/addon-links": "^8.5.8",
+    "@storybook/addon-webpack5-compiler-swc": "^2.1.0",
+    "@storybook/blocks": "^8.5.8",
+    "@storybook/react": "^8.5.8",
+    "@storybook/react-webpack5": "^8.5.8",
+    "@storybook/test": "^8.5.8",
+    "@storybook/test-runner": "^0.21.3",
+    "@swc/cli": "^0.6.0",
+    "@swc/core": "^1.10.18",
+    "@types/node": "^22.13.5",
+    "@types/react": "^19.0.10",
     "prop-types": "^15.8.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "storybook": "^8.4.7",
+    "storybook": "^8.5.8",
     "storybook-addon-swc": "^1.2.0"
   },
   "scripts": {
@@ -48,6 +48,6 @@
     "@kitsuyui/react-timer": "workspace:*",
     "@kitsuyui/react-treemap": "workspace:*",
     "@kitsuyui/react-wavebox": "workspace:*",
-    "use-sound": "^4.0.3"
+    "use-sound": "^5.0.0"
   }
 }

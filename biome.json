@@ -44,7 +44,6 @@
       "**/build/**",
       "**/storybook-static/**",
       "**/coverage/**",
-      "**/.turbo/**",
       "**/*.md",
       "**/*.yml",
       "**/*.mdx",
