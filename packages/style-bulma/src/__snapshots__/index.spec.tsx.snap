@@ -1,0 +1,110 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Stopwatch > render Stopwatch 1`] = `
+<DocumentFragment>
+  <div
+    class="card"
+  >
+    <div
+      class="card-content"
+    >
+      <p
+        class="title is-family-monospace has-text-centered"
+      >
+        00:00:00.000
+      </p>
+    </div>
+    <footer
+      class="card-footer"
+    >
+      <button
+        class="card-footer-item is-clickable is-button"
+        disabled=""
+        type="button"
+      >
+        Reset
+      </button>
+      <button
+        class="card-footer-item is-clickable is-button"
+        type="button"
+      >
+        Start
+      </button>
+    </footer>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`Timer > render Timer 1`] = `
+<DocumentFragment>
+  <div
+    class="card"
+  >
+    <div
+      class="card-content"
+    >
+      <p
+        class="title is-family-monospace has-text-centered"
+      >
+        00:00:00.000
+      </p>
+    </div>
+    <footer
+      class="card-footer"
+    >
+      <span
+        class="card-footer-item"
+      >
+        <button
+          class="is-button"
+          type="button"
+        >
+          +1h
+        </button>
+      </span>
+      <span
+        class="card-footer-item"
+      >
+        <button
+          class="is-button"
+          type="button"
+        >
+          +1m
+        </button>
+      </span>
+      <span
+        class="card-footer-item"
+      >
+        <button
+          class="is-button"
+          type="button"
+        >
+          +1s
+        </button>
+      </span>
+      <span
+        class="card-footer-item"
+      >
+        <button
+          class="is-button"
+          disabled=""
+          type="button"
+        >
+          Reset
+        </button>
+      </span>
+      <span
+        class="card-footer-item"
+      >
+        <button
+          class="is-button"
+          disabled=""
+          type="button"
+        >
+          Start
+        </button>
+      </span>
+    </footer>
+  </div>
+</DocumentFragment>
+`;

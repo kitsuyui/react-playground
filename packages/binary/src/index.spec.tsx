@@ -1,5 +1,6 @@
+import { expect, test } from 'vitest'
+
 import { render } from '@testing-library/react'
-import React from 'react'
 
 import { Simple8BitString } from './index'
 

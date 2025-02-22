@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`render Dekamoji 1`] = `
+[
+  <div
+    style="position: absolute; width: 100%; height: 100%; font-size: -4px; text-align: center; margin: 0px auto; box-sizing: border-box; white-space: pre-wrap;"
+  >
+    あ
+  </div>,
+]
+`;

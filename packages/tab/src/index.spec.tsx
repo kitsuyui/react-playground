@@ -1,3 +1,5 @@
+import { expect, test, describe, vi } from 'vitest'
+
 import { render } from '@testing-library/react'
 import React, { useContext } from 'react'
 
@@ -8,8 +10,7 @@ describe('TabUIBase', () => {
     { id: 't1', title: 'Tab 1', content: 'Content 1' },
     { id: 't2', title: 'Tab 2', content: 'Content 2' },
   ]
-  const selectedTabId = 't1'
-  const onSelect = jest.fn()
+  const onSelect = vi.fn()
   const TabBar = ({ children }: { children: React.ReactNode }) => (
     <div data-testid="tab-bar">{children}</div>
   )
@@ -47,7 +48,7 @@ describe('TabUIBase', () => {
   })
 
   test('tab 2 is selected', () => {
-    const { getByTestId: getByTestId2 } = render(
+    const element = render(
       <TabUIBase
         items={items}
         selectedTabId={'t2'}
@@ -57,7 +58,6 @@ describe('TabUIBase', () => {
         ContentBox={ContentBox}
       />,
     )
-    expect(getByTestId2('tab-bar')).toMatchSnapshot('tab-bar-t2')
-    expect(getByTestId2('content-box')).toMatchSnapshot('content-box-t2')
+    expect(element).toMatchSnapshot()
   })
 })

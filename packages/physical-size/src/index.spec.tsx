@@ -1,5 +1,6 @@
+import { expect, describe, it } from 'vitest'
+
 import { render } from '@testing-library/react'
-import React from 'react'
 
 import { PhysicalSizeProvider, PhysicalSizeContext, calcPPI } from './base'
 

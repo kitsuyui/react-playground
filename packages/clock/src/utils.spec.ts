@@ -1,3 +1,5 @@
+import { describe, expect, it } from 'vitest'
+
 import { zeroPad2, zeroPad3 } from './utils'
 
 describe('zeroPadNumber2', () => {
