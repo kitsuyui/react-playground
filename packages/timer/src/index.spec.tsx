@@ -1,3 +1,5 @@
+import { expect, test, vi } from 'vitest'
+
 import { render } from '@testing-library/react'
 import React from 'react'
 
@@ -9,12 +11,12 @@ test('render MinimalTimer', () => {
   const props = {
     remaining: 1000,
     running: false,
-    incrementTimerValue: jest.fn(),
-    toggle: jest.fn(),
-    reset: jest.fn(),
-    start: jest.fn(),
-    stop: jest.fn(),
-    setTimerValue: jest.fn(),
+    incrementTimerValue: vi.fn(),
+    toggle: vi.fn(),
+    reset: vi.fn(),
+    start: vi.fn(),
+    stop: vi.fn(),
+    setTimerValue: vi.fn(),
   }
   const { asFragment } = render(<MinimalTimer {...props} />)
   expect(asFragment()).toMatchSnapshot()

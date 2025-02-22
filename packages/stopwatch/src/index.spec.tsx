@@ -1,5 +1,6 @@
+import { expect, test, vi } from 'vitest'
+
 import { render } from '@testing-library/react'
-import React from 'react'
 
 import { calcTimeDiff } from './container'
 import { toLabel } from './minimal'
@@ -10,10 +11,10 @@ test('render MinimalStopwatch', () => {
   const props = {
     remaining: 1000,
     running: false,
-    toggle: jest.fn(),
-    reset: jest.fn(),
-    start: jest.fn(),
-    stop: jest.fn(),
+    toggle: vi.fn(),
+    reset: vi.fn(),
+    start: vi.fn(),
+    stop: vi.fn(),
   }
   const { asFragment } = render(<MinimalStopwatch elapsedTime={0} {...props} />)
   expect(asFragment()).toMatchSnapshot()

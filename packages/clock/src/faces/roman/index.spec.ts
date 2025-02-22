@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest'
+
 import { face } from '.'
 
 test('roman/face returns face', () => {

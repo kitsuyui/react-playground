@@ -1,5 +1,6 @@
+import { expect, test, describe } from 'vitest'
+
 import { render } from '@testing-library/react'
-import React from 'react'
 
 import { Clock } from './clock'
 import { Stopwatch } from './stopwatch'

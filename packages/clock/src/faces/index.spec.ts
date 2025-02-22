@@ -1,3 +1,4 @@
+import { expect, test } from 'vitest'
 import { face as arabicFace } from './arabic'
 import { face as romanFace } from './roman'
 

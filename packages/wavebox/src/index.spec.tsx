@@ -1,10 +1,12 @@
-import { render, screen } from '@testing-library/react'
+import { expect, test } from 'vitest'
+
+import { render } from '@testing-library/react'
 import React from 'react'
 
 import { WaveBox } from './wavebox'
 
 test('render WaveBox', () => {
-  render(
+  const element = render(
     <WaveBox
       minHeight={100}
       minWidth={100}
@@ -16,6 +18,5 @@ test('render WaveBox', () => {
       {'Something'}
     </WaveBox>
   )
-  const element = screen.getByText(/Something/)
-  expect(element).not.toBeNull()
+  expect(element).toMatchSnapshot()
 })

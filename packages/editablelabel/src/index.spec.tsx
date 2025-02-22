@@ -1,6 +1,8 @@
+import { expect, test, vi } from 'vitest'
+
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import { EditableLabel } from './index'
 
@@ -18,7 +20,7 @@ const EditableLabelExample = (props: { onEditComplete: () => void }) => {
 }
 
 test('render EditableLabel', async () => {
-  const handleEditComplete = jest.fn()
+  const handleEditComplete = vi.fn()
   render(<EditableLabelExample onEditComplete={handleEditComplete} />)
 
   const firstMessage = "Let's edit me!"

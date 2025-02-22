@@ -1,4 +1,6 @@
-import { render, screen } from '@testing-library/react'
+import { expect, test, vi } from 'vitest'
+
+import { render } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import React from 'react'
 
@@ -48,11 +50,11 @@ const ExampleTextField = (props: {
 test('render TextArea', async () => {
   const firstMessage = 'Hello'
   const secondMessage = ', World'
-  const handleChange = jest.fn()
+  const handleChange = vi.fn()
 
   // initial render
-  render(<ExampleTextArea value={firstMessage} onChange={handleChange} />)
-  const element = screen.getByText(firstMessage)
+  const element0 = render(<ExampleTextArea value={firstMessage} onChange={handleChange} />)
+  const element = element0.getByText(firstMessage)
   expect(element).toBeInstanceOf(HTMLTextAreaElement)
 
   // click and type
@@ -65,11 +67,11 @@ test('render TextArea', async () => {
 test('render TextField', async () => {
   const firstMessage = 'Hello'
   const secondMessage = ', World'
-  const handleChange = jest.fn()
+  const handleChange = vi.fn()
 
   // initial render
-  render(<ExampleTextField value={firstMessage} onChange={handleChange} />)
-  const element = screen.getByDisplayValue(firstMessage)
+  const element0 = render(<ExampleTextField value={firstMessage} onChange={handleChange} />)
+  const element = element0.getByDisplayValue(firstMessage)
   expect(element).toBeInstanceOf(HTMLInputElement)
   expect(element).toHaveProperty('value', firstMessage)
 
@@ -83,10 +85,10 @@ test('render TextField', async () => {
 test('render TextField with ClearButton', async () => {
   const firstMessage = 'Hello'
   const secondMessage = ', World'
-  const handleInputChunk = jest.fn()
+  const handleInputChunk = vi.fn()
 
   // initial render
-  render(
+  const element0 = render(
     <ClearButtonProvider>
       <TextFieldWithClear
         value={firstMessage}
@@ -95,7 +97,7 @@ test('render TextField with ClearButton', async () => {
       <ClearButton>Clear</ClearButton>
     </ClearButtonProvider>
   )
-  const element = screen.getByDisplayValue(firstMessage)
+  const element = element0.getByDisplayValue(firstMessage)
   expect(element).toBeInstanceOf(HTMLInputElement)
   expect(element).toHaveProperty('value', firstMessage)
 
@@ -106,7 +108,7 @@ test('render TextField with ClearButton', async () => {
   expect(handleInputChunk).toBeCalledTimes(secondMessage.length)
 
   // click reset button
-  const resetButton = screen.getByText('Clear')
+  const resetButton = element0.getByText('Clear')
   await userEvent.click(resetButton)
   expect(element).toHaveProperty('value', '')
   // handleInputChunk is also called when reset button is clicked.
@@ -116,17 +118,17 @@ test('render TextField with ClearButton', async () => {
 test('render TextArea with ClearButton', async () => {
   const firstMessage = 'Hello'
   const secondMessage = ', World'
-  const handleInputChunk = jest.fn()
+  const handleInputChunk = vi.fn()
 
   // initial render
-  render(
+  const element0 = render(
     <ClearButtonProvider>
       <TextAreaWithClear value={firstMessage} onInputChunk={handleInputChunk} />
       <ClearButton>Clear</ClearButton>
     </ClearButtonProvider>
   )
 
-  const element = screen.getByText(firstMessage)
+  const element = element0.getByText(firstMessage)
   expect(element).toBeInstanceOf(HTMLTextAreaElement)
   expect(element).toHaveProperty('value', firstMessage)
 
@@ -137,7 +139,7 @@ test('render TextArea with ClearButton', async () => {
   expect(handleInputChunk).toBeCalledTimes(secondMessage.length)
 
   // click reset button
-  const resetButton = screen.getByText('Clear')
+  const resetButton = element0.getAllByText('Clear')[1]
   await userEvent.click(resetButton)
   expect(element).toHaveProperty('value', '')
   // handleInputChunk is also called when reset button is clicked.
