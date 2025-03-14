@@ -38,7 +38,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jsdom": "^26.0.0",
     "sort-package-json": "^3.0.0",
-    "stylelint": "^16.15.0",
+    "stylelint": "^16.16.0",
     "stylelint-config-recommended": "^15.0.0",
     "ts-node": "^10.9.2",
     "tsup": "^8.4.0",
