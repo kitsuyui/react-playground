@@ -42,7 +42,7 @@
     "stylelint-config-recommended": "^15.0.0",
     "ts-node": "^10.9.2",
     "tsup": "^8.4.0",
-    "typedoc": "^0.27.9",
+    "typedoc": "^0.28.0",
     "typescript": "^5.8.2",
     "vitest": "^3.0.7"
   },
