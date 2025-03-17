@@ -34,7 +34,7 @@
     "@types/node": "^22.13.10",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
-    "@vitest/coverage-v8": "3.0.8",
+    "@vitest/coverage-v8": "3.0.9",
     "identity-obj-proxy": "^3.0.0",
     "jsdom": "^26.0.0",
     "sort-package-json": "^3.0.0",
@@ -44,7 +44,7 @@
     "tsup": "^8.4.0",
     "typedoc": "^0.28.0",
     "typescript": "^5.8.2",
-    "vitest": "^3.0.8"
+    "vitest": "^3.0.9"
   },
   "packageManager": "pnpm@10.6.3"
 }
