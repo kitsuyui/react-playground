@@ -36,7 +36,7 @@
     "@types/react-dom": "^19.1.2",
     "@vitest/coverage-v8": "3.1.1",
     "identity-obj-proxy": "^3.0.0",
-    "jsdom": "^26.0.0",
+    "jsdom": "^26.1.0",
     "sort-package-json": "^3.0.0",
     "stylelint": "^16.18.0",
     "stylelint-config-recommended": "^16.0.0",
