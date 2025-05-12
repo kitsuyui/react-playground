@@ -9,7 +9,7 @@
     "examples/*"
   ],
   "scripts": {
-    "build": "pnpm -r build",
+    "build": "pnpm -r --sequential build",
     "dev": "pnpm --parallel dev",
     "format": "pnpm format:biome && pnpm format:package-json && pnpm format:stylelint",
     "format:biome": "biome lint --write ./",
