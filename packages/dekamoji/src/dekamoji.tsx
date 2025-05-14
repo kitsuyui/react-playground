@@ -93,17 +93,33 @@ const calcFontSize = (
   inner.textContent = text
   outer.appendChild(inner)
   document.body.appendChild(outer)
+
+  // binary search for font size
   const maxFontSize = Math.max(width, height)
-  let s = 0
-  for (; s < maxFontSize; s += 1) {
-    inner.style.fontSize = `${s}px`
+  const min = 0.0
+  const max = maxFontSize
+  let minOverflow = max
+  let maxAvailable = min
+  let trial = Math.floor((minOverflow + maxAvailable) / 2)
+  const maxIterations = Math.log2(maxFontSize)
+  let iterations = 0
+  while (iterations < maxIterations) {
+    iterations += 1
+    trial = Math.floor((minOverflow + maxAvailable) / 2)
+    inner.style.fontSize = `${trial}px`
     const overflowHeight = inner.scrollHeight - height
     const overflowWidth = inner.scrollWidth - width
     const scrollbarWidth = 2
-    if (overflowHeight > scrollbarWidth || overflowWidth > scrollbarWidth) {
+    const overflows = overflowHeight > scrollbarWidth || overflowWidth > scrollbarWidth
+    if (overflows) {
+      minOverflow = trial
+    } else {
+      maxAvailable = trial
+    }
+    if (minOverflow - maxAvailable <= 1) {
       break
     }
   }
   document.body.removeChild(outer)
-  return s - 4
+  return trial - 4
 }
