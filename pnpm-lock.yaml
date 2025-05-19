@@ -12,7 +12,7 @@ importers:
         specifier: ^1.9.4
         version: 1.9.4
       '@swc/core':
-        specifier: ^1.11.22
+        specifier: ^1.11.24
         version: 1.11.24
       '@testing-library/react':
         specifier: ^16.3.0
@@ -115,43 +115,43 @@ importers:
         version: 5.0.0(react@19.1.0)
     devDependencies:
       '@playwright/test':
-        specifier: ^1.51.1
+        specifier: ^1.52.0
         version: 1.52.0
       '@storybook/addon-essentials':
-        specifier: ^8.6.12
+        specifier: ^8.6.14
         version: 8.6.14(@types/react@19.1.4)(storybook@8.6.14)
       '@storybook/addon-interactions':
-        specifier: ^8.6.12
+        specifier: ^8.6.14
         version: 8.6.14(storybook@8.6.14)
       '@storybook/addon-links':
-        specifier: ^8.6.12
+        specifier: ^8.6.14
         version: 8.6.14(react@19.1.0)(storybook@8.6.14)
       '@storybook/addon-webpack5-compiler-swc':
         specifier: ^3.0.0
         version: 3.0.0(webpack@5.99.8(@swc/core@1.11.24)(esbuild@0.25.4))
       '@storybook/blocks':
-        specifier: ^8.6.12
+        specifier: ^8.6.14
         version: 8.6.14(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14)
       '@storybook/react':
-        specifier: ^8.6.12
+        specifier: ^8.6.14
         version: 8.6.14(@storybook/test@8.6.14(storybook@8.6.14))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14)(typescript@5.8.3)
       '@storybook/react-webpack5':
-        specifier: ^8.6.12
+        specifier: ^8.6.14
         version: 8.6.14(@storybook/test@8.6.14(storybook@8.6.14))(@swc/core@1.11.24)(esbuild@0.25.4)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@8.6.14)(typescript@5.8.3)
       '@storybook/test':
-        specifier: ^8.6.12
+        specifier: ^8.6.14
         version: 8.6.14(storybook@8.6.14)
       '@swc/cli':
-        specifier: ^0.6.0
-        version: 0.6.0(@swc/core@1.11.24)(chokidar@4.0.3)
+        specifier: ^0.7.7
+        version: 0.7.7(@swc/core@1.11.24)(chokidar@4.0.3)
       '@swc/core':
-        specifier: ^1.11.18
+        specifier: ^1.11.24
         version: 1.11.24
       '@types/node':
-        specifier: ^22.14.0
+        specifier: ^22.15.19
         version: 22.15.19
       '@types/react':
-        specifier: ^19.1.0
+        specifier: ^19.1.4
         version: 19.1.4
       prop-types:
         specifier: ^15.8.1
@@ -163,7 +163,7 @@ importers:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
       storybook:
-        specifier: ^8.6.12
+        specifier: ^8.6.14
         version: 8.6.14
       storybook-addon-swc:
         specifier: ^1.2.0
@@ -1336,8 +1336,8 @@ packages:
     peerDependencies:
       storybook: ^8.2.0 || ^8.3.0-0 || ^8.4.0-0 || ^8.5.0-0 || ^8.6.0-0
 
-  '@swc/cli@0.6.0':
-    resolution: {integrity: sha512-Q5FsI3Cw0fGMXhmsg7c08i4EmXCrcl+WnAxb6LYOLHw4JFFC3yzmx9LaXZ7QMbA+JZXbigU2TirI7RAfO0Qlnw==}
+  '@swc/cli@0.7.7':
+    resolution: {integrity: sha512-j4yYm9bx3pxWofaJKX1BFwj/3ngUDynN4UIQ2Xd2h0h/7Gt7zkReBTpDN7g5S13mgAYxacaTHTOUsz18097E8w==}
     engines: {node: '>= 16.14.0'}
     hasBin: true
     peerDependencies:
@@ -4900,7 +4900,7 @@ snapshots:
     dependencies:
       storybook: 8.6.14
 
-  '@swc/cli@0.6.0(@swc/core@1.11.24)(chokidar@4.0.3)':
+  '@swc/cli@0.7.7(@swc/core@1.11.24)(chokidar@4.0.3)':
     dependencies:
       '@swc/core': 1.11.24
       '@swc/counter': 0.1.3
