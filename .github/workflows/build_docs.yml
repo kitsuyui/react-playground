@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           # https://nodejs.org/en/about/previous-releases
-          node-version: 22.15.1
+          node-version: 24.x
 
       - run: pnpm install
 
