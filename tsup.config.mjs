@@ -7,6 +7,10 @@ export default defineConfig({
     './src/**/*.{ts,tsx}',
     '!./src/**/*.test.{ts,tsx}',
     '!./src/**/test.{ts,tsx}',
+    '!./src/**/*.spec.{ts,tsx}',
+    '!./src/**/spec.{ts,tsx}',
+    '!./src/**/*.stories.{ts,tsx}',
+    '!./src/**/stories.{ts,tsx}',
   ],
   loader: {
     '.css': 'local-css',

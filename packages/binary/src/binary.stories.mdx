@@ -1,0 +1,46 @@
+import { Story, Meta } from "@ladle/react";
+import { DetailedBitString } from "./Detailed";
+import { Simple8BitString } from "./Simple";
+
+# Usage
+
+## `<DetailedBitString>`
+
+`<DetailedBitString>` is a component that displays a bit string by given value and length.
+
+```jsx
+import { DetailedBitString } from "@kitsuyui/react-binary";
+<DetailedBitString value={0b10101010} length={8} />
+```
+
+<Story name="default" description="Default usage of DetailedBitString component">
+  <DetailedBitString value={0b10101010} length={8} />
+</Story>
+
+### is inline
+
+This component is an inline element by default, so you can use it with text.
+
+```jsx
+{'56 is'} <DetailedBitString value={56} length={8} /> {'in binary.'}
+```
+
+<Story name="inline" description="Inline usage of DetailedBitString component">
+  {'56 is '} <DetailedBitString value={56} length={8} /> {' in binary.'}
+</Story>
+
+
+## `<Simple8BitString>`
+
+`<Simple8BitString>` is a component that displays an 8-bit binary string.
+
+```jsx
+import { Simple8BitString } from "@kitsuyui/react-binary";
+<Simple8BitString value={0b10101010} />
+```
+
+<Story name="simple8bit" description="Simple usage of Simple8BitString component">
+  <Simple8BitString value={0b10101010} />
+</Story>
+
+This component just does conversion of the value to an 8-bit binary string.
