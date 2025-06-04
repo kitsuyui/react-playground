@@ -30,7 +30,7 @@
   "devDependencies": {
     "@types/luxon": "^3.6.2",
     "@types/react": "^19.1.6",
-    "@types/react-dom": "^19.1.5",
+    "@types/react-dom": "^19.1.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-use": "^17.6.0"
