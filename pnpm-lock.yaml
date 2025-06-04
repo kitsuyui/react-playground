@@ -21,7 +21,7 @@ importers:
         specifier: ^14.6.1
         version: 14.6.1(@testing-library/dom@10.4.0)
       '@types/node':
-        specifier: ^22.15.24
+        specifier: ^22.15.29
         version: 22.15.29
       '@types/react':
         specifier: ^19.1.6
@@ -279,7 +279,7 @@ importers:
   packages/dekamoji:
     devDependencies:
       '@types/node':
-        specifier: ^22.15.24
+        specifier: ^22.15.29
         version: 22.15.29
       '@types/react':
         specifier: ^19.1.6
@@ -304,7 +304,7 @@ importers:
         version: link:../textfield
     devDependencies:
       '@types/node':
-        specifier: ^22.15.24
+        specifier: ^22.15.29
         version: 22.15.29
       '@types/react':
         specifier: ^19.1.6
@@ -495,7 +495,7 @@ importers:
   packages/wavebox:
     devDependencies:
       '@types/node':
-        specifier: ^22.15.24
+        specifier: ^22.15.29
         version: 22.15.29
       '@types/react':
         specifier: ^19.1.6
