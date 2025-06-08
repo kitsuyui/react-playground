@@ -2,7 +2,7 @@ import { Treemap, TreemapContext } from '@kitsuyui/react-treemap'
 import React from 'react'
 import { useContext } from 'react'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-webpack5'
 
 const directionNames = ['right', 'down', 'left', 'up'] as const
 type Direction = typeof directionNames[number]

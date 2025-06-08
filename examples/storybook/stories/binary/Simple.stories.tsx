@@ -1,6 +1,6 @@
 import { Simple8BitString } from '@kitsuyui/react-binary'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-webpack5'
 
 const meta: Meta<typeof Simple8BitString> = {
   title: 'Base/Binary/Simple',

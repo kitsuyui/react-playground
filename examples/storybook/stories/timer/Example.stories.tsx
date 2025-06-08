@@ -4,7 +4,7 @@ import {
 import React from 'react'
 import useSound from 'use-sound'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-webpack5'
 
 export const OrigTimer = ({ onComplete }: { onComplete?: () => void }) => {
   return (

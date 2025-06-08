@@ -1,7 +1,7 @@
 import { EditableLabel } from '@kitsuyui/react-editablelabel'
 import React, { useState } from 'react'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-webpack5'
 
 const EditableLabelExample = () => {
   const [text, setText] = useState("Let's edit me!")
