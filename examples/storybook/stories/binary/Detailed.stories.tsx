@@ -1,6 +1,6 @@
 import { DetailedBitString } from '@kitsuyui/react-binary'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-webpack5'
 
 const meta: Meta<typeof DetailedBitString> = {
   title: 'Base/Binary/Detailed',

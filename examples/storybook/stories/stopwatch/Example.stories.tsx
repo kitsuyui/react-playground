@@ -14,7 +14,7 @@ interface StopwatchProps {
   toggle: () => void
 }
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-webpack5'
 
 const Stopwatch = () => {
   return (

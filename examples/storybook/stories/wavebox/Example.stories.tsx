@@ -3,7 +3,7 @@ import { Measure } from '@kitsuyui/react-measure'
 import { WaveBox } from '@kitsuyui/react-wavebox'
 import React from 'react'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-webpack5'
 
 const Example = ({
   minHeight,

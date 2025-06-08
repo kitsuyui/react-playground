@@ -1,6 +1,6 @@
 import { UUIDIcon } from '@kitsuyui/react-biticon'
 
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react-webpack5'
 
 const meta: Meta<typeof UUIDIcon> = {
   title: 'Base/Biticon/Detailed',
