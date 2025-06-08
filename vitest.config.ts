@@ -9,7 +9,13 @@ export default defineConfig({
     globals: false,
     exclude: [...configDefaults.exclude, 'node_modules', 'dist', 'coverage'],
     coverage: {
-      include: ['**/src', '**/src/**.spec.tsx'],
+      include: ['**/src'],
+      exclude: [
+        '**/src/**/*.spec.ts',
+        '**/src/**/*.spec.tsx',
+        '**/src/**/*.stories.ts',
+        '**/src/**/*.stories.tsx',
+      ],
     },
     environment: 'jsdom',
   },

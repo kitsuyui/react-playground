@@ -15,6 +15,7 @@
     "format:biome": "biome lint --write ./",
     "format:package-json": "sort-package-json \"package.json\" \"packages/*/package.json\"",
     "format:stylelint": "stylelint 'src/**/*.css' --fix --allow-empty-input",
+    "ladle:dev": "pnpm ladle serve",
     "lint": "pnpm lint:biome && pnpm lint:package-json && pnpm lint:stylelint",
     "lint:biome": "biome lint ./",
     "lint:package-json": "sort-package-json --check \"package.json\" \"packages/*/package.json\"",
@@ -28,6 +29,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
+    "@ladle/react": "^5.0.3",
     "@swc/core": "^1.11.31",
     "@testing-library/react": "^16.3.0",
     "@testing-library/user-event": "^14.6.1",

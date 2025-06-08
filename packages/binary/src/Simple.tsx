@@ -12,6 +12,11 @@ export const SimpleBit = (props: EnhancedBitProps): React.JSX.Element => {
   return <>{text}</>
 }
 
+/**
+ * Simple8BitString is a component that displays an 8-bit binary string.
+ * @param props.value - The number to be displayed as an 8-bit binary string.
+ * @returns A component that displays an 8-bit binary string.
+ */
 export const Simple8BitString = (props: { value: number }): React.JSX.Element => {
   return <Bits value={props.value} length={8} bitElement={SimpleBit} />
 }
