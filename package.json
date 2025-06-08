@@ -22,8 +22,8 @@
     "start": "pnpm --parallel dev",
     "test": "vitest run --coverage packages/*/src",
     "test:vrt": "pnpm -r test:vrt",
-    "test:vrt:install": "pnpm test:vrt:install",
-    "test:vrt:update": "pnpm test:vrt:update",
+    "test:vrt:install": "pnpm -r test:vrt:install",
+    "test:vrt:update": "pnpm -r test:vrt:update",
     "typedoc": "typedoc"
   },
   "devDependencies": {
@@ -34,7 +34,7 @@
     "@types/node": "^22.15.30",
     "@types/react": "^19.1.6",
     "@types/react-dom": "^19.1.6",
-    "@vitest/coverage-v8": "3.1.4",
+    "@vitest/coverage-v8": "3.2.2",
     "identity-obj-proxy": "^3.0.0",
     "jsdom": "^26.1.0",
     "sort-package-json": "^3.2.1",
@@ -44,7 +44,7 @@
     "tsup": "^8.5.0",
     "typedoc": "^0.28.5",
     "typescript": "^5.8.3",
-    "vitest": "^3.1.4"
+    "vitest": "^3.2.2"
   },
   "packageManager": "pnpm@10.11.1"
 }

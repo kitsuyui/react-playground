@@ -1,8 +1,20 @@
-import { Timer as OrigTimer } from '@kitsuyui/react-components'
+import { 
+  MinimalTimer, TimerContainer, TimerContext
+} from '@kitsuyui/react-timer'
 import React from 'react'
 import useSound from 'use-sound'
 
 import type { Meta, StoryObj } from '@storybook/react'
+
+export const OrigTimer = ({ onComplete }: { onComplete?: () => void }) => {
+  return (
+    <TimerContainer onComplete={onComplete}>
+      <TimerContext.Consumer>
+        {(timer) => <MinimalTimer {...timer} />}
+      </TimerContext.Consumer>
+    </TimerContainer>
+  )
+}
 
 const Timer = () => {
   const [completeSound] = useSound('/sound_effects/24.wav', { playbackRate: 1 })

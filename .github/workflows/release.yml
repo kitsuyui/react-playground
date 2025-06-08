@@ -30,8 +30,6 @@ jobs:
             biticon,
             physical-size,
             editablelabel,
-            components,
-            style-bulma,
           ]
 
     steps:
