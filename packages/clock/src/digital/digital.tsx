@@ -1,5 +1,4 @@
 import { DateTime } from 'luxon'
-import React from 'react'
 
 import { ClockProps } from '../types'
 import { zeroPad2 } from '../utils'

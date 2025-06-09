@@ -1,3 +1,5 @@
+import { expect, test } from 'vitest'
+
 import { calcHMS, sweepHMS, tickHMS } from '.'
 
 test('tickHMS returns HMS', () => {
