@@ -24,6 +24,7 @@
     "test:vrt": "pnpm -r test:vrt",
     "test:vrt:install": "pnpm -r test:vrt:install",
     "test:vrt:update": "pnpm -r test:vrt:update",
+    "typecheck": "tsc --noEmit packages/*/src/**/*.ts --skipLibCheck --jsx react-jsx",
     "typedoc": "typedoc"
   },
   "devDependencies": {
