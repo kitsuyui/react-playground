@@ -107,8 +107,8 @@ export const Default: Story = {
     maxWidth: 200,
     minHeight: 100,
     maxHeight: 300,
-    heightCycle: 150,
-    widthCycle: 100,
+    heightCycle: 900,
+    widthCycle: 600,
   },
   decorators: [
     (Story) => {
