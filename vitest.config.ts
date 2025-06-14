@@ -16,13 +16,12 @@ export default defineConfig({
       '**/*.stories.tsx',
     ],
     coverage: {
-      include: ['**/src', '**/src/**.spec.tsx'],
+      include: ['**/src'],
       exclude: [
         '**/src/stories/**',
         '**/src/**/*.stories.tsx',
         '**/src/**/*.stories.mdx',
-        '**/src/**/*.test.tsx',
-        '**/src/**/test.tsx',
+        '**/src/**/*.spec.tsx',
       ],
     },
     environment: 'jsdom',

@@ -1,6 +1,7 @@
 import React from 'react'
 import { createContext } from 'react'
-import { useMeasure } from 'react-use'
+import reactUse from 'react-use'
+const { useMeasure } = reactUse
 import { type MeasureStyle, MeasureBase, DEFAULT_MEASURE_STYLE } from './base'
 
 export const MeasureStyleContext = createContext<MeasureStyle>(DEFAULT_MEASURE_STYLE)
