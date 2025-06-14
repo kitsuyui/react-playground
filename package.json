@@ -25,7 +25,8 @@
     "test:vrt:install": "pnpm -r test:vrt:install",
     "test:vrt:update": "pnpm -r test:vrt:update",
     "typecheck": "tsc --noEmit packages/*/src/**/*.ts --skipLibCheck --jsx react-jsx",
-    "typedoc": "typedoc"
+    "typedoc": "typedoc",
+    "validate": "pnpm -r validate"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
@@ -47,6 +48,7 @@
     "tsup": "^8.5.0",
     "typedoc": "^0.28.5",
     "typescript": "^5.8.3",
+    "validate-package-exports": "^0.11.0",
     "vitest": "^3.2.3"
   },
   "packageManager": "pnpm@10.12.1"

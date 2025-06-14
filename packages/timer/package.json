@@ -7,7 +7,7 @@
   "exports": {
     ".": {
       "require": {
-        "type": "./dist/index.d.mts",
+        "type": "./dist/index.d.cts",
         "default": "./dist/index.cjs"
       },
       "import": {
@@ -26,7 +26,8 @@
   "scripts": {
     "build": "tsup --clean",
     "dev": "tsup --watch",
-    "test": "vitest run"
+    "test": "vitest run",
+    "validate": "validate-package-exports --check --verify"
   },
   "devDependencies": {
     "@types/react": "^19.1.8",

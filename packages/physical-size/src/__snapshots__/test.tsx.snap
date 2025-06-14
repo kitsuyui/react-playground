@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PhysicalSizeContext should render children 1`] = `
+<div>
+  <div
+    style="width: 1in; height: 1in; position: absolute; top: -100%; left: -100%; opacity: 0; overflow: hidden;"
+  />
+  <div>
+    0
+  </div>
+</div>
+`;
+
+exports[`PhysicalSizeProvider should render children 1`] = `
+<div>
+  <div
+    style="width: 1in; height: 1in; position: absolute; top: -100%; left: -100%; opacity: 0; overflow: hidden;"
+  />
+  <div>
+    children
+  </div>
+</div>
+`;
