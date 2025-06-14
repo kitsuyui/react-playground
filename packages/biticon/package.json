@@ -29,6 +29,7 @@
     "test": "vitest run"
   },
   "devDependencies": {
+    "@kitsuyui/cipher": "^0.1.12",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "react": "^19.1.0",
