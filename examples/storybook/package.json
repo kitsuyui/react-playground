@@ -40,7 +40,6 @@
     "@kitsuyui/react-textfield": "workspace:*",
     "@kitsuyui/react-timer": "workspace:*",
     "@kitsuyui/react-treemap": "workspace:*",
-    "@kitsuyui/react-wavebox": "workspace:*",
-    "use-sound": "^5.0.0"
+    "@kitsuyui/react-wavebox": "workspace:*"
   }
 }

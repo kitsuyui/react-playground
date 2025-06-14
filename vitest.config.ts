@@ -7,9 +7,23 @@ export default defineConfig({
      * It is better to import them explicitly to avoid future liabilities, so it is not set to globals: true
      */
     globals: false,
-    exclude: [...configDefaults.exclude, 'node_modules', 'dist', 'coverage'],
+    exclude: [
+      ...configDefaults.exclude,
+      'node_modules',
+      'dist',
+      'coverage',
+      'stories/**',
+      '**/*.stories.tsx',
+    ],
     coverage: {
       include: ['**/src', '**/src/**.spec.tsx'],
+      exclude: [
+        '**/src/stories/**',
+        '**/src/**/*.stories.tsx',
+        '**/src/**/*.stories.mdx',
+        '**/src/**/*.test.tsx',
+        '**/src/**/test.tsx',
+      ],
     },
     environment: 'jsdom',
   },
