@@ -1,5 +1,5 @@
-import React from 'react'
-import { Bits, EnhancedBitProps } from './Binary'
+import type React from 'react'
+import { Bits, type EnhancedBitProps } from './Binary'
 
 export type DetailedBitProps = EnhancedBitProps & {
   displayLittleEndianBitOrder?: boolean | undefined

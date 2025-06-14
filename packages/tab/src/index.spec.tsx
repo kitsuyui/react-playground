@@ -1,7 +1,8 @@
 import { expect, test, describe, vi } from 'vitest'
 
 import { render } from '@testing-library/react'
-import React, { useContext } from 'react'
+import type React from 'react'
+import { useContext } from 'react'
 
 import { TabUIBase, TabButtonContext } from './index'
 

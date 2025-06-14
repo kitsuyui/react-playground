@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 import { COLORS } from './colors'
 import { applySBox128bitBigintTo128bitBigint } from './bitShuffle'
 

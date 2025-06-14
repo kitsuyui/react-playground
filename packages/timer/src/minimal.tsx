@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 
 import { zeroPad2, zeroPad3 } from './utils'
 

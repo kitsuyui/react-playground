@@ -1,5 +1,5 @@
 import { EditableLabel } from '../'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import type { Meta, StoryObj } from '@storybook/react-webpack5'
 

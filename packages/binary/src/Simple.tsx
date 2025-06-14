@@ -1,5 +1,5 @@
-import React from 'react'
-import { Bits, EnhancedBitProps } from './Binary'
+import type React from 'react'
+import { Bits, type EnhancedBitProps } from './Binary'
 
 /**
  * SimpleBit is a simple component that displays a bit.

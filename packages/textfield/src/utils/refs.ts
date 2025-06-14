@@ -2,7 +2,7 @@
 // For when user wants to pass a ref to the component but also wants to use the ref internally.
 // original: https://gist.github.com/KurtGokhan/9aafd8e83c9bc6a2946fe2dc7f2c1d19
 
-import { ForwardedRef, useMemo } from 'react'
+import { type ForwardedRef, useMemo } from 'react'
 
 type OptionalRef<T> = ForwardedRef<T> | undefined
 

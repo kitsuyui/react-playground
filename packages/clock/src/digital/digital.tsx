@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon'
 
-import { ClockProps } from '../types'
+import type { ClockProps } from '../types'
 import { zeroPad2 } from '../utils'
 
 export const DigitalClock: React.FC<ClockProps> = (props): React.JSX.Element => {
