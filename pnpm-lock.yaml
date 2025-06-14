@@ -172,8 +172,8 @@ importers:
   packages/biticon:
     devDependencies:
       '@kitsuyui/cipher':
-        specifier: ^0.1.14
-        version: 0.1.14
+        specifier: ^0.2.0
+        version: 0.2.0
       '@types/react':
         specifier: ^19.1.8
         version: 19.1.8
@@ -790,8 +790,8 @@ packages:
   '@keyv/serialize@1.0.3':
     resolution: {integrity: sha512-qnEovoOp5Np2JDGonIDL6Ayihw0RhnRh6vxPuHo4RDn1UOzwEo4AeIfpL6UGIrsceWrCMiVPgwRjbHu4vYFc3g==}
 
-  '@kitsuyui/cipher@0.1.14':
-    resolution: {integrity: sha512-RPZidxbF/jBBbhUByoxjvfFquf0xMzOcsDvFN4Qu62j1nkvR+MPNhBNrUc4LajGCTN29/Unc4uJrWYiX7A1atQ==}
+  '@kitsuyui/cipher@0.2.0':
+    resolution: {integrity: sha512-gKzGSAQCS0qE5I0/mlYsrgfmjQlEP7Kj9Qg5IR0nIjt/vY2HtF3sKbYCO+9Ez9MNWRt1GNeuLREzWEJBbO79Sg==}
 
   '@kitsuyui/rectangle-dividing@0.1.4':
     resolution: {integrity: sha512-1ArUOTI4QzDIvea28zla+UmFn3Y2Ie+uyYPjSu6Kb8M/tURwDuaFPfvO4p+YNPhJIct9qptzbw0ZdsssHB24cg==}
@@ -4196,7 +4196,7 @@ snapshots:
     dependencies:
       buffer: 6.0.3
 
-  '@kitsuyui/cipher@0.1.14': {}
+  '@kitsuyui/cipher@0.2.0': {}
 
   '@kitsuyui/rectangle-dividing@0.1.4': {}
 
