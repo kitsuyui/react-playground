@@ -1,0 +1,41 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`WaveBox > accepts custom interval 1`] = `
+<DocumentFragment>
+  <div
+    style="width: 150px; height: 150px; overflow: hidden; position: relative;"
+  >
+    <div>
+      Test Content
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`WaveBox > renders with specified width and height 1`] = `
+<DocumentFragment>
+  <div
+    style="width: 150px; height: 150px; overflow: hidden; position: relative;"
+  >
+    <div>
+      Test Content
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`WaveBoxContext > provides context values 1`] = `
+<DocumentFragment>
+  <div>
+    {
+  "maxWidth": 200,
+  "maxHeight": 200,
+  "minWidth": 100,
+  "minHeight": 100,
+  "widthCycle": 100,
+  "heightCycle": 100,
+  "tick": 0
+}
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,13 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`SizedBox > renders with specified width and height 1`] = `
+<DocumentFragment>
+  <div
+    style="width: 100px; height: 200px; overflow: hidden; position: relative;"
+  >
+    <div>
+      Test Content
+    </div>
+  </div>
+</DocumentFragment>
+`;
