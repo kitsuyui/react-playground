@@ -7,7 +7,7 @@
   "exports": {
     ".": {
       "require": {
-        "type": "./dist/index.d.mts",
+        "type": "./dist/index.d.cts",
         "default": "./dist/index.cjs"
       },
       "import": {
@@ -24,9 +24,10 @@
     "package.json"
   ],
   "scripts": {
-    "build": "tsup --config ../../tsup.config.mjs --clean",
-    "dev": "tsup --config ../../tsup.config.mjs --watch",
-    "test": "vitest run"
+    "build": "tsup --clean",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "validate": "validate-package-exports --check --verify"
   },
   "devDependencies": {
     "@types/luxon": "^3.6.2",
