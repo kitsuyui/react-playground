@@ -1,5 +1,5 @@
 import {
-  ComponentPropsWithoutRef,
+  type ComponentPropsWithoutRef,
   createContext,
   forwardRef,
   useCallback,
@@ -7,10 +7,10 @@ import {
   useEffect,
   useState,
 } from 'react'
-import React from 'react'
+import type React from 'react'
 
-import { TextArea, WrapperProps as TextAreaWrapperProps } from './TextArea'
-import { TextField, WrapperProps as TextFieldWrapperProps } from './TextField'
+import { TextArea, type WrapperProps as TextAreaWrapperProps } from './TextArea'
+import { TextField, type WrapperProps as TextFieldWrapperProps } from './TextField'
 
 const TextContext = createContext('')
 const SetTextContext = createContext((_text: string) => {})

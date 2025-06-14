@@ -1,8 +1,8 @@
-import React from 'react'
+import type React from 'react'
 
-import { FaceType, computeFace } from './faces'
-import { StepStyle, calcHMS } from './step'
-import { ClockProps } from './types'
+import { type FaceType, computeFace } from './faces'
+import { type StepStyle, calcHMS } from './step'
+import type { ClockProps } from './types'
 
 export interface AnalogClockStyle {
   width: number

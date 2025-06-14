@@ -8,7 +8,7 @@
  * So, you can customize the tab UI as you want.
  * Or you can compose this component with other components and CSS modules.
  */
-import React from 'react'
+import type React from 'react'
 import { createContext } from 'react'
 
 export type TabItemId = string

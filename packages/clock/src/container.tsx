@@ -2,7 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import { useInterval } from 'react-use'
 
-import { ClockContainerProps } from './types'
+import type { ClockContainerProps } from './types'
 
 export const DateContext = React.createContext(new Date())
 

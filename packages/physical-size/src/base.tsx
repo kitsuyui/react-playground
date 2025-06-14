@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 
 import { createContext, useEffect, useRef, useState, forwardRef } from 'react'
 

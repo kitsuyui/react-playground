@@ -1,7 +1,8 @@
 import { TextField } from '@kitsuyui/react-textfield'
-import React, {
+import type React from 'react'
+import {
   useCallback,
-  useState,
+  useState,type 
   KeyboardEvent,
   useRef,
   useEffect,

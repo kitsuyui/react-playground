@@ -8,7 +8,10 @@
     "rules": {
       "recommended": true,
       "style": {
-        "useImportType": "off"
+        "useImportType": "error"
+      },
+      "correctness": {
+        "noUnusedImports": "error"
       }
     }
   },
