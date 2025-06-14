@@ -25,7 +25,8 @@
   ],
   "scripts": {
     "build": "tsup --config ../../tsup.config.mjs --clean",
-    "dev": "tsup --config ../../tsup.config.mjs --watch"
+    "dev": "tsup --config ../../tsup.config.mjs --watch",
+    "test": "vitest run"
   },
   "devDependencies": {
     "@types/react": "^19.1.8",

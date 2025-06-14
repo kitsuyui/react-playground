@@ -8,7 +8,9 @@ import { Bits, type EnhancedBitProps } from './Binary'
  */
 export const SimpleBit = (props: EnhancedBitProps): React.JSX.Element => {
   const { stand, overflow } = props
-  const text = overflow ?? false ? '' : stand ? '1' : '0'
+  const baseText = stand ? '1' : '0'
+  const isOverflowVisible = overflow ?? false
+  const text = isOverflowVisible ? '' : baseText
   return <>{text}</>
 }
 
