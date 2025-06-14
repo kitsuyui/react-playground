@@ -1,0 +1,37 @@
+# @kitsuyui/react-hello
+
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+
+import * as HelloStories from './Hello.stories'
+
+<Meta title="Base/Hello/Introduction" />
+<Canvas of={HelloStories.Default} />
+
+This is the introduction to the Hello component, which is a simple component that displays a greeting message.
+
+## Installation
+
+Use npm, yarn or pnpm to install.
+
+```sh
+$ npm install @kitsuyui/react-hello
+```
+
+```sh
+$ yarn add @kitsuyui/react-hello
+```
+
+```sh
+$ pnpm add @kitsuyui/react-hello
+```
+
+## Usage
+
+To use the Hello component, you can import it into your React application as follows:
+
+```tsx
+import { Hello } from '@kitsuyui/react-hello';
+function App() {
+  return <Hello />;
+}
+```

@@ -1,0 +1,27 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Simple8BitString component > should not render overflow bits 1`] = `
+<DocumentFragment>
+  10101010
+</DocumentFragment>
+`;
+
+exports[`Simple8BitString component > should render properly with 8 bits 1`] = `
+<DocumentFragment>
+  10101010
+</DocumentFragment>
+`;
+
+exports[`SimpleBit component > should not render overflow bits 1`] = `<DocumentFragment />`;
+
+exports[`SimpleBit component > should render "1" for stand=true and overflow=false 1`] = `
+<DocumentFragment>
+  1
+</DocumentFragment>
+`;
+
+exports[`SimpleBit component > should treat bit does't overflow by default 1`] = `
+<DocumentFragment>
+  1
+</DocumentFragment>
+`;

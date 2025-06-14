@@ -1,7 +1,7 @@
 {
-  "name": "@kitsuyui/react-clock",
+  "name": "@kitsuyui/react-hello",
   "version": "0.0.0",
-  "description": "A react component to display a clock.",
+  "description": "Hello world component for React",
   "license": "MIT",
   "author": "Yui Kitsu <kitsuyui@kitsuyui.com>",
   "exports": {
@@ -29,17 +29,13 @@
     "test": "vitest run"
   },
   "devDependencies": {
-    "@types/luxon": "^3.6.2",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "react-use": "^17.6.0"
+    "react-dom": "^19.1.0"
   },
   "peerDependencies": {
-    "luxon": "*",
     "react": "*",
-    "react-dom": "*",
-    "react-use": "*"
+    "react-dom": "*"
   }
 }

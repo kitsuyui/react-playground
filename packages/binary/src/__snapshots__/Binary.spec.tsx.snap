@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Bits component > should render bits correctly 1`] = `
+<DocumentFragment>
+  10101010
+</DocumentFragment>
+`;
