@@ -5,8 +5,7 @@ export default defineConfig({
   format: ['cjs', 'esm'],
   entry: [
     './src/**/*.{ts,tsx}',
-    '!./src/**/*.test.{ts,tsx}',
-    '!./src/**/test.{ts,tsx}',
+    '!./src/**/*.spec.{ts,tsx}',
     '!./src/stories/**/*.stories.tsx',
     '!./src/stories/**/*.mdx',
   ],

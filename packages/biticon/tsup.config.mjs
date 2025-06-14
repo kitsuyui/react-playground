@@ -6,6 +6,7 @@ export default defineConfig({
   entry: [
     './src/**/*.{ts,tsx}',
     '!./src/**/*.test.{ts,tsx}',
+    '!./src/**/*.spec.{ts,tsx}',
     '!./src/**/test.{ts,tsx}',
     '!./src/stories/**/*.stories.tsx',
     '!./src/stories/**/*.mdx',
