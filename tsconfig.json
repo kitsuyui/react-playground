@@ -18,6 +18,6 @@
     "noEmit": true
   },
   "exclude": [
-    "**/test.ts", "**/*.test.ts", "**/*.spec.ts", "node_modules"
+    "**/*.spec.ts", "node_modules"
   ]
 }
