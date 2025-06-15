@@ -1,6 +1,6 @@
 import { expect, it, describe, vi, beforeEach } from 'vitest'
 
-import { render, cleanup } from '@testing-library/react'
+import { render, cleanup, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { TextArea, type TextAreaRef } from './TextArea'
@@ -63,6 +63,34 @@ describe('TextArea', () => {
     await userEvent.type(textarea, 'Hello, World!')
     expect(textarea.value).toBe('Hello, World!')
     expect(rendered.asFragment()).toMatchSnapshot()
+  })
+
+  it('should handle input with composition change events', async () => {
+    const handleInputChunk = vi.fn()
+    const rendered = render(
+      <ExampleTextArea
+        initialText=""
+        onChange={handleInputChunk}
+      />
+    )
+    expect(rendered.asFragment()).toMatchSnapshot()
+    const textarea = rendered.getByRole('textbox') as HTMLTextAreaElement
+    expect(textarea).toBeInstanceOf(HTMLTextAreaElement)
+    expect(textarea.value).toBe('')
+    await userEvent.click(textarea) // focus the textarea
+    // userEvent.type does not support composition events directly,
+    // so we simulate composition events manually
+    fireEvent.compositionStart(textarea)
+    fireEvent.change(textarea, { target: { value: 'Hello' } })
+    // When composition is in progress, textarea value is changed but not called onInputChunk
+    expect(textarea.value).toBe('Hello')
+    expect(handleInputChunk).toHaveBeenCalledTimes(0)
+
+    // After composition ends, the value is committed
+    fireEvent.compositionEnd(textarea)
+    expect(textarea.value).toBe('Hello')
+    expect(handleInputChunk).toHaveBeenCalledTimes(1)
+    expect(handleInputChunk).toHaveBeenCalledWith('Hello')
   })
 
   it('clear should reset value', async () => {

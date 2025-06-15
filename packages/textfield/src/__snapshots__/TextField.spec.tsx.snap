@@ -70,6 +70,20 @@ exports[`TextField > should handle input 2`] = `
 </DocumentFragment>
 `;
 
+exports[`TextField > should handle input with composition change events 1`] = `
+<DocumentFragment>
+  <input
+    type="text"
+    value=""
+  />
+  <button
+    type="button"
+  >
+    Clear
+  </button>
+</DocumentFragment>
+`;
+
 exports[`TextField > should render 1`] = `
 <DocumentFragment>
   <input

@@ -1,6 +1,6 @@
 import { expect, it, describe, vi, beforeEach } from 'vitest'
 
-import { render, cleanup } from '@testing-library/react'
+import { render, cleanup, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
 import { TextField, type TextFieldRef } from './TextField'
@@ -63,6 +63,34 @@ describe('TextField', () => {
     await userEvent.type(TextField, 'Hello, World!')
     expect(TextField.value).toBe('Hello, World!')
     expect(rendered.asFragment()).toMatchSnapshot()
+  })
+
+  it('should handle input with composition change events', async () => {
+    const handleInputChunk = vi.fn()
+    const rendered = render(
+      <ExampleTextField
+        initialText=""
+        onChange={handleInputChunk}
+      />
+    )
+    expect(rendered.asFragment()).toMatchSnapshot()
+    const TextField = rendered.getByRole('textbox') as HTMLInputElement
+    expect(TextField).toBeInstanceOf(HTMLInputElement)
+    expect(TextField.value).toBe('')
+    await userEvent.click(TextField) // focus the TextField
+    // userEvent.type does not support composition events directly,
+    // so we simulate composition events manually
+    fireEvent.compositionStart(TextField)
+    fireEvent.change(TextField, { target: { value: 'Hello' } })
+    // When composition is in progress, TextField value is changed but not called onInputChunk
+    expect(TextField.value).toBe('Hello')
+    expect(handleInputChunk).toHaveBeenCalledTimes(0)
+
+    // After composition ends, the value is committed
+    fireEvent.compositionEnd(TextField)
+    expect(TextField.value).toBe('Hello')
+    expect(handleInputChunk).toHaveBeenCalledTimes(1)
+    expect(handleInputChunk).toHaveBeenCalledWith('Hello')
   })
 
   it('clear should reset value', async () => {

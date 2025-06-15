@@ -61,6 +61,17 @@ exports[`TextArea > should handle input 2`] = `
 </DocumentFragment>
 `;
 
+exports[`TextArea > should handle input with composition change events 1`] = `
+<DocumentFragment>
+  <textarea />
+  <button
+    type="button"
+  >
+    Clear
+  </button>
+</DocumentFragment>
+`;
+
 exports[`TextArea > should render 1`] = `
 <DocumentFragment>
   <textarea>
