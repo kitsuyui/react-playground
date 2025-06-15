@@ -1,15 +1,7 @@
-import {
-  type ComponentPropsWithRef,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
-import type React from 'react'
-
+import React from 'react'
 import { useCombinedRefs } from './utils'
 
-type WrappedProps = ComponentPropsWithRef<'textarea'>
+type WrappedProps = React.ComponentPropsWithRef<'textarea'>
 
 type alternateProps = {
   onInputChunk?: (value: string) => void
@@ -29,9 +21,9 @@ export type WrapperProps = Omit<WrappedProps, excludeProps> & alternateProps
 export const TextArea = (props: WrapperProps) => {
   const ref = props.ref
   const { onInputChunk, onChangeInputting } = props
-  const [internalValue, setInternalValue] = useState(props.value ?? '')
-  const [isInputting, setIsInputting] = useState(false)
-  const innerRef = useRef<HTMLTextAreaElement>(null)
+  const [internalValue, setInternalValue] = React.useState(props.value ?? '')
+  const [isInputting, setIsInputting] = React.useState(false)
+  const innerRef = React.useRef<HTMLTextAreaElement>(null)
   const compbinedRef = useCombinedRefs(innerRef, ref)
 
   // Use Object.assign({}, props) instead of just { ...props } because it must create deep copy.
@@ -42,25 +34,25 @@ export const TextArea = (props: WrapperProps) => {
   } = Object.assign({}, props)
   const onBlur = propsExcludedWrapperProps.onBlur
 
-  useEffect(() => {
+  React.useEffect(() => {
     setInternalValue(props.value ?? '')
   }, [props.value])
 
-  const handleChange = useCallback(() => {
+  const handleChange = React.useCallback(() => {
     const text = innerRef?.current?.value ?? ''
     setInternalValue(text)
     if (isInputting) return
     onInputChunk?.(text)
   }, [isInputting, onInputChunk])
 
-  const handleCompositionChange = useCallback(() => {
+  const handleCompositionChange = React.useCallback(() => {
     const text = innerRef?.current?.value ?? ''
     setInternalValue(text)
     setIsInputting(true)
     onChangeInputting?.(true)
   }, [onChangeInputting])
 
-  const handleCompositionEnd = useCallback(() => {
+  const handleCompositionEnd = React.useCallback(() => {
     const text = innerRef?.current?.value ?? ''
     setInternalValue(text)
     setIsInputting(false)
@@ -68,7 +60,7 @@ export const TextArea = (props: WrapperProps) => {
     onInputChunk?.(text)
   }, [onInputChunk, onChangeInputting])
 
-  const handleOnBlur = useCallback(
+  const handleOnBlur = React.useCallback(
     (e: React.FocusEvent<HTMLTextAreaElement>) => {
       const text = innerRef?.current?.value ?? ''
       setInternalValue(text)

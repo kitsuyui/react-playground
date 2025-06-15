@@ -1,15 +1,7 @@
-import {
-  type ComponentPropsWithRef,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
-import type React from 'react'
-
+import React from 'react'
 import { useCombinedRefs } from './utils'
 
-type WrappedProps = ComponentPropsWithRef<'input'>
+type WrappedProps = React.ComponentPropsWithRef<'input'>
 
 type alternateProps = {
   onInputChunk?: (value: string) => void
@@ -30,9 +22,9 @@ export type WrapperProps = Omit<WrappedProps, excludeProps> & alternateProps
 export const TextField = (props: WrapperProps) => {
   const ref = props.ref
   const { onInputChunk, onChangeInputting } = props
-  const [internalValue, setInternalValue] = useState(props.value ?? '')
-  const [isInputting, setIsInputting] = useState(false)
-  const innerRef = useRef<HTMLInputElement>(null)
+  const [internalValue, setInternalValue] = React.useState(props.value ?? '')
+  const [isInputting, setIsInputting] = React.useState(false)
+  const innerRef = React.useRef<HTMLInputElement>(null)
   const combinedRef = useCombinedRefs(innerRef, ref)
 
   // Use Object.assign({}, props) instead of just { ...props } because it must create deep copy.
@@ -43,25 +35,25 @@ export const TextField = (props: WrapperProps) => {
   } = Object.assign({}, props)
   const onBlur = propsExcludedWrapperProps.onBlur
 
-  useEffect(() => {
+  React.useEffect(() => {
     setInternalValue(props.value ?? '')
   }, [props.value])
 
-  const handleChange = useCallback(() => {
+  const handleChange = React.useCallback(() => {
     const text = innerRef?.current?.value ?? ''
     setInternalValue(text)
     if (isInputting) return
     onInputChunk?.(text)
   }, [isInputting, onInputChunk])
 
-  const handleCompositionChange = useCallback(() => {
+  const handleCompositionChange = React.useCallback(() => {
     const text = innerRef?.current?.value ?? ''
     setInternalValue(text)
     setIsInputting(true)
     onChangeInputting?.(true)
   }, [onChangeInputting])
 
-  const handleCompositionEnd = useCallback(() => {
+  const handleCompositionEnd = React.useCallback(() => {
     const text = innerRef?.current?.value ?? ''
     setInternalValue(text)
     onChangeInputting?.(false)
@@ -69,7 +61,7 @@ export const TextField = (props: WrapperProps) => {
     setIsInputting(false)
   }, [onInputChunk, onChangeInputting])
 
-  const handleOnBlur = useCallback(
+  const handleOnBlur = React.useCallback(
     (e: React.FocusEvent<HTMLInputElement>) => {
       const text = innerRef?.current?.value ?? ''
       setInternalValue(text)
