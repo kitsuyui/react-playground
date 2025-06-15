@@ -47,8 +47,7 @@ The size is determined by the font size specification.
 - [x] `@kitsuyui/react-wavebox` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-wavebox.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-wavebox) ... Variable size box (for debug)
 - [x] `@kitsuyui/react-treemap` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-treemap.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-treemap) ... Put the box in the box like as marimekko chart
 - [x] `@kitsuyui/react-measure` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-measure.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-measure) ... Display size of the box (for debug)
-- [x] `@kitsuyui/react-textfield` [![npm version](https://badge.fury.io/js/%40kitsuyui%2Freact-textfield.svg)](https://badge.fury.io/js/%40kitsuyui%2Freact-textfield) ... Text field with IME support
-- [x] `@kitsuyui/react-editablelabel` [![npm version](https://badge.fury.io/js/%40kitsuyui%2Freact-editablelabel.svg)](https://badge.fury.io/js/%40kitsuyui%2Freact-editablelabel) ... Editable label with IME support
+- [x] `@kitsuyui/react-textfield` [![npm version](https://badge.fury.io/js/%40kitsuyui%2Freact-textfield.svg)](https://badge.fury.io/js/%40kitsuyui%2Freact-textfield) ... Text field (input, textarea) with IME support
 - [ ] Alarm
 - [ ] Dice
 
