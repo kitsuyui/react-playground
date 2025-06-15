@@ -9,8 +9,9 @@ import React from 'react'
 const ExampleTextField = (props: {
   initialText?: string
   onChange?: (value: string) => void
+  onChangeInputting?: (inputting: boolean) => void
 }) => {
-  const { initialText, onChange } = props
+  const { initialText, onChange, onChangeInputting } = props
   const ref = React.useRef<TextFieldRef>(null)
   const [text, setText] = React.useState(initialText ?? '')
   return (
@@ -21,6 +22,9 @@ const ExampleTextField = (props: {
       onInputChunk={(chunk) => {
         setText(chunk)
         onChange?.(chunk)
+      }}
+      onChangeInputting={(inputting) => {
+        onChangeInputting?.(inputting)
       }}
     />
     <button
@@ -47,6 +51,16 @@ describe('TextField', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
+  it('treats empty string when value is not provided', () => {
+    const { asFragment } = render(
+      <TextField/>
+    )
+    expect(asFragment()).toMatchSnapshot()
+    const textfield = document.querySelector('input') as HTMLInputElement
+    expect(textfield).toBeInstanceOf(HTMLInputElement)
+    expect(textfield.value).toBe('')
+  })
+
   it('should handle input', async () => {
     const handleInputChunk = vi.fn()
     const rendered = render(
@@ -67,10 +81,12 @@ describe('TextField', () => {
 
   it('should handle input with composition change events', async () => {
     const handleInputChunk = vi.fn()
+    const handleInputting = vi.fn()
     const rendered = render(
       <ExampleTextField
         initialText=""
         onChange={handleInputChunk}
+        onChangeInputting={handleInputting}
       />
     )
     expect(rendered.asFragment()).toMatchSnapshot()
@@ -80,14 +96,17 @@ describe('TextField', () => {
     await userEvent.click(TextField) // focus the TextField
     // userEvent.type does not support composition events directly,
     // so we simulate composition events manually
+    expect(handleInputting).toHaveBeenCalledTimes(0)
     fireEvent.compositionStart(TextField)
+    expect(handleInputting).toHaveBeenCalledTimes(1)
     fireEvent.change(TextField, { target: { value: 'Hello' } })
+    expect(handleInputting).toHaveBeenCalledTimes(1)
     // When composition is in progress, TextField value is changed but not called onInputChunk
     expect(TextField.value).toBe('Hello')
-    expect(handleInputChunk).toHaveBeenCalledTimes(0)
 
     // After composition ends, the value is committed
     fireEvent.compositionEnd(TextField)
+    expect(handleInputting).toHaveBeenCalledTimes(2)
     expect(TextField.value).toBe('Hello')
     expect(handleInputChunk).toHaveBeenCalledTimes(1)
     expect(handleInputChunk).toHaveBeenCalledWith('Hello')

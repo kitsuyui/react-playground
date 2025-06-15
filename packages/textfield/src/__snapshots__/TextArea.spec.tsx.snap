@@ -79,3 +79,9 @@ exports[`TextArea > should render 1`] = `
   </textarea>
 </DocumentFragment>
 `;
+
+exports[`TextArea > treats empty string when value is not provided 1`] = `
+<DocumentFragment>
+  <textarea />
+</DocumentFragment>
+`;

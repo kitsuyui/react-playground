@@ -92,3 +92,12 @@ exports[`TextField > should render 1`] = `
   />
 </DocumentFragment>
 `;
+
+exports[`TextField > treats empty string when value is not provided 1`] = `
+<DocumentFragment>
+  <input
+    type="text"
+    value=""
+  />
+</DocumentFragment>
+`;
