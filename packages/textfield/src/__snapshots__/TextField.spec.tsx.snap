@@ -1,0 +1,80 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TextField > clear should reset value 1`] = `
+<DocumentFragment>
+  <input
+    type="text"
+    value="Hello, World!"
+  />
+  <button
+    type="button"
+  >
+    Clear
+  </button>
+</DocumentFragment>
+`;
+
+exports[`TextField > clear should reset value 2`] = `
+<DocumentFragment>
+  <input
+    type="text"
+    value="Hello, World!2"
+  />
+  <button
+    type="button"
+  >
+    Clear
+  </button>
+</DocumentFragment>
+`;
+
+exports[`TextField > clear should reset value 3`] = `
+<DocumentFragment>
+  <input
+    type="text"
+    value=""
+  />
+  <button
+    type="button"
+  >
+    Clear
+  </button>
+</DocumentFragment>
+`;
+
+exports[`TextField > should handle input 1`] = `
+<DocumentFragment>
+  <input
+    type="text"
+    value=""
+  />
+  <button
+    type="button"
+  >
+    Clear
+  </button>
+</DocumentFragment>
+`;
+
+exports[`TextField > should handle input 2`] = `
+<DocumentFragment>
+  <input
+    type="text"
+    value="Hello, World!"
+  />
+  <button
+    type="button"
+  >
+    Clear
+  </button>
+</DocumentFragment>
+`;
+
+exports[`TextField > should render 1`] = `
+<DocumentFragment>
+  <input
+    type="text"
+    value="Hello, World!"
+  />
+</DocumentFragment>
+`;
