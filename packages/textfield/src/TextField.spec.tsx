@@ -112,6 +112,29 @@ describe('TextField', () => {
     expect(handleInputChunk).toHaveBeenCalledWith('Hello')
   })
 
+  it('commits value on blur', async () => {
+    const handleInputChunk = vi.fn()
+    const rendered = render(
+      <ExampleTextField
+        initialText="Hello, World!"
+        onChange={handleInputChunk}
+      />
+    )
+    expect(rendered.asFragment()).toMatchSnapshot()
+    const textfield = rendered.getByRole('textbox') as HTMLInputElement
+    expect(textfield).toBeInstanceOf(HTMLInputElement)
+    expect(textfield.value).toBe('Hello, World!')
+    await userEvent.click(textfield) // focus the TextField
+    fireEvent.compositionStart(textfield)
+    fireEvent.change(textfield, { target: { value: 'Hello, World!2' } })
+    expect(handleInputChunk).toHaveBeenCalledTimes(0)  // not called yet
+    await userEvent.tab() // blur the TextField
+    expect(textfield.value).toBe('Hello, World!2')
+    expect(handleInputChunk).toHaveBeenCalledTimes(1) // called on blur
+    expect(handleInputChunk).toHaveBeenCalledWith('Hello, World!2')
+    expect(rendered.asFragment()).toMatchSnapshot()
+  })
+
   it('clear should reset value', async () => {
     const handleInputChunk = vi.fn()
     const rendered = render(

@@ -37,6 +37,32 @@ exports[`TextArea > clear should reset value 3`] = `
 </DocumentFragment>
 `;
 
+exports[`TextArea > commits value on blur 1`] = `
+<DocumentFragment>
+  <textarea>
+    Hello, World!
+  </textarea>
+  <button
+    type="button"
+  >
+    Clear
+  </button>
+</DocumentFragment>
+`;
+
+exports[`TextArea > commits value on blur 2`] = `
+<DocumentFragment>
+  <textarea>
+    Hello, World!2
+  </textarea>
+  <button
+    type="button"
+  >
+    Clear
+  </button>
+</DocumentFragment>
+`;
+
 exports[`TextArea > should handle input 1`] = `
 <DocumentFragment>
   <textarea />

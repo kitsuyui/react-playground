@@ -113,6 +113,29 @@ describe('TextArea', () => {
     expect(handleInputChunk).toHaveBeenCalledWith('Hello')
   })
 
+  it('commits value on blur', async () => {
+    const handleInputChunk = vi.fn()
+    const rendered = render(
+      <ExampleTextArea
+        initialText="Hello, World!"
+        onChange={handleInputChunk}
+      />
+    )
+    expect(rendered.asFragment()).toMatchSnapshot()
+    const textarea = rendered.getByRole('textbox') as HTMLTextAreaElement
+    expect(textarea).toBeInstanceOf(HTMLTextAreaElement)
+    expect(textarea.value).toBe('Hello, World!')
+    await userEvent.click(textarea) // focus the TextArea
+    fireEvent.compositionStart(textarea)
+    fireEvent.change(textarea, { target: { value: 'Hello, World!2' } })
+    expect(handleInputChunk).toHaveBeenCalledTimes(0)  // not called yet
+    await userEvent.tab() // blur the TextArea
+    expect(textarea.value).toBe('Hello, World!2')
+    expect(handleInputChunk).toHaveBeenCalledTimes(1) // called on blur
+    expect(handleInputChunk).toHaveBeenCalledWith('Hello, World!2')
+    expect(rendered.asFragment()).toMatchSnapshot()
+  })
+
   it('clear should reset value', async () => {
     const handleInputChunk = vi.fn()
     const rendered = render(

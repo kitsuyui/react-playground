@@ -42,6 +42,34 @@ exports[`TextField > clear should reset value 3`] = `
 </DocumentFragment>
 `;
 
+exports[`TextField > commits value on blur 1`] = `
+<DocumentFragment>
+  <input
+    type="text"
+    value="Hello, World!"
+  />
+  <button
+    type="button"
+  >
+    Clear
+  </button>
+</DocumentFragment>
+`;
+
+exports[`TextField > commits value on blur 2`] = `
+<DocumentFragment>
+  <input
+    type="text"
+    value="Hello, World!2"
+  />
+  <button
+    type="button"
+  >
+    Clear
+  </button>
+</DocumentFragment>
+`;
+
 exports[`TextField > should handle input 1`] = `
 <DocumentFragment>
   <input
