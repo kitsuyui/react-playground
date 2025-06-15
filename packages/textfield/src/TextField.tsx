@@ -19,6 +19,13 @@ type excludeProps =
 
 export type WrapperProps = Omit<WrappedProps, excludeProps> & alternateProps
 
+type ExtraImperativeHandle = {
+  clear: () => void
+}
+
+type WrappedRef = React.ComponentRef<typeof TextField> & ExtraImperativeHandle
+export type TextFieldRef = WrappedRef
+
 export const TextField = (props: WrapperProps) => {
   const ref = props.ref
   const { onInputChunk, onChangeInputting } = props
@@ -26,6 +33,21 @@ export const TextField = (props: WrapperProps) => {
   const [isInputting, setIsInputting] = React.useState(false)
   const innerRef = React.useRef<HTMLInputElement>(null)
   const combinedRef = useCombinedRefs(innerRef, ref)
+
+  React.useImperativeHandle(ref, () => {
+    const current = innerRef?.current as HTMLInputElement
+    const extra: ExtraImperativeHandle = {
+      clear: () => {
+        current.value = ''
+        setInternalValue('')
+        onInputChunk?.('')
+      }
+    }
+    return {
+      ...current,
+      ...extra
+    }
+  })
 
   // Use Object.assign({}, props) instead of just { ...props } because it must create deep copy.
   const {

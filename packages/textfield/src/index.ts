@@ -1,7 +1,2 @@
-export { TextField } from './TextField'
-export { TextArea } from './TextArea'
-export {
-  ClearButton,
-  ClearButtonProvider,
-  TextFieldWithClear,
-} from './ClearButtonProvider'
+export { TextField, type TextFieldRef} from './TextField'
+export { TextArea, type TextAreaRef } from './TextArea'
