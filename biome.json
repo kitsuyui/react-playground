@@ -40,6 +40,17 @@
       "lineWidth": 80
     }
   },
+  "css": {
+    "formatter": {
+      "enabled": true,
+      "indentWidth": 2,
+      "indentStyle": "space",
+      "lineWidth": 80
+    },
+    "linter": {
+      "enabled": true
+    }
+  },
   "files": {
     "ignore": [
       "**/node_modules/**",
