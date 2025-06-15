@@ -1,4 +1,5 @@
-import { TextField } from '../'
+import React from 'react'
+import { TextField, type TextFieldRef } from '../'
 
 import type { Meta, StoryObj } from '@storybook/react-webpack5'
 
@@ -21,4 +22,23 @@ export const Default: Story = {
       return <Story />
     },
   ],
+}
+
+export const WithClearButton: Story = {
+  args: {
+    value: 'かきくけこ',
+  },
+  render: (args: {
+    value?: string
+  }) => {
+    const ref = React.useRef<TextFieldRef>(null)
+    return (
+      <>
+        <TextField ref={ref} {...args} />
+        <button type="button" onClick={() => ref.current?.clear()}>
+          Clear
+        </button>
+      </>
+    )
+  }
 }
