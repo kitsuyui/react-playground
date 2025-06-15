@@ -28,8 +28,6 @@ jobs:
             treemap,
             tab,
             biticon,
-            physical-size,
-            editablelabel,
           ]
 
     steps:
