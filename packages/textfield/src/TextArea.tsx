@@ -1,5 +1,5 @@
 import React from 'react'
-import { useCombinedRefs } from './utils'
+import { useCombinedRefs } from './utils/refs'
 
 type WrappedProps = React.ComponentPropsWithRef<'textarea'>
 
