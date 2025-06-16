@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { zeroPad2, zeroPad3 } from './utils'
+import { toLabel, zeroPad2, zeroPad3 } from './utils'
 
 describe('zeroPadNumber2', () => {
   it('should zero pad a number to 2 digits', () => {
@@ -16,5 +16,16 @@ describe('zeroPadNumber3', () => {
     expect(zeroPad3(1)).toEqual('001')
     expect(zeroPad3(10)).toEqual('010')
     expect(zeroPad3(100)).toEqual('100')
+  })
+})
+
+describe('toLabel', () => {
+  it('should format time value to mm:ss.mmm', () => {
+    expect(toLabel(0)).toBe('00:00.000')
+    expect(toLabel(1)).toBe('00:01.000')
+    expect(toLabel(59)).toBe('00:59.000')
+    expect(toLabel(60)).toBe('01:00.000')
+    expect(toLabel(61)).toBe('01:01.000')
+    expect(toLabel(3599)).toBe('59:59.000')
   })
 })

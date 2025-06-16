@@ -35,3 +35,16 @@ export const zeroPad2 = (num: number) => {
 export const zeroPad3 = (num: number) => {
   return zeroPad(num, 3)
 }
+
+/**
+ * Convert a time value in seconds to a label string
+ * The format is `mm:ss.mmm` where:
+ * @param value
+ * @returns formatted time label
+ */
+export const toLabel = (value: number) => {
+  const minutes = Math.floor(value / 60)
+  const seconds = (value % 60) | 0
+  const milliseconds = ((value % 1) * 1000) | 0
+  return `${zeroPad2(minutes)}:${zeroPad2(seconds)}.${zeroPad3(milliseconds)}`
+}

@@ -1,50 +1,51 @@
 import React from 'react'
-import { useState } from 'react'
 import { useInterval } from 'react-use'
+import { calcElapsedTime } from './time'
 
-import type { StopwatchContainerProps } from './types'
-export type * from './types'
+export interface StopwatchValue {
+  elapsedTime: number
+  running: boolean
+}
+
+export interface StopwatchActions {
+  start(): void
+  stop(): void
+  toggle(): void
+  reset(): void
+}
+
+export type StopwatchContextValue = StopwatchValue & StopwatchActions
 
 // TODO: Support leap second: https://github.com/kitsuyui/react-playground/issues/40
-export const StopwatchContext = React.createContext({
+export const StopwatchContext = React.createContext<StopwatchContextValue>({
   elapsedTime: 0,
   running: false,
-  start() {
-    /* do nothing */
-  },
-  stop() {
-    /* do nothing */
-  },
-  toggle() {
-    /* do nothing */
-  },
-  reset() {
-    /* do nothing */
-  },
+  start: () => { /* do nothing */ },
+  stop: () => { /* do nothing */ },
+  toggle: () => { /* do nothing */ },
+  reset: () => { /* do nothing */ },
 })
 
-export const calcTimeDiff = (startTime: Date, endTime: Date) => {
-  return (endTime.getTime() - startTime.getTime()) / 1000
+export interface StopwatchProviderProps {
+  refreshInterval?: number
+  children: React.ReactNode
+  onStart?(event: CustomEvent): void
+  onStop?(event: CustomEvent): void
+  onReset?(event: CustomEvent): void
 }
 
-const calcElapsedTime = (startTime: Date) => {
-  return calcTimeDiff(startTime, new Date())
-}
-
-export const StopwatchContainer: React.FC<StopwatchContainerProps> = (
+export const StopwatchContextProvider: React.FC<StopwatchProviderProps> = (
   props
 ): React.JSX.Element => {
   const { children } = props
-  const emptyFn = (_event: CustomEvent) => {
-    /* do nothing */
-  }
+  const emptyFn = (_event: CustomEvent) => { /* do nothing */ }
   const onStart = props.onStart ?? emptyFn
   const onStop = props.onStop ?? emptyFn
   const onReset = props.onReset ?? emptyFn
-  const [running, setRunning] = useState(false)
-  const [elapsedTimeInLap, setElapsedTimeInLap] = useState(0)
-  const [elapsedTimeTotal, setElapsedTimeTotal] = useState(0)
-  const [startTime, setStartTime] = useState(new Date())
+  const [running, setRunning] = React.useState(false)
+  const [elapsedTimeInLap, setElapsedTimeInLap] = React.useState(0)
+  const [elapsedTimeTotal, setElapsedTimeTotal] = React.useState(0)
+  const [startTime, setStartTime] = React.useState(new Date())
 
   const refreshInterval = props.refreshInterval || 10 // default 10ms
 

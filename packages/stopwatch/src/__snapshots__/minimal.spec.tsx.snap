@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MinimalStopwatch > renders correctly 1`] = `
+<DocumentFragment>
+  <span
+    style="width: 6em; font-family: monospace;"
+  >
+    00:00.000
+  </span>
+  <button
+    type="button"
+  >
+    Reset
+  </button>
+  <button
+    type="button"
+  >
+    Start
+  </button>
+</DocumentFragment>
+`;
