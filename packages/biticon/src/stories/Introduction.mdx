@@ -2,13 +2,15 @@
 
 import { Canvas, Meta } from '@storybook/addon-docs/blocks'
 
-import * as DetailedStories from './Detailed.stories'
+import * as SimpleStories from './Simple.stories'
 import { BitIcon } from "../";
 
 <Meta title="Base/Biticon/Introduction" />
-<Canvas of={DetailedStories.Default} />
+<Canvas of={SimpleStories.Default} />
 
+Warning: This package is still in development and may have bugs. Use it at your own risk.
 As you can see, this package is a React component that displays 128-bit data as an icon.
+The icon has 64 pixels, each pixel representing 2 bits of data.
 
 ## Installation
 
