@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react'
 import { useInterval } from 'react-use'
 
 import type { TimerContainerProps } from './types'
@@ -44,9 +43,9 @@ export const TimerContainer: React.FC<TimerContainerProps> = (
   const onStop = props.onStop ?? emptyFn
   const onComplete = props.onComplete ?? emptyFn
   const onReset = props.onReset ?? emptyFn
-  const [running, setRunning] = useState(false)
-  const [targetDate, setTargetDate] = useState(new Date())
-  const [remaining, setRemaining] = useState(0)
+  const [running, setRunning] = React.useState(false)
+  const [targetDate, setTargetDate] = React.useState(new Date())
+  const [remaining, setRemaining] = React.useState(0)
 
   const refreshInterval = props.refreshInterval || 10 // default 10ms
 

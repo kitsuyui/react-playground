@@ -14,4 +14,7 @@ export default defineConfig({
   },
   sourcemap: true,
   dts: true,
+  noExternal: [
+    '@kitsuyui/number-time/toText',
+  ],
 })

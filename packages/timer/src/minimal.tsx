@@ -1,17 +1,10 @@
 import type React from 'react'
 
-import { zeroPad2, zeroPad3 } from './utils'
+import { toText } from "@kitsuyui/number-time/toText"
 
 import type { TimerProps } from './types'
 export type * from './types'
 export * from './container'
-
-export const toLabel = (value: number) => {
-  const minutes = Math.floor(value / 60)
-  const seconds = (value % 60) | 0
-  const milliseconds = ((value % 1) * 1000) | 0
-  return `${zeroPad2(minutes)}:${zeroPad2(seconds)}.${zeroPad3(milliseconds)}`
-}
 
 export const MinimalTimer: React.FC<TimerProps> = (props): React.JSX.Element => {
   const { remaining, running, incrementTimerValue, toggle, reset } = props
@@ -24,7 +17,7 @@ export const MinimalTimer: React.FC<TimerProps> = (props): React.JSX.Element => 
       }}
     >
       <form>
-        <span>{toLabel(remaining)}</span>
+        <span>{toText(remaining)}</span>
         <br />
         <button
           type="submit"
