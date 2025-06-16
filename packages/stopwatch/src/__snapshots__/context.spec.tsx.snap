@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`StopwatchContextProvider > provides context 1`] = `
+<DocumentFragment>
+  ["elapsedTime","reset","running","start","stop","toggle"]
+</DocumentFragment>
+`;

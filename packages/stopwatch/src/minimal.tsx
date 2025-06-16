@@ -1,53 +1,41 @@
 import type React from 'react'
 
-import { zeroPad2, zeroPad3 } from './utils'
+import { toLabel } from './utils'
+import type { StopwatchContextValue } from './context'
 
-import type { StopwatchProps } from './types'
-export type * from './types'
-export * from './container'
-
-export const toLabel = (value: number) => {
-  const minutes = Math.floor(value / 60)
-  const seconds = (value % 60) | 0
-  const milliseconds = ((value % 1) * 1000) | 0
-  return `${zeroPad2(minutes)}:${zeroPad2(seconds)}.${zeroPad3(milliseconds)}`
-}
-
-export const MinimalStopwatch: React.FC<StopwatchProps> = (
+/**
+ * This is a minimal stopwatch component that displays the elapsed time.
+ * It provides buttons to start, stop, and reset the stopwatch.
+ * This is not intended to be used in production.
+ * @param props
+ * @returns React.JSX.Element
+ */
+export const MinimalStopwatch: React.FC<StopwatchContextValue> = (
   props
 ): React.JSX.Element => {
   const { elapsedTime, running, toggle, reset } = props
-
   return (
-    <div
-      style={{
+    <>
+      <span style={{
         width: '6em',
         fontFamily: 'monospace',
-      }}
-    >
-      <form>
-        <span>{toLabel(elapsedTime)}</span>
-        <br />
-        <button
-          type="submit"
-          name="reset"
-          onClick={(e) => {
-            e.preventDefault()
-            reset()
-          }}
-        >
-          Reset
-        </button>
-        <button
-          type="submit"
-          onClick={(e) => {
-            e.preventDefault()
-            toggle()
-          }}
-        >
-          {running ? 'Stop' : 'Start'}
-        </button>
-      </form>
-    </div>
+      }}>{toLabel(elapsedTime)}</span>
+      <button
+        type="button"
+        onClick={() => {
+          reset()
+        }}
+      >
+        Reset
+      </button>
+      <button
+        type="button"
+        onClick={() => {
+          toggle()
+        }}
+      >
+        {running ? 'Stop' : 'Start'}
+      </button>
+    </>
   )
 }

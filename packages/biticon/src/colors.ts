@@ -6,3 +6,13 @@ export const COLORS = [
   '#35b778',
   '#fde724',
 ] as const
+
+
+/**
+ * Convert value to color
+ * @param value 0-7
+ * @returns color string
+ */
+export const valueToColor = (value: number): string => {
+  return COLORS[value]
+}

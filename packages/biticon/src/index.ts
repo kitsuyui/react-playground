@@ -1,1 +1,2 @@
-export * from './base'
+export { BitIcon } from './BitIcon'
+export { UUIDIcon } from './UUIDIcon'

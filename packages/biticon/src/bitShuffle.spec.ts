@@ -1,4 +1,3 @@
-// applySBox128bitBigintTo128bitBigint
 import { expect, describe, it } from 'vitest'
 import { applySBox128bitBigintTo128bitBigint } from './bitShuffle'
 

@@ -1,6 +1,6 @@
 import {
   MinimalStopwatch,
-  StopwatchContainer,
+  StopwatchContextProvider,
   StopwatchContext,
 } from '../'
 
@@ -17,11 +17,11 @@ import type { Meta, StoryObj } from '@storybook/react-webpack5'
 
 const Stopwatch = () => {
   return (
-    <StopwatchContainer>
+    <StopwatchContextProvider>
       <StopwatchContext.Consumer>
-        {(props: StopwatchProps) => <MinimalStopwatch {...props} />}
+        {(context: StopwatchProps) => <MinimalStopwatch {...context} />}
       </StopwatchContext.Consumer>
-    </StopwatchContainer>
+    </StopwatchContextProvider>
   )
 }
 
