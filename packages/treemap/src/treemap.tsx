@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useMeasure } from 'react-use'
 import { dividing } from '@kitsuyui/rectangle-dividing'
+import { zip } from './zip'
 
 interface Rect {
   x: number
@@ -194,12 +195,3 @@ const TreemapByRect = (props: { items: RectItem[] }) => {
     </>
   )
 }
-
-/**
- * zip two arrays like Python's zip()
- * @param a
- * @param b
- * @returns new array of [a[i], b[i]]
- */
-const zip = <T, S>(a: T[], b: S[]): [T, S][] =>
-  Array.from(Array(Math.min(b.length, a.length)), (_, i) => [a[i], b[i]])
