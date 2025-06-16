@@ -52,7 +52,7 @@ importers:
         version: 10.9.2(@swc/core@1.12.1)(@types/node@24.0.3)(typescript@5.8.3)
       tsup:
         specifier: ^8.5.0
-        version: 8.5.0(@swc/core@1.12.1)(postcss@8.5.5)(typescript@5.8.3)(yaml@2.8.0)
+        version: 8.5.0(@swc/core@1.12.1)(postcss@8.5.6)(typescript@5.8.3)(yaml@2.8.0)
       typedoc:
         specifier: ^0.28.5
         version: 0.28.5(typescript@5.8.3)
@@ -62,6 +62,12 @@ importers:
       validate-package-exports:
         specifier: ^0.11.0
         version: 0.11.0
+      vite-plugin-top-level-await:
+        specifier: ^1.5.0
+        version: 1.5.0(rollup@4.43.0)(vite@6.3.5(@types/node@24.0.3)(terser@5.42.0)(yaml@2.8.0))
+      vite-plugin-wasm:
+        specifier: ^3.4.1
+        version: 3.4.1(vite@6.3.5(@types/node@24.0.3)(terser@5.42.0)(yaml@2.8.0))
       vitest:
         specifier: ^3.2.3
         version: 3.2.3(@types/node@24.0.3)(jsdom@26.1.0)(terser@5.42.0)(yaml@2.8.0)
@@ -106,16 +112,16 @@ importers:
         specifier: ^1.53.0
         version: 1.53.0
       '@storybook/addon-docs':
-        specifier: ^9.0.9
+        specifier: ^9.0.10
         version: 9.0.10(@types/react@19.1.8)(storybook@9.0.10(@testing-library/dom@10.4.0))
       '@storybook/addon-links':
-        specifier: ^9.0.9
+        specifier: ^9.0.10
         version: 9.0.10(react@19.1.0)(storybook@9.0.10(@testing-library/dom@10.4.0))
       '@storybook/addon-webpack5-compiler-swc':
         specifier: ^3.0.0
         version: 3.0.0(webpack@5.99.9(@swc/core@1.12.1)(esbuild@0.25.5))
       '@storybook/react-webpack5':
-        specifier: ^9.0.9
+        specifier: ^9.0.10
         version: 9.0.10(@swc/core@1.12.1)(esbuild@0.25.5)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(storybook@9.0.10(@testing-library/dom@10.4.0))(typescript@5.8.3)
       '@swc/cli':
         specifier: ^0.7.7
@@ -124,8 +130,8 @@ importers:
         specifier: ^1.12.1
         version: 1.12.1
       '@types/node':
-        specifier: ^24.0.1
-        version: 24.0.1
+        specifier: ^24.0.3
+        version: 24.0.3
       '@types/react':
         specifier: ^19.1.8
         version: 19.1.8
@@ -139,7 +145,7 @@ importers:
         specifier: ^19.1.0
         version: 19.1.0(react@19.1.0)
       storybook:
-        specifier: ^9.0.9
+        specifier: ^9.0.10
         version: 9.0.10(@testing-library/dom@10.4.0)
       storybook-addon-swc:
         specifier: ^1.2.0
@@ -163,8 +169,8 @@ importers:
   packages/biticon:
     devDependencies:
       '@kitsuyui/cipher':
-        specifier: ^0.2.0
-        version: 0.2.0
+        specifier: ^0.2.1
+        version: 0.2.1
       '@types/react':
         specifier: ^19.1.8
         version: 19.1.8
@@ -184,6 +190,9 @@ importers:
         specifier: '*'
         version: 3.6.1
     devDependencies:
+      '@kitsuyui/number-time':
+        specifier: ^0.2.1
+        version: 0.2.1
       '@types/luxon':
         specifier: ^3.6.2
         version: 3.6.2
@@ -259,6 +268,9 @@ importers:
 
   packages/stopwatch:
     devDependencies:
+      '@kitsuyui/number-time':
+        specifier: ^0.2.1
+        version: 0.2.1
       '@types/react':
         specifier: ^19.1.8
         version: 19.1.8
@@ -307,6 +319,9 @@ importers:
 
   packages/timer:
     devDependencies:
+      '@kitsuyui/number-time':
+        specifier: ^0.2.1
+        version: 0.2.1
       '@types/react':
         specifier: ^19.1.8
         version: 19.1.8
@@ -729,8 +744,11 @@ packages:
   '@jridgewell/trace-mapping@0.3.9':
     resolution: {integrity: sha512-3Belt6tdc8bPgAtbcmdtNJlirVoTmEb5e2gC94PnkwEW9jI6CAHUeoG85tjWP5WquqfavoMtMwiG4P926ZKKuQ==}
 
-  '@kitsuyui/cipher@0.2.0':
-    resolution: {integrity: sha512-gKzGSAQCS0qE5I0/mlYsrgfmjQlEP7Kj9Qg5IR0nIjt/vY2HtF3sKbYCO+9Ez9MNWRt1GNeuLREzWEJBbO79Sg==}
+  '@kitsuyui/cipher@0.2.1':
+    resolution: {integrity: sha512-j2PTVNe4X0iPRP8WoxqJ/SnpN/MJSTQGio0rRRwwlm+M6EeoVFn9BTxEvVRAuF6taUoMx2mioPJjd3YGNOeQqQ==}
+
+  '@kitsuyui/number-time@0.2.1':
+    resolution: {integrity: sha512-6pnmsQVT6nbdAPnjUf2f5ddOCGHyWYsdsQSFUWlchh4L/GY7q+GA/stcygn1ngp2SmWBEfdc2u9KOV+PPRhzyA==}
 
   '@kitsuyui/rectangle-dividing@0.1.4':
     resolution: {integrity: sha512-1ArUOTI4QzDIvea28zla+UmFn3Y2Ie+uyYPjSu6Kb8M/tURwDuaFPfvO4p+YNPhJIct9qptzbw0ZdsssHB24cg==}
@@ -919,6 +937,15 @@ packages:
     resolution: {integrity: sha512-15hjKreZDcp7t6TL/7jkAo6Df5STZN09jGiv5dbP9A6vMVncXRqE7/B2SncsyOwrkZRBH2i6/TPOL8BVmm3c7w==}
     engines: {node: '>=18'}
     hasBin: true
+
+  '@rollup/plugin-virtual@3.0.2':
+    resolution: {integrity: sha512-10monEYsBp3scM4/ND4LNH5Rxvh3e/cVeL3jWTgZ2SrQ+BmUoQcopVQvnaMcOnykb1VkxUFuDAN+0FnpTFRy2A==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0||^3.0.0||^4.0.0
+    peerDependenciesMeta:
+      rollup:
+        optional: true
 
   '@rollup/rollup-android-arm-eabi@4.43.0':
     resolution: {integrity: sha512-Krjy9awJl6rKbruhQDgivNbD1WuLb8xAclM4IR4cN5pHGAs2oIMMQJEiC3IC/9TZJ+QZkmZhlMO/6MBGxPidpw==}
@@ -1360,9 +1387,6 @@ packages:
 
   '@types/mdx@2.0.13':
     resolution: {integrity: sha512-+OWZQfAYyio6YkJb3HLxDrvnx6SWWDbC0zVPfBRzUk0/nqoDyf6dNxQi3eArPe8rJ473nobTMQ/8Zk+LxJ+Yuw==}
-
-  '@types/node@24.0.1':
-    resolution: {integrity: sha512-MX4Zioh39chHlDJbKmEgydJDS3tspMP/lnQC67G3SWsTnb9NeYVWOjkxpOSy4oMfPs4StcWHwBrvUb4ybfnuaw==}
 
   '@types/node@24.0.3':
     resolution: {integrity: sha512-R4I/kzCYAdRLzfiCabn9hxWfbuHS573x+r0dJMkkzThEa7pbrcDWK+9zu3e7aBOouf+rQAciqPFMnxwr0aWgKg==}
@@ -2570,8 +2594,8 @@ packages:
     resolution: {integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==}
     hasBin: true
 
-  loupe@3.1.3:
-    resolution: {integrity: sha512-kkIp7XSkP78ZxJEsSxW3712C6teJVoeHHwgo9zJ380de7IYyJ2ISlxojcH2pC5OFLewESmnRi/+XCDIEEVyoug==}
+  loupe@3.1.4:
+    resolution: {integrity: sha512-wJzkKwJrheKtknCOKNEtDK4iqg/MxmZheEMtSTYvnzRdEYaZzmgH976nenp8WdJRdx5Vc1X/9MO0Oszl6ezeXg==}
 
   lower-case@2.0.2:
     resolution: {integrity: sha512-7fm3l3NAF9WfN6W3JOmf5drwpVqX78JtoGJ3A6W0a6ZnldM41w2fV5D490psKFTpMds8TJse/eHLFFsNHHjHgg==}
@@ -3019,8 +3043,8 @@ packages:
   postcss-value-parser@4.2.0:
     resolution: {integrity: sha512-1NNCs6uurfkVbeXG4S8JFT9t19m45ICnif8zWLd5oPSZ50QnwMfK+H3jv408d4jw/7Bttv5axS5IiHoLaVNHeQ==}
 
-  postcss@8.5.5:
-    resolution: {integrity: sha512-d/jtm+rdNT8tpXuHY5MMtcbJFBkhXE6593XVR9UoGCH8jSFGci7jGvMGH5RYd5PBJW+00NZQt6gf7CbagJCrhg==}
+  postcss@8.5.6:
+    resolution: {integrity: sha512-3Ybi1tAuwAP9s0r1UQ2J4n5Y0G05bJkpUIO0/bI9MhwmD70S5aTWbXGBwxHrelT+XM1k6dM0pk+SwNkpTRN7Pg==}
     engines: {node: ^10 || ^12 || >=14}
 
   pretty-error@4.0.0:
@@ -3708,6 +3732,10 @@ packages:
   utila@0.4.0:
     resolution: {integrity: sha512-Z0DbgELS9/L/75wZbro8xAnT50pBVFQZ+hUEueGDU5FN51YSCYM+jdxsfCiHjwNP/4LCDD0i/graKpeBnOXKRA==}
 
+  uuid@10.0.0:
+    resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
+    hasBin: true
+
   v8-compile-cache-lib@3.0.1:
     resolution: {integrity: sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==}
 
@@ -3727,6 +3755,16 @@ packages:
     resolution: {integrity: sha512-gc8aAifGuDIpZHrPjuHyP4dpQmYXqWw7D1GmDnWeNWP654UEXzVfQ5IHPSK5HaHkwB/+p1atpYpSdw/2kOv8iQ==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
+
+  vite-plugin-top-level-await@1.5.0:
+    resolution: {integrity: sha512-r/DtuvHrSqUVk23XpG2cl8gjt1aATMG5cjExXL1BUTcSNab6CzkcPua9BPEc9fuTP5UpwClCxUe3+dNGL0yrgQ==}
+    peerDependencies:
+      vite: '>=2.8'
+
+  vite-plugin-wasm@3.4.1:
+    resolution: {integrity: sha512-ja3nSo2UCkVeitltJGkS3pfQHAanHv/DqGatdI39ja6McgABlpsZ5hVgl6wuR8Qx5etY3T5qgDQhOWzc5RReZA==}
+    peerDependencies:
+      vite: ^2 || ^3 || ^4 || ^5 || ^6
 
   vite@6.3.5:
     resolution: {integrity: sha512-cZn6NDFE7wdTpINgs++ZJ4N49W2vRp8LCKrn3Ob1kYNtOo21vfDoaV5GzBfLU4MovSAB8uNRm4jgzVQZ+mBzPQ==}
@@ -4244,7 +4282,9 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.0
 
-  '@kitsuyui/cipher@0.2.0': {}
+  '@kitsuyui/cipher@0.2.1': {}
+
+  '@kitsuyui/number-time@0.2.1': {}
 
   '@kitsuyui/rectangle-dividing@0.1.4': {}
 
@@ -4461,6 +4501,10 @@ snapshots:
   '@playwright/test@1.53.0':
     dependencies:
       playwright: 1.53.0
+
+  '@rollup/plugin-virtual@3.0.2(rollup@4.43.0)':
+    optionalDependencies:
+      rollup: 4.43.0
 
   '@rollup/rollup-android-arm-eabi@4.43.0':
     optional: true
@@ -4906,10 +4950,6 @@ snapshots:
 
   '@types/mdx@2.0.13': {}
 
-  '@types/node@24.0.1':
-    dependencies:
-      undici-types: 7.8.0
-
   '@types/node@24.0.3':
     dependencies:
       undici-types: 7.8.0
@@ -5003,13 +5043,13 @@ snapshots:
   '@vitest/utils@3.0.9':
     dependencies:
       '@vitest/pretty-format': 3.0.9
-      loupe: 3.1.3
+      loupe: 3.1.4
       tinyrainbow: 2.0.0
 
   '@vitest/utils@3.2.3':
     dependencies:
       '@vitest/pretty-format': 3.2.3
-      loupe: 3.1.3
+      loupe: 3.1.4
       tinyrainbow: 2.0.0
 
   '@webassemblyjs/ast@1.14.1':
@@ -5361,7 +5401,7 @@ snapshots:
       assertion-error: 2.0.1
       check-error: 2.1.1
       deep-eql: 5.0.2
-      loupe: 3.1.3
+      loupe: 3.1.4
       pathval: 2.0.0
 
   chalk@3.0.0:
@@ -5464,12 +5504,12 @@ snapshots:
 
   css-loader@6.11.0(webpack@5.99.9(@swc/core@1.12.1)(esbuild@0.25.5)):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.5.5)
-      postcss: 8.5.5
-      postcss-modules-extract-imports: 3.1.0(postcss@8.5.5)
-      postcss-modules-local-by-default: 4.2.0(postcss@8.5.5)
-      postcss-modules-scope: 3.2.1(postcss@8.5.5)
-      postcss-modules-values: 4.0.0(postcss@8.5.5)
+      icss-utils: 5.1.0(postcss@8.5.6)
+      postcss: 8.5.6
+      postcss-modules-extract-imports: 3.1.0(postcss@8.5.6)
+      postcss-modules-local-by-default: 4.2.0(postcss@8.5.6)
+      postcss-modules-scope: 3.2.1(postcss@8.5.6)
+      postcss-modules-values: 4.0.0(postcss@8.5.6)
       postcss-value-parser: 4.2.0
       semver: 7.7.2
     optionalDependencies:
@@ -5964,9 +6004,9 @@ snapshots:
     dependencies:
       safer-buffer: 2.1.2
 
-  icss-utils@5.1.0(postcss@8.5.5):
+  icss-utils@5.1.0(postcss@8.5.6):
     dependencies:
-      postcss: 8.5.5
+      postcss: 8.5.6
 
   identity-obj-proxy@3.0.0:
     dependencies:
@@ -6181,7 +6221,7 @@ snapshots:
     dependencies:
       js-tokens: 4.0.0
 
-  loupe@3.1.3: {}
+  loupe@3.1.4: {}
 
   lower-case@2.0.2:
     dependencies:
@@ -6599,33 +6639,33 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.2
 
-  postcss-load-config@6.0.1(postcss@8.5.5)(yaml@2.8.0):
+  postcss-load-config@6.0.1(postcss@8.5.6)(yaml@2.8.0):
     dependencies:
       lilconfig: 3.1.3
     optionalDependencies:
-      postcss: 8.5.5
+      postcss: 8.5.6
       yaml: 2.8.0
 
-  postcss-modules-extract-imports@3.1.0(postcss@8.5.5):
+  postcss-modules-extract-imports@3.1.0(postcss@8.5.6):
     dependencies:
-      postcss: 8.5.5
+      postcss: 8.5.6
 
-  postcss-modules-local-by-default@4.2.0(postcss@8.5.5):
+  postcss-modules-local-by-default@4.2.0(postcss@8.5.6):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.5.5)
-      postcss: 8.5.5
+      icss-utils: 5.1.0(postcss@8.5.6)
+      postcss: 8.5.6
       postcss-selector-parser: 7.1.0
       postcss-value-parser: 4.2.0
 
-  postcss-modules-scope@3.2.1(postcss@8.5.5):
+  postcss-modules-scope@3.2.1(postcss@8.5.6):
     dependencies:
-      postcss: 8.5.5
+      postcss: 8.5.6
       postcss-selector-parser: 7.1.0
 
-  postcss-modules-values@4.0.0(postcss@8.5.5):
+  postcss-modules-values@4.0.0(postcss@8.5.6):
     dependencies:
-      icss-utils: 5.1.0(postcss@8.5.5)
-      postcss: 8.5.5
+      icss-utils: 5.1.0(postcss@8.5.6)
+      postcss: 8.5.6
 
   postcss-selector-parser@7.1.0:
     dependencies:
@@ -6634,7 +6674,7 @@ snapshots:
 
   postcss-value-parser@4.2.0: {}
 
-  postcss@8.5.5:
+  postcss@8.5.6:
     dependencies:
       nanoid: 3.3.11
       picocolors: 1.1.1
@@ -7275,7 +7315,7 @@ snapshots:
 
   tslib@2.8.1: {}
 
-  tsup@8.5.0(@swc/core@1.12.1)(postcss@8.5.5)(typescript@5.8.3)(yaml@2.8.0):
+  tsup@8.5.0(@swc/core@1.12.1)(postcss@8.5.6)(typescript@5.8.3)(yaml@2.8.0):
     dependencies:
       bundle-require: 5.1.0(esbuild@0.25.5)
       cac: 6.7.14
@@ -7286,7 +7326,7 @@ snapshots:
       fix-dts-default-cjs-exports: 1.0.1
       joycon: 3.1.1
       picocolors: 1.1.1
-      postcss-load-config: 6.0.1(postcss@8.5.5)(yaml@2.8.0)
+      postcss-load-config: 6.0.1(postcss@8.5.6)(yaml@2.8.0)
       resolve-from: 5.0.0
       rollup: 4.43.0
       source-map: 0.8.0-beta.0
@@ -7296,7 +7336,7 @@ snapshots:
       tree-kill: 1.2.2
     optionalDependencies:
       '@swc/core': 1.12.1
-      postcss: 8.5.5
+      postcss: 8.5.6
       typescript: 5.8.3
     transitivePeerDependencies:
       - jiti
@@ -7370,6 +7410,8 @@ snapshots:
 
   utila@0.4.0: {}
 
+  uuid@10.0.0: {}
+
   v8-compile-cache-lib@3.0.1: {}
 
   validate-npm-package-license@3.0.4:
@@ -7408,12 +7450,26 @@ snapshots:
       - tsx
       - yaml
 
+  vite-plugin-top-level-await@1.5.0(rollup@4.43.0)(vite@6.3.5(@types/node@24.0.3)(terser@5.42.0)(yaml@2.8.0)):
+    dependencies:
+      '@rollup/plugin-virtual': 3.0.2(rollup@4.43.0)
+      '@swc/core': 1.12.1
+      uuid: 10.0.0
+      vite: 6.3.5(@types/node@24.0.3)(terser@5.42.0)(yaml@2.8.0)
+    transitivePeerDependencies:
+      - '@swc/helpers'
+      - rollup
+
+  vite-plugin-wasm@3.4.1(vite@6.3.5(@types/node@24.0.3)(terser@5.42.0)(yaml@2.8.0)):
+    dependencies:
+      vite: 6.3.5(@types/node@24.0.3)(terser@5.42.0)(yaml@2.8.0)
+
   vite@6.3.5(@types/node@24.0.3)(terser@5.42.0)(yaml@2.8.0):
     dependencies:
       esbuild: 0.25.5
       fdir: 6.4.6(picomatch@4.0.2)
       picomatch: 4.0.2
-      postcss: 8.5.5
+      postcss: 8.5.6
       rollup: 4.43.0
       tinyglobby: 0.2.14
     optionalDependencies:

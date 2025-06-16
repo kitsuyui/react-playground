@@ -1,7 +1,9 @@
 import { DateTime } from 'luxon'
 
 import type { ClockProps } from '../types'
-import { zeroPad2 } from '../utils'
+import { toText } from "@kitsuyui/number-time"
+const zeroPad2 = toText.zeroPad2
+
 
 export const DigitalClock: React.FC<ClockProps> = (props): React.JSX.Element => {
   const { timezone, date } = props

@@ -1,6 +1,6 @@
 import type React from 'react'
 
-import { toLabel } from './utils'
+import { toText } from "@kitsuyui/number-time/toText"
 import type { StopwatchContextValue } from './context'
 
 /**
@@ -19,7 +19,7 @@ export const MinimalStopwatch: React.FC<StopwatchContextValue> = (
       <span style={{
         width: '6em',
         fontFamily: 'monospace',
-      }}>{toLabel(elapsedTime)}</span>
+      }}>{toText(elapsedTime)}</span>
       <button
         type="button"
         onClick={() => {

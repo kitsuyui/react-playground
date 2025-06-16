@@ -30,12 +30,12 @@ type RectInfo = Rect & RectCursor
 
 interface WeightedItem {
   weight: number
-  element: React.JSX.Element
+  element: React.ReactNode
 }
 
 interface RectItem {
   rect: RectInfo
-  element: React.JSX.Element
+  element: React.ReactNode
 }
 
 const NULL_CONTINUE_DIRECTION = {
@@ -59,15 +59,29 @@ const NULL_RECT_INFO = {
 export const TreemapContext = React.createContext<RectInfo>(NULL_RECT_INFO)
 
 const nextBoustrophedonDirection = (rect1: Rect, rect2: Rect): Direction => {
-  if (rect1.x + rect1.w <= rect2.x) return 'right'
-  if (rect1.x >= rect2.x + rect2.w) return 'left'
-  if (rect1.y + rect1.h <= rect2.y) return 'down'
-  if (rect1.y >= rect2.y + rect2.h) return 'up'
+  // rect size may be floating point numbers, so we use Math.floor and Math.ceil
+  if (Math.floor(rect1.x + rect1.w) <= Math.ceil(rect2.x)) return 'right'
+  if (Math.ceil(rect1.x) >= Math.floor(rect2.x + rect2.w)) return 'left'
+  if (Math.floor(rect1.y + rect1.h) <= Math.ceil(rect2.y)) return 'down'
+  if (Math.ceil(rect1.y) >= Math.floor(rect2.y + rect2.h)) return 'up'
+  // if (rect1.x + rect1.w <= rect2.x) return 'right'
+  // if (rect1.x >= rect2.x + rect2.w) return 'left'
+  // if (rect1.y + rect1.h <= rect2.y) return 'down'
+  // if (rect1.y >= rect2.y + rect2.h) return 'up'
   return 'right'
 }
 
-const previousBoustrophedonDirection = (rect1: Rect, rect2: Rect): Direction => {
-  return nextBoustrophedonDirection(rect2, rect1)
+const inverseDirection = (direction: Direction): Direction => {
+  switch (direction) {
+    case 'right':
+      return 'left'
+    case 'down':
+      return 'up'
+    case 'left':
+      return 'right'
+    case 'up':
+      return 'down'
+  }
 }
 
 const rectsToRectInfos = (rects: Rect[]): RectInfo[] => {
@@ -84,16 +98,13 @@ const rectsToRectInfos = (rects: Rect[]): RectInfo[] => {
     },
   }))
   for (let i = 0; i < rectInfos.length; i++) {
-    const rectInfo = rectInfos[i]
+    const currentRectInfo = rectInfos[i]
     const nextRectInfo = rectInfos[i + 1]
     if (nextRectInfo) {
-      rectInfo.nextDirection = nextBoustrophedonDirection(rectInfo, nextRectInfo)
-      rectInfo.continueDirection[rectInfo.nextDirection] = true
-      nextRectInfo.previousDirection = previousBoustrophedonDirection(
-        rectInfo,
-        nextRectInfo
-      )
-      nextRectInfo.continueDirection[nextRectInfo.previousDirection] = true
+      const next = nextBoustrophedonDirection(currentRectInfo, nextRectInfo)
+      currentRectInfo.nextDirection = next
+      currentRectInfo.continueDirection[currentRectInfo.nextDirection] = true
+      nextRectInfo.continueDirection[inverseDirection(next)] = true
     }
   }
   return rectInfos
@@ -102,14 +113,15 @@ const rectsToRectInfos = (rects: Rect[]): RectInfo[] => {
 
 const DEFAULT_ASPECT_RATIO = 16 / 9
 
-export const Treemap = (props: {
+export const SizedTreemap = (props: {
+  width: number
+  height: number
   weightedItems: WeightedItem[]
   verticalFirst?: boolean
   aspectRatio?: number
   boustrophedon?: boolean
 }) => {
-  const [ref, { width, height }] = useMeasure<HTMLDivElement>()
-  const { weightedItems } = props
+  const { weightedItems, width, height } = props
   const verticalFirst = props.verticalFirst ?? true
   const aspectRatio = props.aspectRatio ?? DEFAULT_ASPECT_RATIO
   const boustrophedon = props.boustrophedon ?? false
@@ -145,6 +157,28 @@ export const Treemap = (props: {
 
   return (
     <div
+      style={{
+        width: `${width}px`,
+        height: `${height}px`,
+        position: 'absolute',
+        overflow: 'hidden',
+      }}
+    >
+      {TreemapByRect({ items })}
+    </div>
+  )
+}
+
+
+export const Treemap = (props: {
+  weightedItems: WeightedItem[]
+  verticalFirst?: boolean
+  aspectRatio?: number
+  boustrophedon?: boolean
+}) => {
+  const [ref, { width, height }] = useMeasure<HTMLDivElement>()
+  return (
+    <div
       ref={ref}
       style={{
         width: '100%',
@@ -153,7 +187,16 @@ export const Treemap = (props: {
         overflow: 'hidden',
       }}
     >
-      {TreemapByRect({ items })}
+      {width > 0 && height > 0 ? (
+        <SizedTreemap
+          width={width}
+          height={height}
+          weightedItems={props.weightedItems}
+          verticalFirst={props.verticalFirst}
+          aspectRatio={props.aspectRatio}
+          boustrophedon={props.boustrophedon}
+        />
+      ) : null}
     </div>
   )
 }

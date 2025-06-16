@@ -1,0 +1,7 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`TimerContextProvider > provides context 1`] = `
+<DocumentFragment>
+  ["incrementTimerValue","remaining","reset","running","setTimerValue","start","stop","toggle"]
+</DocumentFragment>
+`;

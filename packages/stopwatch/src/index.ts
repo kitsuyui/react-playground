@@ -5,4 +5,3 @@ export {
   type StopwatchProviderProps,
 } from './context'
 export { MinimalStopwatch } from './minimal'
-export * as utils from './utils'

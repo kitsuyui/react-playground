@@ -38,6 +38,7 @@ const ExampleView = () => {
       {`previousDirection: ${rect.previousDirection}`}<br />
       {`nextDirection: ${rect.nextDirection}`}<br />
       {`direction: ${directionStr}`}<br />
+      {`continueDirection: ${JSON.stringify(rect.continueDirection)}`}<br />
     </div>
   )
 }

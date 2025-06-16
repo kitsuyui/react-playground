@@ -1,5 +1,5 @@
 import {
-  MinimalTimer, TimerContainer, TimerContext
+  MinimalTimer, TimerContextProvider, TimerContext
 } from '../'
 import useSound from 'use-sound'
 
@@ -7,11 +7,11 @@ import type { Meta, StoryObj } from '@storybook/react-webpack5'
 
 export const OrigTimer = ({ onComplete }: { onComplete?: () => void }) => {
   return (
-    <TimerContainer onComplete={onComplete}>
+    <TimerContextProvider onComplete={onComplete}>
       <TimerContext.Consumer>
-        {(timer) => <MinimalTimer {...timer} />}
+        {(context) => <MinimalTimer {...context} />}
       </TimerContext.Consumer>
-    </TimerContainer>
+    </TimerContextProvider>
   )
 }
 

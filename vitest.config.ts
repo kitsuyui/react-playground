@@ -1,6 +1,18 @@
 import { configDefaults, defineConfig } from 'vitest/config'
+import wasm from 'vite-plugin-wasm'
+import topLevelAwait from 'vite-plugin-top-level-await'
 
 export default defineConfig({
+  plugins: [
+    wasm(),
+    topLevelAwait(),
+  ],
+  ssr: {
+    noExternal: [
+      // workaround for testing with wasm
+      '@kitsuyui/rectangle-dividing',
+    ],
+  },
   test: {
     /**
      * globals: true allows you to use describe, test, etc. without importing them
