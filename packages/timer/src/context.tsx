@@ -1,44 +1,50 @@
 import React from 'react'
 import { useInterval } from 'react-use'
 
-import type { TimerContainerProps } from './types'
-export type * from './types'
+import { calcRemaining } from './time'
 
-// TODO: Support leap second: https://github.com/kitsuyui/react-playground/issues/40
-export const TimerContext = React.createContext({
-  remaining: 0,
-  running: false,
-  start() {
-    /* do nothing */
-  },
-  stop() {
-    /* do nothing */
-  },
-  toggle() {
-    /* do nothing */
-  },
-  reset() {
-    /* do nothing */
-  },
-  incrementTimerValue(_value: number) {
-    /* do nothing */
-  },
-  setTimerValue(_value: number) {
-    /* do nothing */
-  },
-})
-
-export const calcRemaining = (targetDate: Date) => {
-  return (targetDate.getTime() - new Date().getTime()) / 1000
+export interface TimerValue {
+  remaining: number
+  running: boolean
 }
 
-export const TimerContainer: React.FC<TimerContainerProps> = (
+export interface TimerActions {
+  start(): void
+  stop(): void
+  toggle(): void
+  reset(): void
+  incrementTimerValue(value: number): void
+  setTimerValue(value: number): void
+}
+
+export type TimerContextValue = TimerValue & TimerActions
+
+// TODO: Support leap second: https://github.com/kitsuyui/react-playground/issues/40
+export const TimerContext = React.createContext<TimerContextValue>({
+  remaining: 0,
+  running: false,
+  start: () => { /* do nothing */ },
+  stop: () => { /* do nothing */ },
+  toggle: () => { /* do nothing */ },
+  reset: () => { /* do nothing */ },
+  incrementTimerValue: (_value: number) => { /* do nothing */ },
+  setTimerValue: (_value: number) => { /* do nothing */ },
+})
+
+export interface TimerContextProviderProps {
+  refreshInterval?: number
+  children: React.ReactNode
+  onStart?(event: CustomEvent): void
+  onStop?(event: CustomEvent): void
+  onComplete?(event: CustomEvent): void
+  onReset?(event: CustomEvent): void
+}
+
+export const TimerContextProvider: React.FC<TimerContextProviderProps> = (
   props
 ): React.JSX.Element => {
   const { children } = props
-  const emptyFn = (_event: CustomEvent) => {
-    /* do nothing */
-  }
+  const emptyFn = (_event: CustomEvent) => { /* do nothing */ }
   const onStart = props.onStart ?? emptyFn
   const onStop = props.onStop ?? emptyFn
   const onComplete = props.onComplete ?? emptyFn

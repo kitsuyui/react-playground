@@ -2,64 +2,52 @@ import type React from 'react'
 
 import { toText } from "@kitsuyui/number-time/toText"
 
-import type { TimerProps } from './types'
-export type * from './types'
-export * from './container'
+import type { TimerContextValue } from './context'
 
-export const MinimalTimer: React.FC<TimerProps> = (props): React.JSX.Element => {
+
+export const MinimalTimer: React.FC<TimerContextValue> = (props): React.JSX.Element => {
   const { remaining, running, incrementTimerValue, toggle, reset } = props
-
   return (
-    <div
-      style={{
+    <>
+      <span style={{
         width: '6em',
         fontFamily: 'monospace',
-      }}
-    >
-      <form>
-        <span>{toText(remaining)}</span>
-        <br />
-        <button
-          type="submit"
-          name="incrementMinute"
-          onClick={(e) => {
-            e.preventDefault()
-            incrementTimerValue(60)
-          }}
-        >
-          +分
-        </button>
-        <button
-          type="submit"
-          name="incrementSecond"
-          onClick={(e) => {
-            e.preventDefault()
-            incrementTimerValue(1)
-          }}
-        >
-          +秒
-        </button>
-        <br />
-        <button
-          type="submit"
-          name="reset"
-          onClick={(e) => {
-            e.preventDefault()
-            reset()
-          }}
-        >
-          Reset
-        </button>
-        <button
-          type="submit"
-          onClick={(e) => {
-            e.preventDefault()
-            toggle()
-          }}
-        >
-          {running ? 'Stop' : 'Start'}
-        </button>
-      </form>
-    </div>
+      }}>{toText(remaining)}</span>
+      <button
+        type="button"
+        name="incrementMinute"
+        onClick={(e) => {
+          incrementTimerValue(60)
+        }}
+      >
+        +分
+      </button>
+      <button
+        type="button"
+        name="incrementSecond"
+        onClick={(e) => {
+          incrementTimerValue(1)
+        }}
+      >
+        +秒
+      </button>
+      <button
+        type="submit"
+        name="reset"
+        onClick={(e) => {
+          reset()
+        }}
+      >
+        Reset
+      </button>
+      <button
+        type="submit"
+        onClick={(e) => {
+          toggle()
+        }}
+      >
+        {running ? 'Stop' : 'Start'}
+      </button>
+    </>
   )
 }
