@@ -1,1 +1,0 @@
-export { DigitalClock } from './digital'

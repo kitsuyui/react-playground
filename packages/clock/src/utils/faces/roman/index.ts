@@ -1,3 +1,9 @@
+
+/**
+ * Converts a number to clock face format.
+ * @param num - The number to convert, typically representing the hour on a clock face.
+ * @returns - A string representing the Roman numeral equivalent of the number.
+ */
 export const face = (num: number): string => {
   switch (num) {
     case 0:

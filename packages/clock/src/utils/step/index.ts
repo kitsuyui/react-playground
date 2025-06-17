@@ -1,5 +1,10 @@
 import { DateTime } from 'luxon'
 
+/**
+ * StepStyle defines the style of the clock hand movement.
+ * - 'tick': represents a clock hand that moves in discrete steps.
+ * - 'sweep': represents a clock hand that moves smoothly.
+ */
 export type StepStyle = 'tick' | 'sweep'
 
 interface HMS {

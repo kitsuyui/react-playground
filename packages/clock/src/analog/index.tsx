@@ -1,8 +1,7 @@
 import type React from 'react'
 
-import { type FaceType, computeFace } from './faces'
-import { type StepStyle, calcHMS } from './step'
-import type { ClockProps } from './types'
+import { type FaceType, computeFace } from '../utils/faces'
+import { type StepStyle, calcHMS } from '../utils/step'
 
 export interface AnalogClockStyle {
   width: number
@@ -98,7 +97,10 @@ interface AnalogClockCustomize {
   minuteLines?: Partial<LinesStyle>
 }
 
-type AnalogClockProps = ClockProps & AnalogClockCustomize
+type AnalogClockProps = {
+  timezone: string
+  date: Date
+} & AnalogClockCustomize
 
 export const AnalogClock: React.FC<AnalogClockProps> = (props): React.JSX.Element => {
   const { timezone, date } = props
@@ -376,6 +378,6 @@ function customizeClockProps(
   }
 }
 
-function degreeToRadian(degree: number): number {
+const degreeToRadian = (degree: number): number => {
   return (degree * Math.PI) / 180
 }

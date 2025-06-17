@@ -1,7 +1,7 @@
 import {
   AnalogClock,
-  ClockContainer,
-  DateContext,
+  ClockContextProvider,
+  ClockContext,
   DigitalClock,
 } from '../'
 
@@ -9,8 +9,8 @@ import type { Meta, StoryObj } from '@storybook/react-webpack5'
 
 const Clock = () => {
   return (
-    <ClockContainer refreshInterval={10}>
-      <DateContext.Consumer>
+    <ClockContextProvider refreshInterval={10}>
+      <ClockContext.Consumer>
         {(date: Date) => (
           <>
             <AnalogClock timezone="Asia/Tokyo" date={date} />
@@ -24,8 +24,8 @@ const Clock = () => {
             <DigitalClock timezone="America/New_York" date={date} />
           </>
         )}
-      </DateContext.Consumer>
-    </ClockContainer>
+      </ClockContext.Consumer>
+    </ClockContextProvider>
   )
 }
 

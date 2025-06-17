@@ -1,4 +1,3 @@
-export * from './analog'
-export * from './digital/digital'
-export * from './types'
-export * from './container'
+export { AnalogClock } from './analog'
+export { DigitalClock } from './digital'
+export * from './context'

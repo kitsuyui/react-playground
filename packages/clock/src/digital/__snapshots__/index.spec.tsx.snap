@@ -1,0 +1,11 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`DigitalClock > renders correctly 1`] = `
+<DocumentFragment>
+  <span
+    style="width: 20em; font-family: monospace;"
+  >
+    09:34:56 PM (Asia/Tokyo)
+  </span>
+</DocumentFragment>
+`;
