@@ -32,14 +32,15 @@ pnpm add @kitsuyui/react-clock
 
 ```tsx
 import {
-  ClockContainer,
+  ClockContextProvider,
+  DateContext,
   AnalogClock,
   DigitalClock,
 } from '@kitsuyui/react-clock'
 
 const Clock = () => {
   return (
-    <ClockContainer>
+    <ClockContextProvider>
       <DateContext.Consumer>
         {(date: Date) => (
           <>
@@ -48,21 +49,15 @@ const Clock = () => {
           </>
         )}
       </DateContext.Consumer>
-    </ClockContainer>
+    </ClockContextProvider>
   )
 }
 ```
 
 ClockContainer is a component that provides DateContext.
-Clocks are pure components that do not depend on DateContext. Only the date and timezone are passed as props.
+Clocks are pure components that do not depend on DateContext directly.
+Just pass the date and timezone as props.
 So you can define your own Timer component by same interface.
-
-```typescript
-export interface ClockProps {
-  timezone: string
-  date: Date
-}
-```
 
 ## License
 
