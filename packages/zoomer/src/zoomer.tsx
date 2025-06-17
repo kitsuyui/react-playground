@@ -36,6 +36,9 @@ export const Zoomer = (props: {
         height: '100%',
         position: 'absolute',
         overflow: 'clip',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
       }}
     >
       <ZoomerWithinSize
@@ -144,16 +147,10 @@ export const ZoomerWithinSize = (props: {
   return (
     <div
       ref={innerRef}
-      style={{
-        width: 'fit-content',
-        height: 'fit-content',
-      }}
     >
       <div
         style={{
           zoom: binarySearchState.zoom,
-          width: 'fit-content',
-          height: 'fit-content',
         }}
       >
         <ZoomerContext.Provider

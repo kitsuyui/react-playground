@@ -3,14 +3,10 @@
 exports[`Zoomer > renders without crashing 1`] = `
 <DocumentFragment>
   <div
-    style="width: 100%; height: 100%; position: absolute; overflow: clip;"
+    style="width: 100%; height: 100%; position: absolute; overflow: clip; display: flex; align-items: center; justify-content: center;"
   >
-    <div
-      style="width: fit-content; height: fit-content;"
-    >
-      <div
-        style="width: fit-content; height: fit-content;"
-      >
+    <div>
+      <div>
         Test
       </div>
     </div>
@@ -20,12 +16,8 @@ exports[`Zoomer > renders without crashing 1`] = `
 
 exports[`ZoomerWithinSize > renders without crashing 1`] = `
 <DocumentFragment>
-  <div
-    style="width: fit-content; height: fit-content;"
-  >
-    <div
-      style="width: fit-content; height: fit-content;"
-    >
+  <div>
+    <div>
       Test
     </div>
   </div>
