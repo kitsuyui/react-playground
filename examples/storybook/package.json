@@ -36,6 +36,7 @@
     "@kitsuyui/react-textfield": "workspace:*",
     "@kitsuyui/react-timer": "workspace:*",
     "@kitsuyui/react-treemap": "workspace:*",
-    "@kitsuyui/react-wavebox": "workspace:*"
+    "@kitsuyui/react-wavebox": "workspace:*",
+    "@kitsuyui/react-zoomer": "workspace:*"
   }
 }

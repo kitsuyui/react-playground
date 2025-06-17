@@ -24,6 +24,7 @@
     "test:vrt:update": "pnpm -r test:vrt:update",
     "typecheck": "tsc --noEmit packages/*/src/**/*.ts --skipLibCheck --jsx react-jsx",
     "typedoc": "typedoc",
+    "typedoc:server": "serve -p 8000 build/typedocs",
     "validate": "pnpm -r validate"
   },
   "devDependencies": {
@@ -39,6 +40,7 @@
     "blocks": "link:@storybook/addon-docs/blocks",
     "identity-obj-proxy": "^3.0.0",
     "jsdom": "^26.1.0",
+    "serve": "^14.2.4",
     "sort-package-json": "^3.2.1",
     "ts-node": "^10.9.2",
     "tsup": "^8.5.0",
