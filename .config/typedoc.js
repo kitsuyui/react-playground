@@ -1,11 +1,14 @@
 /** @type {import('typedoc').TypeDocOptions} */
 module.exports = {
-  entryPoints: ['../packages/*/'],
+  name: 'react-playground',
+  entryPoints: [
+    '../packages/*/src/**/*.ts',
+    '../packages/*/src/**/*.tsx',
+],
   excludeExternals: true,
   excludePrivate: true,
   excludeProtected: true,
   excludeInternal: true,
-  entryPointStrategy: 'packages',
   tsconfig: './tsconfig.json',
   exclude: [
     '**/node_modules/*',
