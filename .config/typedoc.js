@@ -6,8 +6,10 @@ module.exports = {
   excludeProtected: true,
   excludeInternal: true,
   entryPointStrategy: 'packages',
+  tsconfig: './tsconfig.json',
   exclude: [
-    'node_modules',
+    '**/node_modules/*',
+    '**/dist/*',
     '**/*.test.ts',
     '**/*.test.tsx',
     '**/*.spec.ts',

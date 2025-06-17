@@ -45,6 +45,13 @@ jobs:
       - name: Test
         run: pnpm test
 
+      # Extremely slow, so disabled for now ...
+      # - name: Try to build docs
+      #   run: pnpm typedoc
+
+      - name: Check package exports
+        run: pnpm validate
+
       - name: Test packaging
         run: pnpm pack
 
