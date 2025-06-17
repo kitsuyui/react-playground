@@ -2,6 +2,10 @@
   "name": "@kitsuyui/react-dekamoji",
   "version": "0.0.0",
   "description": "A component that displays text in the entire display area of the component.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kitsuyui/react-playground.git"
+  },
   "license": "MIT",
   "author": "Yui Kitsu <kitsuyui@kitsuyui.com>",
   "type": "module",

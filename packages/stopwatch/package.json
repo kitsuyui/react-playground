@@ -2,6 +2,10 @@
   "name": "@kitsuyui/react-stopwatch",
   "version": "0.0.0",
   "description": "A react component to display a stopwatch.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kitsuyui/react-playground.git"
+  },
   "license": "MIT",
   "author": "Yui Kitsu <kitsuyui@kitsuyui.com>",
   "type": "module",
