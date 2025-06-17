@@ -1,7 +1,7 @@
 import React from 'react'
 import { TextArea, type TextAreaRef } from '../'
 
-import type { Meta, StoryObj } from '@storybook/react-webpack5'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof TextArea> = {
   title: 'Base/TextField/TextArea/Example',

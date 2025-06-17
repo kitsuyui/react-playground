@@ -1,8 +1,7 @@
-import { createRequire } from "node:module";
-import { dirname, join } from "node:path";
-import type { StorybookConfig } from '@storybook/react-webpack5';
+import type { StorybookConfig } from '@storybook/react-vite'
+import wasm from 'vite-plugin-wasm'
+import topLevelAwait from 'vite-plugin-top-level-await'
 
-const require = createRequire(import.meta.url);
 const config: StorybookConfig = {
   stories: [
     '../stories/**/*.mdx',
@@ -12,31 +11,40 @@ const config: StorybookConfig = {
   ],
 
   addons: [
-    getAbsolutePath("storybook-addon-swc"),
-    getAbsolutePath("@storybook/addon-links"),
-    getAbsolutePath("@storybook/addon-webpack5-compiler-swc"),
-    getAbsolutePath("@storybook/addon-docs")
+    "@storybook/addon-links",
+    "@storybook/addon-docs",
   ],
 
-  framework: {
-    name: getAbsolutePath("@storybook/react-webpack5"),
-    options: {},
-  },
+  framework: '@storybook/react-vite',
 
   // https://storybook.js.org/docs/sharing/storybook-composition
 
   staticDirs: ['../public'],
 
-  webpack: async (config) => {
-    config.experiments = {
-      asyncWebAssembly: true,
-      syncWebAssembly: true,
+  core: {
+    builder: '@storybook/builder-vite',
+    disableTelemetry: true,
+  },
+  async viteFinal(config, { configType }) {
+    config.plugins = [
+      ...(config.plugins || []),
+      wasm(),
+      topLevelAwait(),
+    ]
+    config.optimizeDeps = {
+      ...(config.optimizeDeps || {}),
+      include: [
+        ...(config.optimizeDeps?.include || []),
+        '@kitsuyui/rectangle-dividing',
+      ],
+    }
+    config.ssr = {
+      ...(config.ssr || {}),
+      noExternal: [
+        '@kitsuyui/rectangle-dividing',
+      ],
     }
     return config
   }
 }
 export default config
-
-function getAbsolutePath(value) {
-  return dirname(require.resolve(join(value, "package.json")));
-}
