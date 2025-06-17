@@ -2,6 +2,10 @@
   "name": "@kitsuyui/react-timer",
   "version": "0.0.0",
   "description": "A react component to display a timer",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kitsuyui/react-playground.git"
+  },
   "license": "MIT",
   "author": "Yui Kitsu <kitsuyui@kitsuyui.com>",
   "type": "module",
