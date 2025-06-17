@@ -19,15 +19,7 @@ export const Default: Story = {
   decorators: [
     (Story) => {
       return (
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            position: 'absolute',
-          }}
-        >
-          <Story />
-        </div>
+        <Story />
       )
     },
   ],
@@ -42,14 +34,14 @@ export const Default: Story = {
   },
 }
 
-export const Complex: Story = {
+export const Sized: Story = {
   args: {
     children: (
-      <div style={{ width: '300px', height: '200px', backgroundColor: 'lightblue', borderRadius: '8px' }}>
+      <div style={{ width: '300px', height: '200px', backgroundColor: 'lightblue', borderRadius: '8px'}}>
         <div style={{ fontSize: '2em', textAlign: 'center'}}>Zoomer Example</div>
         <div>
-          This is an example of the Zoomer component. It automatically adjusts the zoom level of its
-          children to fit within the specified width and height.
+          This content has a specified size. The Zoomer will adjust the zoom level while maintaining the aspect ratio.
+          The content will be put in the center of the container.
         </div>
       </div>
     )
@@ -57,15 +49,7 @@ export const Complex: Story = {
   decorators: [
     (Story) => {
       return (
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            position: 'absolute',
-          }}
-        >
-          <Story />
-        </div>
+        <Story />
       )
     }
   ],
@@ -79,3 +63,34 @@ export const Complex: Story = {
     },
   },
 }
+
+
+export const Unsized: Story = {
+  args: {
+    children: (
+      <div style={{ backgroundColor: 'lightgreen', borderRadius: '8px' }}>
+        <div style={{ fontSize: '2em', textAlign: 'center' }}>Zoomer Example</div>
+        <div>
+          This content does not have a specified size. The Zoomer will adjust the zoom level to fit within the container.
+        </div>
+      </div>
+    )
+  },
+  decorators: [
+    (Story) => {
+      return (
+        <Story />
+      )
+    }
+  ],
+  parameters: {
+    layout: 'fullscreen',
+    flexDirection: 'column',
+    docs: {
+      story: {
+        inline: false,
+      },
+    },
+  },
+}
+
