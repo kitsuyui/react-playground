@@ -12,23 +12,10 @@ jobs:
     runs-on: ubuntu-latest
 
     continue-on-error: true
-    strategy:
-      fail-fast: false
-      matrix:
-        package_name:
-          [
-            binary,
-            clock,
-            timer,
-            stopwatch,
-            dekamoji,
-            textfield,
-            wavebox,
-            measure,
-            treemap,
-            tab,
-            biticon,
-          ]
+
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
       - uses: actions/checkout@v4
@@ -37,7 +24,8 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: '24.2.0'
+          # https://nodejs.org/en/about/previous-releases
+          node-version: '24.x'
           registry-url: 'https://registry.npmjs.org'
           cache: pnpm
           cache-dependency-path: pnpm-lock.yaml
@@ -46,25 +34,32 @@ jobs:
         run: |
           pnpm install
           pnpm build
+          pnpm validate
 
-      - name: update version
-        working-directory: packages/${{ matrix.package_name }}
-        if: github.event_name == 'release'
+      - name: Set tag rc
+        if: github.event_name == 'pull_request'
         run: |
           git config user.email "dummy@dummy"
           git config user.name "dummy"
-          pnpm version from-git --allow-same-version --no-git-tag-version || true
+          # dummy tag for dry-run
+          git tag v999.999.999-rc.$GITHUB_RUN_NUMBER
+
+      - name: set git tag version
+        run: |
+          git config user.email "dummy@dummy"
+          git config user.name "dummy"
+          pnpm version from-git --allow-same-version --no-git-tag-version -ws || true
+          pnpm format
 
       - name: deploy
-        run: pnpm publish --access=public --no-git-checks --recursive
-        working-directory: packages/${{ matrix.package_name }}
+        # https://docs.npmjs.com/generating-provenance-statements
+        run: NPM_CONFIG_PROVENANCE=true pnpm publish --access=public --no-git-checks --recursive
         if: github.event_name == 'release' && !github.event.release.prerelease
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: deploy (dry-run)
-        run: pnpm publish --access=public --no-git-checks --dry-run --recursive
-        working-directory: packages/${{ matrix.package_name }}
+        run: NPM_CONFIG_PROVENANCE=true pnpm publish --access=public --no-git-checks --dry-run --recursive
         if: github.event_name != 'release' || github.event.release.prerelease
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
