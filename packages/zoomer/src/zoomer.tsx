@@ -2,6 +2,11 @@ import React from 'react'
 
 import { useMeasure } from 'react-use'
 
+// Avoid using `window` directly to ensure compatibility without browser globals. (e.g., in SSR environments)
+const window = globalThis.window || {
+  innerWidth: 2 ** 16,
+  innerHeight: 2 ** 16,
+}
 
 const EXPECT_MAX_RESOLUTION = Math.min(window.innerWidth, window.innerHeight)  // max resolution of the viewport
 const DEFAULT_MAX_ITERATIONS = Math.ceil(Math.log2(EXPECT_MAX_RESOLUTION))

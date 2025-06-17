@@ -4,6 +4,7 @@
   "description": "A component container that shape is changing time to time.",
   "license": "MIT",
   "author": "Yui Kitsu <kitsuyui@kitsuyui.com>",
+  "type": "module",
   "exports": {
     ".": {
       "require": {
@@ -11,13 +12,13 @@
         "default": "./dist/index.cjs"
       },
       "import": {
-        "type": "./dist/index.d.mts",
-        "default": "./dist/index.mjs"
+        "type": "./dist/index.d.ts",
+        "default": "./dist/index.js"
       }
     }
   },
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
@@ -39,7 +40,6 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-dom": "*",
-    "react-use": "*"
+    "react-dom": "*"
   }
 }

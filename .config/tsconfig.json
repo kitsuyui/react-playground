@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.json",
+  "include": [
+    "../packages/*/src/**/*.ts",
+    "../packages/*/src/**/*.tsx"
+  ],
+  "exclude": [
+    "../packages/*/dist",
+    "../packages/*/node_modules",
+    "../packages/*/src/stories",
+    "../packages/*/src/__snapshots__", 
+    "../packages/*/src/**/*.spec.ts",
+    "../packages/*/src/**/*.spec.tsx"
+  ],
+}

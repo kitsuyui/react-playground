@@ -15,7 +15,8 @@
     "prop-types": "^15.8.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "storybook": "^9.0.10"
+    "storybook": "^9.0.10",
+    "vite-plugin-cjs-interop": "^2.2.0"
   },
   "scripts": {
     "dev": "storybook dev -p 6006 --ci",
