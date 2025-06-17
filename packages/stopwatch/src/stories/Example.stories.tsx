@@ -13,7 +13,7 @@ interface StopwatchProps {
   toggle: () => void
 }
 
-import type { Meta, StoryObj } from '@storybook/react-webpack5'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const Stopwatch = () => {
   return (

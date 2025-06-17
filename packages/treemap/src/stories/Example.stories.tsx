@@ -1,7 +1,7 @@
 import { Measure } from '../../../measure'
 import { Treemap } from '../'
 
-import type { Meta, StoryObj } from '@storybook/react-webpack5'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const WeightedItems = [...Array(10)]
   .map((_, i) => i + 1)

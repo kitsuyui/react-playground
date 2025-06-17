@@ -1,6 +1,6 @@
 import { AnalogClock } from '../'
 
-import type { Meta, StoryObj } from '@storybook/react-webpack5'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof AnalogClock> = {
   title: 'Base/Clock/Analog',

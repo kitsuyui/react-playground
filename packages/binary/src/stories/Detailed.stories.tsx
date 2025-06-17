@@ -1,6 +1,6 @@
 import { DetailedBitString } from '../../'
 
-import type { Meta, StoryObj } from '@storybook/react-webpack5'
+import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof DetailedBitString> = {
   title: 'Base/Binary/Detailed',
