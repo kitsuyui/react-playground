@@ -26,7 +26,7 @@ const config: StorybookConfig = {
     builder: '@storybook/builder-vite',
     disableTelemetry: true,
   },
-  async viteFinal(config, { configType }) {
+  async viteFinal(config, _) {
     config.plugins = [
       ...(config.plugins || []),
       wasm(),

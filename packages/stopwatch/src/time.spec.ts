@@ -7,7 +7,7 @@ describe('calcElapsedTime', () => {
   test('returns elapsed time in seconds', () => {
     const startTime = new Date('2021-01-01T00:00:00Z')
     const elapsedTime = calcElapsedTime(startTime)
-    const expectedElapsedTime = (new Date().getTime() - startTime.getTime()) / 1000
+    const expectedElapsedTime = (Date.now()- startTime.getTime()) / 1000
     expect(elapsedTime).toBeCloseTo(expectedElapsedTime, 1)
   })
 })
