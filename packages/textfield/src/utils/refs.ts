@@ -36,7 +36,7 @@ const setRef = <T>(ref: OptionalRef<T>, value: T): Cleanup => {
 
   try {
     ref.current = value
-  } catch (error) {
+  } catch (_error) {
     throw new Error(`Cannot assign value '${value}' to ref '${ref}'`)
   }
 }

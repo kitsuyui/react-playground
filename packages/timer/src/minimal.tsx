@@ -16,7 +16,7 @@ export const MinimalTimer: React.FC<TimerContextValue> = (props): React.JSX.Elem
       <button
         type="button"
         name="incrementMinute"
-        onClick={(e) => {
+        onClick={(_e) => {
           incrementTimerValue(60)
         }}
       >
@@ -25,7 +25,7 @@ export const MinimalTimer: React.FC<TimerContextValue> = (props): React.JSX.Elem
       <button
         type="button"
         name="incrementSecond"
-        onClick={(e) => {
+        onClick={(_e) => {
           incrementTimerValue(1)
         }}
       >
@@ -34,7 +34,7 @@ export const MinimalTimer: React.FC<TimerContextValue> = (props): React.JSX.Elem
       <button
         type="submit"
         name="reset"
-        onClick={(e) => {
+        onClick={(_e) => {
           reset()
         }}
       >
@@ -42,7 +42,7 @@ export const MinimalTimer: React.FC<TimerContextValue> = (props): React.JSX.Elem
       </button>
       <button
         type="submit"
-        onClick={(e) => {
+        onClick={(_e) => {
           toggle()
         }}
       >
