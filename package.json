@@ -5,8 +5,8 @@
   "license": "MIT",
   "workspaces": [
     "config/*",
-    "packages/*",
-    "examples/*"
+    "examples/*",
+    "packages/*"
   ],
   "scripts": {
     "build": "pnpm -r --sequential build",
@@ -41,7 +41,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jsdom": "^26.1.0",
     "serve": "^14.2.4",
-    "sort-package-json": "^3.2.1",
+    "sort-package-json": "^3.3.1",
     "ts-node": "^10.9.2",
     "tsup": "^8.5.0",
     "typedoc": "^0.28.6",
