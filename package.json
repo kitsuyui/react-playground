@@ -46,7 +46,7 @@
     "tsup": "^8.5.0",
     "typedoc": "^0.28.7",
     "typescript": "^5.8.3",
-    "validate-package-exports": "^0.11.0",
+    "validate-package-exports": "^0.12.0",
     "vite-plugin-top-level-await": "^1.5.0",
     "vite-plugin-wasm": "^3.4.1",
     "vitest": "^3.2.4"
