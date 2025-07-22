@@ -10,6 +10,7 @@
   ],
   "scripts": {
     "build": "pnpm -r --sequential build",
+    "check-module-isolation": "find packages -type d -name src -print -exec pnpm ts-module-isolation -- {} \\;",
     "dev": "pnpm --parallel dev",
     "format": "pnpm format:biome && pnpm format:package-json",
     "format:biome": "biome lint --write ./",
@@ -42,6 +43,7 @@
     "jsdom": "^26.1.0",
     "serve": "^14.2.4",
     "sort-package-json": "^3.4.0",
+    "ts-module-isolation": "^1.0.2",
     "ts-node": "^10.9.2",
     "tsup": "^8.5.0",
     "typedoc": "^0.28.7",
