@@ -66,8 +66,8 @@ importers:
         specifier: ^5.8.3
         version: 5.8.3
       validate-package-exports:
-        specifier: ^0.12.0
-        version: 0.12.0
+        specifier: ^0.13.0
+        version: 0.13.0
       vite-plugin-top-level-await:
         specifier: ^1.6.0
         version: 1.6.0(rollup@4.45.1)(vite@7.0.5(@types/node@24.1.0)(yaml@2.8.0))
@@ -806,8 +806,8 @@ packages:
     resolution: {integrity: sha512-S79NdEgDQd/NGCay6TCoVzXSj74skRZIKJcpJjC5lOq34SZzyI6MqtiiWoiVWoVrTcGjNeC4ipbh1VIHlpfF5Q==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
-  '@npmcli/arborist@9.1.2':
-    resolution: {integrity: sha512-KIuQc8TuMTcL8OTVmOTdVIXmkDFFOHmVlVd94N9wwHjuOA2ZyNsoJPS50Q/irdkS3LF/9BiIcxSIV/ukSjqO6g==}
+  '@npmcli/arborist@9.1.3':
+    resolution: {integrity: sha512-PvwtZD1dipP5VByHyWX28tZfan1AkfBLenJTgr0rDdEbdovZc06Z5PHdGb5SEeN7EERl68wFH8lq6WvuUHmgrw==}
     engines: {node: ^20.17.0 || >=22.9.0}
     hasBin: true
 
@@ -1400,8 +1400,8 @@ packages:
   '@vitest/utils@3.2.4':
     resolution: {integrity: sha512-fB2V0JFrQSMsCo9HiSq3Ezpdv4iYaXRG1Sx8edX3MwxfyNn83mKiGzOcH+Fkxt4MHxr3y42fQi1oeAInqgX2QA==}
 
-  '@webdeveric/utils@0.67.0':
-    resolution: {integrity: sha512-MxbrBx4dqCRnLR40Q8J7gjm5hN/UzoqaOVBTBqVsu2ZVHoOvAE1VuWvEj6V8lHNMh3p73QNtGbeWr00jqjKtHw==}
+  '@webdeveric/utils@0.69.0':
+    resolution: {integrity: sha512-WLf+fViXfrRmz6+zswUast0jqwF+2x1ffpbURhEHuBvklWsx8k7DzgEItwGZ1wPJ7AkA3X/Mdl5qoykIQxzJFw==}
     engines: {node: '>=18.0.0'}
 
   '@xobotyi/scrollbar-width@1.9.5':
@@ -1920,9 +1920,9 @@ packages:
     resolution: {integrity: sha512-00n6YnVHKrinT9t0d9+5yZC6UBNJANpYEQvL2LlX6Ab9lnmxzIRcEmTPuyGScvl1+jKuCICX1Z0Ab1pPKKdikA==}
     engines: {node: '>=4'}
 
-  ignore-walk@7.0.0:
-    resolution: {integrity: sha512-T4gbf83A4NH95zvhVYZc+qWocBBGlpzUXLPGurJggw/WIOwicfXJChLDP/iBZnN5WqROSu5Bm3hhle4z8a8YGQ==}
-    engines: {node: ^18.17.0 || >=20.5.0}
+  ignore-walk@8.0.0:
+    resolution: {integrity: sha512-FCeMZT4NiRQGh+YkeKMtWrOmBgWjHjMJ26WQWrRQyoyzqevdaGSakUaJW5xQYmjLlUVk2qUnCjYVBax9EKKg8A==}
+    engines: {node: ^20.17.0 || >=22.9.0}
 
   imurmurhash@0.1.4:
     resolution: {integrity: sha512-JmXMZ6wuvDmLiHEml9ykzqO6lwFbof0GG4IkcGaENdCRDDmMVnny7s5HsIgHCbaq0w2MyPhDqkhTUgS2LU2PHA==}
@@ -2289,8 +2289,8 @@ packages:
     resolution: {integrity: sha512-f1NpFjNI9O4VbKMOlA5QoBq/vSQPORHcTZ2feJpFkTHJ9eQkdlmZEKSjcAhxTGInC7RlEyScT9ui67NaOsjFWA==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
-  npm-packlist@10.0.0:
-    resolution: {integrity: sha512-rht9U6nS8WOBDc53eipZNPo5qkAV4X2rhKE2Oj1DYUQ3DieXfj0mKkVmjnf3iuNdtMd8WfLdi2L6ASkD/8a+Kg==}
+  npm-packlist@10.0.1:
+    resolution: {integrity: sha512-vaC03b2PqJA6QqmwHi1jNU8fAPXEnnyv4j/W4PVfgm24C4/zZGSVut3z0YUeN0WIFCo1oGOL02+6LbvFK7JL4Q==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
   npm-pick-manifest@10.0.0:
@@ -2980,8 +2980,8 @@ packages:
     resolution: {integrity: sha512-OaI//3H0J7ZkR1OqlhGA8cA+Cbk/2xFOQpJOt5+s27/ta9eZwpeervh4Mxh4w0im/kdgktowaqVNR7QOrUd7Yg==}
     engines: {node: ^18.17.0 || >=20.5.0}
 
-  validate-package-exports@0.12.0:
-    resolution: {integrity: sha512-DLt3lE0epCvmJUlmP+eSfvNyhQMGy53yDAQAsv436nL0IHD6epBSszRyY1VBBFk/72YYsy23s/aFwOJeK4VLkw==}
+  validate-package-exports@0.13.0:
+    resolution: {integrity: sha512-weoY5KcYDEhHq3NMCFRAHQK7ZWdH/bV60UujYp4X2y0+B2ukDv8gT70J4vHFLe5CqslJmuunX+LwLnW8pwOczw==}
     engines: {node: '>=20.17.0'}
     hasBin: true
 
@@ -3531,7 +3531,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@npmcli/arborist@9.1.2':
+  '@npmcli/arborist@9.1.3':
     dependencies:
       '@isaacs/string-locale-compare': 1.1.0
       '@npmcli/fs': 4.0.0
@@ -4163,7 +4163,7 @@ snapshots:
       loupe: 3.1.4
       tinyrainbow: 2.0.0
 
-  '@webdeveric/utils@0.67.0': {}
+  '@webdeveric/utils@0.69.0': {}
 
   '@xobotyi/scrollbar-width@1.9.5': {}
 
@@ -4654,9 +4654,9 @@ snapshots:
     dependencies:
       harmony-reflect: 1.6.2
 
-  ignore-walk@7.0.0:
+  ignore-walk@8.0.0:
     dependencies:
-      minimatch: 9.0.5
+      minimatch: 10.0.3
 
   imurmurhash@0.1.4: {}
 
@@ -5013,9 +5013,9 @@ snapshots:
       semver: 7.7.2
       validate-npm-package-name: 6.0.1
 
-  npm-packlist@10.0.0:
+  npm-packlist@10.0.1:
     dependencies:
-      ignore-walk: 7.0.0
+      ignore-walk: 8.0.0
 
   npm-pick-manifest@10.0.0:
     dependencies:
@@ -5093,7 +5093,7 @@ snapshots:
       fs-minipass: 3.0.3
       minipass: 7.1.2
       npm-package-arg: 12.0.2
-      npm-packlist: 10.0.0
+      npm-packlist: 10.0.1
       npm-pick-manifest: 10.0.0
       npm-registry-fetch: 18.0.2
       proc-log: 5.0.0
@@ -5783,11 +5783,11 @@ snapshots:
 
   validate-npm-package-name@6.0.1: {}
 
-  validate-package-exports@0.12.0:
+  validate-package-exports@0.13.0:
     dependencies:
-      '@npmcli/arborist': 9.1.2
-      '@webdeveric/utils': 0.67.0
-      npm-packlist: 10.0.0
+      '@npmcli/arborist': 9.1.3
+      '@webdeveric/utils': 0.69.0
+      npm-packlist: 10.0.1
     transitivePeerDependencies:
       - supports-color
 
