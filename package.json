@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "pnpm -r --sequential build",
-    "check-module-isolation": "find packages -type d -name src -print -exec pnpm ts-module-isolation -- {} \\;",
+    "check-module-isolation": "find packages -type d -name src -print -exec pnpm ts-module-isolation -- {} +",
     "dev": "pnpm --parallel dev",
     "format": "pnpm format:biome && pnpm format:package-json",
     "format:biome": "biome lint --write ./",
