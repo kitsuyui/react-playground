@@ -46,7 +46,7 @@
     "ts-module-isolation": "^1.0.2",
     "ts-node": "^10.9.2",
     "tsup": "^8.5.0",
-    "typedoc": "^0.28.7",
+    "typedoc": "^0.28.8",
     "typescript": "^5.8.3",
     "validate-package-exports": "^0.13.0",
     "vite-plugin-top-level-await": "^1.6.0",
