@@ -24,7 +24,7 @@ importers:
         specifier: ^14.6.1
         version: 14.6.1(@testing-library/dom@10.4.1)
       '@types/node':
-        specifier: ^24.2.1
+        specifier: ^24.3.0
         version: 24.3.0
       '@types/react':
         specifier: ^19.1.10
@@ -218,7 +218,7 @@ importers:
   packages/dekamoji:
     devDependencies:
       '@types/node':
-        specifier: ^24.2.1
+        specifier: ^24.3.0
         version: 24.3.0
       '@types/react':
         specifier: ^19.1.10
@@ -369,7 +369,7 @@ importers:
   packages/wavebox:
     devDependencies:
       '@types/node':
-        specifier: ^24.2.1
+        specifier: ^24.3.0
         version: 24.3.0
       '@types/react':
         specifier: ^19.1.10
@@ -390,7 +390,7 @@ importers:
   packages/zoomer:
     devDependencies:
       '@types/node':
-        specifier: ^24.2.1
+        specifier: ^24.3.0
         version: 24.3.0
       '@types/react':
         specifier: ^19.1.10
