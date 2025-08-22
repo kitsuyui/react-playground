@@ -32,7 +32,7 @@ jobs:
           mv ./examples/storybook/storybook-static ./build/sites/storybook
           mv ./build/typedocs ./build/sites/typedocs
 
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v4
         id: deployment
         with:
           path: ./build/sites
