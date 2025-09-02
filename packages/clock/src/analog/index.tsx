@@ -292,6 +292,9 @@ const Lines = (props: {
   return <>{lines}</>
 }
 
+type DominantBaseline = "inherit" | "auto" | "middle" | "central" | "use-script" | "no-change" | "reset-size" | "ideographic" | "alphabetic" | "hanging" | "mathematical" | "text-after-edge" | "text-before-edge" | undefined
+type TextAnchor = "start" | "middle" | "end" | "inherit" | undefined
+
 const Faces = (props: {
   centerX: number
   centerY: number
@@ -308,6 +311,12 @@ const Faces = (props: {
     fontSize: textSize,
     fontFamily: 'monospace',
     fill: 'black',
+  } satisfies {
+    textAnchor: TextAnchor
+    dominantBaseline: DominantBaseline
+    fontSize: number
+    fontFamily: string
+    fill: string
   }
   for (let i = 0; i < 12; i++) {
     const degree = (360 / 12) * i

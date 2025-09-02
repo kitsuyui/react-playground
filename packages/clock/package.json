@@ -37,8 +37,8 @@
   "devDependencies": {
     "@kitsuyui/number-time": "^0.2.1",
     "@types/luxon": "^3.7.1",
-    "@types/react": "^19.1.10",
-    "@types/react-dom": "^19.1.7",
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-use": "^17.6.0"
