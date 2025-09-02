@@ -62,16 +62,16 @@
   "files": {
     "includes": [
       "**",
-      "!**/node_modules/**",
+      "!**/node_modules",
       "!**/dist/**/*",
-      "!**/build/**",
-      "!**/storybook-static/**",
-      "!**/coverage/**",
+      "!**/build",
+      "!**/storybook-static",
+      "!**/coverage",
       "!**/*.md",
       "!**/*.yml",
       "!**/*.mdx",
       "!**/*.snap",
-      "!**/examples/storybook/playwright-report/**",
+      "!**/examples/storybook/playwright-report",
       "!**/*.wav",
       "!**/pnpm-lock.yaml"
     ]
