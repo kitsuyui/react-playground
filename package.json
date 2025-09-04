@@ -41,7 +41,7 @@
     "blocks": "link:@storybook/addon-docs/blocks",
     "identity-obj-proxy": "^3.0.0",
     "jsdom": "^26.1.0",
-    "serve": "^14.2.4",
+    "serve": "^14.2.5",
     "sort-package-json": "^3.4.0",
     "ts-module-isolation": "^1.0.2",
     "ts-node": "^10.9.2",
