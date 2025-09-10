@@ -1,4 +1,0 @@
-# https://docs.codecov.com/docs
-fixes:
-  # https://docs.codecov.com/docs/fixing-paths
-  - packages/*/coverage/lcov.info
