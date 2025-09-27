@@ -20,7 +20,7 @@ exports[`DetailedBit component > renders with big endian bit order 1`] = `
     style="display: inline-block; font-family: monospace; margin: 0.5px;"
   >
     <div
-      style="color: rgb(153, 153, 153); background-color: rgb(0, 0, 0); border: 1px solid rgb(204, 204, 204);"
+      style="color: rgb(153, 153, 153); background-color: rgb(0, 0, 0);"
     >
       1
     </div>
@@ -39,7 +39,7 @@ exports[`DetailedBit component > renders with little endian bit order 1`] = `
     style="display: inline-block; font-family: monospace; margin: 0.5px;"
   >
     <div
-      style="color: rgb(153, 153, 153); background-color: rgb(0, 0, 0); border: 1px solid rgb(204, 204, 204);"
+      style="color: rgb(153, 153, 153); background-color: rgb(0, 0, 0);"
     >
       1
     </div>
@@ -72,7 +72,7 @@ exports[`DetailedBit component > should render "1" for stand=true and overflow=f
     style="display: inline-block; font-family: monospace; margin: 0.5px;"
   >
     <div
-      style="color: rgb(153, 153, 153); background-color: rgb(0, 0, 0); border: 1px solid rgb(204, 204, 204);"
+      style="color: rgb(153, 153, 153); background-color: rgb(0, 0, 0);"
     >
       1
     </div>
@@ -86,7 +86,7 @@ exports[`DetailedBitString component > should render properly with 8 bits 1`] = 
     style="display: inline-block; font-family: monospace; margin: 0.5px;"
   >
     <div
-      style="color: rgb(153, 153, 153); background-color: rgb(0, 0, 0); border: 1px solid rgb(204, 204, 204);"
+      style="color: rgb(153, 153, 153); background-color: rgb(0, 0, 0);"
     >
       1
     </div>
@@ -95,7 +95,7 @@ exports[`DetailedBitString component > should render properly with 8 bits 1`] = 
     style="display: inline-block; font-family: monospace; margin: 0.5px;"
   >
     <div
-      style="color: rgb(204, 204, 204); background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204);"
+      style="color: rgb(204, 204, 204); background-color: rgb(255, 255, 255);"
     >
       0
     </div>
@@ -104,7 +104,7 @@ exports[`DetailedBitString component > should render properly with 8 bits 1`] = 
     style="display: inline-block; font-family: monospace; margin: 0.5px;"
   >
     <div
-      style="color: rgb(153, 153, 153); background-color: rgb(0, 0, 0); border: 1px solid rgb(204, 204, 204);"
+      style="color: rgb(153, 153, 153); background-color: rgb(0, 0, 0);"
     >
       1
     </div>
@@ -113,7 +113,7 @@ exports[`DetailedBitString component > should render properly with 8 bits 1`] = 
     style="display: inline-block; font-family: monospace; margin: 0.5px;"
   >
     <div
-      style="color: rgb(204, 204, 204); background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204);"
+      style="color: rgb(204, 204, 204); background-color: rgb(255, 255, 255);"
     >
       0
     </div>
@@ -122,7 +122,7 @@ exports[`DetailedBitString component > should render properly with 8 bits 1`] = 
     style="display: inline-block; font-family: monospace; margin: 0.5px;"
   >
     <div
-      style="color: rgb(153, 153, 153); background-color: rgb(0, 0, 0); border: 1px solid rgb(204, 204, 204);"
+      style="color: rgb(153, 153, 153); background-color: rgb(0, 0, 0);"
     >
       1
     </div>
@@ -131,7 +131,7 @@ exports[`DetailedBitString component > should render properly with 8 bits 1`] = 
     style="display: inline-block; font-family: monospace; margin: 0.5px;"
   >
     <div
-      style="color: rgb(204, 204, 204); background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204);"
+      style="color: rgb(204, 204, 204); background-color: rgb(255, 255, 255);"
     >
       0
     </div>
@@ -140,7 +140,7 @@ exports[`DetailedBitString component > should render properly with 8 bits 1`] = 
     style="display: inline-block; font-family: monospace; margin: 0.5px;"
   >
     <div
-      style="color: rgb(153, 153, 153); background-color: rgb(0, 0, 0); border: 1px solid rgb(204, 204, 204);"
+      style="color: rgb(153, 153, 153); background-color: rgb(0, 0, 0);"
     >
       1
     </div>
@@ -149,7 +149,7 @@ exports[`DetailedBitString component > should render properly with 8 bits 1`] = 
     style="display: inline-block; font-family: monospace; margin: 0.5px;"
   >
     <div
-      style="color: rgb(204, 204, 204); background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204);"
+      style="color: rgb(204, 204, 204); background-color: rgb(255, 255, 255);"
     >
       0
     </div>
