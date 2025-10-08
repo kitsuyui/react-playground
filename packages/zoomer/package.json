@@ -35,7 +35,7 @@
     "validate": "validate-package-exports --check --verify"
   },
   "devDependencies": {
-    "@types/node": "^24.6.2",
+    "@types/node": "^24.7.0",
     "@types/react": "^19.2.2",
     "@types/react-dom": "^19.2.1",
     "react": "^19.2.0",
