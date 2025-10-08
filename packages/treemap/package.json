@@ -35,8 +35,8 @@
     "validate": "echo 'No validation script defined. Because of this package is using WASM'"
   },
   "devDependencies": {
-    "@types/react": "^19.2.0",
-    "@types/react-dom": "^19.2.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-use": "^17.6.0"
