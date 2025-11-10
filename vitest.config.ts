@@ -12,7 +12,7 @@ export default defineConfig({
       // workaround for testing with wasm
       '@kitsuyui/rectangle-dividing',
 
-      // react-use will be bundled (See also tsup.config.ts)
+      // react-use will be bundled (See also tsdown.config.ts)
       'react-use',
     ],
   },
