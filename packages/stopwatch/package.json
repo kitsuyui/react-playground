@@ -36,8 +36,8 @@
   },
   "devDependencies": {
     "@kitsuyui/number-time": "^0.2.1",
-    "@types/react": "^19.2.3",
-    "@types/react-dom": "^19.2.2",
+    "@types/react": "^19.2.4",
+    "@types/react-dom": "^19.2.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-use": "^17.6.0"
