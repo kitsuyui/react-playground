@@ -34,7 +34,7 @@ importers:
         version: 19.2.3(@types/react@19.2.4)
       '@vitest/coverage-v8':
         specifier: 4.0.8
-        version: 4.0.8(vitest@4.0.8(@types/node@24.10.1)(jsdom@27.1.0)(yaml@2.8.1))
+        version: 4.0.8(vitest@4.0.8(@types/node@24.10.1)(jsdom@27.2.0)(yaml@2.8.1))
       blocks:
         specifier: link:@storybook/addon-docs/blocks
         version: link:@storybook/addon-docs/blocks
@@ -42,8 +42,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0
       jsdom:
-        specifier: ^27.1.0
-        version: 27.1.0
+        specifier: ^27.2.0
+        version: 27.2.0
       serve:
         specifier: ^14.2.5
         version: 14.2.5
@@ -76,7 +76,7 @@ importers:
         version: 3.5.0(vite@7.2.2(@types/node@24.10.1)(yaml@2.8.1))
       vitest:
         specifier: ^4.0.8
-        version: 4.0.8(@types/node@24.10.1)(jsdom@27.1.0)(yaml@2.8.1)
+        version: 4.0.8(@types/node@24.10.1)(jsdom@27.2.0)(yaml@2.8.1)
 
   examples/storybook:
     dependencies:
@@ -2214,8 +2214,8 @@ packages:
   js-tokens@9.0.1:
     resolution: {integrity: sha512-mxa9E9ITFOt0ban3j6L5MpjwegGz6lBQmM1IJkWeBZGcMxto50+eWdjC/52xDbS2vy0k7vIMK0Fe2wfL9OQSpQ==}
 
-  jsdom@27.1.0:
-    resolution: {integrity: sha512-Pcfm3eZ+eO4JdZCXthW9tCDT3nF4K+9dmeZ+5X39n+Kqz0DDIABRP5CAEOHRFZk8RGuC2efksTJxrjp8EXCunQ==}
+  jsdom@27.2.0:
+    resolution: {integrity: sha512-454TI39PeRDW1LgpyLPyURtB4Zx1tklSr6+OFOipsxGUH1WMTvk6C65JQdrj455+DP2uJ1+veBEHTGFKWVLFoA==}
     engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
     peerDependencies:
       canvas: ^3.0.0
@@ -4339,7 +4339,7 @@ snapshots:
 
   '@types/unist@3.0.3': {}
 
-  '@vitest/coverage-v8@4.0.8(vitest@4.0.8(@types/node@24.10.1)(jsdom@27.1.0)(yaml@2.8.1))':
+  '@vitest/coverage-v8@4.0.8(vitest@4.0.8(@types/node@24.10.1)(jsdom@27.2.0)(yaml@2.8.1))':
     dependencies:
       '@bcoe/v8-coverage': 1.0.2
       '@vitest/utils': 4.0.8
@@ -4352,7 +4352,7 @@ snapshots:
       magicast: 0.5.1
       std-env: 3.10.0
       tinyrainbow: 3.0.3
-      vitest: 4.0.8(@types/node@24.10.1)(jsdom@27.1.0)(yaml@2.8.1)
+      vitest: 4.0.8(@types/node@24.10.1)(jsdom@27.2.0)(yaml@2.8.1)
     transitivePeerDependencies:
       - supports-color
 
@@ -5002,7 +5002,7 @@ snapshots:
 
   js-tokens@9.0.1: {}
 
-  jsdom@27.1.0:
+  jsdom@27.2.0:
     dependencies:
       '@acemir/cssom': 0.9.23
       '@asamuzakjp/dom-selector': 6.7.4
@@ -6057,7 +6057,7 @@ snapshots:
       fsevents: 2.3.3
       yaml: 2.8.1
 
-  vitest@4.0.8(@types/node@24.10.1)(jsdom@27.1.0)(yaml@2.8.1):
+  vitest@4.0.8(@types/node@24.10.1)(jsdom@27.2.0)(yaml@2.8.1):
     dependencies:
       '@vitest/expect': 4.0.8
       '@vitest/mocker': 4.0.8(vite@7.2.2(@types/node@24.10.1)(yaml@2.8.1))
@@ -6081,7 +6081,7 @@ snapshots:
       why-is-node-running: 2.3.0
     optionalDependencies:
       '@types/node': 24.10.1
-      jsdom: 27.1.0
+      jsdom: 27.2.0
     transitivePeerDependencies:
       - jiti
       - less
