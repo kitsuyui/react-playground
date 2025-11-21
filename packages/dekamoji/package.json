@@ -29,8 +29,8 @@
     "package.json"
   ],
   "scripts": {
-    "build": "tsdown --clean",
-    "dev": "tsdown --watch",
+    "build": "tsdown",
+    "dev": "tsdown --no-clean --watch",
     "test": "vitest run",
     "validate": "validate-package-exports --check --verify"
   },
