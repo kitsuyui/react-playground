@@ -54,7 +54,7 @@ importers:
         specifier: ^0.16.8
         version: 0.16.8(typescript@5.9.3)
       typedoc:
-        specifier: ^0.28.14
+        specifier: ^0.28.15
         version: 0.28.15(typescript@5.9.3)
       typescript:
         specifier: ^5.9.3
