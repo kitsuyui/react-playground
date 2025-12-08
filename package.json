@@ -39,7 +39,7 @@
     "@types/react-dom": "^19.2.3",
     "@vitest/coverage-v8": "4.0.15",
     "blocks": "link:@storybook/addon-docs/blocks",
-    "jsdom": "^27.2.0",
+    "jsdom": "^27.3.0",
     "serve": "^14.2.5",
     "sort-package-json": "^3.5.0",
     "ts-module-isolation": "^1.0.2",
