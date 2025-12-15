@@ -45,7 +45,7 @@ importers:
         specifier: ^14.2.5
         version: 14.2.5
       sort-package-json:
-        specifier: ^3.5.1
+        specifier: ^3.6.0
         version: 3.6.0
       ts-module-isolation:
         specifier: ^1.0.2
