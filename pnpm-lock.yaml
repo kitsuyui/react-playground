@@ -39,7 +39,7 @@ importers:
         specifier: link:@storybook/addon-docs/blocks
         version: link:@storybook/addon-docs/blocks
       jsdom:
-        specifier: ^27.3.0
+        specifier: ^27.4.0
         version: 27.4.0
       serve:
         specifier: ^14.2.5
