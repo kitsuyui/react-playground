@@ -60,8 +60,8 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
       validate-package-exports:
-        specifier: ^0.14.0
-        version: 0.14.0
+        specifier: ^0.15.0
+        version: 0.15.0
       vite-plugin-top-level-await:
         specifier: ^1.6.0
         version: 1.6.0(rollup@4.55.1)(vite@7.3.1(@types/node@24.10.7)(yaml@2.8.2))
@@ -1579,8 +1579,8 @@ packages:
   '@vitest/utils@4.0.16':
     resolution: {integrity: sha512-h8z9yYhV3e1LEfaQ3zdypIrnAg/9hguReGZoS7Gl0aBG5xgA410zBqECqmaF/+RkTggRsfnzc1XaAHA6bmUufA==}
 
-  '@webdeveric/utils@0.72.0':
-    resolution: {integrity: sha512-CJHJteyzH8ZH3A5MEI2jlCRk7unUw6+D9NSZ2RaDydT9lGwXHbJbmDD7Xv3/7LZY9VzLkE5Dw3Yyc7ECCCm6nw==}
+  '@webdeveric/utils@0.74.1':
+    resolution: {integrity: sha512-N8QDJfLedKyd9f26dRFeOQzlIYob5dK4Cna9Dw1gwLnAX5mFrLkkEGf9lNHYvv+TQmBVAAtHRQww9Rdv/9vXEg==}
     engines: {node: '>=18.0.0'}
 
   '@xobotyi/scrollbar-width@1.9.5':
@@ -3057,8 +3057,8 @@ packages:
     resolution: {integrity: sha512-hVDIBwsRruT73PbK7uP5ebUt+ezEtCmzZz3F59BSr2F6OVFnJ/6h8liuvdLrQ88Xmnk6/+xGGuq+pG9WwTuy3A==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  validate-package-exports@0.14.0:
-    resolution: {integrity: sha512-QWcHBMI30gqIUcIbNIGmomy4JNUxB/Iigos+tMVkz7hhU/G3WCSrjFPPz7vz4D3g/TBjTFkcG2tYHQrjflw09A==}
+  validate-package-exports@0.15.0:
+    resolution: {integrity: sha512-qGioy9rl8H0nHgy3zgNMXia4l32Ogg9MfD1wPXF12OpdhcWHP8dSJ++g2xXP62LawjGeIwHzZM+fZ876QtRBrQ==}
     engines: {node: '>=20.17.0'}
     hasBin: true
 
@@ -4320,7 +4320,7 @@ snapshots:
       '@vitest/pretty-format': 4.0.16
       tinyrainbow: 3.0.3
 
-  '@webdeveric/utils@0.72.0': {}
+  '@webdeveric/utils@0.74.1': {}
 
   '@xobotyi/scrollbar-width@1.9.5': {}
 
@@ -5845,10 +5845,10 @@ snapshots:
 
   validate-npm-package-name@7.0.2: {}
 
-  validate-package-exports@0.14.0:
+  validate-package-exports@0.15.0:
     dependencies:
       '@npmcli/arborist': 9.1.9
-      '@webdeveric/utils': 0.72.0
+      '@webdeveric/utils': 0.74.1
       npm-packlist: 10.0.3
     transitivePeerDependencies:
       - supports-color
