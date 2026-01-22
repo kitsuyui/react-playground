@@ -51,5 +51,5 @@
     "vite-plugin-wasm": "^3.5.0",
     "vitest": "^4.0.17"
   },
-  "packageManager": "pnpm@10.28.0"
+  "packageManager": "pnpm@10.28.1"
 }
