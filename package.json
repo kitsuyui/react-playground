@@ -41,7 +41,7 @@
     "blocks": "link:@storybook/addon-docs/blocks",
     "jsdom": "^27.4.0",
     "serve": "^14.2.5",
-    "sort-package-json": "^3.6.0",
+    "sort-package-json": "^3.6.1",
     "ts-module-isolation": "^1.0.2",
     "tsdown": "^0.19.0",
     "typedoc": "^0.28.16",
