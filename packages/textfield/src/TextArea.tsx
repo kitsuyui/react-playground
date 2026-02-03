@@ -91,7 +91,7 @@ export const TextArea = (props: WrapperProps) => {
       onInputChunk?.(text)
       onBlur?.(e)
     },
-    [onInputChunk, onChangeInputting, onBlur]
+    [onInputChunk, onChangeInputting]
   )
 
   return (

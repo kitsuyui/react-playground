@@ -25,4 +25,5 @@ export default defineConfig({
     // https://github.com/streamich/react-use/blob/master/LICENSE
     'react-use',
   ],
+  inlineOnly: false,
 })
