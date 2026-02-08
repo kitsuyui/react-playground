@@ -9,7 +9,7 @@ importers:
   .:
     devDependencies:
       '@biomejs/biome':
-        specifier: ^2.3.13
+        specifier: ^2.3.14
         version: 2.3.14
       '@storybook/addon-docs':
         specifier: ^10.2.3
