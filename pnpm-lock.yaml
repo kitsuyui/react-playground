@@ -27,7 +27,7 @@ importers:
         specifier: ^25.2.1
         version: 25.2.1
       '@types/react':
-        specifier: ^19.2.10
+        specifier: ^19.2.13
         version: 19.2.13
       '@types/react-dom':
         specifier: ^19.2.3
@@ -151,7 +151,7 @@ importers:
   packages/binary:
     devDependencies:
       '@types/react':
-        specifier: ^19.2.10
+        specifier: ^19.2.13
         version: 19.2.13
       '@types/react-dom':
         specifier: ^19.2.3
@@ -169,7 +169,7 @@ importers:
         specifier: ^0.2.1
         version: 0.2.1
       '@types/react':
-        specifier: ^19.2.10
+        specifier: ^19.2.13
         version: 19.2.13
       '@types/react-dom':
         specifier: ^19.2.3
@@ -194,7 +194,7 @@ importers:
         specifier: ^3.7.1
         version: 3.7.1
       '@types/react':
-        specifier: ^19.2.10
+        specifier: ^19.2.13
         version: 19.2.13
       '@types/react-dom':
         specifier: ^19.2.3
@@ -215,7 +215,7 @@ importers:
         specifier: ^25.2.1
         version: 25.2.1
       '@types/react':
-        specifier: ^19.2.10
+        specifier: ^19.2.13
         version: 19.2.13
       '@types/react-dom':
         specifier: ^19.2.3
@@ -233,7 +233,7 @@ importers:
   packages/hello:
     devDependencies:
       '@types/react':
-        specifier: ^19.2.10
+        specifier: ^19.2.13
         version: 19.2.13
       '@types/react-dom':
         specifier: ^19.2.3
@@ -248,7 +248,7 @@ importers:
   packages/measure:
     devDependencies:
       '@types/react':
-        specifier: ^19.2.10
+        specifier: ^19.2.13
         version: 19.2.13
       '@types/react-dom':
         specifier: ^19.2.3
@@ -269,7 +269,7 @@ importers:
         specifier: ^0.2.1
         version: 0.2.1
       '@types/react':
-        specifier: ^19.2.10
+        specifier: ^19.2.13
         version: 19.2.13
       '@types/react-dom':
         specifier: ^19.2.3
@@ -287,7 +287,7 @@ importers:
   packages/tab:
     devDependencies:
       '@types/react':
-        specifier: ^19.2.10
+        specifier: ^19.2.13
         version: 19.2.13
       '@types/react-dom':
         specifier: ^19.2.3
@@ -302,7 +302,7 @@ importers:
   packages/textfield:
     devDependencies:
       '@types/react':
-        specifier: ^19.2.10
+        specifier: ^19.2.13
         version: 19.2.13
       '@types/react-dom':
         specifier: ^19.2.3
@@ -320,7 +320,7 @@ importers:
         specifier: ^0.2.1
         version: 0.2.1
       '@types/react':
-        specifier: ^19.2.10
+        specifier: ^19.2.13
         version: 19.2.13
       '@types/react-dom':
         specifier: ^19.2.3
@@ -345,7 +345,7 @@ importers:
         version: 0.1.4
     devDependencies:
       '@types/react':
-        specifier: ^19.2.10
+        specifier: ^19.2.13
         version: 19.2.13
       '@types/react-dom':
         specifier: ^19.2.3
@@ -366,7 +366,7 @@ importers:
         specifier: ^25.2.1
         version: 25.2.1
       '@types/react':
-        specifier: ^19.2.10
+        specifier: ^19.2.13
         version: 19.2.13
       '@types/react-dom':
         specifier: ^19.2.3
@@ -387,7 +387,7 @@ importers:
         specifier: ^25.2.1
         version: 25.2.1
       '@types/react':
-        specifier: ^19.2.10
+        specifier: ^19.2.13
         version: 19.2.13
       '@types/react-dom':
         specifier: ^19.2.3
