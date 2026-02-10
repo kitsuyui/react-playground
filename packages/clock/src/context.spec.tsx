@@ -2,26 +2,30 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { render } from '@testing-library/react'
 
-import { StopwatchContextProvider, StopwatchContext } from './context'
+import { ClockContext, ClockContextProvider } from './context'
 import React from 'react'
 
-describe('StopwatchContextProvider', () => {
+describe('ClockContextProvider', () => {
+  const baseTime = new Date('2020-01-01T00:00:00.000Z')
+
   beforeEach(() => {
     vi.useFakeTimers()
+    vi.setSystemTime(baseTime)
   })
+
   afterEach(() => {
     vi.restoreAllMocks()
   })
+
   it('provides context', () => {
     const ContextReceiver = () => {
-      const context = React.useContext(StopwatchContext)
-      const valueString = JSON.stringify(Object.keys(context).sort())
-      return <>{valueString}</>
+      const context = React.useContext(ClockContext)
+      return <>{context.toISOString()}</>
     }
     const { asFragment } = render(
-      <StopwatchContextProvider>
+      <ClockContextProvider>
         <ContextReceiver />
-      </StopwatchContextProvider>
+      </ClockContextProvider>
     )
     vi.advanceTimersByTime(10) // refresh interval
     expect(asFragment()).toMatchSnapshot()
