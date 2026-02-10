@@ -1,9 +1,16 @@
-import { expect, describe, it } from 'vitest'
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { render, cleanup } from '@testing-library/react'
+import { render } from '@testing-library/react'
 
 import { WaveBox, WaveBoxContext, WaveBoxProvider } from './wavebox'
 import React from 'react'
+
+beforeEach(() => {
+  vi.useFakeTimers()
+})
+afterEach(() => {
+  vi.restoreAllMocks()
+})
 
 describe('WaveBox', () => {
   it('renders with specified width and height', () => {
@@ -19,9 +26,8 @@ describe('WaveBox', () => {
         <div>Test Content</div>
       </WaveBox>
     )
+    vi.advanceTimersByTime(10)
     expect(asFragment()).toMatchSnapshot()
-    // Avoid useInterval cleanup issues in tests
-    cleanup()
   })
   it('accepts custom interval', () => {
     const { asFragment } = render(
@@ -37,9 +43,8 @@ describe('WaveBox', () => {
         <div>Test Content</div>
       </WaveBox>
     )
+    vi.advanceTimersByTime(50)
     expect(asFragment()).toMatchSnapshot()
-    // Avoid useInterval cleanup issues in tests
-    cleanup()
   })
 })
 
@@ -73,8 +78,7 @@ describe('WaveBoxContext', () => {
         <WaveBoxContextProviderTester />
       </WaveBoxProvider>
     )
+    vi.advanceTimersByTime(10)
     expect(asFragment()).toMatchSnapshot()
-    // Avoid useInterval cleanup issues in tests
-    cleanup()
   })
 })
