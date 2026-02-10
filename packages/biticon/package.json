@@ -22,7 +22,6 @@
     }
   },
   "main": "./dist/index.js",
-  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
@@ -32,7 +31,7 @@
     "build": "tsdown",
     "dev": "tsdown --no-clean --watch",
     "test": "vitest run",
-    "validate": "validate-package-exports --check --verify"
+    "validate": "validate-package-exports --check"
   },
   "devDependencies": {
     "@kitsuyui/cipher": "^0.2.1",

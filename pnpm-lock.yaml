@@ -60,8 +60,8 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
       validate-package-exports:
-        specifier: ^0.15.0
-        version: 0.15.0
+        specifier: ^0.16.0
+        version: 0.16.0
       vite-plugin-top-level-await:
         specifier: ^1.6.0
         version: 1.6.0(rollup@4.57.1)(vite@7.3.1(@types/node@25.2.3)(yaml@2.8.2))
@@ -2276,8 +2276,8 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
-  isexe@3.1.4:
-    resolution: {integrity: sha512-jCErc4h4RnTPjFq53G4whhjAMbUAqinGrCrTT4dmMNyi4zTthK+wphqbRLJtL4BN/Mq7Zzltr0m/b1X0m7PGFQ==}
+  isexe@4.0.0:
+    resolution: {integrity: sha512-FFUtZMpoZ8RqHS3XeXEmHWLA4thH+ZxCv2lOiPIn1Xc7CxrqhWzNSDzD+/chS/zbYezmiwWLdQC09JdQKmthOw==}
     engines: {node: '>=20'}
 
   istanbul-lib-coverage@3.2.2:
@@ -2568,8 +2568,8 @@ packages:
   package-json-from-dist@1.0.1:
     resolution: {integrity: sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw==}
 
-  pacote@21.2.0:
-    resolution: {integrity: sha512-OwidJA8uHuGYxoZhe4DBv3JJqGg4ojjVV5dwvVxRKq+bOBpgYMbYd/onIvSU1sv5nQIsb+zp4/0uqv6giFQVjg==}
+  pacote@21.3.0:
+    resolution: {integrity: sha512-8szw+HT7q/WsJjdpkkIUudWge9sUAI3LBDPJdBRh2HD8IrE3lAY+90nScTK+Ln95kRlcz/BOLEoY14qM0DIcvw==}
     engines: {node: ^20.17.0 || >=22.9.0}
     hasBin: true
 
@@ -2887,8 +2887,8 @@ packages:
   spdx-license-ids@3.0.22:
     resolution: {integrity: sha512-4PRT4nh1EImPbt2jASOKHX7PB7I+e4IWNLvkKFDxNhJlfjbYlleYQh285Z/3mPTHSAK/AvdMmw5BNNuYH8ShgQ==}
 
-  ssri@13.0.0:
-    resolution: {integrity: sha512-yizwGBpbCn4YomB2lzhZqrHLJoqFGXihNbib3ozhqF/cIp5ue+xSmOQrjNasEE62hFxsCcg/V/z23t4n8jMEng==}
+  ssri@13.0.1:
+    resolution: {integrity: sha512-QUiRf1+u9wPTL/76GTYlKttDEBWV1ga9ZXW8BG6kfdeyyM8LGPix9gROyg9V2+P0xNyF3X2Go526xKFdMZrHSQ==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
   stack-generator@2.0.10:
@@ -3162,8 +3162,8 @@ packages:
     resolution: {integrity: sha512-hVDIBwsRruT73PbK7uP5ebUt+ezEtCmzZz3F59BSr2F6OVFnJ/6h8liuvdLrQ88Xmnk6/+xGGuq+pG9WwTuy3A==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  validate-package-exports@0.15.0:
-    resolution: {integrity: sha512-qGioy9rl8H0nHgy3zgNMXia4l32Ogg9MfD1wPXF12OpdhcWHP8dSJ++g2xXP62LawjGeIwHzZM+fZ876QtRBrQ==}
+  validate-package-exports@0.16.0:
+    resolution: {integrity: sha512-HRhd3d2/k50ajX+FaUVtS3MeZF+rNiBYFhelf7yO0G3fiXgVSu9+xQGWahwW8KtAWcn/D859HLZare2w6Z21MA==}
     engines: {node: '>=20.17.0'}
     hasBin: true
 
@@ -3288,8 +3288,8 @@ packages:
     engines: {node: '>= 8'}
     hasBin: true
 
-  which@6.0.0:
-    resolution: {integrity: sha512-f+gEpIKMR9faW/JgAgPK1D7mekkFoqbmiwvNzuhsHetni20QSgzg9Vhn0g2JSJkkfehQnqdUAx7/e15qS1lPxg==}
+  which@6.0.1:
+    resolution: {integrity: sha512-oGLe46MIrCRqX7ytPUf66EAYvdeMIZYn3WaocqqKZAxrBpkqHfL/qvTyJ/bTk5+AqHCjXmrv3CEWgy368zhRUg==}
     engines: {node: ^20.17.0 || >=22.9.0}
     hasBin: true
 
@@ -3762,14 +3762,14 @@ snapshots:
       npm-package-arg: 13.0.2
       npm-pick-manifest: 11.0.3
       npm-registry-fetch: 19.1.1
-      pacote: 21.2.0
+      pacote: 21.3.0
       parse-conflict-json: 5.0.1
       proc-log: 6.1.0
       proggy: 4.0.0
       promise-all-reject-late: 1.0.1
       promise-call-limit: 3.0.2
       semver: 7.7.4
-      ssri: 13.0.0
+      ssri: 13.0.1
       treeverse: 3.0.0
       walk-up-path: 4.0.0
     transitivePeerDependencies:
@@ -3788,7 +3788,7 @@ snapshots:
       proc-log: 6.1.0
       promise-retry: 2.0.1
       semver: 7.7.4
-      which: 6.0.0
+      which: 6.0.1
 
   '@npmcli/installed-package-contents@4.0.0':
     dependencies:
@@ -3806,7 +3806,7 @@ snapshots:
     dependencies:
       cacache: 20.0.3
       json-parse-even-better-errors: 5.0.0
-      pacote: 21.2.0
+      pacote: 21.3.0
       proc-log: 6.1.0
       semver: 7.7.4
     transitivePeerDependencies:
@@ -3828,7 +3828,7 @@ snapshots:
 
   '@npmcli/promise-spawn@9.0.1':
     dependencies:
-      which: 6.0.0
+      which: 6.0.1
 
   '@npmcli/query@5.0.0':
     dependencies:
@@ -3843,7 +3843,7 @@ snapshots:
       '@npmcli/promise-spawn': 9.0.1
       node-gyp: 12.2.0
       proc-log: 6.1.0
-      which: 6.0.0
+      which: 6.0.1
     transitivePeerDependencies:
       - supports-color
 
@@ -4648,7 +4648,7 @@ snapshots:
       minipass-flush: 1.0.5
       minipass-pipeline: 1.2.4
       p-map: 7.0.4
-      ssri: 13.0.0
+      ssri: 13.0.1
       unique-filename: 5.0.0
 
   camelcase@7.0.1: {}
@@ -5046,7 +5046,7 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  isexe@3.1.4: {}
+  isexe@4.0.0: {}
 
   istanbul-lib-coverage@3.2.2: {}
 
@@ -5161,7 +5161,7 @@ snapshots:
       negotiator: 1.0.0
       proc-log: 6.1.0
       promise-retry: 2.0.1
-      ssri: 13.0.0
+      ssri: 13.0.1
     transitivePeerDependencies:
       - supports-color
 
@@ -5276,7 +5276,7 @@ snapshots:
       semver: 7.7.4
       tar: 7.5.7
       tinyglobby: 0.2.15
-      which: 6.0.0
+      which: 6.0.1
     transitivePeerDependencies:
       - supports-color
 
@@ -5378,7 +5378,7 @@ snapshots:
 
   package-json-from-dist@1.0.1: {}
 
-  pacote@21.2.0:
+  pacote@21.3.0:
     dependencies:
       '@npmcli/git': 7.0.1
       '@npmcli/installed-package-contents': 4.0.0
@@ -5395,7 +5395,7 @@ snapshots:
       proc-log: 6.1.0
       promise-retry: 2.0.1
       sigstore: 4.1.0
-      ssri: 13.0.0
+      ssri: 13.0.1
       tar: 7.5.7
     transitivePeerDependencies:
       - supports-color
@@ -5770,7 +5770,7 @@ snapshots:
 
   spdx-license-ids@3.0.22: {}
 
-  ssri@13.0.0:
+  ssri@13.0.1:
     dependencies:
       minipass: 7.1.2
 
@@ -6035,7 +6035,7 @@ snapshots:
 
   validate-npm-package-name@7.0.2: {}
 
-  validate-package-exports@0.15.0:
+  validate-package-exports@0.16.0:
     dependencies:
       '@npmcli/arborist': 9.2.0
       '@webdeveric/utils': 0.74.1
@@ -6156,9 +6156,9 @@ snapshots:
     dependencies:
       isexe: 2.0.0
 
-  which@6.0.0:
+  which@6.0.1:
     dependencies:
-      isexe: 3.1.4
+      isexe: 4.0.0
 
   why-is-node-running@2.3.0:
     dependencies:
