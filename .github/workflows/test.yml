@@ -57,13 +57,3 @@ jobs:
       - name: Test packaging
         run: pnpm pack
 
-      - name: Upload coverage to Codecov
-        if: matrix.node-version == '24.x'
-        uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          flags: unittests
-          files: ./coverage/coverage-final.json
-          name: codecov-umbrella
-          fail_ci_if_error: false
-          verbose: true

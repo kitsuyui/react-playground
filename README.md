@@ -1,6 +1,6 @@
 # react-playground
 
-[![codecov](https://codecov.io/gh/kitsuyui/react-playground/branch/main/graph/badge.svg?token=6QX8OLRKAD)](https://codecov.io/gh/kitsuyui/react-playground)
+![Coverage](https://raw.githubusercontent.com/kitsuyui/octocov-central/main/badges/kitsuyui/react-playground/coverage.svg)
 
 ## What is this?
 
