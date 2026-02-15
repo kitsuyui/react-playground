@@ -1,0 +1,44 @@
+name: octocov
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+jobs:
+  octocov:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v4.2.0
+
+      - name: Use Node.js 24.x
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24.x
+          cache: pnpm
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install
+
+      # Build before tests because some packages depend on build output.
+      - name: Build
+        run: pnpm build
+
+      - name: Test with coverage
+        run: pnpm test
+
+      # See also: https://github.com/k1LoW/octocov-action
+      - name: Report coverage with octocov
+        uses: k1LoW/octocov-action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          config: .octocov.yml
