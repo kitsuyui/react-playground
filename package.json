@@ -29,7 +29,7 @@
     "validate": "pnpm -r validate"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.3.14",
+    "@biomejs/biome": "^2.4.4",
     "@storybook/addon-docs": "^10.2.10",
     "@storybook/react-vite": "^10.2.10",
     "@testing-library/react": "^16.3.2",
