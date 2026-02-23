@@ -83,17 +83,14 @@ export const TextField = (props: WrapperProps) => {
     setIsInputting(false)
   }, [onInputChunk, onChangeInputting])
 
-  const handleOnBlur = React.useCallback(
-    (e: React.FocusEvent<HTMLInputElement>) => {
-      const text = innerRef?.current?.value ?? ''
-      setInternalValue(text)
-      setIsInputting(false)
-      onChangeInputting?.(false)
-      onInputChunk?.(text)
-      onBlur?.(e)
-    },
-    [onInputChunk, onChangeInputting]
-  )
+  const handleOnBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const text = innerRef?.current?.value ?? ''
+    setInternalValue(text)
+    setIsInputting(false)
+    onChangeInputting?.(false)
+    onInputChunk?.(text)
+    onBlur?.(e)
+  }
 
   return (
     <input

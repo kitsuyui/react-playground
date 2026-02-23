@@ -82,17 +82,14 @@ export const TextArea = (props: WrapperProps) => {
     onInputChunk?.(text)
   }, [onInputChunk, onChangeInputting])
 
-  const handleOnBlur = React.useCallback(
-    (e: React.FocusEvent<HTMLTextAreaElement>) => {
-      const text = innerRef?.current?.value ?? ''
-      setInternalValue(text)
-      setIsInputting(false)
-      onChangeInputting?.(false)
-      onInputChunk?.(text)
-      onBlur?.(e)
-    },
-    [onInputChunk, onChangeInputting]
-  )
+  const handleOnBlur = (e: React.FocusEvent<HTMLTextAreaElement>) => {
+    const text = innerRef?.current?.value ?? ''
+    setInternalValue(text)
+    setIsInputting(false)
+    onChangeInputting?.(false)
+    onInputChunk?.(text)
+    onBlur?.(e)
+  }
 
   return (
     <textarea
