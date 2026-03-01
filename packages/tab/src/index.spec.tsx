@@ -1,15 +1,18 @@
-import { expect, test, describe, vi } from 'vitest'
-
-import { render } from '@testing-library/react'
+import { cleanup, render, screen } from '@testing-library/react'
 import type React from 'react'
 import { useContext } from 'react'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 
-import { TabUIBase, TabButtonContext } from './index'
+import { TabButtonContext, TabContext, TabUIBase } from './index'
 
 describe('TabUIBase', () => {
+  afterEach(() => {
+    cleanup()
+  })
+
   const items = [
-    { id: 't1', title: 'Tab 1', content: 'Content 1' },
-    { id: 't2', title: 'Tab 2', content: 'Content 2' },
+    { id: 't1', title: 'Tab 1', content: <div>Content 1</div> },
+    { id: 't2', title: 'Tab 2', content: <div>Content 2</div> },
   ]
   const onSelect = vi.fn()
   const TabBar = ({ children }: { children: React.ReactNode }) => (
@@ -20,7 +23,7 @@ describe('TabUIBase', () => {
     return (
       <button
         type="button"
-        data-testid="tab-button"
+        data-testid={`tab-button-${id}`}
         onClick={() => onSelect(id)}
         style={{ fontWeight: selected ? 'bold' : 'normal' }}
       >
@@ -28,37 +31,51 @@ describe('TabUIBase', () => {
       </button>
     )
   }
-  const ContentBox = ({ children }: { children: React.ReactNode }) => (
-    <div data-testid="content-box">{children}</div>
-  )
+  const ContentBox = ({ children }: { children: React.ReactNode }) => {
+    const { selectedTabId } = useContext(TabContext)
+    return (
+      <div data-testid="content-box" data-selected-tab-id={selectedTabId}>
+        {children}
+      </div>
+    )
+  }
 
-  test('tab 1 is selected', () => {
-    const { getByTestId: getByTestId1 } = render(
+  it('renders only the active content by default', () => {
+    render(
       <TabUIBase
         items={items}
-        selectedTabId={'t1'}
+        selectedTabId="t1"
         onSelect={onSelect}
         TabBar={TabBar}
         TabButton={TabButton}
         ContentBox={ContentBox}
-      />,
+      />
     )
 
-    expect(getByTestId1('tab-bar')).toMatchSnapshot('tab-bar-t1')
-    expect(getByTestId1('content-box')).toMatchSnapshot('content-box-t1')
+    expect(
+      screen.getByTestId('content-box').getAttribute('data-selected-tab-id')
+    ).toBe('t1')
+    expect(screen.getByText('Content 1')).toBeTruthy()
+    expect(screen.queryByText('Content 2')).toBeNull()
   })
 
-  test('tab 2 is selected', () => {
-    const element = render(
+  it('keeps all contents mounted when contentMode is keep-mounted', () => {
+    render(
       <TabUIBase
         items={items}
-        selectedTabId={'t2'}
+        selectedTabId="t2"
         onSelect={onSelect}
+        contentMode="keep-mounted"
         TabBar={TabBar}
         TabButton={TabButton}
         ContentBox={ContentBox}
-      />,
+      />
     )
-    expect(element).toMatchSnapshot()
+
+    expect(
+      screen.getByTestId('content-box').getAttribute('data-selected-tab-id')
+    ).toBe('t2')
+    expect(screen.getByText('Content 1')).toBeTruthy()
+    expect(screen.getByText('Content 2')).toBeTruthy()
   })
 })

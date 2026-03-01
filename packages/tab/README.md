@@ -10,6 +10,8 @@ This component only provides an ideal structure for tab UI and its ReactContext.
 So, you can customize the tab UI as you want.
 Or you can compose this component with other components and CSS modules.
 
+`TabUIBase` renders only the active tab content by default. Use `contentMode="keep-mounted"` to keep every tab content mounted, and read the active tab state from `TabContext` inside your custom content container.
+
 ## Demo
 
 Storybook: https://react-playground.docs.kitsuyui.com/storybook/

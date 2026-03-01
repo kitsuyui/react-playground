@@ -9,7 +9,7 @@
  * Or you can compose this component with other components and CSS modules.
  */
 import type React from 'react'
-import { createContext } from 'react'
+import { createContext, Fragment } from 'react'
 
 export type TabItemId = string
 export type TabTitle = React.ReactNode | string
@@ -30,6 +30,7 @@ export interface TabControlProps {
   items: TabItem[]
   selectedTabId: TabItemId
   onSelect: (id: TabItemId) => void
+  contentMode?: 'active-only' | 'keep-mounted'
 }
 
 export interface TabButtonContextValue {
@@ -41,21 +42,44 @@ export interface TabButtonContextValue {
 
 const DEFAULT_TAB_BUTTON_CONTEXT: TabButtonContextValue = {
   id: '',
-  onSelect: () => { },
+  onSelect: () => {},
   selected: false,
   title: '',
 } as const
 
 export const TabButtonContext = createContext<TabButtonContextValue>(
-  DEFAULT_TAB_BUTTON_CONTEXT,
+  DEFAULT_TAB_BUTTON_CONTEXT
 )
 
+export interface TabContextValue {
+  selectedTabId: TabItemId
+  onSelect: (id: TabItemId) => void
+}
+
+const DEFAULT_TAB_CONTEXT: TabContextValue = {
+  selectedTabId: '',
+  onSelect: () => {},
+} as const
+
+export const TabContext = createContext<TabContextValue>(DEFAULT_TAB_CONTEXT)
+
 export const TabUIBase = (props: TabControlProps & TabUIComponents) => {
-  const { items, selectedTabId, onSelect, TabBar, TabButton, ContentBox } =
-    props
+  const {
+    items,
+    selectedTabId,
+    onSelect,
+    contentMode = 'active-only',
+    TabBar,
+    TabButton,
+    ContentBox,
+  } = props
   const activeItem = items.find((tab) => tab.id === selectedTabId)
+  const content =
+    contentMode === 'keep-mounted'
+      ? items.map((item) => <Fragment key={item.id}>{item.content}</Fragment>)
+      : activeItem?.content
   return (
-    <>
+    <TabContext.Provider value={{ selectedTabId, onSelect }}>
       <TabBar>
         {items.map((item) => (
           <TabButtonContext.Provider
@@ -71,7 +95,7 @@ export const TabUIBase = (props: TabControlProps & TabUIComponents) => {
           </TabButtonContext.Provider>
         ))}
       </TabBar>
-      <ContentBox>{activeItem?.content}</ContentBox>
-    </>
+      <ContentBox>{content}</ContentBox>
+    </TabContext.Provider>
   )
 }
