@@ -20,9 +20,13 @@
     "lint:package-json": "sort-package-json --check \"package.json\" \"packages/*/package.json\"",
     "start": "pnpm --parallel dev",
     "test": "vitest run --coverage packages/*/src",
-    "test:vrt": "pnpm -r test:vrt",
-    "test:vrt:install": "pnpm -r test:vrt:install",
-    "test:vrt:update": "pnpm -r test:vrt:update",
+    "test:browser": "vitest run --config vitest.browser.config.mts",
+    "test:browser:docker": "./scripts/test-browser-docker.sh",
+    "test:browser:install": "playwright install chromium",
+    "test:browser:update": "vitest run --config vitest.browser.config.mts --update",
+    "test:coverage:browser": "vitest run --config vitest.browser.config.mts --coverage.enabled --coverage.reporter=clover --coverage.reporter=text --coverage.reportsDirectory=coverage/browser",
+    "test:coverage:browser:docker": "./scripts/test-browser-docker.sh --coverage.enabled --coverage.reporter=clover --coverage.reporter=text --coverage.reportsDirectory=coverage/browser",
+    "test:coverage:unit": "vitest run --coverage packages/*/src --coverage.reporter=clover --coverage.reporter=text --coverage.reportsDirectory=coverage/unit",
     "typecheck": "tsc --noEmit packages/*/src/**/*.ts --skipLibCheck --jsx react-jsx",
     "typedoc": "typedoc",
     "typedoc:server": "serve -p 8000 build/typedocs",
@@ -37,9 +41,11 @@
     "@types/node": "^25.3.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "@vitest/browser-playwright": "4.0.18",
     "@vitest/coverage-v8": "4.0.18",
     "blocks": "link:@storybook/addon-docs/blocks",
     "jsdom": "^28.1.0",
+    "playwright": "1.58.1",
     "serve": "^14.2.5",
     "sort-package-json": "^3.6.1",
     "ts-module-isolation": "^1.0.2",
@@ -49,7 +55,8 @@
     "validate-package-exports": "^0.18.0",
     "vite-plugin-top-level-await": "^1.6.0",
     "vite-plugin-wasm": "^3.5.0",
-    "vitest": "^4.0.18"
+    "vitest": "^4.0.18",
+    "vitest-browser-react": "2.0.5"
   },
   "packageManager": "pnpm@10.30.1"
 }

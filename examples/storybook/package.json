@@ -5,7 +5,6 @@
   "license": "MIT",
   "private": true,
   "devDependencies": {
-    "@playwright/test": "^1.58.1",
     "@storybook/addon-docs": "^10.2.3",
     "@storybook/addon-links": "^10.2.3",
     "@storybook/builder-vite": "^10.2.3",
@@ -20,9 +19,6 @@
   },
   "scripts": {
     "dev": "storybook dev -p 6006 --ci",
-    "test:vrt": "pnpm playwright test",
-    "test:vrt:update": "pnpm playwright test --update-snapshots",
-    "test:vrt:install": "pnpm dlx playwright install",
     "build": "storybook build"
   },
   "dependencies": {

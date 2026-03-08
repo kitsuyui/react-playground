@@ -7,5 +7,6 @@ echo packages/*/build/*
 echo examples/*/build/*
 echo storybook-static
 echo build/
+echo .vitest-attachments
 echo test-results/*
 echo examples/storybook/test-results/*
