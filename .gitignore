@@ -109,7 +109,6 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 *.lcov
-.vitest-attachments
 
 # nyc test coverage
 .nyc_output
@@ -246,6 +245,8 @@ examples/*/build/*
 storybook-static
 # -----------------------------------------------------------------------------
 build/
+# -----------------------------------------------------------------------------
+.vitest-attachments
 # -----------------------------------------------------------------------------
 test-results/*
 # -----------------------------------------------------------------------------
