@@ -13,5 +13,5 @@ docker run --rm \
     corepack enable
     pnpm config set store-dir /pnpm/store
     pnpm install --frozen-lockfile
-    pnpm test:browser -- "$@"
+    pnpm exec vitest run --config vitest.browser.config.mts "$@"
   ' -- "$@"

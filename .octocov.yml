@@ -1,7 +1,8 @@
 # https://github.com/k1LoW/octocov?tab=readme-ov-file#configuration
 coverage:
   paths:
-    - coverage/clover.xml
+    - coverage/unit/clover.xml
+    - coverage/browser/clover.xml
 codeToTestRatio:
   code:
     - '**/src/**/*.ts'
@@ -9,6 +10,8 @@ codeToTestRatio:
   test:
     - '**/src/**/*.spec.ts'
     - '**/src/**/*.spec.tsx'
+    - '**/src/**/*.browser.spec.ts'
+    - '**/src/**/*.browser.spec.tsx'
 testExecutionTime:
   if: true
 diff:

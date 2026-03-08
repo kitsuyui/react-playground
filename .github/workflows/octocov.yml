@@ -33,8 +33,11 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Test with coverage
-        run: pnpm test
+      - name: Test unit suite with coverage
+        run: pnpm test:coverage:unit
+
+      - name: Test browser suite with coverage
+        run: pnpm test:coverage:browser:docker
 
       # See also: https://github.com/k1LoW/octocov-action
       - name: Report coverage with octocov
