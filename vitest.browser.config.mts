@@ -15,6 +15,7 @@ export default defineConfig({
     ],
   },
   test: {
+    attachmentsDir: '.vitest-attachments',
     globals: false,
     include: ['packages/*/src/**/*.browser.spec.tsx'],
     exclude: [
@@ -34,6 +35,7 @@ export default defineConfig({
       provider: playwright(),
       instances: [
         {
+          screenshotDirectory: '__screenshots__',
           browser: 'chromium',
           headless: true,
           viewport: {
@@ -42,7 +44,7 @@ export default defineConfig({
           },
         },
       ],
-      screenshotFailures: false,
+      screenshotFailures: true,
     },
   },
   clearScreen: false,

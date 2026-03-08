@@ -109,6 +109,7 @@ lib-cov
 # Coverage directory used by tools like istanbul
 coverage
 *.lcov
+.vitest-attachments
 
 # nyc test coverage
 .nyc_output

@@ -21,6 +21,7 @@
     "start": "pnpm --parallel dev",
     "test": "vitest run --coverage packages/*/src",
     "test:browser": "vitest run --config vitest.browser.config.mts",
+    "test:browser:docker": "./scripts/test-browser-docker.sh",
     "test:browser:install": "playwright install chromium",
     "test:browser:update": "vitest run --config vitest.browser.config.mts --update",
     "test:vrt": "pnpm -r test:vrt",
