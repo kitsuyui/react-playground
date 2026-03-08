@@ -17,6 +17,6 @@ test('renders a stable eight-bit string screenshot', async () => {
     </BrowserFixture>,
   )
 
-  await expect.element(screen.getByLabelText('binary fixture')).toBeVisible()
-  await expect(screen.getByLabelText('binary fixture')).toMatchScreenshot('simple-8bit.png')
+  await expect.element(screen.getByTestId('binary fixture')).toBeVisible()
+  await expect(screen.getByTestId('binary fixture')).toMatchScreenshot('simple-8bit.png')
 })

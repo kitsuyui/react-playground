@@ -8,7 +8,7 @@ export const BrowserFixture = (props: {
   const { children, label, style } = props
   return (
     <div
-      aria-label={label}
+      data-testid={label}
       style={{
         background: '#ffffff',
         color: '#111111',

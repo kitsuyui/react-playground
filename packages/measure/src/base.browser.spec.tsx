@@ -15,6 +15,6 @@ test('renders a stable measure diagram screenshot', async () => {
     </BrowserFixture>,
   )
 
-  await expect.element(screen.getByLabelText('measure fixture')).toBeVisible()
-  await expect(screen.getByLabelText('measure fixture')).toMatchScreenshot('measure-base.png')
+  await expect.element(screen.getByTestId('measure fixture')).toBeVisible()
+  await expect(screen.getByTestId('measure fixture')).toMatchScreenshot('measure-base.png')
 })

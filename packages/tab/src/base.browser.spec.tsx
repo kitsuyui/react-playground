@@ -88,5 +88,5 @@ test('renders a stable tab screenshot after selecting the second tab', async () 
   await screen.getByRole('button', { name: 'Details' }).click()
 
   await expect.element(screen.getByText('Detailed panel')).toBeVisible()
-  await expect(screen.getByLabelText('tab fixture')).toMatchScreenshot('tab-details.png')
+  await expect(screen.getByTestId('tab fixture')).toMatchScreenshot('tab-details.png')
 })
