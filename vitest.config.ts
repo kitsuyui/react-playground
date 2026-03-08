@@ -28,6 +28,7 @@ export default defineConfig({
       'dist',
       'coverage',
       'stories/**',
+      '**/*.browser.spec.tsx',
       '**/*.stories.tsx',
     ],
     coverage: {
