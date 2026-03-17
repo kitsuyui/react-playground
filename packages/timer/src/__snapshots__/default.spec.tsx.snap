@@ -1,19 +1,32 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`MinimalStopwatch > renders correctly 1`] = `
+exports[`DefaultTimer > renders correctly 1`] = `
 <DocumentFragment>
   <span
     style="width: 6em; font-family: monospace;"
   >
-    00:00.000
+    16:40.000
   </span>
   <button
+    name="incrementMinute"
     type="button"
+  >
+    +分
+  </button>
+  <button
+    name="incrementSecond"
+    type="button"
+  >
+    +秒
+  </button>
+  <button
+    name="reset"
+    type="submit"
   >
     Reset
   </button>
   <button
-    type="button"
+    type="submit"
   >
     Start
   </button>

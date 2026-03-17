@@ -1,17 +1,9 @@
 import {
-  MinimalStopwatch,
+  DefaultStopwatch,
   StopwatchContextProvider,
   StopwatchContext,
+  type StopwatchContextValue,
 } from '../'
-
-interface StopwatchProps {
-  running: boolean
-  elapsedTime: number
-  start: () => void
-  stop: () => void
-  reset: () => void
-  toggle: () => void
-}
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -19,7 +11,7 @@ const Stopwatch = () => {
   return (
     <StopwatchContextProvider>
       <StopwatchContext.Consumer>
-        {(context: StopwatchProps) => <MinimalStopwatch {...context} />}
+        {(context: StopwatchContextValue) => <DefaultStopwatch {...context} />}
       </StopwatchContext.Consumer>
     </StopwatchContextProvider>
   )

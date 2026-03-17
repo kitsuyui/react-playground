@@ -3,6 +3,6 @@ export {
   TimerContextProvider,
   type TimerContextValue,
   type TimerContextProviderProps,
+  type TimerValue,
 } from './context'
-export { MinimalTimer } from './minimal'
-
+export { DefaultTimer } from './default'

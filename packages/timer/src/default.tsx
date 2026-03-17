@@ -5,7 +5,7 @@ import { toText } from "@kitsuyui/number-time/toText"
 import type { TimerContextValue } from './context'
 
 
-export const MinimalTimer: React.FC<TimerContextValue> = (props): React.JSX.Element => {
+export const DefaultTimer: React.FC<TimerContextValue> = (props): React.JSX.Element => {
   const { remaining, running, incrementTimerValue, toggle, reset } = props
   return (
     <>

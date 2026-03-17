@@ -3,13 +3,13 @@ import { describe, expect, it, vi, beforeEach } from 'vitest'
 import { render, cleanup } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 
-import { MinimalTimer } from '.'
+import { DefaultTimer } from '.'
 
 beforeEach(() => {
   cleanup()
 })
 
-describe('MinimalTimer', () => {
+describe('DefaultTimer', () => {
   it('renders correctly', () => {
     const props = {
       remaining: 1000,
@@ -21,7 +21,7 @@ describe('MinimalTimer', () => {
       stop: vi.fn(),
       setTimerValue: vi.fn(),
     }
-    const { asFragment } = render(<MinimalTimer {...props} />)
+    const { asFragment } = render(<DefaultTimer {...props} />)
     expect(asFragment()).toMatchSnapshot()
   })
 
@@ -36,7 +36,7 @@ describe('MinimalTimer', () => {
       stop: vi.fn(),
       setTimerValue: vi.fn(),
     }
-    const { getByText } = render(<MinimalTimer {...props} />)
+    const { getByText } = render(<DefaultTimer {...props} />)
     const button = getByText('Start')
     await userEvent.click(button)
     expect(props.toggle).toHaveBeenCalled()
@@ -52,7 +52,7 @@ describe('MinimalTimer', () => {
       stop: vi.fn(),
       setTimerValue: vi.fn(),
     }
-    const { getByText } = render(<MinimalTimer {...props} />)
+    const { getByText } = render(<DefaultTimer {...props} />)
     const button = getByText('Reset')
     await userEvent.click(button)
     expect(props.reset).toHaveBeenCalled()
@@ -68,7 +68,7 @@ describe('MinimalTimer', () => {
       stop: vi.fn(),
       setTimerValue: vi.fn(),
     }
-    const { getByText } = render(<MinimalTimer {...props} />)
+    const { getByText } = render(<DefaultTimer {...props} />)
     const button = getByText('+分')
     await userEvent.click(button)
     expect(props.incrementTimerValue).toHaveBeenCalledWith(60)

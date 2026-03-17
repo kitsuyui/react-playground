@@ -4,7 +4,7 @@ import * as module from '.'
 
 describe('module', () => {
   it('exports', () => {
-    expect(module).toHaveProperty('MinimalStopwatch')
+    expect(module).toHaveProperty('DefaultStopwatch')
     expect(module).toHaveProperty('StopwatchContext')
     expect(module).toHaveProperty('StopwatchContextProvider')
   })

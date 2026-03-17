@@ -9,19 +9,19 @@ import * as StopwatchStories from './Example.stories'
 
 ```jsx
 import {
-  StopwatchContainer,
-  MinimalStopwatch,
+  StopwatchContextProvider,
+  DefaultStopwatch,
   StopwatchContext,
-  StopwatchProps,
+  StopwatchContextValue,
 } from '../'
 
 const Stopwatch = () => {
   return (
-    <StopwatchContainer>
+    <StopwatchContextProvider>
       <StopwatchContext.Consumer>
-        {(props: StopwatchProps) => <MinimalStopwatch {...props} />}
+        {(props: StopwatchContextValue) => <DefaultStopwatch {...props} />}
       </StopwatchContext.Consumer>
-    </StopwatchContainer>
+    </StopwatchContextProvider>
   )
 }
 ```
@@ -46,14 +46,9 @@ $ pnpm add @kitsuyui/react-stopwatch
 
 ## Usage
 
-Stopwatch components consists of two parts:
+This package provides two layers:
 
-1. The surface of the clock ()
-2. The state of the clock ()
+1. `StopwatchContextProvider` as the state/controller primitive
+2. `DefaultStopwatch` as the default UI on top of that primitive
 
-If you want to modify the appearance of the clock, you can use the surface of the clock.
-If you want to change the state of the clock, you can use the state of the clock.
-
-```tsx
-
-```
+If you want a different UI, consume `StopwatchContext` and render your own component.

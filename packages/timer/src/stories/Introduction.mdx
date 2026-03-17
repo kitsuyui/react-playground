@@ -7,6 +7,25 @@ import * as TimerStories from './Example.stories'
 <Meta title="Base/Timer/Introduction" />
 <Canvas of={TimerStories.Default} />
 
+```tsx
+import {
+  TimerContextProvider,
+  TimerContext,
+  DefaultTimer,
+  type TimerContextValue,
+} from '../'
+
+const Timer = () => {
+  return (
+    <TimerContextProvider>
+      <TimerContext.Consumer>
+        {(props: TimerContextValue) => <DefaultTimer {...props} />}
+      </TimerContext.Consumer>
+    </TimerContextProvider>
+  )
+}
+```
+
 ## Installation
 
 Each component is published as a separate package.
@@ -26,3 +45,10 @@ $ pnpm add @kitsuyui/react-timer
 ```
 
 ## Usage
+
+This package provides two layers:
+
+1. `TimerContextProvider` as the state/controller primitive
+2. `DefaultTimer` as the default UI on top of that primitive
+
+If you want a different UI, consume `TimerContext` and render your own component.

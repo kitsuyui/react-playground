@@ -31,22 +31,27 @@ pnpm add @kitsuyui/react-timer
 ## Usage
 
 ```tsx
-import { TimerContainer, MinimalTimer } from '@kitsuyui/react-timer'
+import {
+  TimerContextProvider,
+  TimerContext,
+  DefaultTimer,
+  type TimerContextValue,
+} from '@kitsuyui/react-timer'
 
 const Timer = () => {
   return (
-    <TimerContainer>
+    <TimerContextProvider>
       <TimerContext.Consumer>
-        {(timer: TimerProps) => <MinimalTimer {...timer} />}
+        {(timer: TimerContextValue) => <DefaultTimer {...timer} />}
       </TimerContext.Consumer>
-    </TimerContainer>
+    </TimerContextProvider>
   )
 }
 ```
 
-TimerContainer is a component that provides TimerContext.
-Timers are pure components that do not depend on TimerContext. Accept TimerProps as props.
-So you can define your own Timer component by same interface.
+`TimerContextProvider` is the primitive state/controller layer.
+`DefaultTimer` is the default UI layered on top of that context value.
+You can replace the UI entirely by consuming `TimerContext` yourself.
 
 ```typescript
 export interface TimerValue {
@@ -63,7 +68,7 @@ export interface TimerActions {
   setTimerValue(value: number): void
 }
 
-export type TimerProps = TimerValue & TimerActions
+export type TimerContextValue = TimerValue & TimerActions
 ```
 
 ## License
