@@ -1,17 +1,18 @@
-import { Simple8BitString } from '@kitsuyui/react-binary'
+import { SimpleBitString } from '@kitsuyui/react-binary'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-const meta: Meta<typeof Simple8BitString> = {
+const meta: Meta<typeof SimpleBitString> = {
   title: 'Base/Binary/Simple',
-  component: Simple8BitString,
+  component: SimpleBitString,
 }
 
 export default meta
-type Story = StoryObj<typeof Simple8BitString>
+type Story = StoryObj<typeof SimpleBitString>
 
 export const Default: Story = {
   args: {
     value: 0b10101010,
+    length: 8,
   },
 }

@@ -3,21 +3,21 @@ import { describe, it, expect } from 'vitest'
 import { render } from '@testing-library/react'
 
 import {
-  Simple8BitString,
+  SimpleBitString,
   SimpleBit,
 } from './Simple'
 
-describe('Simple8BitString component', () => {
+describe('SimpleBitString component', () => {
   it('should render properly with 8 bits', () => {
     const value = 0b10101010
-    const { asFragment } = render(<Simple8BitString value={value} />)
+    const { asFragment } = render(<SimpleBitString value={value} />)
     expect(asFragment()).toMatchSnapshot()
     expect(asFragment().textContent).toBe('10101010')
   })
 
   it('should not render overflow bits', () => {
     const value = 0b110101010
-    const { asFragment } = render(<Simple8BitString value={value} />)
+    const { asFragment } = render(<SimpleBitString value={value} />)
     expect(asFragment()).toMatchSnapshot()
     expect(asFragment().textContent).toBe('10101010')
   })

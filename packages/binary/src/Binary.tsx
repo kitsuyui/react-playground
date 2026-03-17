@@ -21,17 +21,19 @@ export type EnhancedBitProps = BitProps & {
 
 export type BitElement = React.FC<EnhancedBitProps>
 
+export type BitsProps = {
+  value: number
+  bitElement: BitElement
+  length?: number | undefined
+}
+
 /**
  * Bit is a component that displays a bit.
  * This component supports the behavior of zero padding and overflow.
  * @param props
  * @returns A component that displays a bit.
  */
-export const Bits = (props: {
-  value: number
-  bitElement: BitElement
-  length?: number | undefined
-}): React.JSX.Element => {
+export const Bits = (props: BitsProps): React.JSX.Element => {
   const { value, bitElement } = props
   const bits = (value | 0).toString(2).split('')
   const bitLength = bits.length

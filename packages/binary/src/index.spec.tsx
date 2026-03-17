@@ -11,7 +11,7 @@ import {
 describe('exports', () => {
   it('should export all components', () => {
     expect(module).toHaveProperty('SimpleBit')
-    expect(module).toHaveProperty('Simple8BitString')
+    expect(module).toHaveProperty('SimpleBitString')
     expect(module).toHaveProperty('Bits')
     expect(module).toHaveProperty('DetailedBit')
     expect(module).toHaveProperty('DetailedBitString')
