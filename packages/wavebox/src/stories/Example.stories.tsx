@@ -1,4 +1,4 @@
-import { Dekamoji } from '../../../dekamoji'
+import { AutoDekamoji } from '../../../dekamoji'
 import { AutoMeasure } from '../../../measure'
 import { WaveBox } from '@kitsuyui/react-wavebox'
 
@@ -55,7 +55,7 @@ const Example = ({
         heightCycle={heightCycle}
         widthCycle={widthCycle}
       >
-        <Dekamoji text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
+        <AutoDekamoji text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
       </WaveBox>
     </>
   )

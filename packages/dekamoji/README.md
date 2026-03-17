@@ -2,12 +2,12 @@
 
 [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-dekamoji.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-dekamoji)
 
-Dekamoji is a React component that changes the font size according to the size of the parent element. It displays the largest possible font size that can be displayed in response to changes in the size of the parent element.
+Dekamoji is a React component that changes the font size according to the size of the available space. It displays the largest possible font size that can be displayed in response to changes in layout bounds.
 
 ## Design role
 
-This package is a fit-text layout primitive.
-It computes typography to fit available space instead of defining a fixed visual style.
+This package is a fit-text layout primitive plus an auto-measuring default wrapper.
+`SizedDekamoji` computes text size for a known width and height, while `AutoDekamoji` measures the parent and feeds that primitive.
 
 ## Demo
 
@@ -32,6 +32,15 @@ yarn add @kitsuyui/react-dekamoji
 ```sh
 pnpm add @kitsuyui/react-dekamoji
 ```
+
+## Usage
+
+```tsx
+import { AutoDekamoji, SizedDekamoji } from '@kitsuyui/react-dekamoji'
+```
+
+Use `AutoDekamoji` when the component should measure its parent automatically.
+Use `SizedDekamoji` when the available width and height are already known.
 
 ## License
 

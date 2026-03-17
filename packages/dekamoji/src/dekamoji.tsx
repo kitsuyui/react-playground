@@ -1,28 +1,62 @@
-import React, { useRef, useMemo } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useMeasure } from 'react-use'
 
 type Props = {
   text: string
 }
 
-export const Dekamoji: React.FC<Props> = React.memo(function Dekamoji({
-  text,
-}: {
-  text: string
-}): React.JSX.Element {
-  const [ref, { width, height }] = useMeasure<HTMLDivElement>()
-  const [fontSize, setFontSize] = React.useState(0)
-  const ref2 = useRef<HTMLDivElement>(null)
+type SizedDekamojiProps = Props & {
+  width: number
+  height: number
+  fontFamily?: string
+}
 
-  useMemo(() => {
-    const element = ref2.current
-    let fontFamily: string | undefined
-    if (element) {
-      fontFamily = detectFontFamily(element)
-    }
+export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function SizedDekamoji({
+  text,
+  width,
+  height,
+  fontFamily,
+}): React.JSX.Element {
+  const [fontSize, setFontSize] = React.useState(0)
+
+  useEffect(() => {
     const size = calcFontSize(width, height, text, fontFamily)
     setFontSize(size)
-  }, [width, height, text])
+  }, [fontFamily, height, text, width])
+
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        width: '100%',
+        height: '100%',
+        fontSize: `${fontSize}px`,
+        textAlign: 'center',
+        margin: '0 auto',
+        boxSizing: 'border-box',
+        whiteSpace: 'pre-wrap',
+        fontFamily,
+      }}
+    >
+      {text}
+    </div>
+  )
+})
+
+export const AutoDekamoji: React.FC<Props> = React.memo(function AutoDekamoji({
+  text,
+}: Props): React.JSX.Element {
+  const [ref, { width, height }] = useMeasure<HTMLDivElement>()
+  const innerRef = useRef<HTMLDivElement>(null)
+  const [fontFamily, setFontFamily] = React.useState<string | undefined>(undefined)
+
+  useEffect(() => {
+    const element = innerRef.current
+    if (!element) {
+      return
+    }
+    setFontFamily(detectFontFamily(element))
+  }, [])
 
   return (
     <div
@@ -35,19 +69,18 @@ export const Dekamoji: React.FC<Props> = React.memo(function Dekamoji({
       }}
     >
       <div
-        ref={ref2}
+        ref={innerRef}
         style={{
-          position: 'absolute',
           width: '100%',
           height: '100%',
-          fontSize: `${fontSize}px`,
-          textAlign: 'center',
-          margin: '0 auto',
-          boxSizing: 'border-box',
-          whiteSpace: 'pre-wrap',
         }}
       >
-        {text}
+        <SizedDekamoji
+          width={width}
+          height={height}
+          text={text}
+          fontFamily={fontFamily}
+        />
       </div>
     </div>
   )
