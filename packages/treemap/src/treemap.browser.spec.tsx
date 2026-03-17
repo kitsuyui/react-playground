@@ -2,7 +2,7 @@ import { expect, test } from 'vitest'
 import { render } from 'vitest-browser-react'
 
 import { AutoMeasure } from '../../measure/src'
-import { Treemap } from './treemap'
+import { AutoTreemap } from './treemap'
 
 const weightedItems = [...Array(10)]
   .map((_, index) => index + 1)
@@ -35,7 +35,7 @@ test('renders a stable treemap screenshot', async () => {
         width: '640px',
       }}
     >
-      <Treemap
+      <AutoTreemap
         aspectRatio={16 / 9}
         boustrophedon={false}
         verticalFirst

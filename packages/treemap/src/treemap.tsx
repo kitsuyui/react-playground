@@ -170,7 +170,7 @@ export const SizedTreemap = (props: {
 }
 
 
-export const Treemap = (props: {
+export const AutoTreemap = (props: {
   weightedItems: WeightedItem[]
   verticalFirst?: boolean
   aspectRatio?: number

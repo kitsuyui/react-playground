@@ -1,1 +1,1 @@
-export { Treemap, TreemapContext } from './treemap'
+export { AutoTreemap, SizedTreemap, TreemapContext } from './treemap'

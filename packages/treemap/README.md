@@ -6,8 +6,8 @@ Treemap is a component that displays boxes like a tree mapping chart.
 
 ## Design role
 
-This package is a treemap layout primitive.
-It calculates and provides positioned regions rather than a fixed visual theme.
+This package is a treemap layout primitive plus an auto-measuring default wrapper.
+`SizedTreemap` calculates positioned regions for a known width and height, while `AutoTreemap` measures the parent and feeds that primitive.
 
 ## Demo
 
@@ -32,6 +32,16 @@ yarn add @kitsuyui/react-treemap
 ```sh
 pnpm add @kitsuyui/react-treemap
 ```
+
+## Usage
+
+```tsx
+import { AutoTreemap, SizedTreemap, TreemapContext } from '@kitsuyui/react-treemap'
+```
+
+Use `AutoTreemap` when the component should measure its parent automatically.
+Use `SizedTreemap` when layout bounds are already known.
+Use `TreemapContext` when each cell needs access to its computed rectangle metadata.
 
 ## License
 

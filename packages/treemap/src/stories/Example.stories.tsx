@@ -1,5 +1,5 @@
 import { AutoMeasure } from '../../../measure'
-import { Treemap } from '../'
+import { AutoTreemap } from '../'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -22,7 +22,7 @@ const TreemapExample = (
     boustrophedon: false,
   }
 ) => {
-  return <Treemap weightedItems={WeightedItems} {...props} />
+  return <AutoTreemap weightedItems={WeightedItems} {...props} />
 }
 
 const meta: Meta<typeof TreemapExample> = {
