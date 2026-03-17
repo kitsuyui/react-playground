@@ -1,5 +1,5 @@
-import { Measure } from '../../../measure'
-import { Treemap } from '../'
+import { AutoMeasure } from '../../../measure'
+import { AutoTreemap } from '../'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -7,7 +7,7 @@ const WeightedItems = [...Array(10)]
   .map((_, i) => i + 1)
   .map((i) => ({
     weight: 1.1 ** i,
-    element: <Measure />,
+    element: <AutoMeasure />,
   }))
 WeightedItems.sort((a, b) => b.weight - a.weight)
 
@@ -22,11 +22,11 @@ const TreemapExample = (
     boustrophedon: false,
   }
 ) => {
-  return <Treemap weightedItems={WeightedItems} {...props} />
+  return <AutoTreemap weightedItems={WeightedItems} {...props} />
 }
 
 const meta: Meta<typeof TreemapExample> = {
-  title: 'Base/Treemap/Example',
+  title: 'Layout Primitives/Treemap/Auto',
   component: TreemapExample,
 }
 

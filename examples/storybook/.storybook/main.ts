@@ -6,7 +6,6 @@ import { cjsInterop } from 'vite-plugin-cjs-interop'
 const config: StorybookConfig = {
   stories: [
     '../stories/**/*.mdx',
-    '../stories/**/*.stories.@(js|jsx|ts|tsx)',
     '../../../packages/*/src/stories/**/*.stories.@(js|jsx|ts|tsx)',
     '../../../packages/*/src/stories/**/*.mdx',
   ],

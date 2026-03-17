@@ -3,6 +3,10 @@
 This is a simple React component that displays a "Hello, World!" message.
 This component is for demonstration purposes to develop this repository.
 
+## Design role
+
+This package is a minimal semantic text wrapper example.
+
 ## Demo
 
 Storybook: https://react-playground.docs.kitsuyui.com/storybook/

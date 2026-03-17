@@ -1,16 +1,16 @@
-import { Zoomer } from '..'
+import { AutoZoomer } from '..'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-const meta: Meta<typeof Zoomer> = {
-  title: 'Base/Zoomer/Example',
-  component: Zoomer,
+const meta: Meta<typeof AutoZoomer> = {
+  title: 'Layout Primitives/Zoomer/Auto',
+  component: AutoZoomer,
   argTypes: {
   },
 }
 
 export default meta
-type Story = StoryObj<typeof Zoomer>
+type Story = StoryObj<typeof AutoZoomer>
 
 export const Default: Story = {
   args: {
@@ -93,4 +93,3 @@ export const Unsized: Story = {
     },
   },
 }
-

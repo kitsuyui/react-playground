@@ -3,7 +3,7 @@ import { DetailedBitString } from '../../'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof DetailedBitString> = {
-  title: 'Base/Binary/Detailed',
+  title: 'Visualization Primitives/Binary/Detailed String',
   component: DetailedBitString,
 }
 

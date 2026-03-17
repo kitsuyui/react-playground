@@ -1,8 +1,11 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`MinimalStopwatch > renders correctly 1`] = `
+exports[`DefaultStopwatch > renders correctly 1`] = `
 <DocumentFragment>
   <span
+    aria-atomic="true"
+    aria-live="off"
+    role="timer"
     style="width: 6em; font-family: monospace;"
   >
     00:00.000

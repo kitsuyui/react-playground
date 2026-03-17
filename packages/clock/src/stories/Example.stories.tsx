@@ -9,19 +9,27 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const Clock = () => {
   return (
-    <ClockContextProvider refreshInterval={10}>
+    <ClockContextProvider>
       <ClockContext.Consumer>
         {(date: Date) => (
           <>
             <AnalogClock timezone="Asia/Tokyo" date={date} />
-            <DigitalClock timezone="Asia/Tokyo" date={date} />
+            <DigitalClock
+              timezone="Asia/Tokyo"
+              date={date}
+              style={{ fontFamily: 'monospace' }}
+            />
             <AnalogClock
               timezone="America/New_York"
               date={date}
               step="sweep"
               face="roman"
             />
-            <DigitalClock timezone="America/New_York" date={date} />
+            <DigitalClock
+              timezone="America/New_York"
+              date={date}
+              style={{ fontFamily: 'monospace' }}
+            />
           </>
         )}
       </ClockContext.Consumer>
@@ -30,7 +38,7 @@ const Clock = () => {
 }
 
 const meta: Meta<typeof Clock> = {
-  title: 'Base/Clock/Example',
+  title: 'State Providers/Clock/Composition',
   component: Clock,
 }
 

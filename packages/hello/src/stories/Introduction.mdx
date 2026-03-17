@@ -4,33 +4,22 @@ import { Canvas, Meta } from '@storybook/addon-docs/blocks'
 
 import * as HelloStories from './Hello.stories'
 
-<Meta title="Base/Hello/Introduction" />
+<Meta title="Semantic Wrappers/Hello/Overview" />
 <Canvas of={HelloStories.Default} />
 
-This is the introduction to the Hello component, which is a simple component that displays a greeting message.
+## Role
 
-## Installation
+This package is a minimal semantic wrapper example.
 
-Use npm, yarn or pnpm to install.
+## Layers
 
-```sh
-$ npm install @kitsuyui/react-hello
-```
+- `Hello` is intentionally simple and exists mainly as a reference for the package shape.
 
-```sh
-$ yarn add @kitsuyui/react-hello
-```
-
-```sh
-$ pnpm add @kitsuyui/react-hello
-```
-
-## Usage
-
-To use the Hello component, you can import it into your React application as follows:
+## Example
 
 ```tsx
-import { Hello } from '@kitsuyui/react-hello';
+import { Hello } from '@kitsuyui/react-hello'
+
 function App() {
   return <Hello />;
 }

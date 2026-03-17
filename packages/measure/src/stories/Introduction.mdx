@@ -2,31 +2,24 @@
 
 import { Canvas, Meta } from '@storybook/addon-docs/blocks'
 
-import * as MeasureStories from './Example.stories'
+import * as MeasureStories from './Auto.stories'
 
-<Meta title="Base/Measure/Introduction" />
+<Meta title="Layout Primitives/Measure/Overview" />
 <Canvas of={MeasureStories.Default} />
 
-```jsx
-<Measure />
+## Role
+
+This package measures available space and visualizes it.
+
+## Layers
+
+- `MeasureBase` is the pure SVG visualization for known width and height.
+- `AutoMeasure` measures the parent and renders that primitive.
+
+## Example
+
+```tsx
+import { AutoMeasure } from '@kitsuyui/react-measure'
+
+<AutoMeasure />
 ```
-
-## Installation
-
-Each component is published as a separate package.
-
-Use npm, yarn or pnpm to install.
-
-```sh
-$ npm install @kitsuyui/react-measure
-```
-
-```sh
-$ yarn add @kitsuyui/react-measure
-```
-
-```sh
-$ pnpm add @kitsuyui/react-measure
-```
-
-## Usage

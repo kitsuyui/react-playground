@@ -50,7 +50,7 @@ export const MeasureBase = (props: { width: number, height: number, styles: Meas
   const stroke = styles.stroke
   const lines = useMemo(() => createCrossLinesBySize({ width, height }), [width, height])
   return (
-    <svg width={width} height={height}>
+    <svg width={width} height={height} role="img" aria-label={text}>
       <title>{text}</title>
       <rect
         x={0}

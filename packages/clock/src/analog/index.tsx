@@ -97,13 +97,13 @@ interface AnalogClockCustomize {
   minuteLines?: Partial<LinesStyle>
 }
 
-type AnalogClockProps = {
+export type AnalogClockProps = React.ComponentPropsWithoutRef<'div'> & {
   timezone: string
   date: Date
 } & AnalogClockCustomize
 
 export const AnalogClock: React.FC<AnalogClockProps> = (props): React.JSX.Element => {
-  const { timezone, date } = props
+  const { timezone, date, className, style, ...customize } = props
   const {
     width,
     height,
@@ -116,15 +116,17 @@ export const AnalogClock: React.FC<AnalogClockProps> = (props): React.JSX.Elemen
     centerPoint,
     hourLines,
     minuteLines,
-  } = customizeClockProps(props)
+  } = customizeClockProps(customize)
   const { hour, minute, second } = calcHMS(date, timezone, step)
   const centerX = width / 2
   const centerY = height / 2
   return (
     <div
+      className={className}
       style={{
         width: `${width}px`,
         height: `${height}px`,
+        ...style,
       }}
     >
       <svg

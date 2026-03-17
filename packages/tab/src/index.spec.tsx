@@ -19,10 +19,12 @@ describe('TabUIBase', () => {
     <div data-testid="tab-bar">{children}</div>
   )
   const TabButton = () => {
-    const { id, title, selected, onSelect } = useContext(TabButtonContext)
+    const { id, title, selected, onSelect, 'aria-selected': ariaSelected } = useContext(TabButtonContext)
     return (
       <button
         type="button"
+        role="tab"
+        aria-selected={ariaSelected}
         data-testid={`tab-button-${id}`}
         onClick={() => onSelect(id)}
         style={{ fontWeight: selected ? 'bold' : 'normal' }}
@@ -57,6 +59,53 @@ describe('TabUIBase', () => {
     ).toBe('t1')
     expect(screen.getByText('Content 1')).toBeTruthy()
     expect(screen.queryByText('Content 2')).toBeNull()
+  })
+
+  describe('WAI-ARIA roles', () => {
+    it('provides role="tablist" on the tab bar region', () => {
+      const { container } = render(
+        <TabUIBase
+          items={items}
+          selectedTabId="t1"
+          onSelect={onSelect}
+          TabBar={TabBar}
+          TabButton={TabButton}
+          ContentBox={ContentBox}
+        />
+      )
+      expect(container.querySelector('[role="tablist"]')).not.toBeNull()
+    })
+
+    it('provides role="tabpanel" on the content region', () => {
+      const { container } = render(
+        <TabUIBase
+          items={items}
+          selectedTabId="t1"
+          onSelect={onSelect}
+          TabBar={TabBar}
+          TabButton={TabButton}
+          ContentBox={ContentBox}
+        />
+      )
+      expect(container.querySelector('[role="tabpanel"]')).not.toBeNull()
+    })
+
+    it('sets aria-selected="true" on the active tab and "false" on inactive tabs', () => {
+      render(
+        <TabUIBase
+          items={items}
+          selectedTabId="t1"
+          onSelect={onSelect}
+          TabBar={TabBar}
+          TabButton={TabButton}
+          ContentBox={ContentBox}
+        />
+      )
+      const tabs = screen.getAllByRole('tab')
+      expect(tabs).toHaveLength(2)
+      expect(tabs[0].getAttribute('aria-selected')).toBe('true')
+      expect(tabs[1].getAttribute('aria-selected')).toBe('false')
+    })
   })
 
   it('keeps all contents mounted when contentMode is keep-mounted', () => {

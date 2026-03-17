@@ -1,5 +1,5 @@
 import {
-  MinimalTimer, TimerContextProvider, TimerContext
+  DefaultTimer, TimerContextProvider, TimerContext
 } from '../'
 import useSound from 'use-sound'
 
@@ -9,7 +9,7 @@ export const OrigTimer = ({ onComplete }: { onComplete?: () => void }) => {
   return (
     <TimerContextProvider onComplete={onComplete}>
       <TimerContext.Consumer>
-        {(context) => <MinimalTimer {...context} />}
+        {(context) => <DefaultTimer {...context} />}
       </TimerContext.Consumer>
     </TimerContextProvider>
   )
@@ -27,7 +27,7 @@ const Timer = () => {
 }
 
 const meta: Meta<typeof Timer> = {
-  title: 'Base/Timer/Example',
+  title: 'State Providers/Timer/Composition',
   component: Timer,
 }
 

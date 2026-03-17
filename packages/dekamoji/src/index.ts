@@ -1,1 +1,1 @@
-export { Dekamoji } from './dekamoji'
+export { AutoDekamoji, SizedDekamoji } from './dekamoji'

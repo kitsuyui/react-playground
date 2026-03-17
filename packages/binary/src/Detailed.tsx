@@ -56,12 +56,14 @@ const IndexLabel = (props: { index: number }): React.JSX.Element => {
   )
 }
 
-export const DetailedBitString = (props: {
+export type DetailedBitStringProps = {
   value: number
   length?: number
   showLittleEndianBitOrder?: boolean | undefined
   showBigEndianBitOrder?: boolean | undefined
-}): React.JSX.Element => {
+}
+
+export const DetailedBitString = (props: DetailedBitStringProps): React.JSX.Element => {
   const showLittleEndianBitOrder = props.showLittleEndianBitOrder ?? false
   const showBigEndianBitOrder = props.showBigEndianBitOrder ?? false
   return (

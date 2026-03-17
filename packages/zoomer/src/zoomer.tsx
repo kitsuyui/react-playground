@@ -23,11 +23,11 @@ export const ZoomerContext = React.createContext<{
 })
 
 /**
- * Zoomer component that automatically adjusts the zoom level of its children not to overflow the container.
+ * AutoZoomer component that automatically adjusts the zoom level of its children not to overflow the container.
  * @param props
  * @returns
  */
-export const Zoomer = (props: {
+export const AutoZoomer = (props: {
   children: React.ReactNode
 }) => {
   const { children } = props
@@ -46,23 +46,23 @@ export const Zoomer = (props: {
         justifyContent: 'center'
       }}
     >
-      <ZoomerWithinSize
+      <SizedZoomer
         width={width}
         height={height}
       >
         {children}
-      </ZoomerWithinSize>
+      </SizedZoomer>
     </div>
   )
 }
 
 /**
- * ZoomerWithinSize component that adjusts the zoom level of its children to fit within the specified width and height.
+ * SizedZoomer component that adjusts the zoom level of its children to fit within the specified width and height.
  * It uses a binary search algorithm to find the optimal zoom level.
  * @param props
  * @returns
  */
-export const ZoomerWithinSize = (props: {
+export const SizedZoomer = (props: {
   children: React.ReactNode
   width: number
   height: number

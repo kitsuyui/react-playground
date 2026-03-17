@@ -4,22 +4,26 @@ import { toText } from "@kitsuyui/number-time/toText"
 import type { StopwatchContextValue } from './context'
 
 /**
- * This is a minimal stopwatch component that displays the elapsed time.
+ * This is the default stopwatch UI that displays the elapsed time.
  * It provides buttons to start, stop, and reset the stopwatch.
- * This is not intended to be used in production.
  * @param props
  * @returns React.JSX.Element
  */
-export const MinimalStopwatch: React.FC<StopwatchContextValue> = (
+export const DefaultStopwatch: React.FC<StopwatchContextValue> = (
   props
 ): React.JSX.Element => {
   const { elapsedTime, running, toggle, reset } = props
   return (
     <>
-      <span style={{
-        width: '6em',
-        fontFamily: 'monospace',
-      }}>{toText(elapsedTime)}</span>
+      <span
+        role="timer"
+        aria-live="off"
+        aria-atomic="true"
+        style={{
+          width: '6em',
+          fontFamily: 'monospace',
+        }}
+      >{toText(elapsedTime)}</span>
       <button
         type="button"
         onClick={() => {

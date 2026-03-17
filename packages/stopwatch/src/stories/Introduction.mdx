@@ -2,58 +2,37 @@
 
 import { Canvas, Meta } from '@storybook/addon-docs/blocks'
 
-import * as StopwatchStories from './Example.stories'
+import * as StopwatchStories from './Composition.stories'
 
-<Meta title="Base/Stopwatch/Introduction" />
+<Meta title="State Providers/Stopwatch/Overview" />
 <Canvas of={StopwatchStories.Default} />
 
-```jsx
-import {
-  StopwatchContainer,
-  MinimalStopwatch,
-  StopwatchContext,
-  StopwatchProps,
-} from '../'
+## Role
 
-const Stopwatch = () => {
-  return (
-    <StopwatchContainer>
-      <StopwatchContext.Consumer>
-        {(props: StopwatchProps) => <MinimalStopwatch {...props} />}
-      </StopwatchContext.Consumer>
-    </StopwatchContainer>
-  )
-}
-```
+This package provides stopwatch state/control primitives plus a replaceable default UI.
 
-## Installation
+## Layers
 
-Each component is published as a separate package.
+- `StopwatchContextProvider` owns elapsed time state and control actions.
+- `DefaultStopwatch` is the package-provided default UI on top of that primitive.
 
-Use npm, yarn or pnpm to install.
-
-```sh
-$ npm install @kitsuyui/react-stopwatch
-```
-
-```sh
-$ yarn add @kitsuyui/react-stopwatch
-```
-
-```sh
-$ pnpm add @kitsuyui/react-stopwatch
-```
-
-## Usage
-
-Stopwatch components consists of two parts:
-
-1. The surface of the clock ()
-2. The state of the clock ()
-
-If you want to modify the appearance of the clock, you can use the surface of the clock.
-If you want to change the state of the clock, you can use the state of the clock.
+## Example
 
 ```tsx
+import {
+  DefaultStopwatch,
+  StopwatchContext,
+  StopwatchContextProvider,
+  type StopwatchContextValue,
+} from '@kitsuyui/react-stopwatch'
 
+function StopwatchExample() {
+  return (
+    <StopwatchContextProvider>
+      <StopwatchContext.Consumer>
+        {(context: StopwatchContextValue) => <DefaultStopwatch {...context} />}
+      </StopwatchContext.Consumer>
+    </StopwatchContextProvider>
+  )
+}
 ```

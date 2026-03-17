@@ -4,6 +4,15 @@
 
 Simple stopwatch React component.
 
+## Design role
+
+This package provides:
+
+- `StopwatchContextProvider` as the stopwatch state/controller primitive
+- `DefaultStopwatch` as the replaceable default UI
+
+Consumers can use the default UI, or consume `StopwatchContext` directly and render their own interface.
+
 ## Demo
 
 Storybook: https://react-playground.docs.kitsuyui.com/storybook/
@@ -31,22 +40,27 @@ pnpm add @kitsuyui/react-stopwatch
 ## Usage
 
 ```tsx
-import { StopWatchContainer, MinimalStopwatch } from '@kitsuyui/react-stopwatch'
+import {
+  StopwatchContextProvider,
+  StopwatchContext,
+  DefaultStopwatch,
+  type StopwatchContextValue,
+} from '@kitsuyui/react-stopwatch'
 
 const Stopwatch = () => {
   return (
-    <StopwatchContainer>
+    <StopwatchContextProvider>
       <StopwatchContext.Consumer>
-        {(props: StopwatchProps) => <MinimalStopwatch {...props} />}
+        {(props: StopwatchContextValue) => <DefaultStopwatch {...props} />}
       </StopwatchContext.Consumer>
-    </StopwatchContainer>
+    </StopwatchContextProvider>
   )
 }
 ```
 
-StopwatchContainer is a component that provides StopwatchContext.
-Stopwatchs are pure components that do not depend on StopwatchContext. Accept StopwatchProps as props.
-So you can define your own Stopwatch component by same interface.
+`StopwatchContextProvider` is the primitive state/controller layer.
+`DefaultStopwatch` is the default UI layered on top of that context value.
+You can replace the UI entirely by consuming `StopwatchContext` yourself.
 
 ```typescript
 export interface StopwatchValue {
@@ -61,7 +75,7 @@ export interface StopwatchActions {
   reset(): void
 }
 
-export type StopwatchProps = StopwatchValue & StopwatchActions
+export type StopwatchContextValue = StopwatchValue & StopwatchActions
 ```
 
 ## License

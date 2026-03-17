@@ -4,25 +4,35 @@ import { Canvas, Meta } from '@storybook/addon-docs/blocks'
 
 import * as TimerStories from './Example.stories'
 
-<Meta title="Base/Timer/Introduction" />
+<Meta title="State Providers/Timer/Overview" />
 <Canvas of={TimerStories.Default} />
 
-## Installation
+## Role
 
-Each component is published as a separate package.
+This package provides a timer state/controller primitive plus a replaceable default UI.
 
-Use npm, yarn or pnpm to install.
+## Layers
 
-```sh
-$ npm install @kitsuyui/react-timer
+- `TimerContextProvider` owns the countdown lifecycle and exposes it through `TimerContext`.
+- `DefaultTimer` is the package-provided default UI on top of that primitive.
+
+## Example
+
+```tsx
+import {
+  DefaultTimer,
+  TimerContext,
+  TimerContextProvider,
+  type TimerContextValue,
+} from '@kitsuyui/react-timer'
+
+function TimerExample() {
+  return (
+    <TimerContextProvider>
+      <TimerContext.Consumer>
+        {(context: TimerContextValue) => <DefaultTimer {...context} />}
+      </TimerContext.Consumer>
+    </TimerContextProvider>
+  )
+}
 ```
-
-```sh
-$ yarn add @kitsuyui/react-timer
-```
-
-```sh
-$ pnpm add @kitsuyui/react-timer
-```
-
-## Usage

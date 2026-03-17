@@ -3,7 +3,7 @@ import { InlineAnalogClock } from '../'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof InlineAnalogClock> = {
-  title: 'Base/Clock/InlineAnalog',
+  title: 'Visualization Primitives/Clock/Inline Analog',
   component: InlineAnalogClock,
 }
 

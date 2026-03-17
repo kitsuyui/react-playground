@@ -1,100 +1,18 @@
-import { Dekamoji } from '../../../dekamoji'
-import { Measure } from '../../../measure'
+import { AutoMeasure } from '../../../measure'
 import { WaveBox } from '@kitsuyui/react-wavebox'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-const Example = ({
-  minHeight,
-  minWidth,
-  maxWidth,
-  maxHeight,
-  heightCycle,
-  widthCycle,
-}: {
-  minHeight: number
-  minWidth: number
-  maxWidth: number
-  maxHeight: number
-  heightCycle: number
-  widthCycle: number
-}) => {
-  return (
-    <>
-      <WaveBox
-        minHeight={minHeight}
-        minWidth={minWidth}
-        maxWidth={maxWidth}
-        maxHeight={maxHeight}
-        heightCycle={heightCycle}
-        widthCycle={widthCycle}
-      >
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'red',
-          }}
-        />
-      </WaveBox>
-      <WaveBox
-        minHeight={minHeight}
-        minWidth={minWidth}
-        maxWidth={maxWidth}
-        maxHeight={maxHeight}
-        heightCycle={heightCycle}
-        widthCycle={widthCycle}
-      >
-        <Measure />
-      </WaveBox>
-      <WaveBox
-        minHeight={minHeight}
-        minWidth={minWidth}
-        maxWidth={maxWidth}
-        maxHeight={maxHeight}
-        heightCycle={heightCycle}
-        widthCycle={widthCycle}
-      >
-        <Dekamoji text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
-      </WaveBox>
-    </>
-  )
-}
-
 const meta: Meta<typeof WaveBox> = {
-  title: 'Base/WaveBox/Example',
-  component: Example,
+  title: 'Layout Primitives/WaveBox/Default Composition',
+  component: WaveBox,
   argTypes: {
-    minHeight: {
-      control: {
-        type: 'number',
-      },
-    },
-    minWidth: {
-      control: {
-        type: 'number',
-      },
-    },
-    maxWidth: {
-      control: {
-        type: 'number',
-      },
-    },
-    maxHeight: {
-      control: {
-        type: 'number',
-      },
-    },
-    heightCycle: {
-      control: {
-        type: 'number',
-      },
-    },
-    widthCycle: {
-      control: {
-        type: 'number',
-      },
-    },
+    minHeight: { control: { type: 'number' } },
+    minWidth: { control: { type: 'number' } },
+    maxWidth: { control: { type: 'number' } },
+    maxHeight: { control: { type: 'number' } },
+    heightCycle: { control: { type: 'number' } },
+    widthCycle: { control: { type: 'number' } },
   },
 }
 
@@ -110,20 +28,17 @@ export const Default: Story = {
     heightCycle: 900,
     widthCycle: 600,
   },
+  render: (args) => (
+    <WaveBox {...args}>
+      <AutoMeasure />
+    </WaveBox>
+  ),
   decorators: [
-    (Story) => {
-      return (
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            position: 'absolute',
-          }}
-        >
-          <Story />
-        </div>
-      )
-    },
+    (Story) => (
+      <div style={{ width: '100%', height: '100%', position: 'absolute' }}>
+        <Story />
+      </div>
+    ),
   ],
   parameters: {
     layout: 'fullscreen',

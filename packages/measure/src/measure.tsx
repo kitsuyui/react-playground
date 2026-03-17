@@ -6,12 +6,12 @@ import { type MeasureStyle, MeasureBase, DEFAULT_MEASURE_STYLE } from './base'
 export const MeasureStyleContext = createContext<MeasureStyle>(DEFAULT_MEASURE_STYLE)
 
 /**
- * Measure component
+ * AutoMeasure component
  *
  * This component shows the size of the parent element.
  * @returns {React.JSX.Element}
  */
-export const Measure: React.FC = (): React.JSX.Element => {
+export const AutoMeasure: React.FC = (): React.JSX.Element => {
   const [ref, { width, height }] = useMeasure<HTMLDivElement>()
   const styles = React.useContext(MeasureStyleContext)
   return (

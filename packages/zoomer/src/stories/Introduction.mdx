@@ -2,31 +2,24 @@
 
 import { Canvas, Meta } from '@storybook/addon-docs/blocks'
 
-import * as ZoomerExample from './Example.stories'
+import * as ZoomerStories from './Auto.stories'
 
-<Meta title="Base/Zoomer/Introduction" />
-<Canvas of={ZoomerExample.Default} />
+<Meta title="Layout Primitives/Zoomer/Overview" />
+<Canvas of={ZoomerStories.Default} />
 
-```jsx
-<Zoomer>あいうえお</Zoomer>
+## Role
+
+This package scales content to fit the available layout area.
+
+## Layers
+
+- `SizedZoomer` is the pure fit-to-bounds primitive for known dimensions.
+- `AutoZoomer` measures the parent and feeds that primitive.
+
+## Example
+
+```tsx
+import { AutoZoomer } from '@kitsuyui/react-zoomer'
+
+<AutoZoomer>Responsive content</AutoZoomer>
 ```
-
-## Installation
-
-Each component is published as a separate package.
-
-Use npm, yarn or pnpm to install.
-
-```sh
-$ npm install @kitsuyui/react-zoomer
-```
-
-```sh
-$ yarn add @kitsuyui/react-zoomer
-```
-
-```sh
-$ pnpm add @kitsuyui/react-zoomer
-```
-
-## Usage

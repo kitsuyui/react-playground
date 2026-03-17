@@ -4,62 +4,41 @@ import { Canvas, Meta } from '@storybook/addon-docs/blocks'
 
 import * as ClockStories from './Example.stories'
 
-<Meta title="Base/Clock/Introduction" />
+<Meta title="State Providers/Clock/Overview" />
 <Canvas of={ClockStories.Default} />
 
-## Installation
+## Role
 
-Each component is published as a separate package.
+This package exposes a clock state provider and multiple replaceable clock views.
 
-Use npm, yarn or pnpm to install.
+## Layers
 
-```sh
-$ npm install @kitsuyui/react-clock
-```
+- `ClockContextProvider` owns the current time and refresh cadence.
+- `AnalogClock` and `DigitalClock` are standalone visualizations that accept ordinary wrapper element props.
+- `InlineAnalogClock` is the inline SVG visualization for text-like usage.
 
-```sh
-$ yarn add @kitsuyui/react-clock
-```
-
-```sh
-$ pnpm add @kitsuyui/react-clock
-```
-
-## Usage
-
-Clock components consists of two parts:
-
-1. The surface of the clock (AnalogClock, DigitalClock, etc.)
-2. The state of the clock (ClockContainer, DateContext, etc.)
-
-If you want to modify the appearance of the clock, you can use the surface of the clock.
-If you want to change the state of the clock, you can use the state of the clock.
+## Example
 
 ```tsx
 import {
   AnalogClock,
-  ClockContainer,
-  DateContext,
+  ClockContext,
+  ClockContextProvider,
   DigitalClock,
 } from '@kitsuyui/react-clock'
-import React from 'react'
 
-const Clock = () => {
+function ClockExample() {
   return (
-    <ClockContainer refreshInterval={10}>
-      <DateContext.Consumer>
+    <ClockContextProvider>
+      <ClockContext.Consumer>
         {(date) => (
           <>
             <AnalogClock timezone="Asia/Tokyo" date={date} />
             <DigitalClock timezone="Asia/Tokyo" date={date} />
           </>
         )}
-      </DateContext.Consumer>
-    </ClockContainer>
+      </ClockContext.Consumer>
+    </ClockContextProvider>
   )
 }
 ```
-
-`ClockContainer` is a component that manages the state of the clock.
-The `refreshInterval` property is the interval at which the clock is updated.
-`AnalogClock` and `DigitalClock` are components that display the clock. These components are independent of the state of the clock.

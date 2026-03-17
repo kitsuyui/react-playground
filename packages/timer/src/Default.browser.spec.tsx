@@ -2,9 +2,9 @@ import { expect, test, vi } from 'vitest'
 import { render } from 'vitest-browser-react'
 
 import { BrowserFixture } from '../../../vitest.browser.fixture'
-import { MinimalTimer } from './minimal'
+import { DefaultTimer } from './default'
 
-test('renders a stable minimal timer screenshot', async () => {
+test('renders a stable default timer screenshot', async () => {
   const screen = await render(
     <BrowserFixture
       label="minimal timer fixture"
@@ -12,7 +12,7 @@ test('renders a stable minimal timer screenshot', async () => {
         alignItems: 'center',
       }}
     >
-      <MinimalTimer
+      <DefaultTimer
         incrementTimerValue={vi.fn()}
         remaining={1234}
         reset={vi.fn()}
@@ -26,5 +26,5 @@ test('renders a stable minimal timer screenshot', async () => {
   )
 
   await expect.element(screen.getByRole('button', { name: 'Start' })).toBeVisible()
-  await expect(screen.getByTestId('minimal timer fixture')).toMatchScreenshot('minimal-timer-default.png')
+  await expect(screen.getByTestId('minimal timer fixture')).toMatchScreenshot('default-timer.png')
 })

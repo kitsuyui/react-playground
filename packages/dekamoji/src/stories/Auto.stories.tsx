@@ -1,10 +1,10 @@
-import { Dekamoji } from '../'
+import { AutoDekamoji } from '../'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-const meta: Meta<typeof Dekamoji> = {
-  title: 'Base/Dekamoji/Example',
-  component: Dekamoji,
+const meta: Meta<typeof AutoDekamoji> = {
+  title: 'Layout Primitives/Dekamoji/Auto',
+  component: AutoDekamoji,
   argTypes: {
     text: {
       control: {
@@ -15,7 +15,7 @@ const meta: Meta<typeof Dekamoji> = {
 }
 
 export default meta
-type Story = StoryObj<typeof Dekamoji>
+type Story = StoryObj<typeof AutoDekamoji>
 
 export const Default: Story = {
   args: {

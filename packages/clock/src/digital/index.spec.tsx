@@ -23,4 +23,11 @@ describe('dateToDigital', () => {
     const result = dateToDigital(date, timezone)
     expect(result).toBe('08:34:56 PM (Asia/Manila)')
   })
+
+  it('keeps 12 instead of 00 at noon', () => {
+    const date = new Date('2020-01-01T04:00:00Z')
+    const timezone = 'Asia/Tokyo'
+    const result = dateToDigital(date, timezone)
+    expect(result).toBe('01:00:00 PM (Asia/Tokyo)')
+  })
 })

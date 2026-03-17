@@ -4,6 +4,11 @@
 
 This is a React component representing a binary value.
 
+## Design role
+
+This package provides binary/text visualization primitives.
+`Bits` is the structural primitive, and `SimpleBitString` / `DetailedBitString` are concrete visualizations built on top of it.
+
 ## Demo
 
 Storybook: https://react-playground.docs.kitsuyui.com/storybook/
@@ -26,6 +31,19 @@ yarn add @kitsuyui/react-binary
 
 ```sh
 pnpm add @kitsuyui/react-binary
+```
+
+## Usage
+
+```tsx
+import {
+  Bits,
+  DetailedBitString,
+  SimpleBitString,
+  type BitsProps,
+  type DetailedBitStringProps,
+  type SimpleBitStringProps,
+} from '@kitsuyui/react-binary'
 ```
 
 ## License

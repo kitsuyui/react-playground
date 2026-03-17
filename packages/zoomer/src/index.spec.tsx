@@ -2,22 +2,22 @@ import { describe, expect, it } from 'vitest'
 
 import { render } from '@testing-library/react'
 
-import { Zoomer, ZoomerWithinSize } from './zoomer'
+import { AutoZoomer, SizedZoomer } from './zoomer'
 
-describe('Zoomer', () => {
+describe('AutoZoomer', () => {
   it('renders without crashing', () => {
-    const {container} = render(<Zoomer>Test</Zoomer>)
+    const {container} = render(<AutoZoomer>Test</AutoZoomer>)
     expect(container.firstElementChild).not.toBeNull()
     expect(container.textContent).toContain('Test')
   })
 })
 
-describe('ZoomerWithinSize', () => {
+describe('SizedZoomer', () => {
   it('renders without crashing', () => {
     const {container} = render(
-      <ZoomerWithinSize width={100} height={100}>
+      <SizedZoomer width={100} height={100}>
         Test
-      </ZoomerWithinSize>
+      </SizedZoomer>
     )
     expect(container.firstElementChild).not.toBeNull()
     expect(container.textContent).toContain('Test')
