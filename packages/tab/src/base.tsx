@@ -38,6 +38,7 @@ export interface TabButtonContextValue {
   onSelect: (id: TabItemId) => void
   selected: boolean
   title: TabTitle
+  'aria-selected': boolean
 }
 
 const DEFAULT_TAB_BUTTON_CONTEXT: TabButtonContextValue = {
@@ -45,6 +46,7 @@ const DEFAULT_TAB_BUTTON_CONTEXT: TabButtonContextValue = {
   onSelect: () => {},
   selected: false,
   title: '',
+  'aria-selected': false,
 } as const
 
 export const TabButtonContext = createContext<TabButtonContextValue>(
@@ -80,22 +82,27 @@ export const TabUIBase = (props: TabControlProps & TabUIComponents) => {
       : activeItem?.content
   return (
     <TabContext.Provider value={{ selectedTabId, onSelect }}>
-      <TabBar>
-        {items.map((item) => (
-          <TabButtonContext.Provider
-            key={item.id}
-            value={{
-              id: item.id,
-              title: item.title,
-              selected: item.id === selectedTabId,
-              onSelect,
-            }}
-          >
-            <TabButton />
-          </TabButtonContext.Provider>
-        ))}
-      </TabBar>
-      <ContentBox>{content}</ContentBox>
+      <div role="tablist">
+        <TabBar>
+          {items.map((item) => (
+            <TabButtonContext.Provider
+              key={item.id}
+              value={{
+                id: item.id,
+                title: item.title,
+                selected: item.id === selectedTabId,
+                'aria-selected': item.id === selectedTabId,
+                onSelect,
+              }}
+            >
+              <TabButton />
+            </TabButtonContext.Provider>
+          ))}
+        </TabBar>
+      </div>
+      <div role="tabpanel">
+        <ContentBox>{content}</ContentBox>
+      </div>
     </TabContext.Provider>
   )
 }

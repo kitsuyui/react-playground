@@ -3,6 +3,9 @@
 exports[`DefaultStopwatch > renders correctly 1`] = `
 <DocumentFragment>
   <span
+    aria-atomic="true"
+    aria-live="off"
+    role="timer"
     style="width: 6em; font-family: monospace;"
   >
     00:00.000

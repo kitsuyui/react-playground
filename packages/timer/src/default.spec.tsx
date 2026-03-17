@@ -57,6 +57,40 @@ describe('DefaultTimer', () => {
     await userEvent.click(button)
     expect(props.reset).toHaveBeenCalled()
   })
+  it('shows "Stop" label when running=true and "Start" when running=false', () => {
+    const baseProps = {
+      remaining: 1000,
+      incrementTimerValue: vi.fn(),
+      toggle: vi.fn(),
+      reset: vi.fn(),
+      start: vi.fn(),
+      stop: vi.fn(),
+      setTimerValue: vi.fn(),
+    }
+    const { getByText, rerender } = render(<DefaultTimer {...baseProps} running={true} />)
+    expect(getByText('Stop')).toBeTruthy()
+    rerender(<DefaultTimer {...baseProps} running={false} />)
+    expect(getByText('Start')).toBeTruthy()
+  })
+
+  it('has role="timer" with aria-live="off" on the remaining time display', () => {
+    const props = {
+      remaining: 1234,
+      running: false,
+      incrementTimerValue: vi.fn(),
+      toggle: vi.fn(),
+      reset: vi.fn(),
+      start: vi.fn(),
+      stop: vi.fn(),
+      setTimerValue: vi.fn(),
+    }
+    const { container } = render(<DefaultTimer {...props} />)
+    const timer = container.querySelector('[role="timer"]')
+    expect(timer).not.toBeNull()
+    expect(timer?.getAttribute('aria-live')).toBe('off')
+    expect(timer?.getAttribute('aria-atomic')).toBe('true')
+  })
+
   it('calls incrementTimerValue when increment button is clicked', async () => {
     const props = {
       remaining: 1000,

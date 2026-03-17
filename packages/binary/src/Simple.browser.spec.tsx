@@ -2,7 +2,7 @@ import { expect, test } from 'vitest'
 import { render } from 'vitest-browser-react'
 
 import { BrowserFixture } from '../../../vitest.browser.fixture'
-import { Simple8BitString } from './Simple'
+import { SimpleBitString } from './Simple'
 
 test('renders a stable eight-bit string screenshot', async () => {
   const screen = await render(
@@ -13,7 +13,7 @@ test('renders a stable eight-bit string screenshot', async () => {
         letterSpacing: '0.2em',
       }}
     >
-      <Simple8BitString value={170} />
+      <SimpleBitString value={170} />
     </BrowserFixture>,
   )
 

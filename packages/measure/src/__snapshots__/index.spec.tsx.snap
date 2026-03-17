@@ -1,3 +1,74 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`MeasureBase > renders correctly for standard dimensions 1`] = `
+<DocumentFragment>
+  <svg
+    aria-label="320x180"
+    height="180"
+    role="img"
+    width="320"
+  >
+    <title>
+      320x180
+    </title>
+    <rect
+      fill="none"
+      height="180"
+      stroke="black"
+      stroke-dasharray="2"
+      stroke-width="1"
+      width="320"
+      x="0"
+      y="0"
+    />
+    <line
+      stroke="black"
+      stroke-dasharray="2"
+      stroke-width="1"
+      x1="0"
+      x2="160"
+      y1="0"
+      y2="90"
+    />
+    <line
+      stroke="black"
+      stroke-dasharray="2"
+      stroke-width="1"
+      x1="320"
+      x2="160"
+      y1="0"
+      y2="90"
+    />
+    <line
+      stroke="black"
+      stroke-dasharray="2"
+      stroke-width="1"
+      x1="0"
+      x2="160"
+      y1="180"
+      y2="90"
+    />
+    <line
+      stroke="black"
+      stroke-dasharray="2"
+      stroke-width="1"
+      x1="320"
+      x2="160"
+      y1="180"
+      y2="90"
+    />
+    <text
+      dominant-baseline="middle"
+      font-family="monospace"
+      font-size="25.714285714285715"
+      text-anchor="middle"
+      x="160"
+      y="90"
+    >
+      320x180
+    </text>
+  </svg>
+</DocumentFragment>
+`;
+
 exports[`render AutoMeasure 1`] = `<AutoMeasure />`;

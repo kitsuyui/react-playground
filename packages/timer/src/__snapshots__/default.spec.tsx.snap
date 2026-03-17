@@ -3,6 +3,9 @@
 exports[`DefaultTimer > renders correctly 1`] = `
 <DocumentFragment>
   <span
+    aria-atomic="true"
+    aria-live="off"
+    role="timer"
     style="width: 6em; font-family: monospace;"
   >
     16:40.000

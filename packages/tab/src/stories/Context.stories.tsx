@@ -13,12 +13,13 @@ const TabContextInspector = () => {
 }
 
 const TabButtonContextInspector = () => {
-  const { id, selected, title } = React.useContext(TabButtonContext)
+  const { id, selected, title, 'aria-selected': ariaSelected } = React.useContext(TabButtonContext)
   return (
     <div style={{ fontFamily: 'monospace', fontSize: 14 }}>
       <div>id: {id}</div>
       <div>selected: {String(selected)}</div>
       <div>title: {String(title)}</div>
+      <div>aria-selected: {String(ariaSelected)}</div>
     </div>
   )
 }
@@ -34,7 +35,7 @@ const ContextExample = () => (
     <div>
       <div style={{ fontWeight: 'bold', marginBottom: '0.25rem' }}>TabButtonContext</div>
       <TabButtonContext.Provider
-        value={{ id: 'settings', selected: true, title: 'Settings', onSelect: () => {} }}
+        value={{ id: 'settings', selected: true, title: 'Settings', 'aria-selected': true, onSelect: () => {} }}
       >
         <TabButtonContextInspector />
       </TabButtonContext.Provider>

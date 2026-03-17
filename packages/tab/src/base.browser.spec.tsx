@@ -20,12 +20,14 @@ const TabBar = (props: { children: React.ReactNode }) => {
 }
 
 const TabButton = () => {
-  const { id, onSelect, selected, title } = useContext(TabButtonContext)
+  const { id, onSelect, selected, title, 'aria-selected': ariaSelected } = useContext(TabButtonContext)
   return (
     <button
       onClick={() => {
         onSelect(id)
       }}
+      role="tab"
+      aria-selected={ariaSelected}
       style={{
         background: selected ? '#111111' : '#f1f1f1',
         border: '1px solid #111111',
@@ -85,7 +87,7 @@ const TabExample = () => {
 test('renders a stable tab screenshot after selecting the second tab', async () => {
   const screen = await render(<TabExample />)
 
-  await screen.getByRole('button', { name: 'Details' }).click()
+  await screen.getByRole('tab', { name: 'Details' }).click()
 
   await expect.element(screen.getByText('Detailed panel')).toBeVisible()
   await expect(screen.getByTestId('tab fixture')).toMatchScreenshot('tab-details.png')

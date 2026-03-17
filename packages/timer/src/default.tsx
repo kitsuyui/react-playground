@@ -9,10 +9,15 @@ export const DefaultTimer: React.FC<TimerContextValue> = (props): React.JSX.Elem
   const { remaining, running, incrementTimerValue, toggle, reset } = props
   return (
     <>
-      <span style={{
-        width: '6em',
-        fontFamily: 'monospace',
-      }}>{toText(remaining)}</span>
+      <span
+        role="timer"
+        aria-live="off"
+        aria-atomic="true"
+        style={{
+          width: '6em',
+          fontFamily: 'monospace',
+        }}
+      >{toText(remaining)}</span>
       <button
         type="button"
         name="incrementMinute"

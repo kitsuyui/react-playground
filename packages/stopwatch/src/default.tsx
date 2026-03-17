@@ -15,10 +15,15 @@ export const DefaultStopwatch: React.FC<StopwatchContextValue> = (
   const { elapsedTime, running, toggle, reset } = props
   return (
     <>
-      <span style={{
-        width: '6em',
-        fontFamily: 'monospace',
-      }}>{toText(elapsedTime)}</span>
+      <span
+        role="timer"
+        aria-live="off"
+        aria-atomic="true"
+        style={{
+          width: '6em',
+          fontFamily: 'monospace',
+        }}
+      >{toText(elapsedTime)}</span>
       <button
         type="button"
         onClick={() => {

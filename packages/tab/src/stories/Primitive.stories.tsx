@@ -41,11 +41,13 @@ const TabBar: TabUIComponents['TabBar'] = ({ children }) => (
 )
 
 const TabButton: TabUIComponents['TabButton'] = () => {
-  const { id, onSelect, selected, title } = React.useContext(TabButtonContext)
+  const { id, onSelect, selected, title, 'aria-selected': ariaSelected } = React.useContext(TabButtonContext)
 
   return (
     <button
       type="button"
+      role="tab"
+      aria-selected={ariaSelected}
       onClick={() => onSelect(id)}
       style={{
         border: '1px solid #d1d5db',
