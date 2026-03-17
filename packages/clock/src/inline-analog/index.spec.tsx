@@ -57,4 +57,27 @@ describe('InlineAnalogClock', () => {
 
     expect(getByRole('img').getAttribute('aria-label')).toBe('Tokyo time')
   })
+
+  it('does not render the second hand by default', () => {
+    const { container } = render(
+      <InlineAnalogClock
+        date={new Date('2021-01-01T00:00:00Z')}
+        timezone="Asia/Tokyo"
+      />
+    )
+
+    expect(container.querySelectorAll('line')).toHaveLength(3)
+  })
+
+  it('renders the second hand when enabled', () => {
+    const { container } = render(
+      <InlineAnalogClock
+        date={new Date('2021-01-01T00:00:00Z')}
+        timezone="Asia/Tokyo"
+        showSecondHand
+      />
+    )
+
+    expect(container.querySelectorAll('line')).toHaveLength(4)
+  })
 })

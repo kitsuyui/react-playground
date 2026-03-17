@@ -9,6 +9,7 @@ export interface InlineAnalogClockProps
   timezone: string
   date: Date
   step?: StepStyle
+  showSecondHand?: boolean
 }
 
 const VIEWBOX_SIZE = 100
@@ -22,6 +23,7 @@ export const InlineAnalogClock = (
     timezone,
     date,
     step = 'tick',
+    showSecondHand = false,
     style,
     title,
     ...spanProps
@@ -75,7 +77,9 @@ export const InlineAnalogClock = (
         />
         <Hand degree={30 * hour} length={24} width={6} />
         <Hand degree={6 * minute} length={34} width={4} />
-        <Hand degree={6 * second} length={38} width={2} opacity={0.6} />
+        {showSecondHand && (
+          <Hand degree={6 * second} length={38} width={2} opacity={0.6} />
+        )}
         <circle
           cx={CENTER}
           cy={CENTER}

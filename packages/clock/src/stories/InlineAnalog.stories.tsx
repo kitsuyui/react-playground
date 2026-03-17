@@ -37,3 +37,16 @@ export const Styled: Story = {
     </p>
   ),
 }
+
+export const WithSecondHand: Story = {
+  args: {
+    date: new Date('2024-01-02T06:04:05Z'),
+    timezone: 'Asia/Tokyo',
+    showSecondHand: true,
+  },
+  render: (args) => (
+    <p style={{ fontSize: '24px' }}>
+      Current time <InlineAnalogClock {...args} /> in Tokyo
+    </p>
+  ),
+}
