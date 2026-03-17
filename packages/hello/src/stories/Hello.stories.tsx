@@ -3,7 +3,7 @@ import { Hello } from '../'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof Hello> = {
-  title: 'Semantic Wrappers/Hello/Example',
+  title: 'Semantic Wrappers/Hello/Primitive',
   component: Hello,
 }
 
