@@ -3,7 +3,7 @@ import { SimpleBitString } from '@kitsuyui/react-binary'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof SimpleBitString> = {
-  title: 'Base/Binary/Simple',
+  title: 'Visualization Primitives/Binary/Simple String',
   component: SimpleBitString,
 }
 

@@ -3,7 +3,7 @@ import { UUIDIcon } from '../'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof UUIDIcon> = {
-  title: 'Base/Biticon/Simple',
+  title: 'Visualization Primitives/BitIcon/UUID Icon',
   component: UUIDIcon,
 }
 

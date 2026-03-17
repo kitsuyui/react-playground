@@ -3,7 +3,7 @@ import { DefaultTimer } from '../'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof DefaultTimer> = {
-  title: 'Base/Timer/Default',
+  title: 'Default UIs/Timer/Default',
   component: DefaultTimer,
 }
 

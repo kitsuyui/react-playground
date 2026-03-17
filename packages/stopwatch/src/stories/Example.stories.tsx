@@ -18,7 +18,7 @@ const Stopwatch = () => {
 }
 
 const meta: Meta<typeof Stopwatch> = {
-  title: 'Base/Stopwatch/Example',
+  title: 'State Providers/Stopwatch/Composition',
   component: Stopwatch,
 }
 

@@ -1,30 +1,28 @@
-# Welcome
+# Principles
 
-import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 
-import * as ClockStories from '../../../packages/clock/src/stories/Example.stories'
+<Meta title="Principles/Overview" />
 
-<Canvas of={ClockStories.Default} />
+This Storybook is organized by Web-compatible roles rather than by package name alone.
 
-This is a collection of React components by [Kitsuyui](https://github.com/kitsuyui).
+## Taxonomy
 
-## Installation
+- `Semantic Wrappers`
+- `State Providers`
+- `Interaction Primitives`
+- `Visualization Primitives`
+- `Layout Primitives`
+- `Default UIs`
 
-Each component is published as a separate package.
+## Reading The Catalog
 
-Use npm, yarn or pnpm to install.
+Each package should expose its lowest-level reusable primitive first.
+If a package also includes an auto wrapper or a default UI, those stories are listed separately so the layering stays visible.
 
-```sh
-$ npm install @kitsuyui/react-clock
-$ npm install @kitsuyui/react-stopwatch
-$ npm install @kitsuyui/react-timer
-$ npm install @kitsuyui/react-dekamoji
-$ npm install @kitsuyui/react-measure
-$ npm install @kitsuyui/react-treemap
-```
+## Intended Use
 
-## Usage
-
-Clock, Stopwatch, Timer, etc. change their state depending on the time.
-To separate the change of the state and the representation of the UI, I use React Context.
-For example, the following code is a clock that displays the current time in Tokyo.
+- Primitive stories show reusable contracts.
+- Provider stories show state ownership and composition boundaries.
+- Default UI stories show replaceable reference implementations.
+- Overview pages explain how those layers relate to each other.

@@ -66,7 +66,7 @@ const TreemapExample = (
 }
 
 const meta: Meta<typeof TreemapExample> = {
-  title: 'Base/Treemap/Direction',
+  title: 'Layout Primitives/Treemap/Direction',
   component: TreemapExample,
 }
 

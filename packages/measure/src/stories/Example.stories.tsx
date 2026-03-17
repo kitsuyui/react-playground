@@ -17,7 +17,7 @@ const MeasureExample = () => {
 }
 
 const meta: Meta<typeof MeasureExample> = {
-  title: 'Base/Measure/Example',
+  title: 'Layout Primitives/Measure/Auto',
   component: MeasureExample,
 }
 

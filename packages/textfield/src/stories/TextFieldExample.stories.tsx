@@ -4,7 +4,7 @@ import { TextField, type TextFieldRef } from '../'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof TextField> = {
-  title: 'Base/TextField/TextField/Example',
+  title: 'Semantic Wrappers/TextField/TextField',
   component: TextField,
   argTypes: {},
 }

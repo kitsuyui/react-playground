@@ -62,7 +62,7 @@ const Example = ({
 }
 
 const meta: Meta<typeof WaveBox> = {
-  title: 'Base/WaveBox/Example',
+  title: 'Layout Primitives/WaveBox/Default Composition',
   component: Example,
   argTypes: {
     minHeight: {

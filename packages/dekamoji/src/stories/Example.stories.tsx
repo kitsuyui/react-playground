@@ -3,7 +3,7 @@ import { AutoDekamoji } from '../'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof AutoDekamoji> = {
-  title: 'Base/Dekamoji/Example',
+  title: 'Layout Primitives/Dekamoji/Auto',
   component: AutoDekamoji,
   argTypes: {
     text: {

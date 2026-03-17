@@ -3,7 +3,7 @@ import { AutoZoomer } from '..'
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta: Meta<typeof AutoZoomer> = {
-  title: 'Base/Zoomer/Example',
+  title: 'Layout Primitives/Zoomer/Auto',
   component: AutoZoomer,
   argTypes: {
   },

@@ -27,7 +27,7 @@ const Timer = () => {
 }
 
 const meta: Meta<typeof Timer> = {
-  title: 'Base/Timer/Example',
+  title: 'State Providers/Timer/Composition',
   component: Timer,
 }
 
