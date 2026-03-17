@@ -17,7 +17,7 @@ type excludeProps =
   | 'value'
   | 'type'
 
-export type WrapperProps = Omit<WrappedProps, excludeProps> & alternateProps
+export type TextFieldProps = Omit<WrappedProps, excludeProps> & alternateProps
 
 type ExtraImperativeHandle = {
   clear: () => void
@@ -26,7 +26,7 @@ type ExtraImperativeHandle = {
 type WrappedRef = React.ComponentRef<typeof TextField> & ExtraImperativeHandle
 export type TextFieldRef = WrappedRef
 
-export const TextField = (props: WrapperProps) => {
+export const TextField = (props: TextFieldProps) => {
   const ref = props.ref
   const { onInputChunk, onChangeInputting } = props
   const [internalValue, setInternalValue] = React.useState(props.value ?? '')

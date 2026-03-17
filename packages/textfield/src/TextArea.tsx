@@ -16,7 +16,7 @@ type excludeProps =
   | 'onCompositionEnd'
   | 'value'
 
-export type WrapperProps = Omit<WrappedProps, excludeProps> & alternateProps
+export type TextAreaProps = Omit<WrappedProps, excludeProps> & alternateProps
 
 type ExtraImperativeHandle = {
   clear: () => void
@@ -25,7 +25,7 @@ type ExtraImperativeHandle = {
 type WrappedRef = React.ComponentRef<typeof TextArea> & ExtraImperativeHandle
 export type TextAreaRef = WrappedRef
 
-export const TextArea = (props: WrapperProps) => {
+export const TextArea = (props: TextAreaProps) => {
   const ref = props.ref
   const { onInputChunk, onChangeInputting } = props
   const [internalValue, setInternalValue] = React.useState(props.value ?? '')

@@ -46,6 +46,19 @@ yarn add @kitsuyui/react-textfield
 pnpm add @kitsuyui/react-textfield
 ```
 
+## Usage
+
+```tsx
+import {
+  TextArea,
+  type TextAreaProps,
+  TextField,
+  type TextFieldProps,
+} from '@kitsuyui/react-textfield'
+```
+
+The exported prop types describe the drop-in wrapper contract around native text controls.
+
 ## Reference
 
 - https://maku.blog/p/cv6fpx7/
