@@ -1,4 +1,4 @@
-import { Measure } from '../'
+import { AutoMeasure } from '../'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -11,7 +11,7 @@ const MeasureExample = () => {
         position: 'absolute',
       }}
     >
-      <Measure />
+      <AutoMeasure />
     </div>
   )
 }

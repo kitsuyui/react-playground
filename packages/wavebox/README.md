@@ -6,8 +6,8 @@ Wavebox is a component that deforms vertically and horizontally. It is useful fo
 
 ## Design role
 
-This package is an animated layout primitive.
-It provides time-varying container size behavior rather than a finished widget style.
+This package is an animated layout primitive with an exported provider layer.
+`WaveBoxProvider` owns time-varying size state, `SizedBox` is the pure sized container, and `WaveBox` is the default composition.
 
 ## Demo
 
@@ -32,6 +32,15 @@ yarn add @kitsuyui/react-wavebox
 ```sh
 pnpm add @kitsuyui/react-wavebox
 ```
+
+## Usage
+
+```tsx
+import { WaveBox, WaveBoxProvider, SizedBox } from '@kitsuyui/react-wavebox'
+```
+
+Use `WaveBox` as the default animated composition.
+Use `WaveBoxProvider` and `SizedBox` when you want to control how the animated size state is rendered.
 
 ## License
 

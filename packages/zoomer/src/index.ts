@@ -1,1 +1,1 @@
-export { Zoomer, ZoomerWithinSize } from './zoomer'
+export { AutoZoomer, SizedZoomer, ZoomerContext } from './zoomer'

@@ -6,8 +6,8 @@ zoomer is a React component that changes the font size according to the size of 
 
 ## Design role
 
-This package is a fit-within-container layout primitive.
-It computes scale to avoid overflow rather than prescribing a visual style.
+This package is a fit-within-container layout primitive plus an auto-measuring default wrapper.
+`SizedZoomer` fits content within a known width and height, while `AutoZoomer` measures the parent and feeds that primitive.
 
 ## Demo
 
@@ -32,6 +32,15 @@ yarn add @kitsuyui/react-zoomer
 ```sh
 pnpm add @kitsuyui/react-zoomer
 ```
+
+## Usage
+
+```tsx
+import { AutoZoomer, SizedZoomer } from '@kitsuyui/react-zoomer'
+```
+
+Use `AutoZoomer` when the component should measure its parent automatically.
+Use `SizedZoomer` when the available width and height are already known.
 
 ## License
 

@@ -59,14 +59,14 @@ When a package needs a default UI, that UI should remain replaceable and be laye
 - [x] `@kitsuyui/react-timer` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-timer.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-timer) ... timer state provider and replaceable default UI
 - [x] `@kitsuyui/react-stopwatch` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-stopwatch.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-stopwatch) ... stopwatch state provider and replaceable default UI
 - [x] `@kitsuyui/react-dekamoji` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-dekamoji.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-dekamoji) ... fit-text layout primitive
-- [x] `@kitsuyui/react-wavebox` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-wavebox.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-wavebox) ... animated layout primitive
+- [x] `@kitsuyui/react-wavebox` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-wavebox.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-wavebox) ... animated layout primitive with provider and sized-box exports
 - [x] `@kitsuyui/react-treemap` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-treemap.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-treemap) ... treemap layout primitive
-- [x] `@kitsuyui/react-measure` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-measure.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-measure) ... measurement visualization primitive
+- [x] `@kitsuyui/react-measure` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-measure.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-measure) ... measurement visualization primitive plus auto-measuring wrapper
 - [x] `@kitsuyui/react-textfield` [![npm version](https://badge.fury.io/js/%40kitsuyui%2Freact-textfield.svg)](https://badge.fury.io/js/%40kitsuyui%2Freact-textfield) ... semantic wrappers for text inputs with IME-aware behavior
 - [x] `@kitsuyui/react-tab` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-tab.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-tab) ... interaction primitive for tabbed interfaces
 - [x] `@kitsuyui/react-biticon` ... visualization primitive for 128-bit identifiers
 - [x] `@kitsuyui/react-binary` ... text/bit visualization primitives
-- [x] `@kitsuyui/react-zoomer` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-zoomer.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-zoomer) ... fit-within-container layout primitive
+- [x] `@kitsuyui/react-zoomer` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-zoomer.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-zoomer) ... fit-within-container layout primitive plus auto-measuring wrapper
 - [x] `@kitsuyui/react-hello` ... minimal semantic text wrapper example
 - [ ] Alarm
 - [ ] Dice

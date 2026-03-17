@@ -1,10 +1,10 @@
 import { expect, test } from 'vitest'
 import { render } from '@testing-library/react'
 
-import { Measure } from './measure'
+import { AutoMeasure } from './measure'
 
-test('render Measure', () => {
-  const element = <Measure />
+test('render AutoMeasure', () => {
+  const element = <AutoMeasure />
   render(
     <div
       style={{

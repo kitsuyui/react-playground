@@ -1,4 +1,4 @@
-import { Measure } from '../../../measure'
+import { AutoMeasure } from '../../../measure'
 import { Treemap } from '../'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
@@ -7,7 +7,7 @@ const WeightedItems = [...Array(10)]
   .map((_, i) => i + 1)
   .map((i) => ({
     weight: 1.1 ** i,
-    element: <Measure />,
+    element: <AutoMeasure />,
   }))
 WeightedItems.sort((a, b) => b.weight - a.weight)
 

@@ -1,7 +1,7 @@
 import { expect, test } from 'vitest'
 import { render } from 'vitest-browser-react'
 
-import { Measure } from '../../measure/src'
+import { AutoMeasure } from '../../measure/src'
 import { Treemap } from './treemap'
 
 const weightedItems = [...Array(10)]
@@ -17,7 +17,7 @@ const weightedItems = [...Array(10)]
           width: '100%',
         }}
       >
-        <Measure />
+        <AutoMeasure />
       </div>
     ),
   }))

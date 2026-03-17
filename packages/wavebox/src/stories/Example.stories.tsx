@@ -1,5 +1,5 @@
 import { Dekamoji } from '../../../dekamoji'
-import { Measure } from '../../../measure'
+import { AutoMeasure } from '../../../measure'
 import { WaveBox } from '@kitsuyui/react-wavebox'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
@@ -45,7 +45,7 @@ const Example = ({
         heightCycle={heightCycle}
         widthCycle={widthCycle}
       >
-        <Measure />
+        <AutoMeasure />
       </WaveBox>
       <WaveBox
         minHeight={minHeight}
