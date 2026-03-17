@@ -9,7 +9,7 @@ Simple clock React component.
 This package provides time-related primitives.
 
 - `ClockContextProvider` is the state/controller layer for current time updates
-- `AnalogClock` and `DigitalClock` are standalone time views
+- `AnalogClock` and `DigitalClock` are standalone time views with ordinary wrapper element props
 - `InlineAnalogClock` is an inline visualization primitive that behaves like text/icon content
 
 ## Demo
@@ -53,7 +53,11 @@ const Clock = () => {
         {(date: Date) => (
           <>
             <AnalogClock timezone="Asia/Tokyo" date={date} />
-            <DigitalClock timezone="America/New_York" date={date} />
+            <DigitalClock
+              timezone="America/New_York"
+              date={date}
+              style={{ fontFamily: 'monospace' }}
+            />
           </>
         )}
       </ClockContext.Consumer>
@@ -65,6 +69,7 @@ const Clock = () => {
 `ClockContextProvider` is a component that provides `ClockContext`.
 Clock views are pure components that do not depend on the context directly.
 Just pass the date and timezone as props.
+`DigitalClock` accepts ordinary `span` props, and `AnalogClock` accepts ordinary `div` props for their outer wrapper.
 So you can define your own Timer component by same interface.
 
 ## License

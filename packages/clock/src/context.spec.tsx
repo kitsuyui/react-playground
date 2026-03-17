@@ -2,7 +2,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { render } from '@testing-library/react'
 
-import { ClockContext, ClockContextProvider } from './context'
+import { ClockContext, ClockContextProvider, DEFAULT_CLOCK_REFRESH_INTERVAL } from './context'
 import React from 'react'
 
 describe('ClockContextProvider', () => {
@@ -27,7 +27,7 @@ describe('ClockContextProvider', () => {
         <ContextReceiver />
       </ClockContextProvider>
     )
-    vi.advanceTimersByTime(10) // refresh interval
+    vi.advanceTimersByTime(DEFAULT_CLOCK_REFRESH_INTERVAL)
     expect(asFragment()).toMatchSnapshot()
   })
 })

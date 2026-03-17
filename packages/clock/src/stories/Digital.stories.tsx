@@ -23,3 +23,15 @@ export const Tokyo: Story = {
     timezone: 'Asia/Tokyo',
   },
 }
+
+export const Styled: Story = {
+  args: {
+    date: new Date('2023-01-01T10:08:42Z'),
+    timezone: 'UTC',
+    style: {
+      color: '#9a3412',
+      fontFamily: 'monospace',
+      letterSpacing: '0.08em',
+    },
+  },
+}

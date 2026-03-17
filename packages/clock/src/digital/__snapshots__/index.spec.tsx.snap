@@ -2,9 +2,7 @@
 
 exports[`DigitalClock > renders correctly 1`] = `
 <DocumentFragment>
-  <span
-    style="width: 20em; font-family: monospace;"
-  >
+  <span>
     09:34:56 PM (Asia/Tokyo)
   </span>
 </DocumentFragment>
