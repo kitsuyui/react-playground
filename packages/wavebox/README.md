@@ -4,6 +4,11 @@
 
 Wavebox is a component that deforms vertically and horizontally. It is useful for debugging responsive layouts.
 
+## Design role
+
+This package is an animated layout primitive.
+It provides time-varying container size behavior rather than a finished widget style.
+
 ## Demo
 
 Storybook: https://react-playground.docs.kitsuyui.com/storybook/

@@ -4,6 +4,11 @@
 
 Dekamoji is a React component that changes the font size according to the size of the parent element. It displays the largest possible font size that can be displayed in response to changes in the size of the parent element.
 
+## Design role
+
+This package is a fit-text layout primitive.
+It computes typography to fit available space instead of defining a fixed visual style.
+
 ## Demo
 
 Storybook: https://react-playground.docs.kitsuyui.com/storybook/

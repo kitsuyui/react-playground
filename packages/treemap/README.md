@@ -4,6 +4,11 @@
 
 Treemap is a component that displays boxes like a tree mapping chart.
 
+## Design role
+
+This package is a treemap layout primitive.
+It calculates and provides positioned regions rather than a fixed visual theme.
+
 ## Demo
 
 Storybook: https://react-playground.docs.kitsuyui.com/storybook/

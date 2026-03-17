@@ -4,6 +4,11 @@
 
 This is a React component representing a binary value.
 
+## Design role
+
+This package provides binary/text visualization primitives.
+`Bits` is the structural primitive, and `Simple` / `Detailed` are concrete visualizations built on top of it.
+
 ## Demo
 
 Storybook: https://react-playground.docs.kitsuyui.com/storybook/

@@ -4,6 +4,11 @@
 
 This package provides a text field component for React.
 
+## Design role
+
+This package is a semantic wrapper around ordinary text form controls.
+`TextField` and `TextArea` should remain close to native `<input type="text">` and `<textarea>` behavior, while adding IME-aware input handling.
+
 It is very pure and similar with the default `<input type="text">` element and `<textarea>` element.
 
 So you can pass the same props as those elements. (i.e. `disabled`, `placeholder`, `maxLength`, `minLength`, `required`, `pattern`, `readOnly`, `autoComplete`, `autoFocus`, `name`, `id`, `className`, `style`, ..., etc.)

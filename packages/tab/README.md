@@ -7,6 +7,11 @@ This component is a base for creating tab UI components.
 This component doesn't have any styles, positions, states, or any other details.
 This component only provides an ideal structure for tab UI and its ReactContext.
 
+## Design role
+
+This package is an interaction primitive.
+The main value is the tab structure and state model exposed through Context, not a styled visual widget.
+
 So, you can customize the tab UI as you want.
 Or you can compose this component with other components and CSS modules.
 

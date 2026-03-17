@@ -4,6 +4,15 @@
 
 Simple timer React component.
 
+## Design role
+
+This package provides:
+
+- `TimerContextProvider` as the timer state/controller primitive
+- `DefaultTimer` as the replaceable default UI
+
+Consumers can use the default UI, or consume `TimerContext` directly and render their own interface.
+
 ## Demo
 
 Storybook: https://react-playground.docs.kitsuyui.com/storybook/

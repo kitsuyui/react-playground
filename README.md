@@ -24,6 +24,22 @@ If there is a size specification, display it with that size. If there is no size
 
 The size is determined by the font size specification.
 
+## Design Principles
+
+Components in this repository should be explained in terms of ordinary Web concepts first.
+That does not only mean HTML tag compatibility. A package may correspond to:
+
+- a semantic wrapper around an HTML element
+- a state provider/controller
+- an interaction primitive
+- a visualization primitive
+- a layout/behavior primitive
+- a default UI layered on top of one of the primitives above
+
+The goal is to keep public APIs compatible with normal HTML/CSS usage whenever possible.
+Visual appearance should usually be controlled by consumers.
+When a package needs a default UI, that UI should remain replaceable and be layered on top of directly consumable primitives such as Context providers.
+
 ## Demo & Documentations
 
 - [x] [Storybook](https://react-playground.docs.kitsuyui.com/storybook/)
@@ -39,15 +55,19 @@ The size is determined by the font size specification.
 
 ## Features
 
-
-- [x] `@kitsuyui/react-clock` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-clock.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-clock) ... Clock
-- [x] `@kitsuyui/react-timer` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-timer.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-timer) ... Pomodoro timer
-- [x] `@kitsuyui/react-stopwatch` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-stopwatch.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-stopwatch) ... Stopwatch
-- [x] `@kitsuyui/react-dekamoji` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-dekamoji.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-dekamoji) ... Display big text whole screen
-- [x] `@kitsuyui/react-wavebox` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-wavebox.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-wavebox) ... Variable size box (for debug)
-- [x] `@kitsuyui/react-treemap` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-treemap.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-treemap) ... Put the box in the box like as marimekko chart
-- [x] `@kitsuyui/react-measure` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-measure.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-measure) ... Display size of the box (for debug)
-- [x] `@kitsuyui/react-textfield` [![npm version](https://badge.fury.io/js/%40kitsuyui%2Freact-textfield.svg)](https://badge.fury.io/js/%40kitsuyui%2Freact-textfield) ... Text field (input, textarea) with IME support
+- [x] `@kitsuyui/react-clock` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-clock.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-clock) ... time visualization primitives and time context
+- [x] `@kitsuyui/react-timer` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-timer.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-timer) ... timer state provider and replaceable default UI
+- [x] `@kitsuyui/react-stopwatch` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-stopwatch.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-stopwatch) ... stopwatch state provider and replaceable default UI
+- [x] `@kitsuyui/react-dekamoji` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-dekamoji.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-dekamoji) ... fit-text layout primitive
+- [x] `@kitsuyui/react-wavebox` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-wavebox.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-wavebox) ... animated layout primitive
+- [x] `@kitsuyui/react-treemap` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-treemap.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-treemap) ... treemap layout primitive
+- [x] `@kitsuyui/react-measure` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-measure.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-measure) ... measurement visualization primitive
+- [x] `@kitsuyui/react-textfield` [![npm version](https://badge.fury.io/js/%40kitsuyui%2Freact-textfield.svg)](https://badge.fury.io/js/%40kitsuyui%2Freact-textfield) ... semantic wrappers for text inputs with IME-aware behavior
+- [x] `@kitsuyui/react-tab` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-tab.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-tab) ... interaction primitive for tabbed interfaces
+- [x] `@kitsuyui/react-biticon` ... visualization primitive for 128-bit identifiers
+- [x] `@kitsuyui/react-binary` ... text/bit visualization primitives
+- [x] `@kitsuyui/react-zoomer` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-zoomer.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-zoomer) ... fit-within-container layout primitive
+- [x] `@kitsuyui/react-hello` ... minimal semantic text wrapper example
 - [ ] Alarm
 - [ ] Dice
 
