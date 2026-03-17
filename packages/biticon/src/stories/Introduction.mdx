@@ -3,15 +3,23 @@
 import { Canvas, Meta } from '@storybook/addon-docs/blocks'
 
 import * as SimpleStories from './Simple.stories'
-import { BitIcon } from "../";
 
 <Meta title="Visualization Primitives/BitIcon/Overview" />
 <Canvas of={SimpleStories.Default} />
 
-Warning: This package is still in development and may have bugs. Use it at your own risk.
-As you can see, this package is a React component that displays 128-bit data as an icon.
-The icon has 64 pixels, each pixel representing 2 bits of data.
+## Role
 
-## Installation
+This package renders 128-bit identifiers as embedded SVG graphics.
 
-## Usage
+## Layers
+
+- `BitIcon` renders a bigint-backed identifier graphic.
+- `UUIDIcon` adapts UUID strings to the same SVG primitive.
+
+## Example
+
+```tsx
+import { UUIDIcon } from '@kitsuyui/react-biticon'
+
+<UUIDIcon uuid="018fc860-4d10-7b70-b012-9ca7c3525a13" width="1em" height="1em" />
+```

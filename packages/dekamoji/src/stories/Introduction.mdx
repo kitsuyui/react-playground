@@ -7,26 +7,19 @@ import * as DekamojiExample from './Example.stories'
 <Meta title="Layout Primitives/Dekamoji/Overview" />
 <Canvas of={DekamojiExample.Default} />
 
-```jsx
+## Role
+
+This package fits text into available layout bounds.
+
+## Layers
+
+- `SizedDekamoji` is the pure fit-text primitive for known bounds.
+- `AutoDekamoji` measures the parent and feeds that primitive.
+
+## Example
+
+```tsx
+import { AutoDekamoji } from '@kitsuyui/react-dekamoji'
+
 <AutoDekamoji text="あいうえお" />
 ```
-
-## Installation
-
-Each component is published as a separate package.
-
-Use npm, yarn or pnpm to install.
-
-```sh
-$ npm install @kitsuyui/react-dekamoji
-```
-
-```sh
-$ yarn add @kitsuyui/react-dekamoji
-```
-
-```sh
-$ pnpm add @kitsuyui/react-dekamoji
-```
-
-## Usage

@@ -7,20 +7,19 @@ import * as TreemapStories from './Example.stories'
 <Meta title="Layout Primitives/Treemap/Overview" />
 <Canvas of={TreemapStories.Default} />
 
-## Installation
+## Role
 
-Each component is published as a separate package.
+This package lays out hierarchical values into treemap regions.
 
-Use npm, yarn or pnpm to install.
+## Layers
 
-```sh
-$ npm install @kitsuyui/react-treemap
-```
+- `SizedTreemap` is the layout primitive for known width and height.
+- `AutoTreemap` measures the parent and feeds that primitive.
 
-```sh
-$ yarn add @kitsuyui/react-treemap
-```
+## Example
 
-```sh
-$ pnpm add @kitsuyui/react-treemap
+```tsx
+import { AutoTreemap } from '@kitsuyui/react-treemap'
+
+<AutoTreemap nodes={[{ value: 3, label: 'A' }, { value: 2, label: 'B' }]} />
 ```

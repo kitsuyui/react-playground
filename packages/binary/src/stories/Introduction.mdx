@@ -3,16 +3,24 @@
 import { Canvas, Meta } from '@storybook/addon-docs/blocks'
 
 import * as DetailedStories from './Detailed.stories'
-import { DetailedBitString } from "../";
 
 <Meta title="Visualization Primitives/Binary/Overview" />
 <Canvas of={DetailedStories.Default} />
 
-As you can see, <DetailedBitString value={0b10101010} length={8} /> is an inline element.
+## Role
 
-`Bits` is the structural primitive.
-`SimpleBitString` and `DetailedBitString` are concrete visualizations layered on top of that primitive.
+This package provides binary visualization primitives for inline content.
 
-## Installation
+## Layers
 
-## Usage
+- `Bits` is the structural primitive that maps a numeric value to bit elements.
+- `SimpleBitString` is the plain text default visualization.
+- `DetailedBitString` is the richer diagnostic visualization.
+
+## Example
+
+```tsx
+import { DetailedBitString } from '@kitsuyui/react-binary'
+
+<DetailedBitString value={0b10101010} length={8} />
+```

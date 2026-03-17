@@ -2,47 +2,25 @@
 
 import { Canvas, Meta } from '@storybook/addon-docs/blocks'
 
-import * as WaveBoxExample from './Example.stories'
+import * as WaveBoxStories from './Example.stories'
 
 <Meta title="Layout Primitives/WaveBox/Overview" />
-<Canvas of={WaveBoxExample.Default} />
+<Canvas of={WaveBoxStories.Default} />
 
-```jsx
-<WaveBox />
-```
+## Role
 
-WaveBox is a box component that keep moving like a wave.
-This is useful for testing the inner component flexibility.
+This package provides animated size primitives for testing layout flexibility over time.
 
-## Installation
+## Layers
 
-Each component is published as a separate package.
+- `WaveBoxProvider` owns the animated width and height state.
+- `WaveBoxContext` exposes that state for custom compositions.
+- `SizedBox` renders explicit dimensions, while `WaveBox` is the default composition built on the provider.
 
-Use npm, yarn or pnpm to install.
+## Example
 
-```sh
-$ npm install @kitsuyui/react-wavebox
-```
-
-```sh
-$ yarn add @kitsuyui/react-wavebox
-```
-
-```sh
-$ pnpm add @kitsuyui/react-wavebox
-```
-
-## Usage
-
-```jsx
+```tsx
 import { WaveBox } from '@kitsuyui/react-wavebox'
 
-<WaveBox
-  minHeight={/* minimum height of the wave box */}
-  maxHeight={/* maximum height of the wave box */}
-  minWidth={/* minimum width of the wave box */}
-  maxWidth={/* maximum width of the wave box */}
-  heightCycle={/* height cycle of the wave box */}
-  widthCycle={/* width cycle of the wave box */}
->
+<WaveBox minWidth={80} maxWidth={160} minHeight={40} maxHeight={120} />
 ```

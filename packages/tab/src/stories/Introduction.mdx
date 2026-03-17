@@ -1,0 +1,30 @@
+# Tab
+
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+
+import * as TabStories from './Base.stories'
+
+<Meta title="Interaction Primitives/Tab/Overview" />
+<Canvas of={TabStories.Default} />
+
+## Role
+
+This package provides the structure and state contract for tab interfaces without prescribing presentation.
+
+## Layers
+
+- `TabUIBase` is the core interaction primitive.
+- `TabContext` exposes the selected tab state to content containers.
+- `TabButtonContext` exposes per-button state to custom tab button implementations.
+
+## Example
+
+```tsx
+import {
+  TabButtonContext,
+  TabContext,
+  TabUIBase,
+} from '@kitsuyui/react-tab'
+
+// Provide your own TabBar, TabButton, and ContentBox components.
+```
