@@ -15,3 +15,14 @@ export const Default: Story = {
     uuid: '018fc860-4d10-7b70-b012-9ca7c3525a13',
   },
 }
+
+export const InlineSized: Story = {
+  args: {
+    uuid: '018fc860-4d10-7b70-b012-9ca7c3525a13',
+    width: '1em',
+    height: '1em',
+    style: {
+      verticalAlign: 'text-bottom',
+    },
+  },
+}
