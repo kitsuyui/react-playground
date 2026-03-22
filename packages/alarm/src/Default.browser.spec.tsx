@@ -8,18 +8,18 @@ test('renders a stable default alarm screenshot', async () => {
   const screen = await render(
     <BrowserFixture label="alarm fixture">
       <DefaultAlarm
-        armed={true}
+        armed={false}
         notificationEnabled={false}
         notificationPermission="unsupported"
         notificationSupported={false}
-        remaining={90}
+        remaining={0}
         reset={vi.fn()}
-        ringing={false}
+        ringing={true}
         scheduleAfter={vi.fn()}
         setNotificationEnabled={vi.fn()}
         setTargetTimeMs={vi.fn()}
         stopRinging={vi.fn()}
-        targetTimeMs={Date.now() + 90_000}
+        targetTimeMs={null}
         toggle={vi.fn()}
         toggleNotification={vi.fn()}
         arm={vi.fn()}
@@ -28,6 +28,6 @@ test('renders a stable default alarm screenshot', async () => {
     </BrowserFixture>,
   )
 
-  await expect.element(screen.getByText('Disarm')).toBeVisible()
+  await expect.element(screen.getByText('Stop Alarm')).toBeVisible()
   await expect(screen.getByTestId('alarm fixture')).toMatchScreenshot('default-alarm.png')
 })
