@@ -1,6 +1,5 @@
 import React from 'react'
 import { useInterval } from 'react-use'
-import { calcElapsedTime } from './time'
 
 export interface StopwatchValue {
   elapsedTime: number
@@ -43,44 +42,38 @@ export const StopwatchContextProvider: React.FC<StopwatchProviderProps> = (
   const onStop = props.onStop ?? emptyFn
   const onReset = props.onReset ?? emptyFn
   const [running, setRunning] = React.useState(false)
-  const [elapsedTimeInLap, setElapsedTimeInLap] = React.useState(0)
-  const [elapsedTimeTotal, setElapsedTimeTotal] = React.useState(0)
-  const [startTime, setStartTime] = React.useState(new Date())
+  const [baseElapsedMs, setBaseElapsedMs] = React.useState(0)
+  const [startedAtMs, setStartedAtMs] = React.useState<number | null>(null)
+  const [nowMs, setNowMs] = React.useState(Date.now())
 
   const refreshInterval = props.refreshInterval || 10 // default 10ms
 
   useInterval(() => {
-    if (running) {
-      updateElapsedTime()
-    }
-  }, refreshInterval)
-
-  const updateElapsedTime = () => {
-    setElapsedTimeInLap(calcElapsedTime(startTime))
-  }
-
-  const moveLapToTotal = () => {
-    setElapsedTimeTotal(elapsedTimeTotal + elapsedTimeInLap)
-    setElapsedTimeInLap(0)
-  }
+    setNowMs(Date.now())
+  }, running ? refreshInterval : null)
 
   const start = () => {
     if (running) {
       return
     }
+    const currentNowMs = Date.now()
     onStart(new CustomEvent('start', {}))
-    setStartTime(new Date())
+    setNowMs(currentNowMs)
+    setStartedAtMs(currentNowMs)
     setRunning(true)
   }
 
   const stop = () => {
-    if (!running) {
+    if (!running || startedAtMs === null) {
       return
     }
+    const currentNowMs = Date.now()
+    const nextElapsedMs = baseElapsedMs + (currentNowMs - startedAtMs)
     onStop(new CustomEvent('stop', {}))
-    updateElapsedTime()
+    setNowMs(currentNowMs)
+    setBaseElapsedMs(nextElapsedMs)
+    setStartedAtMs(null)
     setRunning(false)
-    moveLapToTotal()
   }
 
   const toggle = () => {
@@ -92,15 +85,17 @@ export const StopwatchContextProvider: React.FC<StopwatchProviderProps> = (
   }
 
   const reset = () => {
-    if (running) {
-      stop()
-    }
+    setRunning(false)
+    setStartedAtMs(null)
+    setBaseElapsedMs(0)
+    setNowMs(Date.now())
     onReset(new CustomEvent('reset', {}))
-    setElapsedTimeInLap(0)
-    setElapsedTimeTotal(0)
   }
 
-  const elapsedTime = elapsedTimeInLap + elapsedTimeTotal
+  const elapsedTime =
+    running && startedAtMs !== null
+      ? (baseElapsedMs + (nowMs - startedAtMs)) / 1000
+      : baseElapsedMs / 1000
 
   return (
     <StopwatchContext.Provider

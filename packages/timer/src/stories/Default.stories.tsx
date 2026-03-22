@@ -14,5 +14,15 @@ export const Default: Story = {
   args: {
     remaining: 1234,
     running: false,
+    vibrationEnabled: false,
+    vibrationSupported: true,
+    incrementTimerValue: () => {},
+    toggle: () => {},
+    toggleVibration: () => {},
+    reset: () => {},
+    setVibrationEnabled: () => {},
+    setTimerValue: () => {},
+    start: () => {},
+    stop: () => {},
   },
 }

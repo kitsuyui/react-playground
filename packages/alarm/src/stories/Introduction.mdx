@@ -1,0 +1,38 @@
+# Alarm
+
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+
+import * as AlarmStories from './Composition.stories'
+
+<Meta title="State Providers/Alarm/Overview" />
+<Canvas of={AlarmStories.Default} />
+
+## Role
+
+This package provides alarm state/control primitives plus a replaceable default UI.
+
+## Layers
+
+- `AlarmContextProvider` owns the scheduled target time, ringing state, and optional notification behavior.
+- `DefaultAlarm` is the package-provided default UI on top of that primitive.
+
+## Example
+
+```tsx
+import {
+  AlarmContext,
+  AlarmContextProvider,
+  DefaultAlarm,
+  type AlarmContextValue,
+} from '@kitsuyui/react-alarm'
+
+function AlarmExample() {
+  return (
+    <AlarmContextProvider>
+      <AlarmContext.Consumer>
+        {(context: AlarmContextValue) => <DefaultAlarm {...context} />}
+      </AlarmContext.Consumer>
+    </AlarmContextProvider>
+  )
+}
+```

@@ -1,43 +1,41 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`DefaultTimer > renders correctly 1`] = `
+exports[`DefaultAlarm > renders correctly 1`] = `
 <DocumentFragment>
   <span
     aria-atomic="true"
     aria-live="off"
     role="timer"
-    style="width: 6em; font-family: monospace;"
+    style="font-family: monospace; min-width: 9em;"
   >
-    16:40.000
+    No alarm
   </span>
   <button
-    name="incrementMinute"
     type="button"
   >
-    +分
+    +1 min
   </button>
   <button
-    name="incrementSecond"
     type="button"
   >
-    +秒
+    +5 min
   </button>
   <button
     disabled=""
     type="button"
   >
-    Vibration Off
+    Notification Off
   </button>
   <button
-    name="reset"
-    type="submit"
+    type="button"
   >
-    Reset
+    Clear
   </button>
   <button
-    type="submit"
+    disabled=""
+    type="button"
   >
-    Start
+    Arm
   </button>
 </DocumentFragment>
 `;

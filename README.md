@@ -58,6 +58,8 @@ When a package needs a default UI, that UI should remain replaceable and be laye
 - [x] `@kitsuyui/react-clock` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-clock.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-clock) ... time visualization primitives and time context
 - [x] `@kitsuyui/react-timer` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-timer.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-timer) ... timer state provider and replaceable default UI
 - [x] `@kitsuyui/react-stopwatch` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-stopwatch.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-stopwatch) ... stopwatch state provider and replaceable default UI
+- [x] `@kitsuyui/react-alarm` ... alarm state provider with replaceable default UI and optional notification
+- [x] `@kitsuyui/react-metronome` ... metronome state provider with replaceable default UI
 - [x] `@kitsuyui/react-dekamoji` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-dekamoji.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-dekamoji) ... fit-text layout primitive plus auto-measuring wrapper
 - [x] `@kitsuyui/react-wavebox` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-wavebox.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-wavebox) ... animated layout primitive with provider and sized-box exports
 - [x] `@kitsuyui/react-treemap` [![npm version](https://badge.fury.io/js/@kitsuyui%2Freact-treemap.svg)](https://badge.fury.io/js/@kitsuyui%2Freact-treemap) ... treemap layout primitive plus auto-measuring wrapper
