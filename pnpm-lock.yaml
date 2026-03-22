@@ -154,6 +154,27 @@ importers:
         specifier: ^2.4.0
         version: 2.4.3(vite@7.3.1(@types/node@25.3.5)(yaml@2.8.2))
 
+  packages/alarm:
+    devDependencies:
+      '@kitsuyui/number-time':
+        specifier: ^0.2.1
+        version: 0.2.3
+      '@types/react':
+        specifier: ^19.2.14
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: ^19.2.3
+        version: 19.2.3(@types/react@19.2.14)
+      react:
+        specifier: ^19.2.4
+        version: 19.2.4
+      react-dom:
+        specifier: ^19.2.4
+        version: 19.2.4(react@19.2.4)
+      react-use:
+        specifier: ^17.6.0
+        version: 17.6.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+
   packages/binary:
     devDependencies:
       '@types/react':
@@ -252,6 +273,24 @@ importers:
         version: 19.2.4(react@19.2.4)
 
   packages/measure:
+    devDependencies:
+      '@types/react':
+        specifier: ^19.2.14
+        version: 19.2.14
+      '@types/react-dom':
+        specifier: ^19.2.3
+        version: 19.2.3(@types/react@19.2.14)
+      react:
+        specifier: ^19.2.4
+        version: 19.2.4
+      react-dom:
+        specifier: ^19.2.4
+        version: 19.2.4(react@19.2.4)
+      react-use:
+        specifier: ^17.6.0
+        version: 17.6.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
+
+  packages/metronome:
     devDependencies:
       '@types/react':
         specifier: ^19.2.14

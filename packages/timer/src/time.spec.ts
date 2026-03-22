@@ -6,7 +6,7 @@ import { calcTimeDiff, calcRemaining } from './time'
 describe('calcRemaining', () => {
   test('returns elapsed time in seconds', () => {
     const targetDate = new Date()
-    expect(calcRemaining(targetDate)).toBeCloseTo(0, 2)
+    expect(calcRemaining(targetDate, targetDate)).toBeCloseTo(0, 2)
   })
 })
 

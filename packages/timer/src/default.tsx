@@ -6,7 +6,16 @@ import type { TimerContextValue } from './context'
 
 
 export const DefaultTimer: React.FC<TimerContextValue> = (props): React.JSX.Element => {
-  const { remaining, running, incrementTimerValue, toggle, reset } = props
+  const {
+    remaining,
+    running,
+    incrementTimerValue,
+    toggle,
+    reset,
+    vibrationEnabled,
+    vibrationSupported,
+    toggleVibration,
+  } = props
   return (
     <>
       <span
@@ -35,6 +44,15 @@ export const DefaultTimer: React.FC<TimerContextValue> = (props): React.JSX.Elem
         }}
       >
         +秒
+      </button>
+      <button
+        type="button"
+        disabled={!vibrationSupported}
+        onClick={(_e) => {
+          toggleVibration()
+        }}
+      >
+        {vibrationEnabled ? 'Vibration On' : 'Vibration Off'}
       </button>
       <button
         type="submit"

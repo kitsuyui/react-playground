@@ -6,6 +6,8 @@ import { calcRemaining } from './time'
 export interface TimerValue {
   remaining: number
   running: boolean
+  vibrationEnabled: boolean
+  vibrationSupported: boolean
 }
 
 export interface TimerActions {
@@ -15,6 +17,8 @@ export interface TimerActions {
   reset(): void
   incrementTimerValue(value: number): void
   setTimerValue(value: number): void
+  setVibrationEnabled(value: boolean): void
+  toggleVibration(): void
 }
 
 export type TimerContextValue = TimerValue & TimerActions
@@ -23,17 +27,23 @@ export type TimerContextValue = TimerValue & TimerActions
 export const TimerContext = React.createContext<TimerContextValue>({
   remaining: 0,
   running: false,
+  vibrationEnabled: false,
+  vibrationSupported: false,
   start: () => { /* do nothing */ },
   stop: () => { /* do nothing */ },
   toggle: () => { /* do nothing */ },
   reset: () => { /* do nothing */ },
   incrementTimerValue: (_value: number) => { /* do nothing */ },
   setTimerValue: (_value: number) => { /* do nothing */ },
+  setVibrationEnabled: (_value: boolean) => { /* do nothing */ },
+  toggleVibration: () => { /* do nothing */ },
 })
 
 export interface TimerContextProviderProps {
   refreshInterval?: number
   children: React.ReactNode
+  defaultVibrationEnabled?: boolean
+  vibrationPattern?: number | number[]
   onStart?(event: CustomEvent): void
   onStop?(event: CustomEvent): void
   onComplete?(event: CustomEvent): void
@@ -50,27 +60,47 @@ export const TimerContextProvider: React.FC<TimerContextProviderProps> = (
   const onComplete = props.onComplete ?? emptyFn
   const onReset = props.onReset ?? emptyFn
   const [running, setRunning] = React.useState(false)
-  const [targetDate, setTargetDate] = React.useState(new Date())
   const [remaining, setRemaining] = React.useState(0)
+  const [targetTimeMs, setTargetTimeMs] = React.useState<number | null>(null)
+  const [vibrationEnabled, setVibrationEnabled] = React.useState(
+    props.defaultVibrationEnabled ?? false
+  )
+  const vibrationPattern = props.vibrationPattern ?? [250, 150, 250]
+  const vibrationSupported = typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function'
 
   const refreshInterval = props.refreshInterval || 10 // default 10ms
 
-  useInterval(() => {
-    tick()
-  }, refreshInterval)
+  const getCurrentRemaining = (nowMs = Date.now()) => {
+    if (!running || targetTimeMs === null) {
+      return remaining
+    }
+    return Math.max(0, calcRemaining(new Date(targetTimeMs), new Date(nowMs)))
+  }
+
+  const notifyCompletion = () => {
+    if (vibrationEnabled && vibrationSupported) {
+      navigator.vibrate(vibrationPattern)
+    }
+    onComplete(new CustomEvent('complete', {}))
+  }
 
   const tick = () => {
-    // It can't be ticked if it is not running.
-    if (running) {
-      const remaining = calcRemaining(targetDate)
-      setRemaining(remaining)
-      if (remaining <= 0) {
-        setRemaining(0)
-        setRunning(false)
-        onComplete(new CustomEvent('complete', {}))
-      }
+    if (!running || targetTimeMs === null) {
+      return
+    }
+    const nextRemaining = getCurrentRemaining()
+    setRemaining(nextRemaining)
+    if (nextRemaining <= 0) {
+      setRemaining(0)
+      setRunning(false)
+      setTargetTimeMs(null)
+      notifyCompletion()
     }
   }
+
+  useInterval(() => {
+    tick()
+  }, running ? refreshInterval : null)
 
   const toggle = () => {
     if (running) {
@@ -81,10 +111,8 @@ export const TimerContextProvider: React.FC<TimerContextProviderProps> = (
   }
 
   const reset = () => {
-    // First, stop the timer if it is running.
-    if (running) {
-      stop()
-    }
+    setRunning(false)
+    setTargetTimeMs(null)
     setRemaining(0)
     onReset(new CustomEvent('reset', {}))
   }
@@ -98,7 +126,8 @@ export const TimerContextProvider: React.FC<TimerContextProviderProps> = (
     if (running) {
       return
     }
-    setTargetDate(new Date(Date.now() + remaining * 1000))
+    const nowMs = Date.now()
+    setTargetTimeMs(nowMs + remaining * 1000)
     setRunning(true)
     onStart(new CustomEvent('start', {}))
   }
@@ -108,7 +137,9 @@ export const TimerContextProvider: React.FC<TimerContextProviderProps> = (
     if (!running) {
       return
     }
+    setRemaining(getCurrentRemaining())
     setRunning(false)
+    setTargetTimeMs(null)
     onStop(new CustomEvent('stop', {}))
   }
 
@@ -117,17 +148,28 @@ export const TimerContextProvider: React.FC<TimerContextProviderProps> = (
       value={{
         remaining,
         running,
+        vibrationEnabled,
+        vibrationSupported,
         toggle,
         reset,
         start,
         stop,
         setTimerValue(value: number) {
-          stop()
-          setRemaining(value || 0)
+          setRunning(false)
+          setTargetTimeMs(null)
+          setRemaining(Math.max(0, value || 0))
         },
         incrementTimerValue(value: number) {
-          stop()
-          setRemaining(remaining + value)
+          const baseRemaining = getCurrentRemaining()
+          setRunning(false)
+          setTargetTimeMs(null)
+          setRemaining(Math.max(0, baseRemaining + value))
+        },
+        setVibrationEnabled(value: boolean) {
+          setVibrationEnabled(value)
+        },
+        toggleVibration() {
+          setVibrationEnabled((current) => !current)
         },
       }}
     >

@@ -1,0 +1,38 @@
+# Metronome
+
+import { Canvas, Meta } from '@storybook/addon-docs/blocks'
+
+import * as MetronomeStories from './Composition.stories'
+
+<Meta title="State Providers/Metronome/Overview" />
+<Canvas of={MetronomeStories.Default} />
+
+## Role
+
+This package provides metronome state/control primitives plus a replaceable default UI.
+
+## Layers
+
+- `MetronomeContextProvider` owns beat scheduling and tempo control.
+- `DefaultMetronome` is the package-provided default UI on top of that primitive.
+
+## Example
+
+```tsx
+import {
+  DefaultMetronome,
+  MetronomeContext,
+  MetronomeContextProvider,
+  type MetronomeContextValue,
+} from '@kitsuyui/react-metronome'
+
+function MetronomeExample() {
+  return (
+    <MetronomeContextProvider>
+      <MetronomeContext.Consumer>
+        {(context: MetronomeContextValue) => <DefaultMetronome {...context} />}
+      </MetronomeContext.Consumer>
+    </MetronomeContextProvider>
+  )
+}
+```

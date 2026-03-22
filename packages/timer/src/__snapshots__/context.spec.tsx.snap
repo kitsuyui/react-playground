@@ -2,6 +2,6 @@
 
 exports[`TimerContextProvider > provides context 1`] = `
 <DocumentFragment>
-  ["incrementTimerValue","remaining","reset","running","setTimerValue","start","stop","toggle"]
+  ["incrementTimerValue","remaining","reset","running","setTimerValue","setVibrationEnabled","start","stop","toggle","toggleVibration","vibrationEnabled","vibrationSupported"]
 </DocumentFragment>
 `;

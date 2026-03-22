@@ -18,9 +18,13 @@ test('renders a stable default timer screenshot', async () => {
         reset={vi.fn()}
         running={false}
         setTimerValue={vi.fn()}
+        setVibrationEnabled={vi.fn()}
         start={vi.fn()}
         stop={vi.fn()}
         toggle={vi.fn()}
+        toggleVibration={vi.fn()}
+        vibrationEnabled={false}
+        vibrationSupported={false}
       />
     </BrowserFixture>,
   )
