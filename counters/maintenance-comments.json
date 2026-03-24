@@ -1,0 +1,22 @@
+{
+  "id": "maintenance-comments",
+  "label": "TODO/FIXME",
+  "count": 3,
+  "matches": [
+    {
+      "path": "packages/biticon/src/bits.ts",
+      "line": 11,
+      "text": "// FIXME: There might be bugs related to endianness... (first character will be the last in the array)"
+    },
+    {
+      "path": "packages/stopwatch/src/context.tsx",
+      "line": 18,
+      "text": "// TODO: Support leap second: https://github.com/kitsuyui/react-playground/issues/40"
+    },
+    {
+      "path": "packages/timer/src/context.tsx",
+      "line": 26,
+      "text": "// TODO: Support leap second: https://github.com/kitsuyui/react-playground/issues/40"
+    }
+  ]
+}
