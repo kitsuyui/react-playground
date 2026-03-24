@@ -1,0 +1,17 @@
+version: 1
+publish:
+  enabled: true
+  branch: gh-counter-assets
+comment:
+  key: maintenance-comments
+counters:
+  - id: maintenance-comments
+    label: TODO/FIXME
+    badge:
+      label: TODO/FIXME
+    matchers:
+      - files:
+          - packages/**/*.ts
+          - packages/**/*.tsx
+        type: regex
+        pattern: "\\b(?:TODO|FIXME)\\b"

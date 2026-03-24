@@ -1,6 +1,7 @@
 # react-playground
 
 ![Coverage](https://raw.githubusercontent.com/kitsuyui/octocov-central/main/badges/kitsuyui/react-playground/coverage.svg)
+![TODO/FIXME](https://raw.githubusercontent.com/kitsuyui/react-playground/gh-counter-assets/badges/maintenance-comments.svg)
 
 ## What is this?
 
@@ -9,6 +10,11 @@ Create React components and check them with Storybook or write tests.
 It only deals with content that is closed to React. It does not handle Next.js, etc.
 For Next.js, see https://github.com/kitsuyui/nextjs-playground/ .
 For TypeScript, see https://github.com/kitsuyui/ts-playground/ .
+
+This repository also tracks `TODO` and `FIXME` markers with
+[`gh-counter`](https://github.com/kitsuyui/gh-counter). Pull requests get one
+managed comment when they touch relevant files, and the current main-branch
+count is published as a badge to the dedicated `gh-counter-assets` branch.
 
 # Concept
 
