@@ -16,10 +16,7 @@ type InheritedTextStyle = {
   fontStyle?: string
   fontWeight?: string
   lineHeightRatio: number
-  lineBreak?: string
-  overflowWrap?: string
   whiteSpace?: string
-  wordBreak?: string
 }
 
 export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function SizedDekamoji({
@@ -110,13 +107,6 @@ const createTextStyle = (
     textAlign: 'center',
     margin: '0 auto',
     boxSizing: 'border-box',
-    whiteSpace: resolveRenderWhiteSpace(textStyle.whiteSpace),
-    overflowWrap: resolveRenderOverflowWrap(textStyle.overflowWrap),
-    wordBreak: resolveRenderWordBreak(textStyle.wordBreak),
-    lineBreak: resolveRenderLineBreak(textStyle.lineBreak),
-    fontFamily: textStyle.fontFamily,
-    fontStyle: textStyle.fontStyle,
-    fontWeight: textStyle.fontWeight,
   }
 }
 
@@ -133,10 +123,7 @@ const detectInheritedTextStyle = (element: HTMLElement): InheritedTextStyle => {
     fontStyle: style.fontStyle || undefined,
     fontWeight: style.fontWeight || undefined,
     lineHeightRatio,
-    lineBreak: readCssProperty(style.lineBreak),
-    overflowWrap: readCssProperty(style.overflowWrap),
     whiteSpace: readCssProperty(style.whiteSpace),
-    wordBreak: readCssProperty(style.wordBreak),
   }
 }
 
@@ -279,63 +266,4 @@ const resolvePretextWhiteSpace = (
   whiteSpace: string | undefined
 ): 'normal' | 'pre-wrap' => {
   return whiteSpace === 'normal' || whiteSpace === 'nowrap' ? 'normal' : 'pre-wrap'
-}
-
-const resolveRenderWhiteSpace = (
-  whiteSpace: string | undefined
-): React.CSSProperties['whiteSpace'] => {
-  switch (whiteSpace) {
-    case 'normal':
-    case 'nowrap':
-    case 'pre':
-    case 'pre-line':
-    case 'pre-wrap':
-    case 'break-spaces':
-      return whiteSpace
-    default:
-      return 'pre-wrap'
-  }
-}
-
-const resolveRenderOverflowWrap = (
-  overflowWrap: string | undefined
-): React.CSSProperties['overflowWrap'] | undefined => {
-  switch (overflowWrap) {
-    case 'anywhere':
-    case 'break-word':
-    case 'normal':
-      return overflowWrap
-    default:
-      return undefined
-  }
-}
-
-const resolveRenderWordBreak = (
-  wordBreak: string | undefined
-): React.CSSProperties['wordBreak'] | undefined => {
-  switch (wordBreak) {
-    case 'auto-phrase':
-    case 'break-all':
-    case 'break-word':
-    case 'keep-all':
-    case 'normal':
-      return wordBreak
-    default:
-      return undefined
-  }
-}
-
-const resolveRenderLineBreak = (
-  lineBreak: string | undefined
-): React.CSSProperties['lineBreak'] | undefined => {
-  switch (lineBreak) {
-    case 'anywhere':
-    case 'auto':
-    case 'loose':
-    case 'normal':
-    case 'strict':
-      return lineBreak
-    default:
-      return undefined
-  }
 }
