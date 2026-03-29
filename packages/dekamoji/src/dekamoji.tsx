@@ -1,6 +1,6 @@
 import { layout, prepare } from '@chenglou/pretext'
 import { SizedZoomer } from '@kitsuyui/react-zoomer'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import { useMeasure } from 'react-use'
 
 export type DekamojiImplementation = 'dom' | 'zoomer' | 'pretext'
@@ -27,7 +27,6 @@ type InheritedTextStyle = {
 }
 
 const DEFAULT_IMPLEMENTATION: DekamojiImplementation = 'pretext'
-const DEFAULT_LINE_HEIGHT_RATIO = 1.2
 
 export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function SizedDekamoji({
   text,
@@ -36,11 +35,9 @@ export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function S
   implementation = DEFAULT_IMPLEMENTATION,
 }): React.JSX.Element {
   const hostRef = useRef<HTMLDivElement>(null)
-  const [inheritedTextStyle, setInheritedTextStyle] = React.useState<InheritedTextStyle>({
-    lineHeightRatio: DEFAULT_LINE_HEIGHT_RATIO,
-  })
+  const [inheritedTextStyle, setInheritedTextStyle] = React.useState<InheritedTextStyle | null>(null)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const hostElement = hostRef.current
     if (!hostElement) {
       return
@@ -49,8 +46,6 @@ export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function S
     const styleSource = hostElement.parentElement ?? hostElement
     setInheritedTextStyle(detectInheritedTextStyle(styleSource))
   }, [])
-
-  const textStyle = inheritedTextStyle
 
   return (
     <div
@@ -61,13 +56,15 @@ export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function S
         position: 'relative',
       }}
     >
-      {renderSizedDekamojiImplementation({
-        implementation,
-        width,
-        height,
-        text,
-        textStyle,
-      })}
+      {inheritedTextStyle
+        ? renderSizedDekamojiImplementation({
+            implementation,
+            width,
+            height,
+            text,
+            textStyle: inheritedTextStyle,
+          })
+        : null}
     </div>
   )
 })
@@ -264,11 +261,11 @@ const createTextStyle = (
 
 const detectInheritedTextStyle = (element: HTMLElement): InheritedTextStyle => {
   const style = window.getComputedStyle(element)
-  const fontSize = Number.parseFloat(style.fontSize)
-  const lineHeight = Number.parseFloat(style.lineHeight)
+  const fontSize = resolveFontSizePx(element, style)
+  const lineHeight = resolveLineHeightPx(element, style)
   const lineHeightRatio = Number.isFinite(lineHeight) && fontSize > 0
     ? lineHeight / fontSize
-    : DEFAULT_LINE_HEIGHT_RATIO
+    : measureLineHeightRatio(element, style, fontSize)
 
   return {
     fontFamily: style.fontFamily || undefined,
@@ -280,6 +277,84 @@ const detectInheritedTextStyle = (element: HTMLElement): InheritedTextStyle => {
     whiteSpace: style.whiteSpace || undefined,
     wordBreak: style.wordBreak || undefined,
   }
+}
+
+const resolveFontSizePx = (
+  element: HTMLElement,
+  style: CSSStyleDeclaration
+): number => {
+  const computedFontSize = Number.parseFloat(style.fontSize)
+  if (computedFontSize > 0) {
+    return computedFontSize
+  }
+
+  for (let current: HTMLElement | null = element; current; current = current.parentElement) {
+    const inlineFontSize = Number.parseFloat(current.style.fontSize)
+    if (inlineFontSize > 0) {
+      return inlineFontSize
+    }
+  }
+
+  throw new Error(`Expected a positive font-size from computed or inline styles, received: ${style.fontSize}`)
+}
+
+const resolveLineHeightPx = (
+  element: HTMLElement,
+  style: CSSStyleDeclaration
+): number => {
+  const computedLineHeight = Number.parseFloat(style.lineHeight)
+  if (computedLineHeight > 0) {
+    return computedLineHeight
+  }
+
+  for (let current: HTMLElement | null = element; current; current = current.parentElement) {
+    const inlineLineHeight = Number.parseFloat(current.style.lineHeight)
+    if (inlineLineHeight > 0) {
+      return inlineLineHeight
+    }
+  }
+
+  return Number.NaN
+}
+
+const measureLineHeightRatio = (
+  element: HTMLElement,
+  style: CSSStyleDeclaration,
+  fontSize: number
+): number => {
+  if (!(fontSize > 0)) {
+    throw new Error(`Expected a positive computed font-size, received: ${style.fontSize}`)
+  }
+
+  const probe = document.createElement('span')
+  probe.textContent = 'Hg'
+  probe.style.position = 'absolute'
+  probe.style.visibility = 'hidden'
+  probe.style.whiteSpace = 'pre'
+  probe.style.margin = '0'
+  probe.style.padding = '0'
+  probe.style.border = '0'
+  probe.style.fontFamily = style.fontFamily
+  probe.style.fontStyle = style.fontStyle
+  probe.style.fontWeight = style.fontWeight
+  probe.style.fontSize = style.fontSize
+  probe.style.lineHeight = style.lineHeight
+
+  const container = element.ownerDocument.createElement('div')
+  container.style.position = 'absolute'
+  container.style.visibility = 'hidden'
+  container.style.inset = '0'
+  container.appendChild(probe)
+  element.ownerDocument.body.appendChild(container)
+
+  const measuredLineHeight = probe.getBoundingClientRect().height
+  element.ownerDocument.body.removeChild(container)
+
+  if (!(measuredLineHeight > 0)) {
+    throw new Error(`Failed to measure line-height for font-size: ${style.fontSize}`)
+  }
+
+  return measuredLineHeight / fontSize
 }
 
 const applyTextStyle = (
