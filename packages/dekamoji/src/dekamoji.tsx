@@ -1,4 +1,5 @@
-import React, { useEffect, useRef } from 'react'
+import { layout, prepare } from '@chenglou/pretext'
+import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import { useMeasure } from 'react-use'
 
 type Props = {
@@ -8,37 +9,60 @@ type Props = {
 type SizedDekamojiProps = Props & {
   width: number
   height: number
+}
+
+type InheritedTextStyle = {
   fontFamily?: string
+  fontStyle?: string
+  fontWeight?: string
+  lineHeightRatio: number
+  whiteSpace?: string
 }
 
 export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function SizedDekamoji({
   text,
   width,
   height,
-  fontFamily,
 }): React.JSX.Element {
+  const hostRef = useRef<HTMLDivElement>(null)
+  const [inheritedTextStyle, setInheritedTextStyle] = React.useState<InheritedTextStyle | null>(null)
   const [fontSize, setFontSize] = React.useState(0)
 
+  useLayoutEffect(() => {
+    const hostElement = hostRef.current
+    if (!hostElement) {
+      return
+    }
+
+    const styleSource = hostElement.parentElement ?? hostElement
+    setInheritedTextStyle(detectInheritedTextStyle(styleSource))
+  }, [])
+
   useEffect(() => {
-    const size = calcFontSize(width, height, text, fontFamily)
+    if (!inheritedTextStyle) {
+      return
+    }
+
+    const size = calcFontSizeWithPretext(width, height, text, inheritedTextStyle)
     setFontSize(size)
-  }, [fontFamily, height, text, width])
+  }, [height, inheritedTextStyle, text, width])
 
   return (
     <div
+      ref={hostRef}
       style={{
-        position: 'absolute',
         width: '100%',
         height: '100%',
-        fontSize: `${fontSize}px`,
-        textAlign: 'center',
-        margin: '0 auto',
-        boxSizing: 'border-box',
-        whiteSpace: 'pre-wrap',
-        fontFamily,
+        position: 'relative',
       }}
     >
-      {text}
+      {inheritedTextStyle
+        ? (
+            <div style={createTextStyle(fontSize, inheritedTextStyle)}>
+              {text}
+            </div>
+          )
+        : null}
     </div>
   )
 })
@@ -47,16 +71,6 @@ export const AutoDekamoji: React.FC<Props> = React.memo(function AutoDekamoji({
   text,
 }: Props): React.JSX.Element {
   const [ref, { width, height }] = useMeasure<HTMLDivElement>()
-  const innerRef = useRef<HTMLDivElement>(null)
-  const [fontFamily, setFontFamily] = React.useState<string | undefined>(undefined)
-
-  useEffect(() => {
-    const element = innerRef.current
-    if (!element) {
-      return
-    }
-    setFontFamily(detectFontFamily(element))
-  }, [])
 
   return (
     <div
@@ -69,90 +83,187 @@ export const AutoDekamoji: React.FC<Props> = React.memo(function AutoDekamoji({
       }}
     >
       <div
-        ref={innerRef}
         style={{
           width: '100%',
           height: '100%',
         }}
       >
-        <SizedDekamoji
-          width={width}
-          height={height}
-          text={text}
-          fontFamily={fontFamily}
-        />
+        <SizedDekamoji width={width} height={height} text={text} />
       </div>
     </div>
   )
 })
 
-/**
- * Detect font family inherited from parent element
- * @param element
- * @returns font family
- */
-const detectFontFamily = (element: HTMLElement): string | undefined => {
-  const style = window.getComputedStyle(element)
-  const fontFamily = style.fontFamily
-  return fontFamily
+const createTextStyle = (
+  fontSize: number,
+  textStyle: InheritedTextStyle
+): React.CSSProperties => {
+  return {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+    fontSize: `${fontSize}px`,
+    lineHeight: textStyle.lineHeightRatio,
+    textAlign: 'center',
+    margin: '0 auto',
+    boxSizing: 'border-box',
+  }
 }
 
-const calcFontSize = (
+const detectInheritedTextStyle = (element: HTMLElement): InheritedTextStyle => {
+  const style = window.getComputedStyle(element)
+  const fontSize = resolveFontSizePx(element, style)
+  const lineHeight = resolveLineHeightPx(element, style)
+  const lineHeightRatio = Number.isFinite(lineHeight) && fontSize > 0
+    ? lineHeight / fontSize
+    : measureLineHeightRatio(element, style, fontSize)
+
+  return {
+    fontFamily: style.fontFamily || undefined,
+    fontStyle: style.fontStyle || undefined,
+    fontWeight: style.fontWeight || undefined,
+    lineHeightRatio,
+    whiteSpace: readCssProperty(style.whiteSpace),
+  }
+}
+
+const resolveFontSizePx = (
+  element: HTMLElement,
+  style: CSSStyleDeclaration
+): number => {
+  const computedFontSize = Number.parseFloat(style.fontSize)
+  if (computedFontSize > 0) {
+    return computedFontSize
+  }
+
+  for (let current: HTMLElement | null = element; current; current = current.parentElement) {
+    const inlineFontSize = Number.parseFloat(current.style.fontSize)
+    if (inlineFontSize > 0) {
+      return inlineFontSize
+    }
+  }
+
+  throw new Error(`Expected a positive font-size from computed or inline styles, received: ${style.fontSize}`)
+}
+
+const resolveLineHeightPx = (
+  element: HTMLElement,
+  style: CSSStyleDeclaration
+): number => {
+  const computedLineHeight = Number.parseFloat(style.lineHeight)
+  if (computedLineHeight > 0) {
+    return computedLineHeight
+  }
+
+  for (let current: HTMLElement | null = element; current; current = current.parentElement) {
+    const inlineLineHeight = Number.parseFloat(current.style.lineHeight)
+    if (inlineLineHeight > 0) {
+      return inlineLineHeight
+    }
+  }
+
+  return Number.NaN
+}
+
+const measureLineHeightRatio = (
+  element: HTMLElement,
+  style: CSSStyleDeclaration,
+  fontSize: number
+): number => {
+  if (!(fontSize > 0)) {
+    throw new Error(`Expected a positive computed font-size, received: ${style.fontSize}`)
+  }
+
+  const probe = document.createElement('span')
+  probe.textContent = 'Hg'
+  probe.style.position = 'absolute'
+  probe.style.visibility = 'hidden'
+  probe.style.whiteSpace = 'pre'
+  probe.style.margin = '0'
+  probe.style.padding = '0'
+  probe.style.border = '0'
+  probe.style.fontFamily = style.fontFamily
+  probe.style.fontStyle = style.fontStyle
+  probe.style.fontWeight = style.fontWeight
+  probe.style.fontSize = style.fontSize
+  probe.style.lineHeight = style.lineHeight
+
+  const container = element.ownerDocument.createElement('div')
+  container.style.position = 'absolute'
+  container.style.visibility = 'hidden'
+  container.style.inset = '0'
+  container.appendChild(probe)
+  element.ownerDocument.body.appendChild(container)
+
+  const measuredLineHeight = probe.getBoundingClientRect().height
+  element.ownerDocument.body.removeChild(container)
+
+  if (!(measuredLineHeight > 0)) {
+    throw new Error(`Failed to measure line-height for font-size: ${style.fontSize}`)
+  }
+
+  return measuredLineHeight / fontSize
+}
+
+const calcFontSizeWithPretext = (
   width: number,
   height: number,
   text: string,
-  fontFamily?: string
+  textStyle: InheritedTextStyle
 ): number => {
-  // calculate font size without react component and raw dom
-  const outer = document.createElement('div')
-  outer.style.position = 'absolute'
-  outer.style.width = `${width}px`
-  outer.style.height = `${height}px`
-  outer.style.boxSizing = 'border-box'
-  outer.style.zIndex = '-1'
-  outer.style.overflowX = 'hidden'
-  outer.style.overflowY = 'hidden'
-  const inner = document.createElement('div')
-  inner.style.visibility = 'hidden'
-  inner.style.fontSize = '0'
-  inner.style.textAlign = 'center'
-  inner.style.margin = '0 auto'
-  inner.style.whiteSpace = 'pre-wrap'
-  inner.style.boxSizing = 'border-box'
-  inner.style.zIndex = '-1'
-  if (fontFamily) {
-    inner.style.fontFamily = fontFamily
+  if (width <= 0 || height <= 0) {
+    return 0
   }
-  inner.textContent = text
-  outer.appendChild(inner)
-  document.body.appendChild(outer)
 
-  // binary search for font size
-  const maxFontSize = Math.max(width, height)
-  const min = 0.0
-  const max = maxFontSize
-  let minOverflow = max
-  let maxAvailable = min
-  let trial = Math.floor((minOverflow + maxAvailable) / 2)
-  const maxIterations = Math.log2(maxFontSize)
-  let iterations = 0
-  while (iterations < maxIterations) {
-    iterations += 1
-    trial = Math.floor((minOverflow + maxAvailable) / 2)
-    inner.style.fontSize = `${trial}px`
-    const overflowHeight = inner.scrollHeight - height
-    const overflowWidth = inner.scrollWidth - width
-    const scrollbarWidth = 2
-    const overflows = overflowHeight > scrollbarWidth || overflowWidth > scrollbarWidth
-    if (overflows) {
-      minOverflow = trial
+  return binarySearchFontSize(Math.max(width, height), (candidate) => {
+    const lineHeight = Math.max(1, Math.ceil(candidate * textStyle.lineHeightRatio))
+    const prepared = prepare(text, createPretextFont(candidate, textStyle), {
+      whiteSpace: resolvePretextWhiteSpace(textStyle.whiteSpace),
+    })
+    const result = layout(prepared, width, lineHeight)
+    return result.height > height
+  })
+}
+
+const binarySearchFontSize = (
+  upperBound: number,
+  overflows: (candidate: number) => boolean
+): number => {
+  let minAvailable = 0
+  let minOverflow = Math.max(1, Math.floor(upperBound))
+
+  while (minAvailable + 1 < minOverflow) {
+    const candidate = Math.floor((minAvailable + minOverflow) / 2)
+    if (overflows(candidate)) {
+      minOverflow = candidate
     } else {
-      maxAvailable = trial
-    }
-    if (minOverflow - maxAvailable <= 1) {
-      break
+      minAvailable = candidate
     }
   }
-  document.body.removeChild(outer)
-  return trial - 4
+
+  return minAvailable
+}
+
+const createPretextFont = (
+  fontSize: number,
+  textStyle: InheritedTextStyle
+): string => {
+  const segments = [
+    textStyle.fontStyle,
+    textStyle.fontWeight,
+    `${fontSize}px`,
+    textStyle.fontFamily ?? 'sans-serif',
+  ]
+
+  return segments.filter(Boolean).join(' ')
+}
+
+const readCssProperty = (value: string): string | undefined => {
+  return value || undefined
+}
+
+const resolvePretextWhiteSpace = (
+  whiteSpace: string | undefined
+): 'normal' | 'pre-wrap' => {
+  return whiteSpace === 'normal' || whiteSpace === 'nowrap' ? 'normal' : 'pre-wrap'
 }

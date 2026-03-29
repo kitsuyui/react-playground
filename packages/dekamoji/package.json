@@ -33,6 +33,9 @@
     "test": "vitest run",
     "validate": "validate-package-exports --check"
   },
+  "dependencies": {
+    "@chenglou/pretext": "^0.0.3"
+  },
   "devDependencies": {
     "@types/node": "^25.3.0",
     "@types/react": "^19.2.14",

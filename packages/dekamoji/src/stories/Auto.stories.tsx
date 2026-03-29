@@ -2,40 +2,85 @@ import { AutoDekamoji } from '../'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-const meta: Meta<typeof AutoDekamoji> = {
+type WrapControls = {
+  lineBreak: 'auto' | 'loose' | 'normal' | 'strict' | 'anywhere'
+  overflowWrap: 'normal' | 'break-word' | 'anywhere'
+  text: string
+  whiteSpace: 'normal' | 'pre' | 'pre-line' | 'pre-wrap' | 'nowrap'
+  wordBreak: 'normal' | 'break-all' | 'keep-all' | 'break-word'
+}
+
+const AutoExample = ({
+  lineBreak,
+  overflowWrap,
+  text,
+  whiteSpace,
+  wordBreak,
+}: WrapControls) => {
+  return (
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        lineBreak,
+        overflowWrap,
+        whiteSpace,
+        wordBreak,
+      }}
+    >
+      <AutoDekamoji text={text} />
+    </div>
+  )
+}
+
+const meta: Meta<typeof AutoExample> = {
   title: 'Layout Primitives/Dekamoji/Auto',
-  component: AutoDekamoji,
+  component: AutoExample,
   argTypes: {
+    lineBreak: {
+      control: {
+        type: 'select',
+      },
+      options: ['auto', 'loose', 'normal', 'strict', 'anywhere'],
+    },
+    overflowWrap: {
+      control: {
+        type: 'select',
+      },
+      options: ['normal', 'break-word', 'anywhere'],
+    },
     text: {
       control: {
         type: 'text',
       },
     },
+    whiteSpace: {
+      control: {
+        type: 'select',
+      },
+      options: ['normal', 'pre', 'pre-line', 'pre-wrap', 'nowrap'],
+    },
+    wordBreak: {
+      control: {
+        type: 'select',
+      },
+      options: ['normal', 'break-all', 'keep-all', 'break-word'],
+    },
   },
 }
 
 export default meta
-type Story = StoryObj<typeof AutoDekamoji>
+type Story = StoryObj<typeof AutoExample>
 
 export const Default: Story = {
   args: {
-    text: 'あいうえお',
+    text: 'Hello, World!',
+    lineBreak: 'auto',
+    overflowWrap: 'normal',
+    whiteSpace: 'pre-wrap',
+    wordBreak: 'normal',
   },
-  decorators: [
-    (Story) => {
-      return (
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            position: 'absolute',
-          }}
-        >
-          <Story />
-        </div>
-      )
-    },
-  ],
   parameters: {
     layout: 'fullscreen',
     flexDirection: 'column',

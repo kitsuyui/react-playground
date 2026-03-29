@@ -2,19 +2,85 @@ import { SizedDekamoji } from '..'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-const meta: Meta<typeof SizedDekamoji> = {
+type PrimitiveExampleProps = {
+  height: number
+  lineBreak: 'auto' | 'loose' | 'normal' | 'strict' | 'anywhere'
+  overflowWrap: 'normal' | 'break-word' | 'anywhere'
+  text: string
+  whiteSpace: 'normal' | 'pre' | 'pre-line' | 'pre-wrap' | 'nowrap'
+  width: number
+  wordBreak: 'normal' | 'break-all' | 'keep-all' | 'break-word'
+}
+
+const PrimitiveExample = ({
+  height,
+  lineBreak,
+  overflowWrap,
+  text,
+  whiteSpace,
+  width,
+  wordBreak,
+}: PrimitiveExampleProps) => {
+  return (
+    <div
+      style={{
+        width,
+        height,
+        position: 'relative',
+        lineBreak,
+        overflowWrap,
+        whiteSpace,
+        wordBreak,
+      }}
+    >
+      <SizedDekamoji text={text} width={width} height={height} />
+    </div>
+  )
+}
+
+const meta: Meta<typeof PrimitiveExample> = {
   title: 'Layout Primitives/Dekamoji/Primitive',
-  component: SizedDekamoji,
+  component: PrimitiveExample,
+  argTypes: {
+    lineBreak: {
+      control: {
+        type: 'select',
+      },
+      options: ['auto', 'loose', 'normal', 'strict', 'anywhere'],
+    },
+    overflowWrap: {
+      control: {
+        type: 'select',
+      },
+      options: ['normal', 'break-word', 'anywhere'],
+    },
+    whiteSpace: {
+      control: {
+        type: 'select',
+      },
+      options: ['normal', 'pre', 'pre-line', 'pre-wrap', 'nowrap'],
+    },
+    wordBreak: {
+      control: {
+        type: 'select',
+      },
+      options: ['normal', 'break-all', 'keep-all', 'break-word'],
+    },
+  },
 }
 
 export default meta
-type Story = StoryObj<typeof SizedDekamoji>
+type Story = StoryObj<typeof PrimitiveExample>
 
 export const Default: Story = {
   args: {
-    text: 'あいうえお',
+    text: 'Hello, World!',
     width: 300,
     height: 200,
+    lineBreak: 'auto',
+    overflowWrap: 'normal',
+    whiteSpace: 'pre-wrap',
+    wordBreak: 'normal',
   },
   parameters: {
     layout: 'fullscreen',
