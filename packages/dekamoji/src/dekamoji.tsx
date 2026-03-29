@@ -278,17 +278,7 @@ const readCssProperty = (value: string): string | undefined => {
 const resolvePretextWhiteSpace = (
   whiteSpace: string | undefined
 ): 'normal' | 'pre-wrap' => {
-  switch (whiteSpace) {
-    case 'normal':
-    case 'nowrap':
-      return 'normal'
-    case 'break-spaces':
-    case 'pre':
-    case 'pre-line':
-    case 'pre-wrap':
-    default:
-      return 'pre-wrap'
-  }
+  return whiteSpace === 'normal' || whiteSpace === 'nowrap' ? 'normal' : 'pre-wrap'
 }
 
 const resolveRenderWhiteSpace = (
