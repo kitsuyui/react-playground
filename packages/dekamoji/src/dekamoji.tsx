@@ -5,10 +5,15 @@ import { useMeasure } from 'react-use'
 
 export type DekamojiImplementation = 'dom' | 'zoomer' | 'pretext'
 
+export type DekamojiTextWrapProps = Pick<
+  React.CSSProperties,
+  'lineBreak' | 'overflowWrap' | 'whiteSpace' | 'wordBreak'
+>
+
 type Props = {
   text: string
   implementation?: DekamojiImplementation
-}
+} & DekamojiTextWrapProps
 
 type SizedDekamojiProps = Props & {
   width: number
@@ -24,7 +29,7 @@ type InheritedTextStyle = {
   fontStyle?: string
   fontWeight?: string
   lineHeightRatio: number
-}
+} & DekamojiTextWrapProps
 
 const DEFAULT_IMPLEMENTATION: DekamojiImplementation = 'dom'
 const DEFAULT_LINE_HEIGHT_RATIO = 1.2
@@ -38,12 +43,20 @@ export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function S
   fontWeight,
   lineHeightRatio = DEFAULT_LINE_HEIGHT_RATIO,
   implementation = DEFAULT_IMPLEMENTATION,
+  lineBreak,
+  overflowWrap,
+  whiteSpace,
+  wordBreak,
 }): React.JSX.Element {
   const textStyle = {
     fontFamily,
     fontStyle,
     fontWeight,
     lineHeightRatio,
+    lineBreak,
+    overflowWrap,
+    whiteSpace,
+    wordBreak,
   }
 
   switch (implementation) {
@@ -80,6 +93,10 @@ export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function S
 export const AutoDekamoji: React.FC<Props> = React.memo(function AutoDekamoji({
   text,
   implementation = DEFAULT_IMPLEMENTATION,
+  lineBreak,
+  overflowWrap,
+  whiteSpace,
+  wordBreak,
 }: Props): React.JSX.Element {
   const [ref, { width, height }] = useMeasure<HTMLDivElement>()
   const innerRef = useRef<HTMLDivElement>(null)
@@ -121,6 +138,10 @@ export const AutoDekamoji: React.FC<Props> = React.memo(function AutoDekamoji({
           fontStyle={textStyle.fontStyle}
           fontWeight={textStyle.fontWeight}
           lineHeightRatio={textStyle.lineHeightRatio}
+          lineBreak={lineBreak ?? textStyle.lineBreak}
+          overflowWrap={overflowWrap ?? textStyle.overflowWrap}
+          whiteSpace={whiteSpace ?? textStyle.whiteSpace}
+          wordBreak={wordBreak ?? textStyle.wordBreak}
         />
       </div>
     </div>
@@ -230,7 +251,10 @@ const createTextStyle = (
     textAlign: 'center',
     margin: '0 auto',
     boxSizing: 'border-box',
-    whiteSpace: 'pre-wrap',
+    whiteSpace: textStyle.whiteSpace ?? 'pre-wrap',
+    overflowWrap: textStyle.overflowWrap,
+    wordBreak: textStyle.wordBreak,
+    lineBreak: textStyle.lineBreak,
     fontFamily: textStyle.fontFamily,
     fontStyle: textStyle.fontStyle,
     fontWeight: textStyle.fontWeight,
@@ -250,6 +274,10 @@ const detectInheritedTextStyle = (element: HTMLElement): InheritedTextStyle => {
     fontStyle: style.fontStyle || undefined,
     fontWeight: style.fontWeight || undefined,
     lineHeightRatio,
+    lineBreak: style.lineBreak || undefined,
+    overflowWrap: style.overflowWrap || undefined,
+    whiteSpace: style.whiteSpace || undefined,
+    wordBreak: style.wordBreak || undefined,
   }
 }
 
@@ -268,6 +296,18 @@ const applyTextStyle = (
   }
   if (textStyle.fontWeight) {
     element.style.fontWeight = textStyle.fontWeight
+  }
+  if (textStyle.lineBreak) {
+    element.style.lineBreak = textStyle.lineBreak
+  }
+  if (textStyle.overflowWrap) {
+    element.style.overflowWrap = textStyle.overflowWrap
+  }
+  if (textStyle.whiteSpace) {
+    element.style.whiteSpace = textStyle.whiteSpace
+  }
+  if (textStyle.wordBreak) {
+    element.style.wordBreak = textStyle.wordBreak
   }
 }
 
@@ -325,7 +365,9 @@ const calcFontSizeWithPretext = (
   try {
     return binarySearchFontSize(Math.max(width, height), (candidate) => {
       const lineHeight = Math.max(1, Math.ceil(candidate * textStyle.lineHeightRatio))
-      const prepared = prepare(text, createPretextFont(candidate, textStyle), { whiteSpace: 'pre-wrap' })
+      const prepared = prepare(text, createPretextFont(candidate, textStyle), {
+        whiteSpace: resolvePretextWhiteSpace(textStyle.whiteSpace),
+      })
       const result = layout(prepared, width, lineHeight)
       return result.height > height
     })
@@ -365,4 +407,18 @@ const createPretextFont = (
   ]
 
   return segments.filter(Boolean).join(' ')
+}
+
+const resolvePretextWhiteSpace = (
+  whiteSpace: React.CSSProperties['whiteSpace']
+): 'normal' | 'pre' | 'pre-line' | 'pre-wrap' => {
+  switch (whiteSpace) {
+    case 'normal':
+    case 'pre':
+    case 'pre-line':
+    case 'pre-wrap':
+      return whiteSpace
+    default:
+      return 'pre-wrap'
+  }
 }

@@ -1,5 +1,5 @@
 import { SizedDekamoji } from '..'
-import type { DekamojiImplementation } from '..'
+import type { DekamojiImplementation, DekamojiTextWrapProps } from '..'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -13,9 +13,13 @@ const SIZES = [
 
 const Comparison = ({
   text,
+  lineBreak,
+  overflowWrap,
+  whiteSpace,
+  wordBreak,
 }: {
   text: string
-}) => {
+} & DekamojiTextWrapProps) => {
   return (
     <div
       style={{
@@ -78,6 +82,10 @@ const Comparison = ({
                     width={size.width}
                     height={size.height}
                     implementation={implementation}
+                    lineBreak={lineBreak}
+                    overflowWrap={overflowWrap}
+                    whiteSpace={whiteSpace}
+                    wordBreak={wordBreak}
                   />
                 </div>
               </article>
@@ -93,10 +101,34 @@ const meta: Meta<typeof Comparison> = {
   title: 'Layout Primitives/Dekamoji/Comparison',
   component: Comparison,
   argTypes: {
+    lineBreak: {
+      control: {
+        type: 'select',
+      },
+      options: ['auto', 'loose', 'normal', 'strict', 'anywhere'],
+    },
+    overflowWrap: {
+      control: {
+        type: 'select',
+      },
+      options: ['normal', 'break-word', 'anywhere'],
+    },
     text: {
       control: {
         type: 'text',
       },
+    },
+    whiteSpace: {
+      control: {
+        type: 'select',
+      },
+      options: ['normal', 'pre', 'pre-line', 'pre-wrap', 'nowrap'],
+    },
+    wordBreak: {
+      control: {
+        type: 'select',
+      },
+      options: ['normal', 'break-all', 'keep-all', 'break-word'],
     },
   },
 }
@@ -106,7 +138,11 @@ type Story = StoryObj<typeof Comparison>
 
 export const Default: Story = {
   args: {
-    text: '最新の main にしてから始めてください。\npretext を使うとどう変わるか?',
+    text: 'Hello, World!',
+    lineBreak: 'auto',
+    overflowWrap: 'normal',
+    whiteSpace: 'pre-wrap',
+    wordBreak: 'normal',
   },
   parameters: {
     layout: 'fullscreen',

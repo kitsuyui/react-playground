@@ -12,10 +12,34 @@ const meta: Meta<typeof AutoDekamoji> = {
       },
       options: ['dom', 'zoomer', 'pretext'],
     },
+    lineBreak: {
+      control: {
+        type: 'select',
+      },
+      options: ['auto', 'loose', 'normal', 'strict', 'anywhere'],
+    },
+    overflowWrap: {
+      control: {
+        type: 'select',
+      },
+      options: ['normal', 'break-word', 'anywhere'],
+    },
     text: {
       control: {
         type: 'text',
       },
+    },
+    whiteSpace: {
+      control: {
+        type: 'select',
+      },
+      options: ['normal', 'pre', 'pre-line', 'pre-wrap', 'nowrap'],
+    },
+    wordBreak: {
+      control: {
+        type: 'select',
+      },
+      options: ['normal', 'break-all', 'keep-all', 'break-word'],
     },
   },
 }
@@ -25,8 +49,12 @@ type Story = StoryObj<typeof AutoDekamoji>
 
 export const Default: Story = {
   args: {
-    text: 'あいうえお',
+    text: 'Hello, World!',
     implementation: 'dom',
+    lineBreak: 'auto',
+    overflowWrap: 'normal',
+    whiteSpace: 'pre-wrap',
+    wordBreak: 'normal',
   },
   decorators: [
     (Story) => {
