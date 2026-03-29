@@ -41,6 +41,7 @@ import { AutoDekamoji, SizedDekamoji } from '@kitsuyui/react-dekamoji'
 
 Use `AutoDekamoji` when the component should measure its parent automatically.
 Use `SizedDekamoji` when the available width and height are already known.
+Both components accept `implementation="dom" | "zoomer" | "pretext"` to compare the original hidden-DOM sizing, a `react-zoomer`-based strategy, and a `pretext`-based strategy.
 
 ## License
 

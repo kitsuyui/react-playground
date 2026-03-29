@@ -1,61 +1,98 @@
+import { layout, prepare } from '@chenglou/pretext'
+import { SizedZoomer } from '@kitsuyui/react-zoomer'
 import React, { useEffect, useRef } from 'react'
 import { useMeasure } from 'react-use'
 
+export type DekamojiImplementation = 'dom' | 'zoomer' | 'pretext'
+
 type Props = {
   text: string
+  implementation?: DekamojiImplementation
 }
 
 type SizedDekamojiProps = Props & {
   width: number
   height: number
   fontFamily?: string
+  fontStyle?: string
+  fontWeight?: string
+  lineHeightRatio?: number
 }
+
+type InheritedTextStyle = {
+  fontFamily?: string
+  fontStyle?: string
+  fontWeight?: string
+  lineHeightRatio: number
+}
+
+const DEFAULT_IMPLEMENTATION: DekamojiImplementation = 'dom'
+const DEFAULT_LINE_HEIGHT_RATIO = 1.2
 
 export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function SizedDekamoji({
   text,
   width,
   height,
   fontFamily,
+  fontStyle,
+  fontWeight,
+  lineHeightRatio = DEFAULT_LINE_HEIGHT_RATIO,
+  implementation = DEFAULT_IMPLEMENTATION,
 }): React.JSX.Element {
-  const [fontSize, setFontSize] = React.useState(0)
+  const textStyle = {
+    fontFamily,
+    fontStyle,
+    fontWeight,
+    lineHeightRatio,
+  }
 
-  useEffect(() => {
-    const size = calcFontSize(width, height, text, fontFamily)
-    setFontSize(size)
-  }, [fontFamily, height, text, width])
-
-  return (
-    <div
-      style={{
-        position: 'absolute',
-        width: '100%',
-        height: '100%',
-        fontSize: `${fontSize}px`,
-        textAlign: 'center',
-        margin: '0 auto',
-        boxSizing: 'border-box',
-        whiteSpace: 'pre-wrap',
-        fontFamily,
-      }}
-    >
-      {text}
-    </div>
-  )
+  switch (implementation) {
+    case 'zoomer':
+      return (
+        <SizedDekamojiZoomer
+          width={width}
+          height={height}
+          text={text}
+          textStyle={textStyle}
+        />
+      )
+    case 'pretext':
+      return (
+        <SizedDekamojiPretext
+          width={width}
+          height={height}
+          text={text}
+          textStyle={textStyle}
+        />
+      )
+    default:
+      return (
+        <SizedDekamojiDom
+          width={width}
+          height={height}
+          text={text}
+          textStyle={textStyle}
+        />
+      )
+  }
 })
 
 export const AutoDekamoji: React.FC<Props> = React.memo(function AutoDekamoji({
   text,
+  implementation = DEFAULT_IMPLEMENTATION,
 }: Props): React.JSX.Element {
   const [ref, { width, height }] = useMeasure<HTMLDivElement>()
   const innerRef = useRef<HTMLDivElement>(null)
-  const [fontFamily, setFontFamily] = React.useState<string | undefined>(undefined)
+  const [textStyle, setTextStyle] = React.useState<InheritedTextStyle>({
+    lineHeightRatio: DEFAULT_LINE_HEIGHT_RATIO,
+  })
 
   useEffect(() => {
     const element = innerRef.current
     if (!element) {
       return
     }
-    setFontFamily(detectFontFamily(element))
+    setTextStyle(detectInheritedTextStyle(element))
   }, [])
 
   return (
@@ -79,31 +116,171 @@ export const AutoDekamoji: React.FC<Props> = React.memo(function AutoDekamoji({
           width={width}
           height={height}
           text={text}
-          fontFamily={fontFamily}
+          implementation={implementation}
+          fontFamily={textStyle.fontFamily}
+          fontStyle={textStyle.fontStyle}
+          fontWeight={textStyle.fontWeight}
+          lineHeightRatio={textStyle.lineHeightRatio}
         />
       </div>
     </div>
   )
 })
 
-/**
- * Detect font family inherited from parent element
- * @param element
- * @returns font family
- */
-const detectFontFamily = (element: HTMLElement): string | undefined => {
-  const style = window.getComputedStyle(element)
-  const fontFamily = style.fontFamily
-  return fontFamily
+const SizedDekamojiDom = ({
+  width,
+  height,
+  text,
+  textStyle,
+}: {
+  width: number
+  height: number
+  text: string
+  textStyle: InheritedTextStyle
+}) => {
+  const [fontSize, setFontSize] = React.useState(0)
+
+  useEffect(() => {
+    const size = calcFontSizeWithDom(width, height, text, textStyle)
+    setFontSize(size)
+  }, [height, text, textStyle, width])
+
+  return (
+    <div
+      style={createTextStyle(fontSize, textStyle)}
+    >
+      {text}
+    </div>
+  )
 }
 
-const calcFontSize = (
+const SizedDekamojiZoomer = ({
+  width,
+  height,
+  text,
+  textStyle,
+}: {
+  width: number
+  height: number
+  text: string
+  textStyle: InheritedTextStyle
+}) => {
+  return (
+    <div
+      style={{
+        position: 'absolute',
+        inset: 0,
+        overflow: 'hidden',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <SizedZoomer width={width} height={height}>
+        <div style={createTextStyle(1, textStyle, { fillContainer: false })}>
+          {text}
+        </div>
+      </SizedZoomer>
+    </div>
+  )
+}
+
+const SizedDekamojiPretext = ({
+  width,
+  height,
+  text,
+  textStyle,
+}: {
+  width: number
+  height: number
+  text: string
+  textStyle: InheritedTextStyle
+}) => {
+  const [fontSize, setFontSize] = React.useState(0)
+
+  useEffect(() => {
+    const size = calcFontSizeWithPretext(width, height, text, textStyle)
+    setFontSize(size)
+  }, [height, text, textStyle, width])
+
+  return (
+    <div
+      style={createTextStyle(fontSize, textStyle)}
+    >
+      {text}
+    </div>
+  )
+}
+
+const createTextStyle = (
+  fontSize: number,
+  textStyle: InheritedTextStyle,
+  options: {
+    fillContainer?: boolean
+  } = {}
+): React.CSSProperties => {
+  const fillContainer = options.fillContainer ?? true
+
+  return {
+    position: fillContainer ? 'absolute' : 'static',
+    width: fillContainer ? '100%' : 'auto',
+    height: fillContainer ? '100%' : 'auto',
+    fontSize: `${fontSize}px`,
+    lineHeight: textStyle.lineHeightRatio,
+    textAlign: 'center',
+    margin: '0 auto',
+    boxSizing: 'border-box',
+    whiteSpace: 'pre-wrap',
+    fontFamily: textStyle.fontFamily,
+    fontStyle: textStyle.fontStyle,
+    fontWeight: textStyle.fontWeight,
+  }
+}
+
+const detectInheritedTextStyle = (element: HTMLElement): InheritedTextStyle => {
+  const style = window.getComputedStyle(element)
+  const fontSize = Number.parseFloat(style.fontSize)
+  const lineHeight = Number.parseFloat(style.lineHeight)
+  const lineHeightRatio = Number.isFinite(lineHeight) && fontSize > 0
+    ? lineHeight / fontSize
+    : DEFAULT_LINE_HEIGHT_RATIO
+
+  return {
+    fontFamily: style.fontFamily || undefined,
+    fontStyle: style.fontStyle || undefined,
+    fontWeight: style.fontWeight || undefined,
+    lineHeightRatio,
+  }
+}
+
+const applyTextStyle = (
+  element: HTMLElement,
+  fontSize: number,
+  textStyle: InheritedTextStyle
+) => {
+  element.style.fontSize = `${fontSize}px`
+  element.style.lineHeight = String(textStyle.lineHeightRatio)
+  if (textStyle.fontFamily) {
+    element.style.fontFamily = textStyle.fontFamily
+  }
+  if (textStyle.fontStyle) {
+    element.style.fontStyle = textStyle.fontStyle
+  }
+  if (textStyle.fontWeight) {
+    element.style.fontWeight = textStyle.fontWeight
+  }
+}
+
+const calcFontSizeWithDom = (
   width: number,
   height: number,
   text: string,
-  fontFamily?: string
+  textStyle: InheritedTextStyle
 ): number => {
-  // calculate font size without react component and raw dom
+  if (width <= 0 || height <= 0) {
+    return 0
+  }
+
   const outer = document.createElement('div')
   outer.style.position = 'absolute'
   outer.style.width = `${width}px`
@@ -114,45 +291,78 @@ const calcFontSize = (
   outer.style.overflowY = 'hidden'
   const inner = document.createElement('div')
   inner.style.visibility = 'hidden'
-  inner.style.fontSize = '0'
   inner.style.textAlign = 'center'
   inner.style.margin = '0 auto'
   inner.style.whiteSpace = 'pre-wrap'
   inner.style.boxSizing = 'border-box'
   inner.style.zIndex = '-1'
-  if (fontFamily) {
-    inner.style.fontFamily = fontFamily
-  }
   inner.textContent = text
   outer.appendChild(inner)
   document.body.appendChild(outer)
 
-  // binary search for font size
-  const maxFontSize = Math.max(width, height)
-  const min = 0.0
-  const max = maxFontSize
-  let minOverflow = max
-  let maxAvailable = min
-  let trial = Math.floor((minOverflow + maxAvailable) / 2)
-  const maxIterations = Math.log2(maxFontSize)
-  let iterations = 0
-  while (iterations < maxIterations) {
-    iterations += 1
-    trial = Math.floor((minOverflow + maxAvailable) / 2)
-    inner.style.fontSize = `${trial}px`
+  const fontSize = binarySearchFontSize(Math.max(width, height), (candidate) => {
+    applyTextStyle(inner, candidate, textStyle)
     const overflowHeight = inner.scrollHeight - height
     const overflowWidth = inner.scrollWidth - width
     const scrollbarWidth = 2
-    const overflows = overflowHeight > scrollbarWidth || overflowWidth > scrollbarWidth
-    if (overflows) {
-      minOverflow = trial
+    return overflowHeight > scrollbarWidth || overflowWidth > scrollbarWidth
+  })
+
+  document.body.removeChild(outer)
+  return Math.max(0, fontSize - 4)
+}
+
+const calcFontSizeWithPretext = (
+  width: number,
+  height: number,
+  text: string,
+  textStyle: InheritedTextStyle
+): number => {
+  if (width <= 0 || height <= 0) {
+    return 0
+  }
+
+  try {
+    return binarySearchFontSize(Math.max(width, height), (candidate) => {
+      const lineHeight = Math.max(1, Math.ceil(candidate * textStyle.lineHeightRatio))
+      const prepared = prepare(text, createPretextFont(candidate, textStyle), { whiteSpace: 'pre-wrap' })
+      const result = layout(prepared, width, lineHeight)
+      return result.height > height
+    })
+  } catch {
+    return 0
+  }
+}
+
+const binarySearchFontSize = (
+  upperBound: number,
+  overflows: (candidate: number) => boolean
+): number => {
+  let minAvailable = 0
+  let minOverflow = Math.max(1, Math.floor(upperBound))
+
+  while (minAvailable + 1 < minOverflow) {
+    const candidate = Math.floor((minAvailable + minOverflow) / 2)
+    if (overflows(candidate)) {
+      minOverflow = candidate
     } else {
-      maxAvailable = trial
-    }
-    if (minOverflow - maxAvailable <= 1) {
-      break
+      minAvailable = candidate
     }
   }
-  document.body.removeChild(outer)
-  return trial - 4
+
+  return minAvailable
+}
+
+const createPretextFont = (
+  fontSize: number,
+  textStyle: InheritedTextStyle
+): string => {
+  const segments = [
+    textStyle.fontStyle,
+    textStyle.fontWeight,
+    `${fontSize}px`,
+    textStyle.fontFamily ?? 'sans-serif',
+  ]
+
+  return segments.filter(Boolean).join(' ')
 }

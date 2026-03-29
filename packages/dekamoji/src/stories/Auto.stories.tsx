@@ -6,6 +6,12 @@ const meta: Meta<typeof AutoDekamoji> = {
   title: 'Layout Primitives/Dekamoji/Auto',
   component: AutoDekamoji,
   argTypes: {
+    implementation: {
+      control: {
+        type: 'radio',
+      },
+      options: ['dom', 'zoomer', 'pretext'],
+    },
     text: {
       control: {
         type: 'text',
@@ -20,6 +26,7 @@ type Story = StoryObj<typeof AutoDekamoji>
 export const Default: Story = {
   args: {
     text: 'あいうえお',
+    implementation: 'dom',
   },
   decorators: [
     (Story) => {

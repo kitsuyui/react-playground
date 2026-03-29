@@ -5,6 +5,14 @@ import type { Meta, StoryObj } from '@storybook/react-vite'
 const meta: Meta<typeof SizedDekamoji> = {
   title: 'Layout Primitives/Dekamoji/Primitive',
   component: SizedDekamoji,
+  argTypes: {
+    implementation: {
+      control: {
+        type: 'radio',
+      },
+      options: ['dom', 'zoomer', 'pretext'],
+    },
+  },
 }
 
 export default meta
@@ -15,6 +23,7 @@ export const Default: Story = {
     text: 'あいうえお',
     width: 300,
     height: 200,
+    implementation: 'dom',
   },
   parameters: {
     layout: 'fullscreen',

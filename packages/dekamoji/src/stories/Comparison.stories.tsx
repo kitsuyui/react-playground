@@ -1,0 +1,120 @@
+import { SizedDekamoji } from '..'
+import type { DekamojiImplementation } from '..'
+
+import type { Meta, StoryObj } from '@storybook/react-vite'
+
+const IMPLEMENTATIONS: DekamojiImplementation[] = ['dom', 'zoomer', 'pretext']
+
+const SIZES = [
+  { label: 'Wide', width: 320, height: 160 },
+  { label: 'Square', width: 220, height: 220 },
+  { label: 'Tall', width: 180, height: 280 },
+]
+
+const Comparison = ({
+  text,
+}: {
+  text: string
+}) => {
+  return (
+    <div
+      style={{
+        padding: 24,
+        display: 'grid',
+        gap: 24,
+      }}
+    >
+      {SIZES.map((size) => (
+        <section
+          key={size.label}
+          style={{
+            display: 'grid',
+            gap: 12,
+          }}
+        >
+          <header
+            style={{
+              fontFamily: 'monospace',
+              fontSize: 14,
+            }}
+          >
+            {size.label} {size.width}x{size.height}
+          </header>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+              gap: 16,
+            }}
+          >
+            {IMPLEMENTATIONS.map((implementation) => (
+              <article
+                key={`${size.label}-${implementation}`}
+                style={{
+                  display: 'grid',
+                  gap: 8,
+                }}
+              >
+                <div
+                  style={{
+                    fontFamily: 'monospace',
+                    fontSize: 12,
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  {implementation}
+                </div>
+                <div
+                  style={{
+                    width: size.width,
+                    height: size.height,
+                    position: 'relative',
+                    border: '1px solid #999',
+                    background: '#fffbe6',
+                  }}
+                >
+                  <SizedDekamoji
+                    text={text}
+                    width={size.width}
+                    height={size.height}
+                    implementation={implementation}
+                  />
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  )
+}
+
+const meta: Meta<typeof Comparison> = {
+  title: 'Layout Primitives/Dekamoji/Comparison',
+  component: Comparison,
+  argTypes: {
+    text: {
+      control: {
+        type: 'text',
+      },
+    },
+  },
+}
+
+export default meta
+type Story = StoryObj<typeof Comparison>
+
+export const Default: Story = {
+  args: {
+    text: '最新の main にしてから始めてください。\npretext を使うとどう変わるか?',
+  },
+  parameters: {
+    layout: 'fullscreen',
+    docs: {
+      story: {
+        inline: false,
+        iframeHeight: 1100,
+      },
+    },
+  },
+}
