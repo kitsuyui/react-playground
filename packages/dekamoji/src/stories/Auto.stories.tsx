@@ -50,7 +50,7 @@ type Story = StoryObj<typeof AutoDekamoji>
 export const Default: Story = {
   args: {
     text: 'Hello, World!',
-    implementation: 'dom',
+    implementation: 'pretext',
     lineBreak: 'auto',
     overflowWrap: 'normal',
     whiteSpace: 'pre-wrap',

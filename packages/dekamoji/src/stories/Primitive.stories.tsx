@@ -47,7 +47,7 @@ export const Default: Story = {
     text: 'Hello, World!',
     width: 300,
     height: 200,
-    implementation: 'dom',
+    implementation: 'pretext',
     lineBreak: 'auto',
     overflowWrap: 'normal',
     whiteSpace: 'pre-wrap',

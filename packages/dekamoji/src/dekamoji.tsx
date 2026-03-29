@@ -31,7 +31,7 @@ type InheritedTextStyle = {
   lineHeightRatio: number
 } & DekamojiTextWrapProps
 
-const DEFAULT_IMPLEMENTATION: DekamojiImplementation = 'dom'
+const DEFAULT_IMPLEMENTATION: DekamojiImplementation = 'pretext'
 const DEFAULT_LINE_HEIGHT_RATIO = 1.2
 
 export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function SizedDekamoji({
