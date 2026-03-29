@@ -1,11 +1,9 @@
 import { SizedDekamoji } from '..'
-import type { DekamojiImplementation } from '..'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 type PrimitiveExampleProps = {
   height: number
-  implementation: DekamojiImplementation
   lineBreak: 'auto' | 'loose' | 'normal' | 'strict' | 'anywhere'
   overflowWrap: 'normal' | 'break-word' | 'anywhere'
   text: string
@@ -16,7 +14,6 @@ type PrimitiveExampleProps = {
 
 const PrimitiveExample = ({
   height,
-  implementation,
   lineBreak,
   overflowWrap,
   text,
@@ -36,12 +33,7 @@ const PrimitiveExample = ({
         wordBreak,
       }}
     >
-      <SizedDekamoji
-        text={text}
-        width={width}
-        height={height}
-        implementation={implementation}
-      />
+      <SizedDekamoji text={text} width={width} height={height} />
     </div>
   )
 }
@@ -50,12 +42,6 @@ const meta: Meta<typeof PrimitiveExample> = {
   title: 'Layout Primitives/Dekamoji/Primitive',
   component: PrimitiveExample,
   argTypes: {
-    implementation: {
-      control: {
-        type: 'radio',
-      },
-      options: ['dom', 'zoomer', 'pretext'],
-    },
     lineBreak: {
       control: {
         type: 'select',
@@ -91,7 +77,6 @@ export const Default: Story = {
     text: 'Hello, World!',
     width: 300,
     height: 200,
-    implementation: 'pretext',
     lineBreak: 'auto',
     overflowWrap: 'normal',
     whiteSpace: 'pre-wrap',

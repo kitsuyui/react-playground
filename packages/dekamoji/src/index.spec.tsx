@@ -4,6 +4,17 @@ import { render, screen } from '@testing-library/react'
 
 import { AutoDekamoji, SizedDekamoji } from './dekamoji'
 
+Object.defineProperty(HTMLCanvasElement.prototype, 'getContext', {
+  configurable: true,
+  value: () => ({
+    measureText: (text: string) => ({
+      width: text.length * 10,
+      actualBoundingBoxAscent: 8,
+      actualBoundingBoxDescent: 2,
+    }),
+  }),
+})
+
 test('render AutoDekamoji', () => {
   render(
     <div style={{ fontSize: '16px', lineHeight: '16px' }}>

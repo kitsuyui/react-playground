@@ -34,8 +34,7 @@
     "validate": "validate-package-exports --check"
   },
   "dependencies": {
-    "@chenglou/pretext": "^0.0.3",
-    "@kitsuyui/react-zoomer": "workspace:*"
+    "@chenglou/pretext": "^0.0.3"
   },
   "devDependencies": {
     "@types/node": "^25.3.0",

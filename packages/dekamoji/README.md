@@ -42,8 +42,8 @@ import { AutoDekamoji, SizedDekamoji } from '@kitsuyui/react-dekamoji'
 Use `AutoDekamoji` when the component should measure its parent automatically.
 Use `SizedDekamoji` when the available width and height are already known.
 Font-related styling is inherited from the parent element rather than passed as direct component props.
-Both components accept `implementation="dom" | "zoomer" | "pretext"` to compare the original hidden-DOM sizing, a `react-zoomer`-based strategy, and a `pretext`-based strategy.
-Text wrapping behavior is also inherited from the parent element.
+This package now uses the `pretext`-based sizing strategy.
+Text wrapping behavior is inherited from the parent element.
 
 ## License
 

@@ -1,13 +1,9 @@
 import { layout, prepare } from '@chenglou/pretext'
-import { SizedZoomer } from '@kitsuyui/react-zoomer'
 import React, { useEffect, useLayoutEffect, useRef } from 'react'
 import { useMeasure } from 'react-use'
 
-export type DekamojiImplementation = 'dom' | 'zoomer' | 'pretext'
-
 type Props = {
   text: string
-  implementation?: DekamojiImplementation
 }
 
 type SizedDekamojiProps = Props & {
@@ -26,16 +22,14 @@ type InheritedTextStyle = {
   wordBreak?: React.CSSProperties['wordBreak']
 }
 
-const DEFAULT_IMPLEMENTATION: DekamojiImplementation = 'pretext'
-
 export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function SizedDekamoji({
   text,
   width,
   height,
-  implementation = DEFAULT_IMPLEMENTATION,
 }): React.JSX.Element {
   const hostRef = useRef<HTMLDivElement>(null)
   const [inheritedTextStyle, setInheritedTextStyle] = React.useState<InheritedTextStyle | null>(null)
+  const [fontSize, setFontSize] = React.useState(0)
 
   useLayoutEffect(() => {
     const hostElement = hostRef.current
@@ -47,6 +41,15 @@ export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function S
     setInheritedTextStyle(detectInheritedTextStyle(styleSource))
   }, [])
 
+  useEffect(() => {
+    if (!inheritedTextStyle) {
+      return
+    }
+
+    const size = calcFontSizeWithPretext(width, height, text, inheritedTextStyle)
+    setFontSize(size)
+  }, [height, inheritedTextStyle, text, width])
+
   return (
     <div
       ref={hostRef}
@@ -57,13 +60,11 @@ export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function S
       }}
     >
       {inheritedTextStyle
-        ? renderSizedDekamojiImplementation({
-            implementation,
-            width,
-            height,
-            text,
-            textStyle: inheritedTextStyle,
-          })
+        ? (
+            <div style={createTextStyle(fontSize, inheritedTextStyle)}>
+              {text}
+            </div>
+          )
         : null}
     </div>
   )
@@ -71,7 +72,6 @@ export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function S
 
 export const AutoDekamoji: React.FC<Props> = React.memo(function AutoDekamoji({
   text,
-  implementation = DEFAULT_IMPLEMENTATION,
 }: Props): React.JSX.Element {
   const [ref, { width, height }] = useMeasure<HTMLDivElement>()
 
@@ -91,159 +91,20 @@ export const AutoDekamoji: React.FC<Props> = React.memo(function AutoDekamoji({
           height: '100%',
         }}
       >
-        <SizedDekamoji
-          width={width}
-          height={height}
-          text={text}
-          implementation={implementation}
-        />
+        <SizedDekamoji width={width} height={height} text={text} />
       </div>
     </div>
   )
 })
 
-const renderSizedDekamojiImplementation = ({
-  implementation,
-  width,
-  height,
-  text,
-  textStyle,
-}: {
-  implementation: DekamojiImplementation
-  width: number
-  height: number
-  text: string
-  textStyle: InheritedTextStyle
-}) => {
-  switch (implementation) {
-    case 'zoomer':
-      return (
-        <SizedDekamojiZoomer
-          width={width}
-          height={height}
-          text={text}
-          textStyle={textStyle}
-        />
-      )
-    case 'pretext':
-      return (
-        <SizedDekamojiPretext
-          width={width}
-          height={height}
-          text={text}
-          textStyle={textStyle}
-        />
-      )
-    default:
-      return (
-        <SizedDekamojiDom
-          width={width}
-          height={height}
-          text={text}
-          textStyle={textStyle}
-        />
-      )
-  }
-}
-
-const SizedDekamojiDom = ({
-  width,
-  height,
-  text,
-  textStyle,
-}: {
-  width: number
-  height: number
-  text: string
-  textStyle: InheritedTextStyle
-}) => {
-  const [fontSize, setFontSize] = React.useState(0)
-
-  useEffect(() => {
-    const size = calcFontSizeWithDom(width, height, text, textStyle)
-    setFontSize(size)
-  }, [height, text, textStyle, width])
-
-  return (
-    <div
-      style={createTextStyle(fontSize, textStyle)}
-    >
-      {text}
-    </div>
-  )
-}
-
-const SizedDekamojiZoomer = ({
-  width,
-  height,
-  text,
-  textStyle,
-}: {
-  width: number
-  height: number
-  text: string
-  textStyle: InheritedTextStyle
-}) => {
-  return (
-    <div
-      style={{
-        position: 'absolute',
-        inset: 0,
-        overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
-    >
-      <SizedZoomer width={width} height={height}>
-        <div style={createTextStyle(1, textStyle, { fillContainer: false })}>
-          {text}
-        </div>
-      </SizedZoomer>
-    </div>
-  )
-}
-
-const SizedDekamojiPretext = ({
-  width,
-  height,
-  text,
-  textStyle,
-}: {
-  width: number
-  height: number
-  text: string
-  textStyle: InheritedTextStyle
-}) => {
-  const [fontSize, setFontSize] = React.useState(0)
-
-  useEffect(() => {
-    const size = calcFontSizeWithPretext(width, height, text, textStyle)
-    setFontSize(size)
-  }, [height, text, textStyle, width])
-
-  return (
-    <div
-      style={createTextStyle(fontSize, textStyle)}
-    >
-      {text}
-    </div>
-  )
-}
-
 const createTextStyle = (
   fontSize: number,
-  textStyle: InheritedTextStyle,
-  options: {
-    fillContainer?: boolean
-  } = {}
+  textStyle: InheritedTextStyle
 ): React.CSSProperties => {
-  const fillContainer = options.fillContainer ?? true
-
   return {
-    position: fillContainer ? 'absolute' : 'static',
-    width: fillContainer ? '100%' : 'auto',
-    height: fillContainer ? '100%' : 'auto',
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
     fontSize: `${fontSize}px`,
     lineHeight: textStyle.lineHeightRatio,
     textAlign: 'center',
@@ -357,77 +218,6 @@ const measureLineHeightRatio = (
   return measuredLineHeight / fontSize
 }
 
-const applyTextStyle = (
-  element: HTMLElement,
-  fontSize: number,
-  textStyle: InheritedTextStyle
-) => {
-  element.style.fontSize = `${fontSize}px`
-  element.style.lineHeight = String(textStyle.lineHeightRatio)
-  if (textStyle.fontFamily) {
-    element.style.fontFamily = textStyle.fontFamily
-  }
-  if (textStyle.fontStyle) {
-    element.style.fontStyle = textStyle.fontStyle
-  }
-  if (textStyle.fontWeight) {
-    element.style.fontWeight = textStyle.fontWeight
-  }
-  if (textStyle.lineBreak) {
-    element.style.lineBreak = textStyle.lineBreak
-  }
-  if (textStyle.overflowWrap) {
-    element.style.overflowWrap = textStyle.overflowWrap
-  }
-  if (textStyle.whiteSpace) {
-    element.style.whiteSpace = textStyle.whiteSpace
-  }
-  if (textStyle.wordBreak) {
-    element.style.wordBreak = textStyle.wordBreak
-  }
-}
-
-const calcFontSizeWithDom = (
-  width: number,
-  height: number,
-  text: string,
-  textStyle: InheritedTextStyle
-): number => {
-  if (width <= 0 || height <= 0) {
-    return 0
-  }
-
-  const outer = document.createElement('div')
-  outer.style.position = 'absolute'
-  outer.style.width = `${width}px`
-  outer.style.height = `${height}px`
-  outer.style.boxSizing = 'border-box'
-  outer.style.zIndex = '-1'
-  outer.style.overflowX = 'hidden'
-  outer.style.overflowY = 'hidden'
-  const inner = document.createElement('div')
-  inner.style.visibility = 'hidden'
-  inner.style.textAlign = 'center'
-  inner.style.margin = '0 auto'
-  inner.style.whiteSpace = 'pre-wrap'
-  inner.style.boxSizing = 'border-box'
-  inner.style.zIndex = '-1'
-  inner.textContent = text
-  outer.appendChild(inner)
-  document.body.appendChild(outer)
-
-  const fontSize = binarySearchFontSize(Math.max(width, height), (candidate) => {
-    applyTextStyle(inner, candidate, textStyle)
-    const overflowHeight = inner.scrollHeight - height
-    const overflowWidth = inner.scrollWidth - width
-    const scrollbarWidth = 2
-    return overflowHeight > scrollbarWidth || overflowWidth > scrollbarWidth
-  })
-
-  document.body.removeChild(outer)
-  return Math.max(0, fontSize - 4)
-}
-
 const calcFontSizeWithPretext = (
   width: number,
   height: number,
@@ -438,18 +228,14 @@ const calcFontSizeWithPretext = (
     return 0
   }
 
-  try {
-    return binarySearchFontSize(Math.max(width, height), (candidate) => {
-      const lineHeight = Math.max(1, Math.ceil(candidate * textStyle.lineHeightRatio))
-      const prepared = prepare(text, createPretextFont(candidate, textStyle), {
-        whiteSpace: resolvePretextWhiteSpace(textStyle.whiteSpace),
-      })
-      const result = layout(prepared, width, lineHeight)
-      return result.height > height
+  return binarySearchFontSize(Math.max(width, height), (candidate) => {
+    const lineHeight = Math.max(1, Math.ceil(candidate * textStyle.lineHeightRatio))
+    const prepared = prepare(text, createPretextFont(candidate, textStyle), {
+      whiteSpace: resolvePretextWhiteSpace(textStyle.whiteSpace),
     })
-  } catch {
-    return 0
-  }
+    const result = layout(prepared, width, lineHeight)
+    return result.height > height
+  })
 }
 
 const binarySearchFontSize = (

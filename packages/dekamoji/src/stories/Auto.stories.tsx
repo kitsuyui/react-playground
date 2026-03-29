@@ -1,5 +1,4 @@
 import { AutoDekamoji } from '../'
-import type { DekamojiImplementation } from '..'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
@@ -9,11 +8,9 @@ type WrapControls = {
   text: string
   whiteSpace: 'normal' | 'pre' | 'pre-line' | 'pre-wrap' | 'nowrap'
   wordBreak: 'normal' | 'break-all' | 'keep-all' | 'break-word'
-  implementation: DekamojiImplementation
 }
 
 const AutoExample = ({
-  implementation,
   lineBreak,
   overflowWrap,
   text,
@@ -32,7 +29,7 @@ const AutoExample = ({
         wordBreak,
       }}
     >
-      <AutoDekamoji text={text} implementation={implementation} />
+      <AutoDekamoji text={text} />
     </div>
   )
 }
@@ -41,12 +38,6 @@ const meta: Meta<typeof AutoExample> = {
   title: 'Layout Primitives/Dekamoji/Auto',
   component: AutoExample,
   argTypes: {
-    implementation: {
-      control: {
-        type: 'radio',
-      },
-      options: ['dom', 'zoomer', 'pretext'],
-    },
     lineBreak: {
       control: {
         type: 'select',
@@ -85,7 +76,6 @@ type Story = StoryObj<typeof AutoExample>
 export const Default: Story = {
   args: {
     text: 'Hello, World!',
-    implementation: 'pretext',
     lineBreak: 'auto',
     overflowWrap: 'normal',
     whiteSpace: 'pre-wrap',

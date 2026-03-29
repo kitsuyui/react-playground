@@ -241,9 +241,6 @@ importers:
       '@chenglou/pretext':
         specifier: ^0.0.3
         version: 0.0.3
-      '@kitsuyui/react-zoomer':
-        specifier: workspace:*
-        version: link:../zoomer
     devDependencies:
       '@types/node':
         specifier: ^25.3.0
