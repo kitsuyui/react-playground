@@ -1,7 +1,15 @@
 import { SizedDekamoji } from '..'
-import type { DekamojiImplementation, DekamojiTextWrapProps } from '..'
+import type { DekamojiImplementation } from '..'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
+
+type ComparisonProps = {
+  lineBreak: 'auto' | 'loose' | 'normal' | 'strict' | 'anywhere'
+  overflowWrap: 'normal' | 'break-word' | 'anywhere'
+  text: string
+  whiteSpace: 'normal' | 'pre' | 'pre-line' | 'pre-wrap' | 'nowrap'
+  wordBreak: 'normal' | 'break-all' | 'keep-all' | 'break-word'
+}
 
 const IMPLEMENTATIONS: DekamojiImplementation[] = ['dom', 'zoomer', 'pretext']
 
@@ -17,9 +25,7 @@ const Comparison = ({
   overflowWrap,
   whiteSpace,
   wordBreak,
-}: {
-  text: string
-} & DekamojiTextWrapProps) => {
+}: ComparisonProps) => {
   return (
     <div
       style={{
@@ -75,6 +81,10 @@ const Comparison = ({
                     position: 'relative',
                     border: '1px solid #999',
                     background: '#fffbe6',
+                    lineBreak,
+                    overflowWrap,
+                    whiteSpace,
+                    wordBreak,
                   }}
                 >
                   <SizedDekamoji
@@ -82,10 +92,6 @@ const Comparison = ({
                     width={size.width}
                     height={size.height}
                     implementation={implementation}
-                    lineBreak={lineBreak}
-                    overflowWrap={overflowWrap}
-                    whiteSpace={whiteSpace}
-                    wordBreak={wordBreak}
                   />
                 </div>
               </article>

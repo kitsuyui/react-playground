@@ -5,15 +5,10 @@ import { useMeasure } from 'react-use'
 
 export type DekamojiImplementation = 'dom' | 'zoomer' | 'pretext'
 
-export type DekamojiTextWrapProps = Pick<
-  React.CSSProperties,
-  'lineBreak' | 'overflowWrap' | 'whiteSpace' | 'wordBreak'
->
-
 type Props = {
   text: string
   implementation?: DekamojiImplementation
-} & DekamojiTextWrapProps
+}
 
 type SizedDekamojiProps = Props & {
   width: number
@@ -25,7 +20,11 @@ type InheritedTextStyle = {
   fontStyle?: string
   fontWeight?: string
   lineHeightRatio: number
-} & DekamojiTextWrapProps
+  lineBreak?: React.CSSProperties['lineBreak']
+  overflowWrap?: React.CSSProperties['overflowWrap']
+  whiteSpace?: React.CSSProperties['whiteSpace']
+  wordBreak?: React.CSSProperties['wordBreak']
+}
 
 const DEFAULT_IMPLEMENTATION: DekamojiImplementation = 'pretext'
 const DEFAULT_LINE_HEIGHT_RATIO = 1.2
@@ -35,10 +34,6 @@ export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function S
   width,
   height,
   implementation = DEFAULT_IMPLEMENTATION,
-  lineBreak,
-  overflowWrap,
-  whiteSpace,
-  wordBreak,
 }): React.JSX.Element {
   const hostRef = useRef<HTMLDivElement>(null)
   const [inheritedTextStyle, setInheritedTextStyle] = React.useState<InheritedTextStyle>({
@@ -55,13 +50,7 @@ export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function S
     setInheritedTextStyle(detectInheritedTextStyle(styleSource))
   }, [])
 
-  const textStyle = {
-    ...inheritedTextStyle,
-    lineBreak: lineBreak ?? inheritedTextStyle.lineBreak,
-    overflowWrap: overflowWrap ?? inheritedTextStyle.overflowWrap,
-    whiteSpace: whiteSpace ?? inheritedTextStyle.whiteSpace,
-    wordBreak: wordBreak ?? inheritedTextStyle.wordBreak,
-  }
+  const textStyle = inheritedTextStyle
 
   return (
     <div
@@ -86,10 +75,6 @@ export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function S
 export const AutoDekamoji: React.FC<Props> = React.memo(function AutoDekamoji({
   text,
   implementation = DEFAULT_IMPLEMENTATION,
-  lineBreak,
-  overflowWrap,
-  whiteSpace,
-  wordBreak,
 }: Props): React.JSX.Element {
   const [ref, { width, height }] = useMeasure<HTMLDivElement>()
 
@@ -114,10 +99,6 @@ export const AutoDekamoji: React.FC<Props> = React.memo(function AutoDekamoji({
           height={height}
           text={text}
           implementation={implementation}
-          lineBreak={lineBreak}
-          overflowWrap={overflowWrap}
-          whiteSpace={whiteSpace}
-          wordBreak={wordBreak}
         />
       </div>
     </div>

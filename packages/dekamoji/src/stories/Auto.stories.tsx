@@ -1,10 +1,45 @@
 import { AutoDekamoji } from '../'
+import type { DekamojiImplementation } from '..'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-const meta: Meta<typeof AutoDekamoji> = {
+type WrapControls = {
+  lineBreak: 'auto' | 'loose' | 'normal' | 'strict' | 'anywhere'
+  overflowWrap: 'normal' | 'break-word' | 'anywhere'
+  text: string
+  whiteSpace: 'normal' | 'pre' | 'pre-line' | 'pre-wrap' | 'nowrap'
+  wordBreak: 'normal' | 'break-all' | 'keep-all' | 'break-word'
+  implementation: DekamojiImplementation
+}
+
+const AutoExample = ({
+  implementation,
+  lineBreak,
+  overflowWrap,
+  text,
+  whiteSpace,
+  wordBreak,
+}: WrapControls) => {
+  return (
+    <div
+      style={{
+        width: '100%',
+        height: '100%',
+        position: 'absolute',
+        lineBreak,
+        overflowWrap,
+        whiteSpace,
+        wordBreak,
+      }}
+    >
+      <AutoDekamoji text={text} implementation={implementation} />
+    </div>
+  )
+}
+
+const meta: Meta<typeof AutoExample> = {
   title: 'Layout Primitives/Dekamoji/Auto',
-  component: AutoDekamoji,
+  component: AutoExample,
   argTypes: {
     implementation: {
       control: {
@@ -45,7 +80,7 @@ const meta: Meta<typeof AutoDekamoji> = {
 }
 
 export default meta
-type Story = StoryObj<typeof AutoDekamoji>
+type Story = StoryObj<typeof AutoExample>
 
 export const Default: Story = {
   args: {
@@ -56,21 +91,6 @@ export const Default: Story = {
     whiteSpace: 'pre-wrap',
     wordBreak: 'normal',
   },
-  decorators: [
-    (Story) => {
-      return (
-        <div
-          style={{
-            width: '100%',
-            height: '100%',
-            position: 'absolute',
-          }}
-        >
-          <Story />
-        </div>
-      )
-    },
-  ],
   parameters: {
     layout: 'fullscreen',
     flexDirection: 'column',

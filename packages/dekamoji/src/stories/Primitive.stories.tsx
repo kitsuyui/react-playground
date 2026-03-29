@@ -1,10 +1,54 @@
 import { SizedDekamoji } from '..'
+import type { DekamojiImplementation } from '..'
 
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
-const meta: Meta<typeof SizedDekamoji> = {
+type PrimitiveExampleProps = {
+  height: number
+  implementation: DekamojiImplementation
+  lineBreak: 'auto' | 'loose' | 'normal' | 'strict' | 'anywhere'
+  overflowWrap: 'normal' | 'break-word' | 'anywhere'
+  text: string
+  whiteSpace: 'normal' | 'pre' | 'pre-line' | 'pre-wrap' | 'nowrap'
+  width: number
+  wordBreak: 'normal' | 'break-all' | 'keep-all' | 'break-word'
+}
+
+const PrimitiveExample = ({
+  height,
+  implementation,
+  lineBreak,
+  overflowWrap,
+  text,
+  whiteSpace,
+  width,
+  wordBreak,
+}: PrimitiveExampleProps) => {
+  return (
+    <div
+      style={{
+        width,
+        height,
+        position: 'relative',
+        lineBreak,
+        overflowWrap,
+        whiteSpace,
+        wordBreak,
+      }}
+    >
+      <SizedDekamoji
+        text={text}
+        width={width}
+        height={height}
+        implementation={implementation}
+      />
+    </div>
+  )
+}
+
+const meta: Meta<typeof PrimitiveExample> = {
   title: 'Layout Primitives/Dekamoji/Primitive',
-  component: SizedDekamoji,
+  component: PrimitiveExample,
   argTypes: {
     implementation: {
       control: {
@@ -40,7 +84,7 @@ const meta: Meta<typeof SizedDekamoji> = {
 }
 
 export default meta
-type Story = StoryObj<typeof SizedDekamoji>
+type Story = StoryObj<typeof PrimitiveExample>
 
 export const Default: Story = {
   args: {
