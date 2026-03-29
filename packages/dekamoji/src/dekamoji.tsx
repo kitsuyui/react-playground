@@ -18,10 +18,6 @@ type Props = {
 type SizedDekamojiProps = Props & {
   width: number
   height: number
-  fontFamily?: string
-  fontStyle?: string
-  fontWeight?: string
-  lineHeightRatio?: number
 }
 
 type InheritedTextStyle = {
@@ -38,27 +34,109 @@ export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function S
   text,
   width,
   height,
-  fontFamily,
-  fontStyle,
-  fontWeight,
-  lineHeightRatio = DEFAULT_LINE_HEIGHT_RATIO,
   implementation = DEFAULT_IMPLEMENTATION,
   lineBreak,
   overflowWrap,
   whiteSpace,
   wordBreak,
 }): React.JSX.Element {
+  const hostRef = useRef<HTMLDivElement>(null)
+  const [inheritedTextStyle, setInheritedTextStyle] = React.useState<InheritedTextStyle>({
+    lineHeightRatio: DEFAULT_LINE_HEIGHT_RATIO,
+  })
+
+  useEffect(() => {
+    const hostElement = hostRef.current
+    if (!hostElement) {
+      return
+    }
+
+    const styleSource = hostElement.parentElement ?? hostElement
+    setInheritedTextStyle(detectInheritedTextStyle(styleSource))
+  }, [])
+
   const textStyle = {
-    fontFamily,
-    fontStyle,
-    fontWeight,
-    lineHeightRatio,
-    lineBreak,
-    overflowWrap,
-    whiteSpace,
-    wordBreak,
+    ...inheritedTextStyle,
+    lineBreak: lineBreak ?? inheritedTextStyle.lineBreak,
+    overflowWrap: overflowWrap ?? inheritedTextStyle.overflowWrap,
+    whiteSpace: whiteSpace ?? inheritedTextStyle.whiteSpace,
+    wordBreak: wordBreak ?? inheritedTextStyle.wordBreak,
   }
 
+  return (
+    <div
+      ref={hostRef}
+      style={{
+        width: '100%',
+        height: '100%',
+        position: 'relative',
+      }}
+    >
+      {renderSizedDekamojiImplementation({
+        implementation,
+        width,
+        height,
+        text,
+        textStyle,
+      })}
+    </div>
+  )
+})
+
+export const AutoDekamoji: React.FC<Props> = React.memo(function AutoDekamoji({
+  text,
+  implementation = DEFAULT_IMPLEMENTATION,
+  lineBreak,
+  overflowWrap,
+  whiteSpace,
+  wordBreak,
+}: Props): React.JSX.Element {
+  const [ref, { width, height }] = useMeasure<HTMLDivElement>()
+
+  return (
+    <div
+      ref={ref}
+      style={{
+        width: '100%',
+        height: '100%',
+        boxSizing: 'border-box',
+        overflow: 'hidden',
+      }}
+    >
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+        }}
+      >
+        <SizedDekamoji
+          width={width}
+          height={height}
+          text={text}
+          implementation={implementation}
+          lineBreak={lineBreak}
+          overflowWrap={overflowWrap}
+          whiteSpace={whiteSpace}
+          wordBreak={wordBreak}
+        />
+      </div>
+    </div>
+  )
+})
+
+const renderSizedDekamojiImplementation = ({
+  implementation,
+  width,
+  height,
+  text,
+  textStyle,
+}: {
+  implementation: DekamojiImplementation
+  width: number
+  height: number
+  text: string
+  textStyle: InheritedTextStyle
+}) => {
   switch (implementation) {
     case 'zoomer':
       return (
@@ -88,65 +166,7 @@ export const SizedDekamoji: React.FC<SizedDekamojiProps> = React.memo(function S
         />
       )
   }
-})
-
-export const AutoDekamoji: React.FC<Props> = React.memo(function AutoDekamoji({
-  text,
-  implementation = DEFAULT_IMPLEMENTATION,
-  lineBreak,
-  overflowWrap,
-  whiteSpace,
-  wordBreak,
-}: Props): React.JSX.Element {
-  const [ref, { width, height }] = useMeasure<HTMLDivElement>()
-  const innerRef = useRef<HTMLDivElement>(null)
-  const [textStyle, setTextStyle] = React.useState<InheritedTextStyle>({
-    lineHeightRatio: DEFAULT_LINE_HEIGHT_RATIO,
-  })
-
-  useEffect(() => {
-    const element = innerRef.current
-    if (!element) {
-      return
-    }
-    setTextStyle(detectInheritedTextStyle(element))
-  }, [])
-
-  return (
-    <div
-      ref={ref}
-      style={{
-        width: '100%',
-        height: '100%',
-        boxSizing: 'border-box',
-        overflow: 'hidden',
-      }}
-    >
-      <div
-        ref={innerRef}
-        style={{
-          width: '100%',
-          height: '100%',
-        }}
-      >
-        <SizedDekamoji
-          width={width}
-          height={height}
-          text={text}
-          implementation={implementation}
-          fontFamily={textStyle.fontFamily}
-          fontStyle={textStyle.fontStyle}
-          fontWeight={textStyle.fontWeight}
-          lineHeightRatio={textStyle.lineHeightRatio}
-          lineBreak={lineBreak ?? textStyle.lineBreak}
-          overflowWrap={overflowWrap ?? textStyle.overflowWrap}
-          whiteSpace={whiteSpace ?? textStyle.whiteSpace}
-          wordBreak={wordBreak ?? textStyle.wordBreak}
-        />
-      </div>
-    </div>
-  )
-})
+}
 
 const SizedDekamojiDom = ({
   width,
