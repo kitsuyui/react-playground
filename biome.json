@@ -67,6 +67,7 @@
       "!**/build",
       "!**/storybook-static",
       "!**/coverage",
+      "!**/.tmp",
       "!**/*.md",
       "!**/*.yml",
       "!**/*.mdx",

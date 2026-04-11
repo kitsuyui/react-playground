@@ -82,3 +82,21 @@ When a package needs a default UI, that UI should remain replaceable and be laye
 ## License
 
 MIT
+
+## Development
+
+Install dependencies:
+
+```sh
+bun install
+```
+
+Common workspace commands:
+
+```sh
+bun run build
+bun run lint
+bun run test
+bun run typecheck
+bun run validate
+```

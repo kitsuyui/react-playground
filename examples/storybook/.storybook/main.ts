@@ -26,6 +26,10 @@ const config: StorybookConfig = {
     disableTelemetry: true,
   },
   async viteFinal(config, _) {
+    config.build = {
+      ...(config.build || {}),
+      target: 'esnext',
+    }
     config.plugins = [
       ...(config.plugins || []),
       wasm(),
