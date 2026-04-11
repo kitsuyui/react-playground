@@ -9,7 +9,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "bun run --sequential --workspaces build",
+    "build": "bun run --sequential --filter './packages/*' build && bun run --sequential --filter './examples/*' build",
     "check-module-isolation": "find packages -type d -name src -print -exec bunx ts-module-isolation -- {} +",
     "dev": "bun run --parallel --workspaces dev",
     "format": "bun run format:biome && bun run format:package-json",
