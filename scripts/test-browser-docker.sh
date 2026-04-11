@@ -1,17 +1,21 @@
 #!/bin/sh
 set -eu
 
+IMAGE_NAME=react-playground-playwright-bun:1.3.11
+
+docker build \
+  -f Dockerfile.playwright-bun \
+  -t "$IMAGE_NAME" \
+  .
+
 docker run --rm \
   -e CI=true \
   -v "$PWD":/work \
   -v react-playground-node_modules:/work/node_modules \
-  -v react-playground-pnpm-store:/pnpm/store \
   -w /work \
-  mcr.microsoft.com/playwright:v1.58.1-noble \
+  "$IMAGE_NAME" \
   /bin/bash -lc '
     set -eu
-    corepack enable
-    pnpm config set store-dir /pnpm/store
-    pnpm install --frozen-lockfile
-    pnpm exec vitest run --config vitest.browser.config.mts "$@"
+    bun install --frozen-lockfile
+    bun x vitest run --config vitest.browser.config.mts "$@"
   ' -- "$@"

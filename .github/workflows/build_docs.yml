@@ -14,18 +14,20 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - uses: pnpm/action-setup@v4.2.0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.3.11
 
       - uses: actions/setup-node@v6
         with:
           # https://nodejs.org/en/about/previous-releases
           node-version: 24.13.1
 
-      - run: pnpm install
+      - run: bun install --frozen-lockfile
 
       - run: |
-          pnpm build
-          pnpm typedoc
+          bun run build
+          bun run typedoc
 
       - run: |
           mkdir -p build/sites
