@@ -15,6 +15,8 @@ This repository also tracks `TODO` and `FIXME` markers with
 [`gh-counter`](https://github.com/kitsuyui/gh-counter). Pull requests get one
 managed comment when they touch relevant files, and the current main-branch
 count is published as a badge to the dedicated `gh-counter-assets` branch.
+It also tracks built package artifact size with
+[`gh-build-size`](https://github.com/kitsuyui/gh-build-size).
 
 # Concept
 
