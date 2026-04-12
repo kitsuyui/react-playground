@@ -1,0 +1,123 @@
+{
+  "id": "pkg-dekamoji",
+  "label": "dekamoji",
+  "files": [
+    {
+      "path": "packages/dekamoji/dist/dekamoji.cjs",
+      "sizes": {
+        "raw": 3097,
+        "gzip": 1306,
+        "brotli": 1134
+      }
+    },
+    {
+      "path": "packages/dekamoji/dist/dekamoji.cjs.map",
+      "sizes": {
+        "raw": 10483,
+        "gzip": 3159,
+        "brotli": 2793
+      }
+    },
+    {
+      "path": "packages/dekamoji/dist/dekamoji.d.cts",
+      "sizes": {
+        "raw": 360,
+        "gzip": 221,
+        "brotli": 188
+      }
+    },
+    {
+      "path": "packages/dekamoji/dist/dekamoji.d.ts",
+      "sizes": {
+        "raw": 359,
+        "gzip": 219,
+        "brotli": 177
+      }
+    },
+    {
+      "path": "packages/dekamoji/dist/dekamoji.js",
+      "sizes": {
+        "raw": 2938,
+        "gzip": 1252,
+        "brotli": 1104
+      }
+    },
+    {
+      "path": "packages/dekamoji/dist/dekamoji.js.map",
+      "sizes": {
+        "raw": 10348,
+        "gzip": 3138,
+        "brotli": 2758
+      }
+    },
+    {
+      "path": "packages/dekamoji/dist/index.cjs",
+      "sizes": {
+        "raw": 205,
+        "gzip": 156,
+        "brotli": 120
+      }
+    },
+    {
+      "path": "packages/dekamoji/dist/index.d.cts",
+      "sizes": {
+        "raw": 101,
+        "gzip": 76,
+        "brotli": 71
+      }
+    },
+    {
+      "path": "packages/dekamoji/dist/index.d.ts",
+      "sizes": {
+        "raw": 100,
+        "gzip": 75,
+        "brotli": 70
+      }
+    },
+    {
+      "path": "packages/dekamoji/dist/index.js",
+      "sizes": {
+        "raw": 109,
+        "gzip": 86,
+        "brotli": 95
+      }
+    },
+    {
+      "path": "packages/dekamoji/dist/lib-BqRrzelq.cjs",
+      "sizes": {
+        "raw": 106935,
+        "gzip": 27130,
+        "brotli": 23677
+      }
+    },
+    {
+      "path": "packages/dekamoji/dist/lib-BqRrzelq.cjs.map",
+      "sizes": {
+        "raw": 387205,
+        "gzip": 75455,
+        "brotli": 62587
+      }
+    },
+    {
+      "path": "packages/dekamoji/dist/useMeasure-DchPFmlV.js",
+      "sizes": {
+        "raw": 696,
+        "gzip": 432,
+        "brotli": 372
+      }
+    },
+    {
+      "path": "packages/dekamoji/dist/useMeasure-DchPFmlV.js.map",
+      "sizes": {
+        "raw": 3444,
+        "gzip": 1222,
+        "brotli": 1101
+      }
+    }
+  ],
+  "totals": {
+    "raw": 526380,
+    "gzip": 113927,
+    "brotli": 96247
+  }
+}

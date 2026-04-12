@@ -1,0 +1,219 @@
+{
+  "id": "pkg-metronome",
+  "label": "metronome",
+  "files": [
+    {
+      "path": "packages/metronome/dist/context.cjs",
+      "sizes": {
+        "raw": 1858,
+        "gzip": 857,
+        "brotli": 768
+      }
+    },
+    {
+      "path": "packages/metronome/dist/context.cjs.map",
+      "sizes": {
+        "raw": 7337,
+        "gzip": 2047,
+        "brotli": 1864
+      }
+    },
+    {
+      "path": "packages/metronome/dist/context.d.cts",
+      "sizes": {
+        "raw": 1049,
+        "gzip": 415,
+        "brotli": 352
+      }
+    },
+    {
+      "path": "packages/metronome/dist/context.d.ts",
+      "sizes": {
+        "raw": 1048,
+        "gzip": 413,
+        "brotli": 350
+      }
+    },
+    {
+      "path": "packages/metronome/dist/context.js",
+      "sizes": {
+        "raw": 1660,
+        "gzip": 794,
+        "brotli": 722
+      }
+    },
+    {
+      "path": "packages/metronome/dist/context.js.map",
+      "sizes": {
+        "raw": 7201,
+        "gzip": 2018,
+        "brotli": 1834
+      }
+    },
+    {
+      "path": "packages/metronome/dist/default.cjs",
+      "sizes": {
+        "raw": 1010,
+        "gzip": 559,
+        "brotli": 475
+      }
+    },
+    {
+      "path": "packages/metronome/dist/default.cjs.map",
+      "sizes": {
+        "raw": 2416,
+        "gzip": 922,
+        "brotli": 810
+      }
+    },
+    {
+      "path": "packages/metronome/dist/default.d.cts",
+      "sizes": {
+        "raw": 255,
+        "gzip": 176,
+        "brotli": 146
+      }
+    },
+    {
+      "path": "packages/metronome/dist/default.d.ts",
+      "sizes": {
+        "raw": 253,
+        "gzip": 174,
+        "brotli": 141
+      }
+    },
+    {
+      "path": "packages/metronome/dist/default.js",
+      "sizes": {
+        "raw": 878,
+        "gzip": 502,
+        "brotli": 431
+      }
+    },
+    {
+      "path": "packages/metronome/dist/default.js.map",
+      "sizes": {
+        "raw": 2340,
+        "gzip": 913,
+        "brotli": 801
+      }
+    },
+    {
+      "path": "packages/metronome/dist/index.cjs",
+      "sizes": {
+        "raw": 305,
+        "gzip": 179,
+        "brotli": 140
+      }
+    },
+    {
+      "path": "packages/metronome/dist/index.d.cts",
+      "sizes": {
+        "raw": 394,
+        "gzip": 149,
+        "brotli": 130
+      }
+    },
+    {
+      "path": "packages/metronome/dist/index.d.ts",
+      "sizes": {
+        "raw": 392,
+        "gzip": 148,
+        "brotli": 135
+      }
+    },
+    {
+      "path": "packages/metronome/dist/index.js",
+      "sizes": {
+        "raw": 208,
+        "gzip": 122,
+        "brotli": 99
+      }
+    },
+    {
+      "path": "packages/metronome/dist/lib-BqRrzelq.cjs",
+      "sizes": {
+        "raw": 106935,
+        "gzip": 27130,
+        "brotli": 23677
+      }
+    },
+    {
+      "path": "packages/metronome/dist/lib-BqRrzelq.cjs.map",
+      "sizes": {
+        "raw": 387205,
+        "gzip": 75455,
+        "brotli": 62587
+      }
+    },
+    {
+      "path": "packages/metronome/dist/time.cjs",
+      "sizes": {
+        "raw": 189,
+        "gzip": 186,
+        "brotli": 150
+      }
+    },
+    {
+      "path": "packages/metronome/dist/time.cjs.map",
+      "sizes": {
+        "raw": 251,
+        "gzip": 215,
+        "brotli": 215
+      }
+    },
+    {
+      "path": "packages/metronome/dist/time.d.cts",
+      "sizes": {
+        "raw": 164,
+        "gzip": 143,
+        "brotli": 126
+      }
+    },
+    {
+      "path": "packages/metronome/dist/time.d.ts",
+      "sizes": {
+        "raw": 163,
+        "gzip": 142,
+        "brotli": 119
+      }
+    },
+    {
+      "path": "packages/metronome/dist/time.js",
+      "sizes": {
+        "raw": 94,
+        "gzip": 114,
+        "brotli": 90
+      }
+    },
+    {
+      "path": "packages/metronome/dist/time.js.map",
+      "sizes": {
+        "raw": 249,
+        "gzip": 213,
+        "brotli": 206
+      }
+    },
+    {
+      "path": "packages/metronome/dist/useInterval-7uwCW3CW.js",
+      "sizes": {
+        "raw": 311,
+        "gzip": 217,
+        "brotli": 180
+      }
+    },
+    {
+      "path": "packages/metronome/dist/useInterval-7uwCW3CW.js.map",
+      "sizes": {
+        "raw": 1037,
+        "gzip": 523,
+        "brotli": 468
+      }
+    }
+  ],
+  "totals": {
+    "raw": 525202,
+    "gzip": 114726,
+    "brotli": 97016
+  }
+}

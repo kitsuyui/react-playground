@@ -1,0 +1,171 @@
+{
+  "id": "pkg-treemap",
+  "label": "treemap",
+  "files": [
+    {
+      "path": "packages/treemap/dist/index.cjs",
+      "sizes": {
+        "raw": 240,
+        "gzip": 165,
+        "brotli": 128
+      }
+    },
+    {
+      "path": "packages/treemap/dist/index.d.cts",
+      "sizes": {
+        "raw": 128,
+        "gzip": 84,
+        "brotli": 94
+      }
+    },
+    {
+      "path": "packages/treemap/dist/index.d.ts",
+      "sizes": {
+        "raw": 127,
+        "gzip": 83,
+        "brotli": 94
+      }
+    },
+    {
+      "path": "packages/treemap/dist/index.js",
+      "sizes": {
+        "raw": 144,
+        "gzip": 103,
+        "brotli": 97
+      }
+    },
+    {
+      "path": "packages/treemap/dist/lib-BqRrzelq.cjs",
+      "sizes": {
+        "raw": 106935,
+        "gzip": 27130,
+        "brotli": 23677
+      }
+    },
+    {
+      "path": "packages/treemap/dist/lib-BqRrzelq.cjs.map",
+      "sizes": {
+        "raw": 387205,
+        "gzip": 75455,
+        "brotli": 62587
+      }
+    },
+    {
+      "path": "packages/treemap/dist/treemap.cjs",
+      "sizes": {
+        "raw": 2240,
+        "gzip": 1036,
+        "brotli": 908
+      }
+    },
+    {
+      "path": "packages/treemap/dist/treemap.cjs.map",
+      "sizes": {
+        "raw": 8707,
+        "gzip": 2799,
+        "brotli": 2432
+      }
+    },
+    {
+      "path": "packages/treemap/dist/treemap.d.cts",
+      "sizes": {
+        "raw": 1165,
+        "gzip": 467,
+        "brotli": 412
+      }
+    },
+    {
+      "path": "packages/treemap/dist/treemap.d.ts",
+      "sizes": {
+        "raw": 1164,
+        "gzip": 465,
+        "brotli": 401
+      }
+    },
+    {
+      "path": "packages/treemap/dist/treemap.js",
+      "sizes": {
+        "raw": 2100,
+        "gzip": 981,
+        "brotli": 875
+      }
+    },
+    {
+      "path": "packages/treemap/dist/treemap.js.map",
+      "sizes": {
+        "raw": 8587,
+        "gzip": 2772,
+        "brotli": 2411
+      }
+    },
+    {
+      "path": "packages/treemap/dist/useMeasure-DchPFmlV.js",
+      "sizes": {
+        "raw": 696,
+        "gzip": 432,
+        "brotli": 372
+      }
+    },
+    {
+      "path": "packages/treemap/dist/useMeasure-DchPFmlV.js.map",
+      "sizes": {
+        "raw": 3444,
+        "gzip": 1222,
+        "brotli": 1101
+      }
+    },
+    {
+      "path": "packages/treemap/dist/zip.cjs",
+      "sizes": {
+        "raw": 225,
+        "gzip": 205,
+        "brotli": 174
+      }
+    },
+    {
+      "path": "packages/treemap/dist/zip.cjs.map",
+      "sizes": {
+        "raw": 471,
+        "gzip": 317,
+        "brotli": 277
+      }
+    },
+    {
+      "path": "packages/treemap/dist/zip.d.cts",
+      "sizes": {
+        "raw": 249,
+        "gzip": 206,
+        "brotli": 181
+      }
+    },
+    {
+      "path": "packages/treemap/dist/zip.d.ts",
+      "sizes": {
+        "raw": 248,
+        "gzip": 204,
+        "brotli": 179
+      }
+    },
+    {
+      "path": "packages/treemap/dist/zip.js",
+      "sizes": {
+        "raw": 130,
+        "gzip": 137,
+        "brotli": 133
+      }
+    },
+    {
+      "path": "packages/treemap/dist/zip.js.map",
+      "sizes": {
+        "raw": 469,
+        "gzip": 316,
+        "brotli": 273
+      }
+    }
+  ],
+  "totals": {
+    "raw": 524674,
+    "gzip": 114579,
+    "brotli": 96806
+  }
+}

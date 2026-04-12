@@ -1,0 +1,123 @@
+{
+  "id": "pkg-zoomer",
+  "label": "zoomer",
+  "files": [
+    {
+      "path": "packages/zoomer/dist/index.cjs",
+      "sizes": {
+        "raw": 233,
+        "gzip": 164,
+        "brotli": 126
+      }
+    },
+    {
+      "path": "packages/zoomer/dist/index.d.cts",
+      "sizes": {
+        "raw": 121,
+        "gzip": 82,
+        "brotli": 85
+      }
+    },
+    {
+      "path": "packages/zoomer/dist/index.d.ts",
+      "sizes": {
+        "raw": 120,
+        "gzip": 81,
+        "brotli": 99
+      }
+    },
+    {
+      "path": "packages/zoomer/dist/index.js",
+      "sizes": {
+        "raw": 137,
+        "gzip": 102,
+        "brotli": 97
+      }
+    },
+    {
+      "path": "packages/zoomer/dist/lib-BqRrzelq.cjs",
+      "sizes": {
+        "raw": 106935,
+        "gzip": 27130,
+        "brotli": 23677
+      }
+    },
+    {
+      "path": "packages/zoomer/dist/lib-BqRrzelq.cjs.map",
+      "sizes": {
+        "raw": 387205,
+        "gzip": 75455,
+        "brotli": 62587
+      }
+    },
+    {
+      "path": "packages/zoomer/dist/useMeasure-DchPFmlV.js",
+      "sizes": {
+        "raw": 696,
+        "gzip": 432,
+        "brotli": 372
+      }
+    },
+    {
+      "path": "packages/zoomer/dist/useMeasure-DchPFmlV.js.map",
+      "sizes": {
+        "raw": 3444,
+        "gzip": 1222,
+        "brotli": 1101
+      }
+    },
+    {
+      "path": "packages/zoomer/dist/zoomer.cjs",
+      "sizes": {
+        "raw": 1854,
+        "gzip": 842,
+        "brotli": 734
+      }
+    },
+    {
+      "path": "packages/zoomer/dist/zoomer.cjs.map",
+      "sizes": {
+        "raw": 6906,
+        "gzip": 2250,
+        "brotli": 1931
+      }
+    },
+    {
+      "path": "packages/zoomer/dist/zoomer.d.cts",
+      "sizes": {
+        "raw": 909,
+        "gzip": 434,
+        "brotli": 345
+      }
+    },
+    {
+      "path": "packages/zoomer/dist/zoomer.d.ts",
+      "sizes": {
+        "raw": 908,
+        "gzip": 432,
+        "brotli": 340
+      }
+    },
+    {
+      "path": "packages/zoomer/dist/zoomer.js",
+      "sizes": {
+        "raw": 1682,
+        "gzip": 775,
+        "brotli": 683
+      }
+    },
+    {
+      "path": "packages/zoomer/dist/zoomer.js.map",
+      "sizes": {
+        "raw": 6825,
+        "gzip": 2233,
+        "brotli": 1904
+      }
+    }
+  ],
+  "totals": {
+    "raw": 517975,
+    "gzip": 111634,
+    "brotli": 94081
+  }
+}

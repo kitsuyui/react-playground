@@ -1,0 +1,91 @@
+{
+  "id": "pkg-tab",
+  "label": "tab",
+  "files": [
+    {
+      "path": "packages/tab/dist/base.cjs",
+      "sizes": {
+        "raw": 959,
+        "gzip": 490,
+        "brotli": 426
+      }
+    },
+    {
+      "path": "packages/tab/dist/base.cjs.map",
+      "sizes": {
+        "raw": 3926,
+        "gzip": 1366,
+        "brotli": 1211
+      }
+    },
+    {
+      "path": "packages/tab/dist/base.d.cts",
+      "sizes": {
+        "raw": 1319,
+        "gzip": 492,
+        "brotli": 415
+      }
+    },
+    {
+      "path": "packages/tab/dist/base.d.ts",
+      "sizes": {
+        "raw": 1318,
+        "gzip": 491,
+        "brotli": 410
+      }
+    },
+    {
+      "path": "packages/tab/dist/base.js",
+      "sizes": {
+        "raw": 823,
+        "gzip": 447,
+        "brotli": 398
+      }
+    },
+    {
+      "path": "packages/tab/dist/base.js.map",
+      "sizes": {
+        "raw": 3807,
+        "gzip": 1347,
+        "brotli": 1191
+      }
+    },
+    {
+      "path": "packages/tab/dist/index.cjs",
+      "sizes": {
+        "raw": 203,
+        "gzip": 152,
+        "brotli": 111
+      }
+    },
+    {
+      "path": "packages/tab/dist/index.d.cts",
+      "sizes": {
+        "raw": 329,
+        "gzip": 129,
+        "brotli": 113
+      }
+    },
+    {
+      "path": "packages/tab/dist/index.d.ts",
+      "sizes": {
+        "raw": 328,
+        "gzip": 128,
+        "brotli": 111
+      }
+    },
+    {
+      "path": "packages/tab/dist/index.js",
+      "sizes": {
+        "raw": 137,
+        "gzip": 103,
+        "brotli": 96
+      }
+    }
+  ],
+  "totals": {
+    "raw": 13149,
+    "gzip": 5145,
+    "brotli": 4482
+  }
+}

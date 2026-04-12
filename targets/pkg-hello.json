@@ -1,0 +1,91 @@
+{
+  "id": "pkg-hello",
+  "label": "hello",
+  "files": [
+    {
+      "path": "packages/hello/dist/Hello.cjs",
+      "sizes": {
+        "raw": 210,
+        "gzip": 193,
+        "brotli": 146
+      }
+    },
+    {
+      "path": "packages/hello/dist/Hello.cjs.map",
+      "sizes": {
+        "raw": 406,
+        "gzip": 290,
+        "brotli": 234
+      }
+    },
+    {
+      "path": "packages/hello/dist/Hello.d.cts",
+      "sizes": {
+        "raw": 276,
+        "gzip": 214,
+        "brotli": 165
+      }
+    },
+    {
+      "path": "packages/hello/dist/Hello.d.ts",
+      "sizes": {
+        "raw": 275,
+        "gzip": 213,
+        "brotli": 160
+      }
+    },
+    {
+      "path": "packages/hello/dist/Hello.js",
+      "sizes": {
+        "raw": 142,
+        "gzip": 143,
+        "brotli": 114
+      }
+    },
+    {
+      "path": "packages/hello/dist/Hello.js.map",
+      "sizes": {
+        "raw": 395,
+        "gzip": 287,
+        "brotli": 227
+      }
+    },
+    {
+      "path": "packages/hello/dist/index.cjs",
+      "sizes": {
+        "raw": 120,
+        "gzip": 127,
+        "brotli": 86
+      }
+    },
+    {
+      "path": "packages/hello/dist/index.d.cts",
+      "sizes": {
+        "raw": 54,
+        "gzip": 59,
+        "brotli": 53
+      }
+    },
+    {
+      "path": "packages/hello/dist/index.d.ts",
+      "sizes": {
+        "raw": 53,
+        "gzip": 58,
+        "brotli": 51
+      }
+    },
+    {
+      "path": "packages/hello/dist/index.js",
+      "sizes": {
+        "raw": 54,
+        "gzip": 62,
+        "brotli": 58
+      }
+    }
+  ],
+  "totals": {
+    "raw": 1985,
+    "gzip": 1646,
+    "brotli": 1294
+  }
+}

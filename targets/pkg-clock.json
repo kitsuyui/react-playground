@@ -1,0 +1,491 @@
+{
+  "id": "pkg-clock",
+  "label": "clock",
+  "files": [
+    {
+      "path": "packages/clock/dist/analog/index.cjs",
+      "sizes": {
+        "raw": 3284,
+        "gzip": 1295,
+        "brotli": 1154
+      }
+    },
+    {
+      "path": "packages/clock/dist/analog/index.cjs.map",
+      "sizes": {
+        "raw": 12393,
+        "gzip": 3084,
+        "brotli": 2690
+      }
+    },
+    {
+      "path": "packages/clock/dist/analog/index.d.cts",
+      "sizes": {
+        "raw": 1657,
+        "gzip": 563,
+        "brotli": 481
+      }
+    },
+    {
+      "path": "packages/clock/dist/analog/index.d.ts",
+      "sizes": {
+        "raw": 1654,
+        "gzip": 559,
+        "brotli": 478
+      }
+    },
+    {
+      "path": "packages/clock/dist/analog/index.js",
+      "sizes": {
+        "raw": 3052,
+        "gzip": 1237,
+        "brotli": 1102
+      }
+    },
+    {
+      "path": "packages/clock/dist/analog/index.js.map",
+      "sizes": {
+        "raw": 12165,
+        "gzip": 3051,
+        "brotli": 2672
+      }
+    },
+    {
+      "path": "packages/clock/dist/context.cjs",
+      "sizes": {
+        "raw": 527,
+        "gzip": 366,
+        "brotli": 292
+      }
+    },
+    {
+      "path": "packages/clock/dist/context.cjs.map",
+      "sizes": {
+        "raw": 1325,
+        "gzip": 637,
+        "brotli": 543
+      }
+    },
+    {
+      "path": "packages/clock/dist/context.d.cts",
+      "sizes": {
+        "raw": 534,
+        "gzip": 288,
+        "brotli": 215
+      }
+    },
+    {
+      "path": "packages/clock/dist/context.d.ts",
+      "sizes": {
+        "raw": 533,
+        "gzip": 286,
+        "brotli": 214
+      }
+    },
+    {
+      "path": "packages/clock/dist/context.js",
+      "sizes": {
+        "raw": 413,
+        "gzip": 300,
+        "brotli": 251
+      }
+    },
+    {
+      "path": "packages/clock/dist/context.js.map",
+      "sizes": {
+        "raw": 1278,
+        "gzip": 624,
+        "brotli": 573
+      }
+    },
+    {
+      "path": "packages/clock/dist/digital/index.cjs",
+      "sizes": {
+        "raw": 524,
+        "gzip": 379,
+        "brotli": 327
+      }
+    },
+    {
+      "path": "packages/clock/dist/digital/index.cjs.map",
+      "sizes": {
+        "raw": 1724,
+        "gzip": 848,
+        "brotli": 773
+      }
+    },
+    {
+      "path": "packages/clock/dist/digital/index.d.cts",
+      "sizes": {
+        "raw": 679,
+        "gzip": 369,
+        "brotli": 304
+      }
+    },
+    {
+      "path": "packages/clock/dist/digital/index.d.ts",
+      "sizes": {
+        "raw": 678,
+        "gzip": 367,
+        "brotli": 300
+      }
+    },
+    {
+      "path": "packages/clock/dist/digital/index.js",
+      "sizes": {
+        "raw": 424,
+        "gzip": 317,
+        "brotli": 281
+      }
+    },
+    {
+      "path": "packages/clock/dist/digital/index.js.map",
+      "sizes": {
+        "raw": 1689,
+        "gzip": 832,
+        "brotli": 745
+      }
+    },
+    {
+      "path": "packages/clock/dist/dist-CrgSYDHp.js",
+      "sizes": {
+        "raw": 410,
+        "gzip": 320,
+        "brotli": 271
+      }
+    },
+    {
+      "path": "packages/clock/dist/dist-CrgSYDHp.js.map",
+      "sizes": {
+        "raw": 1404,
+        "gzip": 660,
+        "brotli": 591
+      }
+    },
+    {
+      "path": "packages/clock/dist/dist-D_dHHyZp.cjs",
+      "sizes": {
+        "raw": 477,
+        "gzip": 345,
+        "brotli": 290
+      }
+    },
+    {
+      "path": "packages/clock/dist/dist-D_dHHyZp.cjs.map",
+      "sizes": {
+        "raw": 1405,
+        "gzip": 662,
+        "brotli": 609
+      }
+    },
+    {
+      "path": "packages/clock/dist/index.cjs",
+      "sizes": {
+        "raw": 547,
+        "gzip": 271,
+        "brotli": 209
+      }
+    },
+    {
+      "path": "packages/clock/dist/index.d.cts",
+      "sizes": {
+        "raw": 481,
+        "gzip": 188,
+        "brotli": 162
+      }
+    },
+    {
+      "path": "packages/clock/dist/index.d.ts",
+      "sizes": {
+        "raw": 477,
+        "gzip": 187,
+        "brotli": 153
+      }
+    },
+    {
+      "path": "packages/clock/dist/index.js",
+      "sizes": {
+        "raw": 438,
+        "gzip": 216,
+        "brotli": 176
+      }
+    },
+    {
+      "path": "packages/clock/dist/inline-analog/index.cjs",
+      "sizes": {
+        "raw": 1481,
+        "gzip": 800,
+        "brotli": 684
+      }
+    },
+    {
+      "path": "packages/clock/dist/inline-analog/index.cjs.map",
+      "sizes": {
+        "raw": 4514,
+        "gzip": 1703,
+        "brotli": 1504
+      }
+    },
+    {
+      "path": "packages/clock/dist/inline-analog/index.d.cts",
+      "sizes": {
+        "raw": 494,
+        "gzip": 315,
+        "brotli": 261
+      }
+    },
+    {
+      "path": "packages/clock/dist/inline-analog/index.d.ts",
+      "sizes": {
+        "raw": 492,
+        "gzip": 312,
+        "brotli": 259
+      }
+    },
+    {
+      "path": "packages/clock/dist/inline-analog/index.js",
+      "sizes": {
+        "raw": 1332,
+        "gzip": 746,
+        "brotli": 644
+      }
+    },
+    {
+      "path": "packages/clock/dist/inline-analog/index.js.map",
+      "sizes": {
+        "raw": 4389,
+        "gzip": 1674,
+        "brotli": 1485
+      }
+    },
+    {
+      "path": "packages/clock/dist/lib-BqRrzelq.cjs",
+      "sizes": {
+        "raw": 106935,
+        "gzip": 27130,
+        "brotli": 23677
+      }
+    },
+    {
+      "path": "packages/clock/dist/lib-BqRrzelq.cjs.map",
+      "sizes": {
+        "raw": 387205,
+        "gzip": 75455,
+        "brotli": 62587
+      }
+    },
+    {
+      "path": "packages/clock/dist/useInterval-7uwCW3CW.js",
+      "sizes": {
+        "raw": 311,
+        "gzip": 217,
+        "brotli": 180
+      }
+    },
+    {
+      "path": "packages/clock/dist/useInterval-7uwCW3CW.js.map",
+      "sizes": {
+        "raw": 1037,
+        "gzip": 523,
+        "brotli": 468
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/faces/arabic/index.cjs",
+      "sizes": {
+        "raw": 183,
+        "gzip": 176,
+        "brotli": 131
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/faces/arabic/index.cjs.map",
+      "sizes": {
+        "raw": 441,
+        "gzip": 313,
+        "brotli": 260
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/faces/arabic/index.d.cts",
+      "sizes": {
+        "raw": 301,
+        "gzip": 223,
+        "brotli": 200
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/faces/arabic/index.d.ts",
+      "sizes": {
+        "raw": 300,
+        "gzip": 222,
+        "brotli": 198
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/faces/arabic/index.js",
+      "sizes": {
+        "raw": 81,
+        "gzip": 101,
+        "brotli": 85
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/faces/arabic/index.js.map",
+      "sizes": {
+        "raw": 439,
+        "gzip": 311,
+        "brotli": 259
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/faces/index.cjs",
+      "sizes": {
+        "raw": 308,
+        "gzip": 229,
+        "brotli": 203
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/faces/index.cjs.map",
+      "sizes": {
+        "raw": 604,
+        "gzip": 342,
+        "brotli": 295
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/faces/index.d.cts",
+      "sizes": {
+        "raw": 228,
+        "gzip": 182,
+        "brotli": 155
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/faces/index.d.ts",
+      "sizes": {
+        "raw": 227,
+        "gzip": 179,
+        "brotli": 149
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/faces/index.js",
+      "sizes": {
+        "raw": 217,
+        "gzip": 168,
+        "brotli": 159
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/faces/index.js.map",
+      "sizes": {
+        "raw": 596,
+        "gzip": 339,
+        "brotli": 287
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/faces/roman/index.cjs",
+      "sizes": {
+        "raw": 420,
+        "gzip": 261,
+        "brotli": 204
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/faces/roman/index.cjs.map",
+      "sizes": {
+        "raw": 1160,
+        "gzip": 466,
+        "brotli": 369
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/faces/roman/index.d.cts",
+      "sizes": {
+        "raw": 373,
+        "gzip": 251,
+        "brotli": 186
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/faces/roman/index.d.ts",
+      "sizes": {
+        "raw": 372,
+        "gzip": 249,
+        "brotli": 185
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/faces/roman/index.js",
+      "sizes": {
+        "raw": 318,
+        "gzip": 182,
+        "brotli": 147
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/faces/roman/index.js.map",
+      "sizes": {
+        "raw": 1158,
+        "gzip": 463,
+        "brotli": 365
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/step/index.cjs",
+      "sizes": {
+        "raw": 590,
+        "gzip": 347,
+        "brotli": 298
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/step/index.cjs.map",
+      "sizes": {
+        "raw": 2071,
+        "gzip": 787,
+        "brotli": 698
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/step/index.d.cts",
+      "sizes": {
+        "raw": 769,
+        "gzip": 336,
+        "brotli": 272
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/step/index.d.ts",
+      "sizes": {
+        "raw": 768,
+        "gzip": 334,
+        "brotli": 271
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/step/index.js",
+      "sizes": {
+        "raw": 473,
+        "gzip": 282,
+        "brotli": 248
+      }
+    },
+    {
+      "path": "packages/clock/dist/utils/step/index.js.map",
+      "sizes": {
+        "raw": 2046,
+        "gzip": 776,
+        "brotli": 692
+      }
+    }
+  ],
+  "totals": {
+    "raw": 572805,
+    "gzip": 134645,
+    "brotli": 113921
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "id": "pkg-textfield",
+  "label": "textfield",
+  "files": [
+    {
+      "path": "packages/textfield/dist/TextArea.cjs",
+      "sizes": {
+        "raw": 1159,
+        "gzip": 584,
+        "brotli": 518
+      }
+    },
+    {
+      "path": "packages/textfield/dist/TextArea.cjs.map",
+      "sizes": {
+        "raw": 4491,
+        "gzip": 1460,
+        "brotli": 1332
+      }
+    },
+    {
+      "path": "packages/textfield/dist/TextArea.d.cts",
+      "sizes": {
+        "raw": 871,
+        "gzip": 432,
+        "brotli": 372
+      }
+    },
+    {
+      "path": "packages/textfield/dist/TextArea.d.ts",
+      "sizes": {
+        "raw": 870,
+        "gzip": 431,
+        "brotli": 368
+      }
+    },
+    {
+      "path": "packages/textfield/dist/TextArea.js",
+      "sizes": {
+        "raw": 981,
+        "gzip": 522,
+        "brotli": 470
+      }
+    },
+    {
+      "path": "packages/textfield/dist/TextArea.js.map",
+      "sizes": {
+        "raw": 4395,
+        "gzip": 1436,
+        "brotli": 1298
+      }
+    },
+    {
+      "path": "packages/textfield/dist/TextField.cjs",
+      "sizes": {
+        "raw": 1171,
+        "gzip": 595,
+        "brotli": 527
+      }
+    },
+    {
+      "path": "packages/textfield/dist/TextField.cjs.map",
+      "sizes": {
+        "raw": 4526,
+        "gzip": 1489,
+        "brotli": 1357
+      }
+    },
+    {
+      "path": "packages/textfield/dist/TextField.d.cts",
+      "sizes": {
+        "raw": 887,
+        "gzip": 436,
+        "brotli": 385
+      }
+    },
+    {
+      "path": "packages/textfield/dist/TextField.d.ts",
+      "sizes": {
+        "raw": 886,
+        "gzip": 434,
+        "brotli": 376
+      }
+    },
+    {
+      "path": "packages/textfield/dist/TextField.js",
+      "sizes": {
+        "raw": 993,
+        "gzip": 532,
+        "brotli": 482
+      }
+    },
+    {
+      "path": "packages/textfield/dist/TextField.js.map",
+      "sizes": {
+        "raw": 4430,
+        "gzip": 1462,
+        "brotli": 1328
+      }
+    },
+    {
+      "path": "packages/textfield/dist/chunk-Bmb41Sf3.cjs",
+      "sizes": {
+        "raw": 554,
+        "gzip": 341,
+        "brotli": 293
+      }
+    },
+    {
+      "path": "packages/textfield/dist/index.cjs",
+      "sizes": {
+        "raw": 188,
+        "gzip": 145,
+        "brotli": 112
+      }
+    },
+    {
+      "path": "packages/textfield/dist/index.d.cts",
+      "sizes": {
+        "raw": 255,
+        "gzip": 119,
+        "brotli": 113
+      }
+    },
+    {
+      "path": "packages/textfield/dist/index.d.ts",
+      "sizes": {
+        "raw": 253,
+        "gzip": 118,
+        "brotli": 112
+      }
+    },
+    {
+      "path": "packages/textfield/dist/index.js",
+      "sizes": {
+        "raw": 121,
+        "gzip": 88,
+        "brotli": 93
+      }
+    },
+    {
+      "path": "packages/textfield/dist/utils/refs.cjs",
+      "sizes": {
+        "raw": 411,
+        "gzip": 329,
+        "brotli": 302
+      }
+    },
+    {
+      "path": "packages/textfield/dist/utils/refs.cjs.map",
+      "sizes": {
+        "raw": 1466,
+        "gzip": 810,
+        "brotli": 735
+      }
+    },
+    {
+      "path": "packages/textfield/dist/utils/refs.d.cts",
+      "sizes": {
+        "raw": 383,
+        "gzip": 268,
+        "brotli": 218
+      }
+    },
+    {
+      "path": "packages/textfield/dist/utils/refs.d.ts",
+      "sizes": {
+        "raw": 382,
+        "gzip": 267,
+        "brotli": 216
+      }
+    },
+    {
+      "path": "packages/textfield/dist/utils/refs.js",
+      "sizes": {
+        "raw": 310,
+        "gzip": 256,
+        "brotli": 234
+      }
+    },
+    {
+      "path": "packages/textfield/dist/utils/refs.js.map",
+      "sizes": {
+        "raw": 1455,
+        "gzip": 807,
+        "brotli": 717
+      }
+    }
+  ],
+  "totals": {
+    "raw": 31438,
+    "gzip": 13361,
+    "brotli": 11958
+  }
+}

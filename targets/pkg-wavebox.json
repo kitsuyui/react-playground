@@ -1,0 +1,219 @@
+{
+  "id": "pkg-wavebox",
+  "label": "wavebox",
+  "files": [
+    {
+      "path": "packages/wavebox/dist/SizedBox.cjs",
+      "sizes": {
+        "raw": 336,
+        "gzip": 262,
+        "brotli": 205
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/SizedBox.cjs.map",
+      "sizes": {
+        "raw": 968,
+        "gzip": 518,
+        "brotli": 466
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/SizedBox.d.cts",
+      "sizes": {
+        "raw": 568,
+        "gzip": 312,
+        "brotli": 256
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/SizedBox.d.ts",
+      "sizes": {
+        "raw": 567,
+        "gzip": 310,
+        "brotli": 251
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/SizedBox.js",
+      "sizes": {
+        "raw": 239,
+        "gzip": 198,
+        "brotli": 156
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/SizedBox.js.map",
+      "sizes": {
+        "raw": 957,
+        "gzip": 512,
+        "brotli": 430
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/curve.cjs",
+      "sizes": {
+        "raw": 220,
+        "gzip": 204,
+        "brotli": 186
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/curve.cjs.map",
+      "sizes": {
+        "raw": 557,
+        "gzip": 341,
+        "brotli": 300
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/curve.d.cts",
+      "sizes": {
+        "raw": 266,
+        "gzip": 198,
+        "brotli": 153
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/curve.d.ts",
+      "sizes": {
+        "raw": 265,
+        "gzip": 197,
+        "brotli": 150
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/curve.js",
+      "sizes": {
+        "raw": 125,
+        "gzip": 134,
+        "brotli": 117
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/curve.js.map",
+      "sizes": {
+        "raw": 555,
+        "gzip": 339,
+        "brotli": 295
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/index.cjs",
+      "sizes": {
+        "raw": 294,
+        "gzip": 181,
+        "brotli": 142
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/index.d.cts",
+      "sizes": {
+        "raw": 179,
+        "gzip": 104,
+        "brotli": 96
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/index.d.ts",
+      "sizes": {
+        "raw": 177,
+        "gzip": 103,
+        "brotli": 101
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/index.js",
+      "sizes": {
+        "raw": 197,
+        "gzip": 126,
+        "brotli": 107
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/lib-BqRrzelq.cjs",
+      "sizes": {
+        "raw": 106935,
+        "gzip": 27130,
+        "brotli": 23677
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/lib-BqRrzelq.cjs.map",
+      "sizes": {
+        "raw": 387205,
+        "gzip": 75455,
+        "brotli": 62587
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/useInterval-7uwCW3CW.js",
+      "sizes": {
+        "raw": 311,
+        "gzip": 217,
+        "brotli": 180
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/useInterval-7uwCW3CW.js.map",
+      "sizes": {
+        "raw": 1037,
+        "gzip": 523,
+        "brotli": 468
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/wavebox.cjs",
+      "sizes": {
+        "raw": 1218,
+        "gzip": 512,
+        "brotli": 453
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/wavebox.cjs.map",
+      "sizes": {
+        "raw": 5449,
+        "gzip": 1442,
+        "brotli": 1255
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/wavebox.d.cts",
+      "sizes": {
+        "raw": 2574,
+        "gzip": 612,
+        "brotli": 487
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/wavebox.d.ts",
+      "sizes": {
+        "raw": 2573,
+        "gzip": 610,
+        "brotli": 483
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/wavebox.js",
+      "sizes": {
+        "raw": 1070,
+        "gzip": 448,
+        "brotli": 402
+      }
+    },
+    {
+      "path": "packages/wavebox/dist/wavebox.js.map",
+      "sizes": {
+        "raw": 5328,
+        "gzip": 1406,
+        "brotli": 1223
+      }
+    }
+  ],
+  "totals": {
+    "raw": 520170,
+    "gzip": 112394,
+    "brotli": 94626
+  }
+}
