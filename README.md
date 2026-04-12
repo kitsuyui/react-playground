@@ -2,6 +2,7 @@
 
 ![Coverage](https://raw.githubusercontent.com/kitsuyui/octocov-central/main/badges/kitsuyui/react-playground/coverage.svg)
 [![TODO/FIXME](https://raw.githubusercontent.com/kitsuyui/react-playground/gh-counter-assets/badges/maintenance-comments.svg)](https://github.com/kitsuyui/react-playground/search?q=%28TODO+OR+FIXME%29+path%3Apackages&type=code)
+[![Build Size Report](https://raw.githubusercontent.com/kitsuyui/react-playground/gh-build-size-assets/badges/total.svg)](https://github.com/kitsuyui/react-playground/blob/gh-build-size-assets/report.md)
 
 ## What is this?
 
