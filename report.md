@@ -1,8 +1,8 @@
 # gh-build-size report
 
 - Repository: **kitsuyui/react-playground**
-- Head: `785aeb811665612578fcde73063023718637d476`
-- Generated at: 2026-04-16T15:02:57.912Z
+- Head: `33cf110184bb1734f96a721d83f2ae9c8b6c10d7`
+- Generated at: 2026-04-19T00:16:49.098Z
 
 | File | Raw | Gzip | Brotli |
 | --- | ---: | ---: | ---: |
