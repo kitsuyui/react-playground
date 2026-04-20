@@ -213,17 +213,17 @@
     {
       "path": "packages/clock/dist/inline-analog/index.cjs",
       "sizes": {
-        "raw": 1481,
-        "gzip": 800,
-        "brotli": 684
+        "raw": 1596,
+        "gzip": 849,
+        "brotli": 730
       }
     },
     {
       "path": "packages/clock/dist/inline-analog/index.cjs.map",
       "sizes": {
-        "raw": 4514,
-        "gzip": 1703,
-        "brotli": 1504
+        "raw": 5109,
+        "gzip": 1884,
+        "brotli": 1683
       }
     },
     {
@@ -245,17 +245,17 @@
     {
       "path": "packages/clock/dist/inline-analog/index.js",
       "sizes": {
-        "raw": 1332,
-        "gzip": 746,
-        "brotli": 644
+        "raw": 1439,
+        "gzip": 793,
+        "brotli": 689
       }
     },
     {
       "path": "packages/clock/dist/inline-analog/index.js.map",
       "sizes": {
-        "raw": 4389,
-        "gzip": 1674,
-        "brotli": 1485
+        "raw": 4973,
+        "gzip": 1856,
+        "brotli": 1660
       }
     },
     {
@@ -484,8 +484,8 @@
     }
   ],
   "totals": {
-    "raw": 572805,
-    "gzip": 134645,
-    "brotli": 113921
+    "raw": 574206,
+    "gzip": 135104,
+    "brotli": 114366
   }
 }

@@ -5,17 +5,17 @@
     {
       "path": "packages/dekamoji/dist/dekamoji.cjs",
       "sizes": {
-        "raw": 3097,
-        "gzip": 1306,
-        "brotli": 1134
+        "raw": 3202,
+        "gzip": 1386,
+        "brotli": 1215
       }
     },
     {
       "path": "packages/dekamoji/dist/dekamoji.cjs.map",
       "sizes": {
-        "raw": 10483,
-        "gzip": 3159,
-        "brotli": 2793
+        "raw": 12129,
+        "gzip": 3574,
+        "brotli": 3171
       }
     },
     {
@@ -37,17 +37,17 @@
     {
       "path": "packages/dekamoji/dist/dekamoji.js",
       "sizes": {
-        "raw": 2938,
-        "gzip": 1252,
-        "brotli": 1104
+        "raw": 3043,
+        "gzip": 1331,
+        "brotli": 1181
       }
     },
     {
       "path": "packages/dekamoji/dist/dekamoji.js.map",
       "sizes": {
-        "raw": 10348,
-        "gzip": 3138,
-        "brotli": 2758
+        "raw": 11994,
+        "gzip": 3549,
+        "brotli": 3154
       }
     },
     {
@@ -116,8 +116,8 @@
     }
   ],
   "totals": {
-    "raw": 526380,
-    "gzip": 113927,
-    "brotli": 96247
+    "raw": 529882,
+    "gzip": 114912,
+    "brotli": 97179
   }
 }

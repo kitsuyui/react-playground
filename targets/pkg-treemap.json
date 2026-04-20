@@ -53,17 +53,17 @@
     {
       "path": "packages/treemap/dist/treemap.cjs",
       "sizes": {
-        "raw": 2240,
-        "gzip": 1036,
-        "brotli": 908
+        "raw": 2309,
+        "gzip": 1061,
+        "brotli": 943
       }
     },
     {
       "path": "packages/treemap/dist/treemap.cjs.map",
       "sizes": {
-        "raw": 8707,
-        "gzip": 2799,
-        "brotli": 2432
+        "raw": 9025,
+        "gzip": 2896,
+        "brotli": 2548
       }
     },
     {
@@ -85,17 +85,17 @@
     {
       "path": "packages/treemap/dist/treemap.js",
       "sizes": {
-        "raw": 2100,
-        "gzip": 981,
-        "brotli": 875
+        "raw": 2169,
+        "gzip": 1007,
+        "brotli": 915
       }
     },
     {
       "path": "packages/treemap/dist/treemap.js.map",
       "sizes": {
-        "raw": 8587,
-        "gzip": 2772,
-        "brotli": 2411
+        "raw": 8905,
+        "gzip": 2872,
+        "brotli": 2508
       }
     },
     {
@@ -164,8 +164,8 @@
     }
   ],
   "totals": {
-    "raw": 524674,
-    "gzip": 114579,
-    "brotli": 96806
+    "raw": 525448,
+    "gzip": 114827,
+    "brotli": 97094
   }
 }

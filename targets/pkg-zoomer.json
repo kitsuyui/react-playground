@@ -69,17 +69,17 @@
     {
       "path": "packages/zoomer/dist/zoomer.cjs",
       "sizes": {
-        "raw": 1854,
-        "gzip": 842,
-        "brotli": 734
+        "raw": 1909,
+        "gzip": 911,
+        "brotli": 802
       }
     },
     {
       "path": "packages/zoomer/dist/zoomer.cjs.map",
       "sizes": {
-        "raw": 6906,
-        "gzip": 2250,
-        "brotli": 1931
+        "raw": 8012,
+        "gzip": 2525,
+        "brotli": 2190
       }
     },
     {
@@ -101,23 +101,23 @@
     {
       "path": "packages/zoomer/dist/zoomer.js",
       "sizes": {
-        "raw": 1682,
-        "gzip": 775,
-        "brotli": 683
+        "raw": 1737,
+        "gzip": 843,
+        "brotli": 762
       }
     },
     {
       "path": "packages/zoomer/dist/zoomer.js.map",
       "sizes": {
-        "raw": 6825,
-        "gzip": 2233,
-        "brotli": 1904
+        "raw": 7931,
+        "gzip": 2511,
+        "brotli": 2173
       }
     }
   ],
   "totals": {
-    "raw": 517975,
-    "gzip": 111634,
-    "brotli": 94081
+    "raw": 520297,
+    "gzip": 112324,
+    "brotli": 94756
   }
 }

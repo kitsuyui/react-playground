@@ -141,17 +141,17 @@
     {
       "path": "packages/textfield/dist/utils/refs.cjs",
       "sizes": {
-        "raw": 411,
-        "gzip": 329,
-        "brotli": 302
+        "raw": 436,
+        "gzip": 339,
+        "brotli": 289
       }
     },
     {
       "path": "packages/textfield/dist/utils/refs.cjs.map",
       "sizes": {
-        "raw": 1466,
-        "gzip": 810,
-        "brotli": 735
+        "raw": 1680,
+        "gzip": 864,
+        "brotli": 804
       }
     },
     {
@@ -173,23 +173,23 @@
     {
       "path": "packages/textfield/dist/utils/refs.js",
       "sizes": {
-        "raw": 310,
-        "gzip": 256,
-        "brotli": 234
+        "raw": 335,
+        "gzip": 268,
+        "brotli": 246
       }
     },
     {
       "path": "packages/textfield/dist/utils/refs.js.map",
       "sizes": {
-        "raw": 1455,
-        "gzip": 807,
-        "brotli": 717
+        "raw": 1669,
+        "gzip": 861,
+        "brotli": 767
       }
     }
   ],
   "totals": {
-    "raw": 31438,
-    "gzip": 13361,
-    "brotli": 11958
+    "raw": 31916,
+    "gzip": 13491,
+    "brotli": 12076
   }
 }
