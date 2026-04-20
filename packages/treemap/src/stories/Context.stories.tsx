@@ -21,17 +21,8 @@ const directionToString = (direction: Direction) => {
 const ExampleView = () => {
   const rect = useContext(TreemapContext)
   const directionStr = rect.nextDirection ? directionToString(rect.nextDirection) : ''
-  const continueBorderStyle = '1px dotted gray'
-  const uncontinueBorderStyle = '2px solid black'
   return (
-    <div style={{
-      width: '100%',
-      height: '100%',
-      borderLeft: rect.continueDirection.left ? continueBorderStyle : uncontinueBorderStyle,
-      borderTop: rect.continueDirection.up ? continueBorderStyle : uncontinueBorderStyle,
-      borderRight: rect.continueDirection.right ? continueBorderStyle : uncontinueBorderStyle,
-      borderBottom: rect.continueDirection.down ? continueBorderStyle : uncontinueBorderStyle,
-    }}>
+    <div style={createContinueDirectionStyle(rect.continueDirection)}>
       {`(x, y): (${rect.x}, ${rect.y})`}<br />
       {`W×H: ${rect.w | 0}×${rect.h | 0}`}<br />
       {`index: ${rect.index}`}<br />
@@ -41,6 +32,51 @@ const ExampleView = () => {
       {`continueDirection: ${JSON.stringify(rect.continueDirection)}`}<br />
     </div>
   )
+}
+
+const createContinueDirectionStyle = (
+  continueDirection: {
+    left: boolean
+    up: boolean
+    right: boolean
+    down: boolean
+  }
+) => {
+  const continueBorderStyle = '1px dotted gray'
+  const uncontinueBorderStyle = '2px solid black'
+
+  return {
+    width: '100%',
+    height: '100%',
+    borderLeft: selectContinueBorder(
+      continueDirection.left,
+      continueBorderStyle,
+      uncontinueBorderStyle
+    ),
+    borderTop: selectContinueBorder(
+      continueDirection.up,
+      continueBorderStyle,
+      uncontinueBorderStyle
+    ),
+    borderRight: selectContinueBorder(
+      continueDirection.right,
+      continueBorderStyle,
+      uncontinueBorderStyle
+    ),
+    borderBottom: selectContinueBorder(
+      continueDirection.down,
+      continueBorderStyle,
+      uncontinueBorderStyle
+    ),
+  }
+}
+
+const selectContinueBorder = (
+  continues: boolean,
+  continueBorderStyle: string,
+  uncontinueBorderStyle: string
+) => {
+  return continues ? continueBorderStyle : uncontinueBorderStyle
 }
 
 const WeightedItems = [...Array(10)]

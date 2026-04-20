@@ -56,123 +56,325 @@ export interface AlarmContextProviderProps {
   onReset?(event: CustomEvent): void
 }
 
+type AlarmEventHandler = (event: CustomEvent) => void
+
+const resolveHandler = <T,>(handler: T | undefined, fallback: T): T => {
+  return handler ?? fallback
+}
+
+const resolveAlarmRefreshInterval = (refreshInterval?: number) => {
+  return refreshInterval ?? 100
+}
+
+const resolveDefaultNotificationEnabled = (enabled?: boolean) => {
+  return enabled ?? false
+}
+
+const getNotificationPermission = (
+  notificationSupported: boolean
+): NotificationPermission | 'unsupported' => {
+  return notificationSupported ? Notification.permission : 'unsupported'
+}
+
+const getActiveAlarmInterval = (armed: boolean, refreshInterval: number) => {
+  return armed ? refreshInterval : null
+}
+
+const getAlarmCurrentRemaining = (
+  targetTimeMs: number | null,
+  nowMs = Date.now()
+) => {
+  if (targetTimeMs === null) return 0
+  return calcRemainingUntil(targetTimeMs, nowMs)
+}
+
+const notifyAlarmRing = (
+  notificationEnabled: boolean,
+  notificationSupported: boolean,
+  onRing: AlarmEventHandler
+) => {
+  if (
+    notificationEnabled &&
+    notificationSupported &&
+    Notification.permission === 'granted'
+  ) {
+    new Notification('Alarm', {
+      body: 'The scheduled alarm time has been reached.',
+    })
+  }
+  onRing(new CustomEvent('ring', {}))
+}
+
+const finishAlarmRing = (props: {
+  armedRef: React.MutableRefObject<boolean>
+  setRemaining: React.Dispatch<React.SetStateAction<number>>
+  setArmed: React.Dispatch<React.SetStateAction<boolean>>
+  setRinging: React.Dispatch<React.SetStateAction<boolean>>
+  notifyRing: () => void
+}) => {
+  props.setRemaining(0)
+  props.armedRef.current = false
+  props.setArmed(false)
+  props.setRinging(true)
+  props.notifyRing()
+}
+
+const createAlarmTick = (props: {
+  armedRef: React.MutableRefObject<boolean>
+  targetTimeMsRef: React.MutableRefObject<number | null>
+  getCurrentRemaining: (nowMs?: number) => number
+  setRemaining: React.Dispatch<React.SetStateAction<number>>
+  setArmed: React.Dispatch<React.SetStateAction<boolean>>
+  setRinging: React.Dispatch<React.SetStateAction<boolean>>
+  notifyRing: () => void
+}) => {
+  return () => {
+    if (shouldSkipAlarmTick(props.armedRef, props.targetTimeMsRef)) return
+    const nextRemaining = props.getCurrentRemaining()
+    props.setRemaining(nextRemaining)
+    handleAlarmRing(nextRemaining, props)
+  }
+}
+
+const shouldSkipAlarmTick = (
+  armedRef: React.MutableRefObject<boolean>,
+  targetTimeMsRef: React.MutableRefObject<number | null>
+) => {
+  return !armedRef.current || targetTimeMsRef.current === null
+}
+
+const handleAlarmRing = (
+  nextRemaining: number,
+  props: {
+    armedRef: React.MutableRefObject<boolean>
+    setRemaining: React.Dispatch<React.SetStateAction<number>>
+    setArmed: React.Dispatch<React.SetStateAction<boolean>>
+    setRinging: React.Dispatch<React.SetStateAction<boolean>>
+    notifyRing: () => void
+  }
+) => {
+  if (nextRemaining > 0) return
+  finishAlarmRing(props)
+}
+
+const createAlarmArm = (props: {
+  targetTimeMsRef: React.MutableRefObject<number | null>
+  getCurrentRemaining: (nowMs?: number) => number
+  setRemaining: React.Dispatch<React.SetStateAction<number>>
+  setRinging: React.Dispatch<React.SetStateAction<boolean>>
+  armedRef: React.MutableRefObject<boolean>
+  setArmed: React.Dispatch<React.SetStateAction<boolean>>
+  onArm: AlarmEventHandler
+}) => {
+  return () => {
+    if (props.targetTimeMsRef.current === null) return
+    props.setRemaining(props.getCurrentRemaining())
+    props.setRinging(false)
+    props.armedRef.current = true
+    props.setArmed(true)
+    props.onArm(new CustomEvent('arm', {}))
+  }
+}
+
+const createAlarmDisarm = (props: {
+  armedRef: React.MutableRefObject<boolean>
+  getCurrentRemaining: (nowMs?: number) => number
+  setRemaining: React.Dispatch<React.SetStateAction<number>>
+  setArmed: React.Dispatch<React.SetStateAction<boolean>>
+  onDisarm: AlarmEventHandler
+}) => {
+  return () => {
+    if (!props.armedRef.current) return
+    props.setRemaining(props.getCurrentRemaining())
+    props.armedRef.current = false
+    props.setArmed(false)
+    props.onDisarm(new CustomEvent('disarm', {}))
+  }
+}
+
+const createAlarmToggle = (
+  armed: boolean,
+  disarm: () => void,
+  arm: () => void
+) => {
+  return () => {
+    if (armed) {
+      disarm()
+      return
+    }
+    arm()
+  }
+}
+
+const createAlarmReset = (props: {
+  armedRef: React.MutableRefObject<boolean>
+  targetTimeMsRef: React.MutableRefObject<number | null>
+  setArmed: React.Dispatch<React.SetStateAction<boolean>>
+  setRinging: React.Dispatch<React.SetStateAction<boolean>>
+  setRemaining: React.Dispatch<React.SetStateAction<number>>
+  setTargetTimeMsState: React.Dispatch<React.SetStateAction<number | null>>
+  onReset: AlarmEventHandler
+}) => {
+  return () => {
+    props.armedRef.current = false
+    props.targetTimeMsRef.current = null
+    props.setArmed(false)
+    props.setRinging(false)
+    props.setRemaining(0)
+    props.setTargetTimeMsState(null)
+    props.onReset(new CustomEvent('reset', {}))
+  }
+}
+
+const createScheduleAlarmAfter = (props: {
+  targetTimeMsRef: React.MutableRefObject<number | null>
+  armedRef: React.MutableRefObject<boolean>
+  setTargetTimeMsState: React.Dispatch<React.SetStateAction<number | null>>
+  setRemaining: React.Dispatch<React.SetStateAction<number>>
+  setRinging: React.Dispatch<React.SetStateAction<boolean>>
+  setArmed: React.Dispatch<React.SetStateAction<boolean>>
+  onArm: AlarmEventHandler
+}) => {
+  return (seconds: number) => {
+    const nextTargetTimeMs = Date.now() + Math.max(0, seconds) * 1000
+    props.targetTimeMsRef.current = nextTargetTimeMs
+    props.armedRef.current = true
+    props.setTargetTimeMsState(nextTargetTimeMs)
+    props.setRemaining(Math.max(0, seconds))
+    props.setRinging(false)
+    props.setArmed(true)
+    props.onArm(new CustomEvent('arm', {}))
+  }
+}
+
+const createSetAlarmTargetTime = (props: {
+  targetTimeMsRef: React.MutableRefObject<number | null>
+  setTargetTimeMsState: React.Dispatch<React.SetStateAction<number | null>>
+  setRemaining: React.Dispatch<React.SetStateAction<number>>
+  setRinging: React.Dispatch<React.SetStateAction<boolean>>
+}) => {
+  return (value: number) => {
+    props.targetTimeMsRef.current = value
+    props.setTargetTimeMsState(value)
+    props.setRemaining(calcRemainingUntil(value))
+    props.setRinging(false)
+  }
+}
+
+const createStopRinging = (
+  setRinging: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+  return () => {
+    setRinging(false)
+  }
+}
+
+const createSetNotificationEnabledAction = (
+  setNotificationEnabled: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+  return (value: boolean) => {
+    setNotificationEnabled(value)
+  }
+}
+
+const createToggleNotification = (
+  setNotificationEnabled: React.Dispatch<React.SetStateAction<boolean>>
+) => {
+  return () => {
+    setNotificationEnabled((current) => !current)
+  }
+}
+
 export const AlarmContextProvider: React.FC<AlarmContextProviderProps> = (
   props
 ): React.JSX.Element => {
   const { children } = props
   const emptyFn = (_event: CustomEvent) => { /* do nothing */ }
-  const onArm = props.onArm ?? emptyFn
-  const onDisarm = props.onDisarm ?? emptyFn
-  const onRing = props.onRing ?? emptyFn
-  const onReset = props.onReset ?? emptyFn
+  const onArm = resolveHandler(props.onArm, emptyFn)
+  const onDisarm = resolveHandler(props.onDisarm, emptyFn)
+  const onRing = resolveHandler(props.onRing, emptyFn)
+  const onReset = resolveHandler(props.onReset, emptyFn)
   const [armed, setArmed] = React.useState(false)
   const [ringing, setRinging] = React.useState(false)
   const [remaining, setRemaining] = React.useState(0)
   const [targetTimeMs, setTargetTimeMsState] = React.useState<number | null>(null)
   const [notificationEnabled, setNotificationEnabled] = React.useState(
-    props.defaultNotificationEnabled ?? false
+    resolveDefaultNotificationEnabled(props.defaultNotificationEnabled)
   )
   const armedRef = React.useRef(armed)
   const targetTimeMsRef = React.useRef<number | null>(targetTimeMs)
-  const refreshInterval = props.refreshInterval ?? 100
+  const refreshInterval = resolveAlarmRefreshInterval(props.refreshInterval)
   const notificationSupported = typeof Notification !== 'undefined'
-  const notificationPermission = notificationSupported ? Notification.permission : 'unsupported'
+  const notificationPermission = getNotificationPermission(notificationSupported)
 
-  const getCurrentRemaining = (nowMs = Date.now()) => {
-    if (targetTimeMsRef.current === null) {
-      return 0
-    }
-    return calcRemainingUntil(targetTimeMsRef.current, nowMs)
-  }
+  const getCurrentRemaining = (nowMs = Date.now()) =>
+    getAlarmCurrentRemaining(targetTimeMsRef.current, nowMs)
 
-  const notifyRing = () => {
-    if (notificationEnabled && notificationSupported && Notification.permission === 'granted') {
-      new Notification('Alarm', {
-        body: 'The scheduled alarm time has been reached.',
-      })
-    }
-    onRing(new CustomEvent('ring', {}))
-  }
+  const notifyRing = () =>
+    notifyAlarmRing(notificationEnabled, notificationSupported, onRing)
 
-  const tick = () => {
-    if (!armedRef.current || targetTimeMsRef.current === null) {
-      return
-    }
-    const nextRemaining = getCurrentRemaining()
-    setRemaining(nextRemaining)
-    if (nextRemaining <= 0) {
-      setRemaining(0)
-      armedRef.current = false
-      setArmed(false)
-      setRinging(true)
-      notifyRing()
-    }
-  }
+  const tick = createAlarmTick({
+    armedRef,
+    targetTimeMsRef,
+    getCurrentRemaining,
+    setRemaining,
+    setArmed,
+    setRinging,
+    notifyRing,
+  })
 
-  useInterval(() => {
-    tick()
-  }, armed ? refreshInterval : null)
+  useInterval(tick, getActiveAlarmInterval(armed, refreshInterval))
 
-  const arm = () => {
-    if (targetTimeMsRef.current === null) {
-      return
-    }
-    setRemaining(getCurrentRemaining())
-    setRinging(false)
-    armedRef.current = true
-    setArmed(true)
-    onArm(new CustomEvent('arm', {}))
-  }
+  const arm = createAlarmArm({
+    targetTimeMsRef,
+    getCurrentRemaining,
+    setRemaining,
+    setRinging,
+    armedRef,
+    setArmed,
+    onArm,
+  })
 
-  const disarm = () => {
-    if (!armedRef.current) {
-      return
-    }
-    setRemaining(getCurrentRemaining())
-    armedRef.current = false
-    setArmed(false)
-    onDisarm(new CustomEvent('disarm', {}))
-  }
+  const disarm = createAlarmDisarm({
+    armedRef,
+    getCurrentRemaining,
+    setRemaining,
+    setArmed,
+    onDisarm,
+  })
 
-  const toggle = () => {
-    if (armed) {
-      disarm()
-    } else {
-      arm()
-    }
-  }
+  const toggle = createAlarmToggle(armed, disarm, arm)
+  const reset = createAlarmReset({
+    armedRef,
+    targetTimeMsRef,
+    setArmed,
+    setRinging,
+    setRemaining,
+    setTargetTimeMsState,
+    onReset,
+  })
 
-  const reset = () => {
-    armedRef.current = false
-    targetTimeMsRef.current = null
-    setArmed(false)
-    setRinging(false)
-    setRemaining(0)
-    setTargetTimeMsState(null)
-    onReset(new CustomEvent('reset', {}))
-  }
+  const stopRinging = createStopRinging(setRinging)
 
-  const stopRinging = () => {
-    setRinging(false)
-  }
+  const scheduleAfter = createScheduleAlarmAfter({
+    targetTimeMsRef,
+    armedRef,
+    setTargetTimeMsState,
+    setRemaining,
+    setRinging,
+    setArmed,
+    onArm,
+  })
 
-  const scheduleAfter = (seconds: number) => {
-    const nextTargetTimeMs = Date.now() + Math.max(0, seconds) * 1000
-    targetTimeMsRef.current = nextTargetTimeMs
-    armedRef.current = true
-    setTargetTimeMsState(nextTargetTimeMs)
-    setRemaining(Math.max(0, seconds))
-    setRinging(false)
-    setArmed(true)
-    onArm(new CustomEvent('arm', {}))
-  }
-
-  const setTargetTimeMs = (value: number) => {
-    targetTimeMsRef.current = value
-    setTargetTimeMsState(value)
-    setRemaining(calcRemainingUntil(value))
-    setRinging(false)
-  }
+  const setTargetTimeMs = createSetAlarmTargetTime({
+    targetTimeMsRef,
+    setTargetTimeMsState,
+    setRemaining,
+    setRinging,
+  })
+  const setNotificationEnabledAction =
+    createSetNotificationEnabledAction(setNotificationEnabled)
+  const toggleNotification = createToggleNotification(setNotificationEnabled)
 
   return (
     <AlarmContext.Provider
@@ -191,12 +393,8 @@ export const AlarmContextProvider: React.FC<AlarmContextProviderProps> = (
         stopRinging,
         scheduleAfter,
         setTargetTimeMs,
-        setNotificationEnabled(value: boolean) {
-          setNotificationEnabled(value)
-        },
-        toggleNotification() {
-          setNotificationEnabled((current) => !current)
-        },
+        setNotificationEnabled: setNotificationEnabledAction,
+        toggleNotification,
       }}
     >
       {children}

@@ -44,16 +44,228 @@ export interface MetronomeContextProviderProps {
   onReset?(event: CustomEvent): void
 }
 
+type MetronomeEventHandler = (event: CustomEvent) => void
+type MetronomeBeatHandler = (event: CustomEvent<{ beat: number }>) => void
+
+const resolveHandler = <T,>(handler: T | undefined, fallback: T): T => {
+  return handler ?? fallback
+}
+
+const resolveInitialTempo = (tempo?: number) => {
+  return tempo ?? 120
+}
+
+const resolveMetronomeRefreshInterval = (refreshInterval?: number) => {
+  return refreshInterval ?? 10
+}
+
+const getActiveMetronomeInterval = (
+  running: boolean,
+  refreshInterval: number
+) => {
+  return running ? refreshInterval : null
+}
+
+const emitMetronomeBeat = (
+  onBeat: MetronomeBeatHandler,
+  beatNumber: number
+) => {
+  onBeat(
+    new CustomEvent('beat', {
+      detail: { beat: beatNumber },
+    })
+  )
+}
+
+const createMetronomeTick = (props: {
+  runningRef: React.MutableRefObject<boolean>
+  nextBeatAtMsRef: React.MutableRefObject<number | null>
+  tempoRef: React.MutableRefObject<number>
+  beatRef: React.MutableRefObject<number>
+  setBeat: React.Dispatch<React.SetStateAction<number>>
+  setLastBeatAtMs: React.Dispatch<React.SetStateAction<number | null>>
+  setNextBeatAtMs: React.Dispatch<React.SetStateAction<number | null>>
+  emitBeat: (beatNumber: number) => void
+}) => {
+  return () => {
+    const snapshot = getMetronomeTickSnapshot(props.runningRef, props.nextBeatAtMsRef)
+    if (!snapshot) return
+    const intervalMs = calcBeatIntervalMs(props.tempoRef.current)
+    const elapsedBeatCount = calculateElapsedBeatCount(
+      snapshot.currentNowMs,
+      snapshot.nextBeatAtMs,
+      intervalMs
+    )
+    const nextBeat = props.beatRef.current + elapsedBeatCount
+    emitElapsedBeats(props.beatRef.current, elapsedBeatCount, props.emitBeat)
+    updateMetronomeBeatState(props, nextBeat, elapsedBeatCount, intervalMs, snapshot.nextBeatAtMs)
+  }
+}
+
+const getMetronomeTickSnapshot = (
+  runningRef: React.MutableRefObject<boolean>,
+  nextBeatAtMsRef: React.MutableRefObject<number | null>
+) => {
+  if (!runningRef.current || nextBeatAtMsRef.current === null) return null
+  const currentNowMs = Date.now()
+  if (currentNowMs < nextBeatAtMsRef.current) return null
+  return { currentNowMs, nextBeatAtMs: nextBeatAtMsRef.current }
+}
+
+const calculateElapsedBeatCount = (
+  currentNowMs: number,
+  nextBeatAtMs: number,
+  intervalMs: number
+) => {
+  return Math.floor((currentNowMs - nextBeatAtMs) / intervalMs) + 1
+}
+
+const emitElapsedBeats = (
+  currentBeat: number,
+  elapsedBeatCount: number,
+  emitBeat: (beatNumber: number) => void
+) => {
+  for (let offset = 1; offset <= elapsedBeatCount; offset += 1) {
+    emitBeat(currentBeat + offset)
+  }
+}
+
+const updateMetronomeBeatState = (
+  props: {
+    beatRef: React.MutableRefObject<number>
+    nextBeatAtMsRef: React.MutableRefObject<number | null>
+    setBeat: React.Dispatch<React.SetStateAction<number>>
+    setLastBeatAtMs: React.Dispatch<React.SetStateAction<number | null>>
+    setNextBeatAtMs: React.Dispatch<React.SetStateAction<number | null>>
+  },
+  nextBeat: number,
+  elapsedBeatCount: number,
+  intervalMs: number,
+  nextBeatAtMs: number
+) => {
+  props.beatRef.current = nextBeat
+  props.setBeat(nextBeat)
+  props.setLastBeatAtMs(nextBeatAtMs + (elapsedBeatCount - 1) * intervalMs)
+  props.nextBeatAtMsRef.current = nextBeatAtMs + elapsedBeatCount * intervalMs
+  props.setNextBeatAtMs(props.nextBeatAtMsRef.current)
+}
+
+const createMetronomeStart = (props: {
+  runningRef: React.MutableRefObject<boolean>
+  beatRef: React.MutableRefObject<number>
+  nextBeatAtMsRef: React.MutableRefObject<number | null>
+  tempoRef: React.MutableRefObject<number>
+  setRunning: React.Dispatch<React.SetStateAction<boolean>>
+  setBeat: React.Dispatch<React.SetStateAction<number>>
+  setLastBeatAtMs: React.Dispatch<React.SetStateAction<number | null>>
+  setNextBeatAtMs: React.Dispatch<React.SetStateAction<number | null>>
+  emitBeat: (beatNumber: number) => void
+  onStart: MetronomeEventHandler
+}) => {
+  return () => {
+    if (props.runningRef.current) return
+    const currentNowMs = Date.now()
+    const nextBeat = props.beatRef.current + 1
+    const intervalMs = calcBeatIntervalMs(props.tempoRef.current)
+    props.runningRef.current = true
+    props.beatRef.current = nextBeat
+    props.nextBeatAtMsRef.current = currentNowMs + intervalMs
+    props.setRunning(true)
+    props.setBeat(nextBeat)
+    props.setLastBeatAtMs(currentNowMs)
+    props.setNextBeatAtMs(props.nextBeatAtMsRef.current)
+    props.emitBeat(nextBeat)
+    props.onStart(new CustomEvent('start', {}))
+  }
+}
+
+const createMetronomeStop = (props: {
+  runningRef: React.MutableRefObject<boolean>
+  nextBeatAtMsRef: React.MutableRefObject<number | null>
+  setRunning: React.Dispatch<React.SetStateAction<boolean>>
+  setNextBeatAtMs: React.Dispatch<React.SetStateAction<number | null>>
+  onStop: MetronomeEventHandler
+}) => {
+  return () => {
+    if (!props.runningRef.current) return
+    props.runningRef.current = false
+    props.nextBeatAtMsRef.current = null
+    props.setRunning(false)
+    props.setNextBeatAtMs(null)
+    props.onStop(new CustomEvent('stop', {}))
+  }
+}
+
+const createMetronomeToggle = (
+  running: boolean,
+  stop: () => void,
+  start: () => void
+) => {
+  return () => {
+    if (running) {
+      stop()
+      return
+    }
+    start()
+  }
+}
+
+const createMetronomeReset = (props: {
+  runningRef: React.MutableRefObject<boolean>
+  beatRef: React.MutableRefObject<number>
+  nextBeatAtMsRef: React.MutableRefObject<number | null>
+  setRunning: React.Dispatch<React.SetStateAction<boolean>>
+  setBeat: React.Dispatch<React.SetStateAction<number>>
+  setLastBeatAtMs: React.Dispatch<React.SetStateAction<number | null>>
+  setNextBeatAtMs: React.Dispatch<React.SetStateAction<number | null>>
+  onReset: MetronomeEventHandler
+}) => {
+  return () => {
+    props.runningRef.current = false
+    props.beatRef.current = 0
+    props.nextBeatAtMsRef.current = null
+    props.setRunning(false)
+    props.setBeat(0)
+    props.setLastBeatAtMs(null)
+    props.setNextBeatAtMs(null)
+    props.onReset(new CustomEvent('reset', {}))
+  }
+}
+
+const createSetTempoAction = (
+  tempoRef: React.MutableRefObject<number>,
+  setTempo: React.Dispatch<React.SetStateAction<number>>
+) => {
+  return (value: number) => {
+    const nextTempo = Math.max(1, value)
+    tempoRef.current = nextTempo
+    setTempo(nextTempo)
+  }
+}
+
+const createIncrementTempoAction = (
+  tempoRef: React.MutableRefObject<number>,
+  setTempo: React.Dispatch<React.SetStateAction<number>>
+) => {
+  return (value: number) => {
+    setTempo((current) => {
+      const nextTempo = Math.max(1, current + value)
+      tempoRef.current = nextTempo
+      return nextTempo
+    })
+  }
+}
+
 export const MetronomeContextProvider: React.FC<MetronomeContextProviderProps> = (
   props
 ): React.JSX.Element => {
   const { children } = props
   const emptyFn = (_event: CustomEvent) => { /* do nothing */ }
-  const onBeat = props.onBeat ?? emptyFn
-  const onStart = props.onStart ?? emptyFn
-  const onStop = props.onStop ?? emptyFn
-  const onReset = props.onReset ?? emptyFn
-  const [tempo, setTempo] = React.useState(props.initialTempo ?? 120)
+  const onBeat = resolveHandler(props.onBeat, emptyFn)
+  const onStart = resolveHandler(props.onStart, emptyFn)
+  const onStop = resolveHandler(props.onStop, emptyFn)
+  const onReset = resolveHandler(props.onReset, emptyFn)
+  const [tempo, setTempo] = React.useState(resolveInitialTempo(props.initialTempo))
   const [running, setRunning] = React.useState(false)
   const [beat, setBeat] = React.useState(0)
   const [lastBeatAtMs, setLastBeatAtMs] = React.useState<number | null>(null)
@@ -62,86 +274,57 @@ export const MetronomeContextProvider: React.FC<MetronomeContextProviderProps> =
   const runningRef = React.useRef(running)
   const beatRef = React.useRef(beat)
   const nextBeatAtMsRef = React.useRef<number | null>(nextBeatAtMs)
-  const refreshInterval = props.refreshInterval ?? 10
+  const refreshInterval = resolveMetronomeRefreshInterval(props.refreshInterval)
 
-  const emitBeat = (beatNumber: number) => {
-    onBeat(new CustomEvent('beat', {
-      detail: { beat: beatNumber },
-    }))
-  }
+  const emitBeat = (beatNumber: number) => emitMetronomeBeat(onBeat, beatNumber)
 
-  const tick = () => {
-    if (!runningRef.current || nextBeatAtMsRef.current === null) {
-      return
-    }
-    const currentNowMs = Date.now()
-    if (currentNowMs < nextBeatAtMsRef.current) {
-      return
-    }
-    const intervalMs = calcBeatIntervalMs(tempoRef.current)
-    const elapsedBeatCount = Math.floor((currentNowMs - nextBeatAtMsRef.current) / intervalMs) + 1
-    const nextBeat = beatRef.current + elapsedBeatCount
-    for (let offset = 1; offset <= elapsedBeatCount; offset += 1) {
-      emitBeat(beatRef.current + offset)
-    }
-    beatRef.current = nextBeat
-    setBeat(nextBeat)
-    setLastBeatAtMs(nextBeatAtMsRef.current + (elapsedBeatCount - 1) * intervalMs)
-    nextBeatAtMsRef.current = nextBeatAtMsRef.current + elapsedBeatCount * intervalMs
-    setNextBeatAtMs(nextBeatAtMsRef.current)
-  }
+  const tick = createMetronomeTick({
+    runningRef,
+    nextBeatAtMsRef,
+    tempoRef,
+    beatRef,
+    setBeat,
+    setLastBeatAtMs,
+    setNextBeatAtMs,
+    emitBeat,
+  })
 
-  useInterval(() => {
-    tick()
-  }, running ? refreshInterval : null)
+  useInterval(tick, getActiveMetronomeInterval(running, refreshInterval))
 
-  const start = () => {
-    if (runningRef.current) {
-      return
-    }
-    const currentNowMs = Date.now()
-    const nextBeat = beatRef.current + 1
-    const intervalMs = calcBeatIntervalMs(tempoRef.current)
-    runningRef.current = true
-    beatRef.current = nextBeat
-    nextBeatAtMsRef.current = currentNowMs + intervalMs
-    setRunning(true)
-    setBeat(nextBeat)
-    setLastBeatAtMs(currentNowMs)
-    setNextBeatAtMs(nextBeatAtMsRef.current)
-    emitBeat(nextBeat)
-    onStart(new CustomEvent('start', {}))
-  }
+  const start = createMetronomeStart({
+    runningRef,
+    beatRef,
+    nextBeatAtMsRef,
+    tempoRef,
+    setRunning,
+    setBeat,
+    setLastBeatAtMs,
+    setNextBeatAtMs,
+    emitBeat,
+    onStart,
+  })
 
-  const stop = () => {
-    if (!runningRef.current) {
-      return
-    }
-    runningRef.current = false
-    nextBeatAtMsRef.current = null
-    setRunning(false)
-    setNextBeatAtMs(null)
-    onStop(new CustomEvent('stop', {}))
-  }
+  const stop = createMetronomeStop({
+    runningRef,
+    nextBeatAtMsRef,
+    setRunning,
+    setNextBeatAtMs,
+    onStop,
+  })
 
-  const toggle = () => {
-    if (running) {
-      stop()
-    } else {
-      start()
-    }
-  }
-
-  const reset = () => {
-    runningRef.current = false
-    beatRef.current = 0
-    nextBeatAtMsRef.current = null
-    setRunning(false)
-    setBeat(0)
-    setLastBeatAtMs(null)
-    setNextBeatAtMs(null)
-    onReset(new CustomEvent('reset', {}))
-  }
+  const toggle = createMetronomeToggle(running, stop, start)
+  const reset = createMetronomeReset({
+    runningRef,
+    beatRef,
+    nextBeatAtMsRef,
+    setRunning,
+    setBeat,
+    setLastBeatAtMs,
+    setNextBeatAtMs,
+    onReset,
+  })
+  const setTempoAction = createSetTempoAction(tempoRef, setTempo)
+  const incrementTempo = createIncrementTempoAction(tempoRef, setTempo)
 
   return (
     <MetronomeContext.Provider
@@ -154,18 +337,8 @@ export const MetronomeContextProvider: React.FC<MetronomeContextProviderProps> =
         stop,
         toggle,
         reset,
-        setTempo(value: number) {
-          const nextTempo = Math.max(1, value)
-          tempoRef.current = nextTempo
-          setTempo(nextTempo)
-        },
-        incrementTempo(value: number) {
-          setTempo((current) => {
-            const nextTempo = Math.max(1, current + value)
-            tempoRef.current = nextTempo
-            return nextTempo
-          })
-        },
+        setTempo: setTempoAction,
+        incrementTempo,
       }}
     >
       {children}

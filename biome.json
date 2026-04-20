@@ -20,6 +20,14 @@
       },
       "correctness": {
         "noUnusedImports": "error"
+      },
+      "complexity": {
+        "noExcessiveCognitiveComplexity": {
+          "level": "error",
+          "options": {
+            "maxAllowedComplexity": 3
+          }
+        }
       }
     }
   },

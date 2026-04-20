@@ -29,18 +29,19 @@ export const InlineAnalogClock = (
     ...spanProps
   } = props
   const { hour, minute, second } = calcHMS(date, timezone, step)
-  const ariaLabel =
-    spanProps['aria-label'] ??
-    (spanProps['aria-labelledby']
-      ? undefined
-      : createAccessibleLabel(date, timezone))
+  const accessibleLabel = createAccessibleLabel(date, timezone)
+  const ariaLabel = resolveInlineClockAriaLabel(
+    spanProps['aria-label'],
+    spanProps['aria-labelledby'],
+    accessibleLabel
+  )
 
   return (
     <span
       {...spanProps}
       role="img"
       aria-label={ariaLabel}
-      title={title ?? createAccessibleLabel(date, timezone)}
+      title={title ?? accessibleLabel}
       style={{
         display: 'inline-block',
         lineHeight: 1,
@@ -77,9 +78,7 @@ export const InlineAnalogClock = (
         />
         <Hand degree={30 * hour} length={24} width={6} />
         <Hand degree={6 * minute} length={34} width={4} />
-        {showSecondHand && (
-          <Hand degree={6 * second} length={38} width={2} opacity={0.6} />
-        )}
+        <SecondHand showSecondHand={showSecondHand} second={second} />
         <circle
           cx={CENTER}
           cy={CENTER}
@@ -89,6 +88,24 @@ export const InlineAnalogClock = (
       </svg>
     </span>
   )
+}
+
+const resolveInlineClockAriaLabel = (
+  ariaLabel: string | undefined,
+  ariaLabelledBy: string | undefined,
+  fallbackLabel: string
+) => {
+  if (ariaLabel !== undefined) return ariaLabel
+  if (ariaLabelledBy) return undefined
+  return fallbackLabel
+}
+
+const SecondHand = (props: {
+  showSecondHand: boolean
+  second: number
+}) => {
+  if (!props.showSecondHand) return null
+  return <Hand degree={6 * props.second} length={38} width={2} opacity={0.6} />
 }
 
 const Hand = (props: {

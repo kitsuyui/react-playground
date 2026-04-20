@@ -7,18 +7,14 @@ export type DetailedBitProps = EnhancedBitProps & {
 }
 
 export const DetailedBit = (props: DetailedBitProps): React.JSX.Element => {
-  const { stand, overflow, zeroPadding } = props
-  const displayLittleEndianBitOrder = props.displayLittleEndianBitOrder ?? false
-  const displayBigEndianBitOrder = props.displayBigEndianBitOrder ?? false
-  const text = stand ? '1' : '0'
-  const border = overflow
-    ? '1px dotted red'
-    : zeroPadding
-      ? '1px dotted gray'
-      : '1px solid #cccccc'
+  const { border, color, backgroundColor, text } = getDetailedBitPalette(
+    props.stand,
+    props.overflow,
+    props.zeroPadding
+  )
+  const { displayLittleEndianBitOrder, displayBigEndianBitOrder } =
+    getDetailedBitDisplayOptions(props)
   const margin = '0.5px'
-  const color = stand ? '#999999' : '#cccccc'
-  const backgroundColor = stand ? '#000000' : '#ffffff'
   const fontFamily = 'monospace'
   return (
     <div style={{ display: 'inline-block', fontFamily, margin }}>
@@ -31,13 +27,67 @@ export const DetailedBit = (props: DetailedBitProps): React.JSX.Element => {
       >
         {text}
       </div>
-      {displayLittleEndianBitOrder && (
-        <IndexLabel index={props.littleEndianBitOrder} />
-      )}
-      {displayBigEndianBitOrder && (
-        <IndexLabel index={props.bigEndianBitOrder} />
-      )}
+      <DetailedBitLabels
+        displayLittleEndianBitOrder={displayLittleEndianBitOrder}
+        displayBigEndianBitOrder={displayBigEndianBitOrder}
+        littleEndianBitOrder={props.littleEndianBitOrder}
+        bigEndianBitOrder={props.bigEndianBitOrder}
+      />
     </div>
+  )
+}
+
+const getDetailedBitPalette = (
+  stand: boolean,
+  overflow: boolean | undefined,
+  zeroPadding: boolean | undefined
+) => {
+  return {
+    text: stand ? '1' : '0',
+    border: getDetailedBitBorder(overflow, zeroPadding),
+    color: stand ? '#999999' : '#cccccc',
+    backgroundColor: stand ? '#000000' : '#ffffff',
+  }
+}
+
+const getDetailedBitDisplayOptions = (props: DetailedBitProps) => {
+  return {
+    displayLittleEndianBitOrder: props.displayLittleEndianBitOrder ?? false,
+    displayBigEndianBitOrder: props.displayBigEndianBitOrder ?? false,
+  }
+}
+
+const getDetailedBitBorder = (
+  overflow: boolean | undefined,
+  zeroPadding: boolean | undefined
+) => {
+  if (overflow) return '1px dotted red'
+  if (zeroPadding) return '1px dotted gray'
+  return '1px solid #cccccc'
+}
+
+const DetailedBitLabels = (props: {
+  displayLittleEndianBitOrder: boolean
+  displayBigEndianBitOrder: boolean
+  littleEndianBitOrder: number
+  bigEndianBitOrder: number
+}) => {
+  const {
+    displayLittleEndianBitOrder,
+    displayBigEndianBitOrder,
+    littleEndianBitOrder,
+    bigEndianBitOrder,
+  } = props
+
+  return (
+    <>
+      {displayLittleEndianBitOrder ? (
+        <IndexLabel index={littleEndianBitOrder} />
+      ) : null}
+      {displayBigEndianBitOrder ? (
+        <IndexLabel index={bigEndianBitOrder} />
+      ) : null}
+    </>
   )
 }
 

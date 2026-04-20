@@ -15,15 +15,19 @@ type Cleanup = (() => void) | undefined
  */
 export const useCombinedRefs = <T>(...refs: OptionalRef<T>[]) => {
   return useMemo(() => {
-    if (refs.every((ref) => ref == null)) {
-      return null
-    }
-    return (node: T) => {
-      for (const ref of refs) {
-        if (ref) setRef(ref, node)
-      }
-    }
+    if (!hasAnyRef(refs)) return null
+    return (node: T) => assignNodeToRefs(refs, node)
   }, [refs])
+}
+
+const hasAnyRef = <T>(refs: OptionalRef<T>[]) => {
+  return refs.some((ref) => ref != null)
+}
+
+const assignNodeToRefs = <T>(refs: OptionalRef<T>[], node: T) => {
+  for (const ref of refs) {
+    if (ref) setRef(ref, node)
+  }
 }
 
 const setRef = <T>(ref: OptionalRef<T>, value: T): Cleanup => {
