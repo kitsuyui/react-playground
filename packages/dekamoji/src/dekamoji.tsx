@@ -114,9 +114,12 @@ const detectInheritedTextStyle = (element: HTMLElement): InheritedTextStyle => {
   const style = window.getComputedStyle(element)
   const fontSize = resolveFontSizePx(element, style)
   const lineHeight = resolveLineHeightPx(element, style)
-  const lineHeightRatio = Number.isFinite(lineHeight) && fontSize > 0
-    ? lineHeight / fontSize
-    : measureLineHeightRatio(element, style, fontSize)
+  const lineHeightRatio = resolveLineHeightRatio(
+    element,
+    style,
+    fontSize,
+    lineHeight
+  )
 
   return {
     fontFamily: style.fontFamily || undefined,
@@ -125,6 +128,36 @@ const detectInheritedTextStyle = (element: HTMLElement): InheritedTextStyle => {
     lineHeightRatio,
     whiteSpace: readCssProperty(style.whiteSpace),
   }
+}
+
+const resolveLineHeightRatio = (
+  element: HTMLElement,
+  style: CSSStyleDeclaration,
+  fontSize: number,
+  lineHeight: number
+) => {
+  if (Number.isFinite(lineHeight) && fontSize > 0) {
+    return lineHeight / fontSize
+  }
+  return measureLineHeightRatio(element, style, fontSize)
+}
+
+const findPositiveInlineStyleNumber = (
+  element: HTMLElement,
+  readValue: (current: HTMLElement) => string
+) => {
+  for (
+    let current: HTMLElement | null = element;
+    current;
+    current = current.parentElement
+  ) {
+    const inlineValue = Number.parseFloat(readValue(current))
+    if (inlineValue > 0) {
+      return inlineValue
+    }
+  }
+
+  return null
 }
 
 const resolveFontSizePx = (
@@ -136,12 +169,11 @@ const resolveFontSizePx = (
     return computedFontSize
   }
 
-  for (let current: HTMLElement | null = element; current; current = current.parentElement) {
-    const inlineFontSize = Number.parseFloat(current.style.fontSize)
-    if (inlineFontSize > 0) {
-      return inlineFontSize
-    }
-  }
+  const inlineFontSize = findPositiveInlineStyleNumber(
+    element,
+    (current) => current.style.fontSize
+  )
+  if (inlineFontSize !== null) return inlineFontSize
 
   throw new Error(`Expected a positive font-size from computed or inline styles, received: ${style.fontSize}`)
 }
@@ -155,25 +187,26 @@ const resolveLineHeightPx = (
     return computedLineHeight
   }
 
-  for (let current: HTMLElement | null = element; current; current = current.parentElement) {
-    const inlineLineHeight = Number.parseFloat(current.style.lineHeight)
-    if (inlineLineHeight > 0) {
-      return inlineLineHeight
-    }
-  }
+  const inlineLineHeight = findPositiveInlineStyleNumber(
+    element,
+    (current) => current.style.lineHeight
+  )
+  if (inlineLineHeight !== null) return inlineLineHeight
 
   return Number.NaN
 }
 
-const measureLineHeightRatio = (
-  element: HTMLElement,
-  style: CSSStyleDeclaration,
-  fontSize: number
-): number => {
-  if (!(fontSize > 0)) {
-    throw new Error(`Expected a positive computed font-size, received: ${style.fontSize}`)
+const assertPositiveMeasurement = (value: number, message: string) => {
+  if (!(value > 0)) {
+    throw new Error(message)
   }
+  return value
+}
 
+const createLineHeightProbe = (
+  style: CSSStyleDeclaration,
+  document: Document
+) => {
   const probe = document.createElement('span')
   probe.textContent = 'Hg'
   probe.style.position = 'absolute'
@@ -187,22 +220,42 @@ const measureLineHeightRatio = (
   probe.style.fontWeight = style.fontWeight
   probe.style.fontSize = style.fontSize
   probe.style.lineHeight = style.lineHeight
+  return probe
+}
 
-  const container = element.ownerDocument.createElement('div')
+const measureLineHeight = (
+  element: HTMLElement,
+  style: CSSStyleDeclaration
+) => {
+  const { ownerDocument } = element
+  const probe = createLineHeightProbe(style, ownerDocument)
+  const container = ownerDocument.createElement('div')
   container.style.position = 'absolute'
   container.style.visibility = 'hidden'
   container.style.inset = '0'
   container.appendChild(probe)
-  element.ownerDocument.body.appendChild(container)
-
+  ownerDocument.body.appendChild(container)
   const measuredLineHeight = probe.getBoundingClientRect().height
-  element.ownerDocument.body.removeChild(container)
+  ownerDocument.body.removeChild(container)
+  return measuredLineHeight
+}
 
-  if (!(measuredLineHeight > 0)) {
-    throw new Error(`Failed to measure line-height for font-size: ${style.fontSize}`)
-  }
-
-  return measuredLineHeight / fontSize
+const measureLineHeightRatio = (
+  element: HTMLElement,
+  style: CSSStyleDeclaration,
+  fontSize: number
+): number => {
+  const positiveFontSize = assertPositiveMeasurement(
+    fontSize,
+    `Expected a positive computed font-size, received: ${style.fontSize}`
+  )
+  const measuredLineHeight = measureLineHeight(element, style)
+  return (
+    assertPositiveMeasurement(
+      measuredLineHeight,
+      `Failed to measure line-height for font-size: ${style.fontSize}`
+    ) / positiveFontSize
+  )
 }
 
 const calcFontSizeWithPretext = (
@@ -233,15 +286,24 @@ const binarySearchFontSize = (
   let minOverflow = Math.max(1, Math.floor(upperBound))
 
   while (minAvailable + 1 < minOverflow) {
-    const candidate = Math.floor((minAvailable + minOverflow) / 2)
-    if (overflows(candidate)) {
-      minOverflow = candidate
-    } else {
-      minAvailable = candidate
-    }
+    ;[minAvailable, minOverflow] = getNextFontSizeBounds(
+      minAvailable,
+      minOverflow,
+      overflows
+    )
   }
 
   return minAvailable
+}
+
+const getNextFontSizeBounds = (
+  minAvailable: number,
+  minOverflow: number,
+  overflows: (candidate: number) => boolean
+) => {
+  const candidate = Math.floor((minAvailable + minOverflow) / 2)
+  if (overflows(candidate)) return [minAvailable, candidate] as const
+  return [candidate, minOverflow] as const
 }
 
 const createPretextFont = (

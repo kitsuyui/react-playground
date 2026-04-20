@@ -59,17 +59,36 @@ const NULL_RECT_INFO = {
 export const TreemapContext = React.createContext<RectInfo>(NULL_RECT_INFO)
 
 const nextBoustrophedonDirection = (rect1: Rect, rect2: Rect): Direction => {
-  // rect size may be floating point numbers, so we use Math.floor and Math.ceil
-  if (Math.floor(rect1.x + rect1.w) <= Math.ceil(rect2.x)) return 'right'
-  if (Math.ceil(rect1.x) >= Math.floor(rect2.x + rect2.w)) return 'left'
-  if (Math.floor(rect1.y + rect1.h) <= Math.ceil(rect2.y)) return 'down'
-  if (Math.ceil(rect1.y) >= Math.floor(rect2.y + rect2.h)) return 'up'
-  // if (rect1.x + rect1.w <= rect2.x) return 'right'
-  // if (rect1.x >= rect2.x + rect2.w) return 'left'
-  // if (rect1.y + rect1.h <= rect2.y) return 'down'
-  // if (rect1.y >= rect2.y + rect2.h) return 'up'
-  return 'right'
+  const direction = BOUSTROPHEDON_DIRECTION_PREDICATES.find(([, predicate]) =>
+    predicate(rect1, rect2)
+  )
+  return direction?.[0] ?? 'right'
 }
+
+const BOUSTROPHEDON_DIRECTION_PREDICATES = [
+  [
+    'right',
+    (rect1: Rect, rect2: Rect) =>
+      Math.floor(rect1.x + rect1.w) <= Math.ceil(rect2.x),
+  ],
+  [
+    'left',
+    (rect1: Rect, rect2: Rect) =>
+      Math.ceil(rect1.x) >= Math.floor(rect2.x + rect2.w),
+  ],
+  [
+    'down',
+    (rect1: Rect, rect2: Rect) =>
+      Math.floor(rect1.y + rect1.h) <= Math.ceil(rect2.y),
+  ],
+  [
+    'up',
+    (rect1: Rect, rect2: Rect) =>
+      Math.ceil(rect1.y) >= Math.floor(rect2.y + rect2.h),
+  ],
+] as const satisfies ReadonlyArray<
+  readonly [Direction, (rect1: Rect, rect2: Rect) => boolean]
+>
 
 const inverseDirection = (direction: Direction): Direction => {
   switch (direction) {

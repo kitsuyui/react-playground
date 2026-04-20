@@ -22,6 +22,123 @@ export const ZoomerContext = React.createContext<{
   computed: false,
 })
 
+type BinarySearchState = {
+  zoom: number
+  zoomUpperLimit: number
+  zoomLowerLimit: number
+  cachedSize: {
+    width: number
+    height: number
+  }
+  iterations: number
+  computed: boolean
+}
+
+const createBinarySearchState = (
+  width: number,
+  height: number
+): BinarySearchState => ({
+  zoom: INITIAL_ZOOM,
+  zoomUpperLimit: INITIAL_ZOOM_UPPER_LIMIT,
+  zoomLowerLimit: 0.0,
+  cachedSize: {
+    width,
+    height,
+  },
+  iterations: 0,
+  computed: false,
+})
+
+const hasCachedSizeChanged = (
+  state: BinarySearchState,
+  width: number,
+  height: number
+) => {
+  return state.cachedSize.width !== width || state.cachedSize.height !== height
+}
+
+const completeBinarySearch = (
+  state: BinarySearchState,
+  iterations = state.iterations
+): BinarySearchState => ({
+  ...state,
+  zoom: state.zoomLowerLimit,
+  computed: true,
+  iterations,
+})
+
+const resolveBinarySearchBoundaryState = (
+  state: BinarySearchState,
+  width: number,
+  height: number
+) => {
+  if (hasCachedSizeChanged(state, width, height)) {
+    return createBinarySearchState(width, height)
+  }
+
+  return state.computed ? state : null
+}
+
+const resolveBinarySearchTerminalState = (state: BinarySearchState) => {
+  if (state.iterations >= DEFAULT_MAX_ITERATIONS) {
+    return completeBinarySearch(state)
+  }
+  if (Math.abs(state.zoomUpperLimit - state.zoomLowerLimit) < BREAK_DIFFERENCE) {
+    return completeBinarySearch(state, state.iterations + 1)
+  }
+  return null
+}
+
+const isZoomOverflowing = (
+  innerElement: HTMLDivElement,
+  width: number,
+  height: number
+) => {
+  const verticalOverflow = innerElement.scrollHeight - height
+  const horizontalOverflow = innerElement.scrollWidth - width
+  return verticalOverflow > 0 || horizontalOverflow > 0
+}
+
+const advanceBinarySearchState = (
+  state: BinarySearchState,
+  isOverflowing: boolean
+): BinarySearchState => {
+  if (isOverflowing) {
+    const newUpperLimit = Math.min(state.zoom, state.zoomUpperLimit)
+    return {
+      ...state,
+      zoom: state.zoom / 2 + state.zoomLowerLimit / 2,
+      iterations: state.iterations + 1,
+      zoomUpperLimit: newUpperLimit,
+    }
+  }
+
+  const newLowerLimit = Math.max(state.zoom, state.zoomLowerLimit)
+  return {
+    ...state,
+    zoom: state.zoom / 2 + state.zoomUpperLimit / 2,
+    iterations: state.iterations + 1,
+    zoomLowerLimit: newLowerLimit,
+  }
+}
+
+const resolveNextBinarySearchState = (
+  state: BinarySearchState,
+  width: number,
+  height: number,
+  innerElement: HTMLDivElement | null
+) => {
+  const boundaryState = resolveBinarySearchBoundaryState(state, width, height)
+  if (boundaryState) return boundaryState
+  if (!innerElement) return null
+  const terminalState = resolveBinarySearchTerminalState(state)
+  if (terminalState) return terminalState
+  return advanceBinarySearchState(
+    state,
+    isZoomOverflowing(innerElement, width, height)
+  )
+}
+
 /**
  * AutoZoomer component that automatically adjusts the zoom level of its children not to overflow the container.
  * @param props
@@ -69,80 +186,18 @@ export const SizedZoomer = (props: {
 }) => {
   const { children, width, height } = props
   const innerRef = React.useRef<HTMLDivElement>(null)
-  const [binarySearchState, setBinarySearchState] = React.useState({
-    zoom: INITIAL_ZOOM,
-    zoomUpperLimit: INITIAL_ZOOM_UPPER_LIMIT,
-    zoomLowerLimit: 0.0,
-    cachedSize: {
+  const [binarySearchState, setBinarySearchState] = React.useState(
+    createBinarySearchState(width, height)
+  )
+  React.useLayoutEffect(() => {
+    const nextState = resolveNextBinarySearchState(
+      binarySearchState,
       width,
       height,
-    },
-    iterations: 0,
-    computed: false,
-  })
-  React.useLayoutEffect(() => {
-    if (binarySearchState.cachedSize.width !== width ||
-        binarySearchState.cachedSize.height !== height) {
-      setBinarySearchState({
-        zoom: INITIAL_ZOOM,
-        zoomUpperLimit: INITIAL_ZOOM_UPPER_LIMIT,
-        zoomLowerLimit: 0.0,
-        cachedSize: {
-          width,
-          height,
-        },
-        computed: false,
-        iterations: 0,
-      })
-      return
-    }
-    if (binarySearchState.computed) {
-      return
-    }
-    if (binarySearchState.iterations >= DEFAULT_MAX_ITERATIONS) {
-      // if the number of iterations exceeds the maximum, stop zooming
-      setBinarySearchState((prev) => ({
-        ...prev,
-        zoom: prev.zoomLowerLimit,
-        computed: true,
-      }))
-      return
-    }
-    const innerElement = innerRef.current
-    if (!innerElement) return
-    const { zoom, zoomUpperLimit, zoomLowerLimit } = binarySearchState
-    if (Math.abs(zoomUpperLimit - zoomLowerLimit) < BREAK_DIFFERENCE) {
-      // if the difference between upper and lower limit is too small, stop zooming
-      setBinarySearchState((prev) => ({
-        ...prev,
-        iterations: prev.iterations + 1,
-        zoom: prev.zoomLowerLimit,
-        computed: true,
-      }))
-      return
-    }
-    const verticalOverflow = innerElement.scrollHeight - height
-    const horizontalOverflow = innerElement.scrollWidth - width
-    const isOverflowing = verticalOverflow > 0 || horizontalOverflow > 0
-    // binary search
-    if (isOverflowing) {
-      const newUpperLimit = Math.min(zoom, zoomUpperLimit)
-      const next = zoom / 2 + zoomLowerLimit / 2
-      setBinarySearchState((prev) => ({
-        ...prev,
-        zoom: next,
-        iterations: prev.iterations + 1,
-        zoomUpperLimit: newUpperLimit,
-      }))
-    } else {
-      const newLowerLimit = Math.max(zoom, zoomLowerLimit)
-      const next = zoom / 2 + zoomUpperLimit / 2
-      setBinarySearchState((prev) => ({
-        ...prev,
-        zoom: next,
-        iterations: prev.iterations + 1,
-        zoomLowerLimit: newLowerLimit,
-      }))
+      innerRef.current
+    )
+    if (nextState !== null && nextState !== binarySearchState) {
+      setBinarySearchState(nextState)
     }
   }, [
     width,

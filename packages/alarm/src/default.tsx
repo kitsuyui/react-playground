@@ -30,67 +30,65 @@ export const DefaultAlarm: React.FC<AlarmContextValue> = (props): React.JSX.Elem
           minWidth: '9em',
         }}
       >
-        {ringing
-          ? 'Alarm'
-          : targetTimeMs === null
-            ? 'No alarm'
-            : `${toText(remaining)} -> ${formatAlarmTarget(targetTimeMs)}`}
+        {formatAlarmStatus(ringing, targetTimeMs, remaining)}
       </span>
-      <button
-        type="button"
-        onClick={() => {
-          scheduleAfter(60)
-        }}
-      >
+      <button type="button" onClick={() => scheduleAfter(60)}>
         +1 min
       </button>
-      <button
-        type="button"
-        onClick={() => {
-          scheduleAfter(5 * 60)
-        }}
-      >
+      <button type="button" onClick={() => scheduleAfter(5 * 60)}>
         +5 min
       </button>
       <button
         type="button"
         disabled={!notificationSupported}
-        onClick={() => {
-          toggleNotification()
-        }}
+        onClick={toggleNotification}
       >
         {notificationEnabled ? 'Notification On' : 'Notification Off'}
       </button>
-      <button
-        type="button"
-        onClick={() => {
-          reset()
-        }}
-      >
+      <button type="button" onClick={reset}>
         Clear
       </button>
-      {ringing
-        ? (
-            <button
-              type="button"
-              onClick={() => {
-                stopRinging()
-              }}
-            >
-              Stop Alarm
-            </button>
-          )
-        : (
-            <button
-              type="button"
-              disabled={targetTimeMs === null}
-              onClick={() => {
-                toggle()
-              }}
-            >
-              {armed ? 'Disarm' : 'Arm'}
-            </button>
-          )}
+      <AlarmActionButton
+        ringing={ringing}
+        armed={armed}
+        targetTimeMs={targetTimeMs}
+        stopRinging={stopRinging}
+        toggle={toggle}
+      />
     </>
+  )
+}
+
+const formatAlarmStatus = (
+  ringing: boolean,
+  targetTimeMs: number | null,
+  remaining: number
+) => {
+  if (ringing) return 'Alarm'
+  if (targetTimeMs === null) return 'No alarm'
+  return `${toText(remaining)} -> ${formatAlarmTarget(targetTimeMs)}`
+}
+
+const AlarmActionButton = (props: {
+  ringing: boolean
+  armed: boolean
+  targetTimeMs: number | null
+  stopRinging: () => void
+  toggle: () => void
+}) => {
+  const { ringing, armed, targetTimeMs, stopRinging, toggle } = props
+
+  if (ringing) {
+    return (
+      <button type="button" onClick={stopRinging}>
+        Stop Alarm
+      </button>
+    )
+  }
+
+  return (
+    <button type="button" disabled={targetTimeMs === null} onClick={toggle}>
+      {armed ? 'Disarm' : 'Arm'}
+    </button>
   )
 }

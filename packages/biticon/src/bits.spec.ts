@@ -52,3 +52,17 @@ describe('is128Bit', () => {
     expect(is128Bit(input)).toBe(false)
   })
 })
+
+describe('from2bitArrayTo128bit', () => {
+  it('throws when the array length is invalid', () => {
+    expect(() => from2bitArrayTo128bit(new Uint8Array(63))).toThrow(
+      'Array length must be 64'
+    )
+  })
+
+  it('throws when an element is outside the 2-bit range', () => {
+    const array = new Uint8Array(64)
+    array[0] = 4
+    expect(() => from2bitArrayTo128bit(array)).toThrow('Invalid bit value: 4')
+  })
+})

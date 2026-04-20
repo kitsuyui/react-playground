@@ -26,34 +26,66 @@ const config: StorybookConfig = {
     disableTelemetry: true,
   },
   async viteFinal(config, _) {
-    config.build = {
-      ...(config.build || {}),
-      target: 'esnext',
-    }
-    config.plugins = [
-      ...(config.plugins || []),
-      wasm(),
-      topLevelAwait(),
-      cjsInterop({
-        dependencies: [
-          'react-use',
-        ],
-      }),
-    ]
-    config.optimizeDeps = {
-      ...(config.optimizeDeps || {}),
-      include: [
-        ...(config.optimizeDeps?.include || []),
-        '@kitsuyui/rectangle-dividing',
-      ],
-    }
-    config.ssr = {
-      ...(config.ssr || {}),
-      noExternal: [
-        '@kitsuyui/rectangle-dividing',
-      ],
-    }
-    return config
+    return withStorybookViteTweaks(config)
   }
 }
 export default config
+
+const withStorybookViteTweaks = (
+  config: Parameters<NonNullable<StorybookConfig['viteFinal']>>[0]
+) => {
+  return withStorybookSsr(
+    withStorybookOptimizeDeps(withStorybookPlugins(withStorybookBuild(config)))
+  )
+}
+
+const withStorybookBuild = (
+  config: Parameters<NonNullable<StorybookConfig['viteFinal']>>[0]
+) => {
+  config.build = {
+    ...(config.build || {}),
+    target: 'esnext',
+  }
+  return config
+}
+
+const withStorybookPlugins = (
+  config: Parameters<NonNullable<StorybookConfig['viteFinal']>>[0]
+) => {
+  config.plugins = [
+    ...(config.plugins || []),
+    wasm(),
+    topLevelAwait(),
+    cjsInterop({
+      dependencies: [
+        'react-use',
+      ],
+    }),
+  ]
+  return config
+}
+
+const withStorybookOptimizeDeps = (
+  config: Parameters<NonNullable<StorybookConfig['viteFinal']>>[0]
+) => {
+  config.optimizeDeps = {
+    ...(config.optimizeDeps || {}),
+    include: [
+      ...(config.optimizeDeps?.include || []),
+      '@kitsuyui/rectangle-dividing',
+    ],
+  }
+  return config
+}
+
+const withStorybookSsr = (
+  config: Parameters<NonNullable<StorybookConfig['viteFinal']>>[0]
+) => {
+  config.ssr = {
+    ...(config.ssr || {}),
+    noExternal: [
+      '@kitsuyui/rectangle-dividing',
+    ],
+  }
+  return config
+}

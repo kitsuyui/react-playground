@@ -27,18 +27,29 @@ export const from128bitTo2bitArray = (value: bigint): Uint8Array => {
  * @throws Error if the array length is not 64 or if any element is not in the range of 0-3
  */
 export const from2bitArrayTo128bit = (array: Uint8Array): bigint => {
-  if (array.length !== 64) {
-    throw new Error('Array length must be 64')
-  }
+  validate2bitArray(array)
   let value = BigInt(0)
   for (let i = 0; i < array.length; i++) {
     const bit = array[i]
-    if (bit < 0 || bit > 3) {
-      throw new Error(`Invalid bit value: ${bit}`)
-    }
     const addBit = BigInt(bit) << BigInt(i * 2) // shift the value to the left by 2 bits for each iteration
     // add the bit
     value |= BigInt(addBit) // bitwise OR to combine the bits
   }
   return value
+}
+
+const validate2bitArray = (array: Uint8Array) => {
+  if (array.length !== 64) {
+    throw new Error('Array length must be 64')
+  }
+
+  for (const bit of array) {
+    validate2bitValue(bit)
+  }
+}
+
+const validate2bitValue = (bit: number) => {
+  if (bit < 0 || bit > 3) {
+    throw new Error(`Invalid bit value: ${bit}`)
+  }
 }
