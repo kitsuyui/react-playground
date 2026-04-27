@@ -27,7 +27,7 @@
     "test:coverage:browser": "vitest run --config vitest.browser.config.mts --coverage.enabled --coverage.reporter=clover --coverage.reporter=text --coverage.reportsDirectory=coverage/browser",
     "test:coverage:browser:docker": "./scripts/test-browser-docker.sh --coverage.enabled --coverage.reporter=clover --coverage.reporter=text --coverage.reportsDirectory=coverage/browser",
     "test:coverage:unit": "vitest run --coverage packages/*/src --coverage.reporter=clover --coverage.reporter=text --coverage.reportsDirectory=coverage/unit",
-    "typecheck": "tsc --noEmit packages/*/src/**/*.ts --skipLibCheck --jsx react-jsx",
+    "typecheck": "tsc --project tsconfig.json",
     "typedoc": "typedoc",
     "typedoc:server": "serve -p 8000 build/typedocs",
     "validate": "bun run --workspaces --if-present validate"

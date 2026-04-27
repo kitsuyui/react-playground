@@ -17,7 +17,15 @@
     "isolatedModules": true,
     "noEmit": true
   },
+  "include": [
+    "packages/*/src/**/*.ts",
+    "packages/*/src/**/*.tsx"
+  ],
   "exclude": [
-    "**/*.spec.ts", "node_modules"
+    "**/__screenshots__/**",
+    "**/*.spec.ts",
+    "**/*.spec.tsx",
+    "**/stories/**",
+    "node_modules"
   ]
 }
