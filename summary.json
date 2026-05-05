@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-05-05T01:46:51.100Z",
+  "generated_at": "2026-05-05T02:17:21.517Z",
   "repository": "kitsuyui/react-playground",
   "default_branch": "main",
   "publish_branch": "gh-build-size-assets",
   "event_name": "push",
   "base_label": "main",
-  "base_reference": "a7eaa478dae26a9e3a98a065867f7e65b046b66f",
+  "base_reference": "39b97035642bc16467b132014d1191e4890d43fc",
   "head_label": "main",
-  "head_reference": "39b97035642bc16467b132014d1191e4890d43fc",
+  "head_reference": "e6d73304101c09f3a7263153bcc21138be899efd",
   "targets": [
     {
       "id": "total",
