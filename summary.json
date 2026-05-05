@@ -1,12 +1,15 @@
 {
-  "generated_at": "2026-05-05T02:16:34.266Z",
+  "generated_at": "2026-05-05T04:30:18.152Z",
   "repository": "kitsuyui/react-playground",
   "default_branch": "main",
   "publish_branch": "gh-counter-assets",
   "event_name": "push",
-  "base_reference": "39b97035642bc16467b132014d1191e4890d43fc",
-  "head_reference": "e6d73304101c09f3a7263153bcc21138be899efd",
+  "base_label": "main",
+  "base_reference": "e6d73304101c09f3a7263153bcc21138be899efd",
+  "head_label": "main",
+  "head_reference": "08aa2ce9c9fd80b9a692b7814acbfae9be4895ed",
   "bootstrap_message": null,
+  "base_only_paths": [],
   "counters": [
     {
       "id": "maintenance-comments",
@@ -14,8 +17,32 @@
       "current": 3,
       "base": 3,
       "delta": 0,
+      "dashboard_current": 3,
+      "dashboard_base": 3,
+      "dashboard_delta": 0,
       "commentable": true,
       "touched_files": [],
+      "file_deltas": [
+        {
+          "path": "packages/biticon/src/bits.ts",
+          "current": 1,
+          "base": 0,
+          "delta": 1
+        },
+        {
+          "path": "packages/stopwatch/src/context.tsx",
+          "current": 1,
+          "base": 0,
+          "delta": 1
+        },
+        {
+          "path": "packages/timer/src/context.tsx",
+          "current": 1,
+          "base": 0,
+          "delta": 1
+        }
+      ],
+      "patch_file_deltas": [],
       "violations": [],
       "badge_path": ".gh-counter/badges/maintenance-comments.svg",
       "counter_path": ".gh-counter/counters/maintenance-comments.json"
