@@ -28,6 +28,14 @@ jobs:
           node-version: '24.13.1'
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Restore Bun dependency cache
+        uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-
+
       - name: install and build
         run: |
           bun install --frozen-lockfile
