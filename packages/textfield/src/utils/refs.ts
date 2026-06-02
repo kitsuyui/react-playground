@@ -14,10 +14,11 @@ type Cleanup = (() => void) | undefined
  * @returns combined ref
  */
 export const useCombinedRefs = <T>(...refs: OptionalRef<T>[]) => {
+  // biome-ignore lint/correctness/useExhaustiveDependencies: refs is a rest parameter; spreading its elements as deps is the correct fix for the new-array-every-render problem
   return useMemo(() => {
     if (!hasAnyRef(refs)) return null
     return (node: T) => assignNodeToRefs(refs, node)
-  }, [refs])
+  }, [...refs])
 }
 
 const hasAnyRef = <T>(refs: OptionalRef<T>[]) => {
