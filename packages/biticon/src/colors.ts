@@ -10,8 +10,8 @@ export const COLORS = [
 
 /**
  * Convert value to color
- * @param value 0-7
- * @returns color string
+ * @param value 0-3
+ * @returns color string for a 2-bit value
  */
 export const valueToColor = (value: number): string => {
   return COLORS[value]
