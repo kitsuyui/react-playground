@@ -6,6 +6,32 @@ import {
   is128Bit,
 } from './bits'
 
+const MASK_64 = BigInt('0xffffffffffffffff')
+const MASK_128 = BigInt('0xffffffffffffffffffffffffffffffff')
+const SHIFT_13 = BigInt(13)
+const SHIFT_7 = BigInt(7)
+const SHIFT_17 = BigInt(17)
+const SHIFT_64 = BigInt(64)
+
+const createSeeded128BitSamples = (count: number) => {
+  let state = BigInt('0x9e3779b97f4a7c15')
+
+  const next64 = () => {
+    state ^= state << SHIFT_13
+    state &= MASK_64
+    state ^= state >> SHIFT_7
+    state &= MASK_64
+    state ^= state << SHIFT_17
+    state &= MASK_64
+    return state
+  }
+
+  return Array.from({ length: count }, (_, index) => {
+    const value = ((next64() << SHIFT_64) | next64()) & MASK_128
+    return [`${index}: 0x${value.toString(16).padStart(32, '0')}`, value] as const
+  })
+}
+
 describe('from128bitTo2bitArray', () => {
   it('should convert 128-bit bigint to Uint8Array', () => {
     const input = BigInt('0xfedcba9876543210fedcba9876543210')
@@ -24,19 +50,16 @@ describe('from128bitTo2bitArray', () => {
     const array = from128bitTo2bitArray(input)
     const output = from2bitArrayTo128bit(array)
     expect(output).toBe(input)
-
-    // random test
-    const iterations = 100
-    for (let i = 0; i < iterations; i++) {
-      const randomBigInt = BigInt(
-        Math.floor(Math.random() * Number.MAX_SAFE_INTEGER)
-      )
-      const random128Bit = randomBigInt & BigInt('0xffffffffffffffffffffffffffffffff')
-      const randomArray = from128bitTo2bitArray(random128Bit)
-      const convertedBack = from2bitArrayTo128bit(randomArray)
-      expect(convertedBack).toBe(random128Bit)
-    }
   })
+
+  it.each(createSeeded128BitSamples(100))(
+    'is inversible for seeded sample %s',
+    (_, input) => {
+      const array = from128bitTo2bitArray(input)
+      const convertedBack = from2bitArrayTo128bit(array)
+      expect(convertedBack).toBe(input)
+    }
+  )
 })
 
 describe('is128Bit', () => {
