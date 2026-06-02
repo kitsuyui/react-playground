@@ -1,14 +1,11 @@
+import { act, render } from '@testing-library/react'
+import React from 'react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
-
-import { render } from '@testing-library/react'
-
-import { act } from '@testing-library/react'
 import {
   TimerContext,
   TimerContextProvider,
   type TimerContextValue,
 } from './context'
-import React from 'react'
 
 describe('TimerContextProvider', () => {
   let restoreNavigatorVibrate = () => {}
@@ -36,6 +33,29 @@ describe('TimerContextProvider', () => {
     )
     vi.advanceTimersByTime(10) // refresh interval
     expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('calls onComplete exactly once even when many intervals fire after expiry', async () => {
+    const onComplete = vi.fn()
+    const { getContext } = renderTimerContext({
+      refreshInterval: 10,
+      onComplete,
+    })
+
+    act(() => {
+      getContext().setTimerValue(1)
+    })
+    act(() => {
+      getContext().start()
+    })
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(2_000)
+    })
+
+    expect(getContext().running).toBe(false)
+    expect(getContext().remaining).toBe(0)
+    expect(onComplete).toHaveBeenCalledTimes(1)
   })
 
   it('supports timer actions and completion side effects', async () => {
@@ -132,7 +152,9 @@ const renderTimerContext = (
   }
 }
 
-const stubNavigatorVibrate = (vibrate: (pattern: number | number[]) => boolean) => {
+const stubNavigatorVibrate = (
+  vibrate: (pattern: number | number[]) => boolean
+) => {
   const originalVibrate = Object.getOwnPropertyDescriptor(navigator, 'vibrate')
   Object.defineProperty(navigator, 'vibrate', {
     configurable: true,

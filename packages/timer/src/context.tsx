@@ -29,14 +29,30 @@ export const TimerContext = React.createContext<TimerContextValue>({
   running: false,
   vibrationEnabled: false,
   vibrationSupported: false,
-  start: () => { /* do nothing */ },
-  stop: () => { /* do nothing */ },
-  toggle: () => { /* do nothing */ },
-  reset: () => { /* do nothing */ },
-  incrementTimerValue: (_value: number) => { /* do nothing */ },
-  setTimerValue: (_value: number) => { /* do nothing */ },
-  setVibrationEnabled: (_value: boolean) => { /* do nothing */ },
-  toggleVibration: () => { /* do nothing */ },
+  start: () => {
+    /* do nothing */
+  },
+  stop: () => {
+    /* do nothing */
+  },
+  toggle: () => {
+    /* do nothing */
+  },
+  reset: () => {
+    /* do nothing */
+  },
+  incrementTimerValue: (_value: number) => {
+    /* do nothing */
+  },
+  setTimerValue: (_value: number) => {
+    /* do nothing */
+  },
+  setVibrationEnabled: (_value: boolean) => {
+    /* do nothing */
+  },
+  toggleVibration: () => {
+    /* do nothing */
+  },
 })
 
 export interface TimerContextProviderProps {
@@ -95,28 +111,32 @@ const notifyTimerCompletion = (
 }
 
 const completeTimer = (props: {
+  runningRef: React.MutableRefObject<boolean>
+  targetTimeMsRef: React.MutableRefObject<number | null>
   setRemaining: React.Dispatch<React.SetStateAction<number>>
   setRunning: React.Dispatch<React.SetStateAction<boolean>>
-  setTargetTimeMs: React.Dispatch<React.SetStateAction<number | null>>
+  setTargetTimeMsState: React.Dispatch<React.SetStateAction<number | null>>
   notifyCompletion: () => void
 }) => {
+  props.runningRef.current = false
+  props.targetTimeMsRef.current = null
   props.setRemaining(0)
   props.setRunning(false)
-  props.setTargetTimeMs(null)
+  props.setTargetTimeMsState(null)
   props.notifyCompletion()
 }
 
 const createTimerTick = (props: {
-  running: boolean
-  targetTimeMs: number | null
+  runningRef: React.MutableRefObject<boolean>
+  targetTimeMsRef: React.MutableRefObject<number | null>
   getCurrentRemaining: (nowMs?: number) => number
   setRemaining: React.Dispatch<React.SetStateAction<number>>
   setRunning: React.Dispatch<React.SetStateAction<boolean>>
-  setTargetTimeMs: React.Dispatch<React.SetStateAction<number | null>>
+  setTargetTimeMsState: React.Dispatch<React.SetStateAction<number | null>>
   notifyCompletion: () => void
 }) => {
   return () => {
-    if (shouldSkipTimerTick(props.running, props.targetTimeMs)) return
+    if (shouldSkipTimerTick(props.runningRef, props.targetTimeMsRef)) return
     const nextRemaining = props.getCurrentRemaining()
     props.setRemaining(nextRemaining)
     handleTimerCompletion(nextRemaining, props)
@@ -124,18 +144,20 @@ const createTimerTick = (props: {
 }
 
 const shouldSkipTimerTick = (
-  running: boolean,
-  targetTimeMs: number | null
+  runningRef: React.MutableRefObject<boolean>,
+  targetTimeMsRef: React.MutableRefObject<number | null>
 ) => {
-  return !running || targetTimeMs === null
+  return !runningRef.current || targetTimeMsRef.current === null
 }
 
 const handleTimerCompletion = (
   nextRemaining: number,
   props: {
+    runningRef: React.MutableRefObject<boolean>
+    targetTimeMsRef: React.MutableRefObject<number | null>
     setRemaining: React.Dispatch<React.SetStateAction<number>>
     setRunning: React.Dispatch<React.SetStateAction<boolean>>
-    setTargetTimeMs: React.Dispatch<React.SetStateAction<number | null>>
+    setTargetTimeMsState: React.Dispatch<React.SetStateAction<number | null>>
     notifyCompletion: () => void
   }
 ) => {
@@ -145,33 +167,40 @@ const handleTimerCompletion = (
 
 const createTimerStart = (props: {
   remaining: number
-  running: boolean
-  setTargetTimeMs: React.Dispatch<React.SetStateAction<number | null>>
+  runningRef: React.MutableRefObject<boolean>
+  targetTimeMsRef: React.MutableRefObject<number | null>
+  setTargetTimeMsState: React.Dispatch<React.SetStateAction<number | null>>
   setRunning: React.Dispatch<React.SetStateAction<boolean>>
   onStart: TimerEventHandler
 }) => {
   return () => {
-    if (props.remaining <= 0 || props.running) return
+    if (props.remaining <= 0 || props.runningRef.current) return
     const nowMs = Date.now()
-    props.setTargetTimeMs(nowMs + props.remaining * 1000)
+    const nextTargetTimeMs = nowMs + props.remaining * 1000
+    props.targetTimeMsRef.current = nextTargetTimeMs
+    props.runningRef.current = true
+    props.setTargetTimeMsState(nextTargetTimeMs)
     props.setRunning(true)
     props.onStart(new CustomEvent('start', {}))
   }
 }
 
 const createTimerStop = (props: {
-  running: boolean
+  runningRef: React.MutableRefObject<boolean>
+  targetTimeMsRef: React.MutableRefObject<number | null>
   getCurrentRemaining: (nowMs?: number) => number
   setRemaining: React.Dispatch<React.SetStateAction<number>>
   setRunning: React.Dispatch<React.SetStateAction<boolean>>
-  setTargetTimeMs: React.Dispatch<React.SetStateAction<number | null>>
+  setTargetTimeMsState: React.Dispatch<React.SetStateAction<number | null>>
   onStop: TimerEventHandler
 }) => {
   return () => {
-    if (!props.running) return
+    if (!props.runningRef.current) return
     props.setRemaining(props.getCurrentRemaining())
+    props.runningRef.current = false
+    props.targetTimeMsRef.current = null
     props.setRunning(false)
-    props.setTargetTimeMs(null)
+    props.setTargetTimeMsState(null)
     props.onStop(new CustomEvent('stop', {}))
   }
 }
@@ -191,13 +220,17 @@ const createTimerToggle = (
 }
 
 const createSetTimerValue = (
+  runningRef: React.MutableRefObject<boolean>,
+  targetTimeMsRef: React.MutableRefObject<number | null>,
   setRunning: React.Dispatch<React.SetStateAction<boolean>>,
-  setTargetTimeMs: React.Dispatch<React.SetStateAction<number | null>>,
+  setTargetTimeMsState: React.Dispatch<React.SetStateAction<number | null>>,
   setRemaining: React.Dispatch<React.SetStateAction<number>>
 ) => {
   return (value: number) => {
+    runningRef.current = false
+    targetTimeMsRef.current = null
     setRunning(false)
-    setTargetTimeMs(null)
+    setTargetTimeMsState(null)
     setRemaining(Math.max(0, value || 0))
   }
 }
@@ -219,59 +252,80 @@ const createToggleVibrationAction = (
 }
 
 const createIncrementTimerValue = (props: {
+  runningRef: React.MutableRefObject<boolean>
+  targetTimeMsRef: React.MutableRefObject<number | null>
   getCurrentRemaining: (nowMs?: number) => number
   setRunning: React.Dispatch<React.SetStateAction<boolean>>
-  setTargetTimeMs: React.Dispatch<React.SetStateAction<number | null>>
+  setTargetTimeMsState: React.Dispatch<React.SetStateAction<number | null>>
   setRemaining: React.Dispatch<React.SetStateAction<number>>
 }) => {
   return (value: number) => {
     const baseRemaining = props.getCurrentRemaining()
+    props.runningRef.current = false
+    props.targetTimeMsRef.current = null
     props.setRunning(false)
-    props.setTargetTimeMs(null)
+    props.setTargetTimeMsState(null)
     props.setRemaining(Math.max(0, baseRemaining + value))
   }
 }
 
-const createResetTimer = (
-  setRunning: React.Dispatch<React.SetStateAction<boolean>>,
-  setTargetTimeMs: React.Dispatch<React.SetStateAction<number | null>>,
-  setRemaining: React.Dispatch<React.SetStateAction<number>>,
+const createResetTimer = (props: {
+  runningRef: React.MutableRefObject<boolean>
+  targetTimeMsRef: React.MutableRefObject<number | null>
+  setRunning: React.Dispatch<React.SetStateAction<boolean>>
+  setTargetTimeMsState: React.Dispatch<React.SetStateAction<number | null>>
+  setRemaining: React.Dispatch<React.SetStateAction<number>>
   onReset: TimerEventHandler
-) => {
+}) => {
   return () => {
-    setRunning(false)
-    setTargetTimeMs(null)
-    setRemaining(0)
-    onReset(new CustomEvent('reset', {}))
+    props.runningRef.current = false
+    props.targetTimeMsRef.current = null
+    props.setRunning(false)
+    props.setTargetTimeMsState(null)
+    props.setRemaining(0)
+    props.onReset(new CustomEvent('reset', {}))
   }
 }
 
 const calculateElapsedVibrationSupported = () => {
-  return typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function'
+  return (
+    typeof navigator !== 'undefined' && typeof navigator.vibrate === 'function'
+  )
 }
 
 export const TimerContextProvider: React.FC<TimerContextProviderProps> = (
   props
 ): React.JSX.Element => {
   const { children } = props
-  const emptyFn = (_event: CustomEvent) => { /* do nothing */ }
+  const emptyFn = (_event: CustomEvent) => {
+    /* do nothing */
+  }
   const onStart = resolveHandler(props.onStart, emptyFn)
   const onStop = resolveHandler(props.onStop, emptyFn)
   const onComplete = resolveHandler(props.onComplete, emptyFn)
   const onReset = resolveHandler(props.onReset, emptyFn)
   const [running, setRunning] = React.useState(false)
   const [remaining, setRemaining] = React.useState(0)
-  const [targetTimeMs, setTargetTimeMs] = React.useState<number | null>(null)
+  const [targetTimeMs, setTargetTimeMsState] = React.useState<number | null>(
+    null
+  )
   const [vibrationEnabled, setVibrationEnabled] = React.useState(
     resolveDefaultVibrationEnabled(props.defaultVibrationEnabled)
   )
+  const runningRef = React.useRef(running)
+  const targetTimeMsRef = React.useRef<number | null>(targetTimeMs)
   const vibrationPattern = resolveVibrationPattern(props.vibrationPattern)
   const vibrationSupported = calculateElapsedVibrationSupported()
 
   const refreshInterval = resolveTimerRefreshInterval(props.refreshInterval)
 
   const getCurrentRemaining = (nowMs = Date.now()) =>
-    getTimerCurrentRemaining(running, targetTimeMs, remaining, nowMs)
+    getTimerCurrentRemaining(
+      runningRef.current,
+      targetTimeMsRef.current,
+      remaining,
+      nowMs
+    )
 
   const notifyCompletion = () =>
     notifyTimerCompletion(
@@ -282,12 +336,12 @@ export const TimerContextProvider: React.FC<TimerContextProviderProps> = (
     )
 
   const tick = createTimerTick({
-    running,
-    targetTimeMs,
+    runningRef,
+    targetTimeMsRef,
     getCurrentRemaining,
     setRemaining,
     setRunning,
-    setTargetTimeMs,
+    setTargetTimeMsState,
     notifyCompletion,
   })
 
@@ -295,32 +349,45 @@ export const TimerContextProvider: React.FC<TimerContextProviderProps> = (
 
   const start = createTimerStart({
     remaining,
-    running,
-    setTargetTimeMs,
+    runningRef,
+    targetTimeMsRef,
+    setTargetTimeMsState,
     setRunning,
     onStart,
   })
 
   const stop = createTimerStop({
-    running,
+    runningRef,
+    targetTimeMsRef,
     getCurrentRemaining,
     setRemaining,
     setRunning,
-    setTargetTimeMs,
+    setTargetTimeMsState,
     onStop,
   })
 
   const toggle = createTimerToggle(running, start, stop)
-  const reset = createResetTimer(setRunning, setTargetTimeMs, setRemaining, onReset)
-  const setTimerValue = createSetTimerValue(
+  const reset = createResetTimer({
+    runningRef,
+    targetTimeMsRef,
     setRunning,
-    setTargetTimeMs,
+    setTargetTimeMsState,
+    setRemaining,
+    onReset,
+  })
+  const setTimerValue = createSetTimerValue(
+    runningRef,
+    targetTimeMsRef,
+    setRunning,
+    setTargetTimeMsState,
     setRemaining
   )
   const incrementTimerValue = createIncrementTimerValue({
+    runningRef,
+    targetTimeMsRef,
     getCurrentRemaining,
     setRunning,
-    setTargetTimeMs,
+    setTargetTimeMsState,
     setRemaining,
   })
   const setVibrationEnabledAction =
