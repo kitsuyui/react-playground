@@ -95,7 +95,7 @@ export const WaveBoxProvider = (props: {
   const interval = props.interval ?? DEFAULT_INTERVAL
   const [tick, setTick] = React.useState<number>(0)
   useInterval(() => {
-    setTick((prevTick) => prevTick + 1)
+    setTick((prevTick) => (prevTick + 1) % Number.MAX_SAFE_INTEGER)
   }, interval)
   return (
     <WaveBoxContext
