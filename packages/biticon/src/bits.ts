@@ -3,18 +3,23 @@ export const is128Bit = (value: bigint): boolean => {
 }
 
 /**
- * Convert 128bit value to int8 array
+ * Convert 128bit value to int8 array in little-endian bit order.
+ *
+ * The array is ordered with the least significant bits first:
+ * - bytes[0]  = bits [1:0]   (least significant 2 bits)
+ * - bytes[63] = bits [127:126] (most significant 2 bits)
+ *
+ * This is the inverse of {@link from2bitArrayTo128bit}.
+ *
  * @param value 128bit value
- * @returns Uint8Array but each element is 2 bits (0-3) and the array has 64 elements (2 * 64 = 128 bits)
+ * @returns Uint8Array with 64 elements, each holding a 2-bit value (0-3)
  */
 export const from128bitTo2bitArray = (value: bigint): Uint8Array => {
-  // FIXME: There might be bugs related to endianness... (first character will be the last in the array)
   const mask = BigInt(0b11) // 2 bits (0b00, 0b01, 0b10, 0b11)
   const bytes = new Uint8Array(64)
   for (let i = 0; i < 64; i++) {
-    // take 2 bits from the value
     const bit = BigInt(i) * BigInt(2)
-    const value_ = (value >> bit ) & mask  // shift the value to the right by 2 bits for each iteration
+    const value_ = (value >> bit) & mask
     bytes[i] = Number(value_)
   }
   return bytes
