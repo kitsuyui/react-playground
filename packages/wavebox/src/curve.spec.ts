@@ -18,4 +18,14 @@ describe('curve', () => {
     const result4 = curve(minValue, maxValue, cycle, cycle)
     expect(result4).toBeCloseTo(5, 5) // At t=cycle, the sine wave should be at its midpoint again
   })
+
+  it('should throw RangeError when cycle is zero', () => {
+    expect(() => curve(0, 10, 0, 1)).toThrow(RangeError)
+    expect(() => curve(0, 10, 0, 1)).toThrow('cycle must be a positive number, got 0')
+  })
+
+  it('should throw RangeError when cycle is negative', () => {
+    expect(() => curve(0, 10, -1, 1)).toThrow(RangeError)
+    expect(() => curve(0, 10, -100, 5)).toThrow('cycle must be a positive number, got -100')
+  })
 })
