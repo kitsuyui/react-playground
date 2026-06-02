@@ -276,9 +276,9 @@ const Lines = (props: {
     const degree = (360 / count) * i
     const radDegree = degreeToRadian(degree)
     const x1 = centerX + radius * Math.sin(radDegree)
-    const y1 = centerY + radius * Math.cos(radDegree)
+    const y1 = centerY - radius * Math.cos(radDegree) // clock coordinate
     const x2 = x1 + length * Math.sin(radDegree)
-    const y2 = y1 + length * Math.cos(radDegree)
+    const y2 = y1 - length * Math.cos(radDegree) // clock coordinate
     lines.push(
       <line
         key={i}
