@@ -26,36 +26,24 @@ export interface TimerActions {
 
 export type TimerContextValue = TimerValue & TimerActions
 
+const missingProvider = (name: string) => (): never => {
+  throw new Error(`${name} must be used within a TimerContextProvider`)
+}
+
 // TODO: Support leap second: https://github.com/kitsuyui/react-playground/issues/40
 export const TimerContext = React.createContext<TimerContextValue>({
   remaining: 0,
   running: false,
   vibrationEnabled: false,
   vibrationSupported: false,
-  start: () => {
-    /* do nothing */
-  },
-  stop: () => {
-    /* do nothing */
-  },
-  toggle: () => {
-    /* do nothing */
-  },
-  reset: () => {
-    /* do nothing */
-  },
-  incrementTimerValue: (_value: number) => {
-    /* do nothing */
-  },
-  setTimerValue: (_value: number) => {
-    /* do nothing */
-  },
-  setVibrationEnabled: (_value: boolean) => {
-    /* do nothing */
-  },
-  toggleVibration: () => {
-    /* do nothing */
-  },
+  start: missingProvider('start'),
+  stop: missingProvider('stop'),
+  toggle: missingProvider('toggle'),
+  reset: missingProvider('reset'),
+  incrementTimerValue: missingProvider('incrementTimerValue'),
+  setTimerValue: missingProvider('setTimerValue'),
+  setVibrationEnabled: missingProvider('setVibrationEnabled'),
+  toggleVibration: missingProvider('toggleVibration'),
 })
 
 export interface TimerContextProviderProps {
