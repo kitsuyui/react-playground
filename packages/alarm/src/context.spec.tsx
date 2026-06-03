@@ -46,6 +46,32 @@ describe('AlarmContextProvider', () => {
     expect(onRing).toHaveBeenCalledTimes(1)
   })
 
+  it('keeps scheduled alarms monotonic when the wall clock moves backward', async () => {
+    const onRing = vi.fn()
+    const { getContext } = renderAlarmContext({
+      onRing,
+      refreshInterval: 10,
+    })
+
+    act(() => {
+      getContext().scheduleAfter(1)
+    })
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(500)
+    })
+
+    vi.setSystemTime(new Date('2025-12-31T23:00:00Z'))
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(600)
+    })
+
+    expect(getContext().armed).toBe(false)
+    expect(getContext().ringing).toBe(true)
+    expect(onRing).toHaveBeenCalledTimes(1)
+  })
+
   it('supports arm, disarm, notification, and reset actions', async () => {
     const onArm = vi.fn()
     const onDisarm = vi.fn()

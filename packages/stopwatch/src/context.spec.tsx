@@ -83,6 +83,29 @@ describe('StopwatchContextProvider', () => {
     expect(getContext().elapsedTime).toBe(0)
     expect(onReset).toHaveBeenCalledTimes(1)
   })
+
+  it('keeps elapsed time monotonic when the wall clock moves backward', async () => {
+    vi.setSystemTime(new Date('2026-01-01T00:00:00Z'))
+    const { getContext } = renderStopwatchContext({
+      refreshInterval: 10,
+    })
+
+    act(() => {
+      getContext().start()
+    })
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(500)
+    })
+
+    vi.setSystemTime(new Date('2025-12-31T23:00:00Z'))
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(700)
+    })
+
+    expect(getContext().elapsedTime).toBeCloseTo(1.2, 1)
+  })
 })
 
 const renderStopwatchContext = (

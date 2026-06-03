@@ -1,7 +1,8 @@
 import React from 'react'
 import { useInterval } from 'react-use'
 
-import { calcRemainingUntil } from './time'
+import { getMonotonicNowMs } from './clock'
+import { calcRemainingDuration, calcRemainingUntil } from './time'
 
 export interface AlarmValue {
   armed: boolean
@@ -81,11 +82,28 @@ const getActiveAlarmInterval = (armed: boolean, refreshInterval: number) => {
 }
 
 const getAlarmCurrentRemaining = (
-  targetTimeMs: number | null,
-  nowMs = Date.now()
+  targetMonotonicMs: number | null,
+  nowMonotonicMs = getMonotonicNowMs()
 ) => {
-  if (targetTimeMs === null) return 0
-  return calcRemainingUntil(targetTimeMs, nowMs)
+  if (targetMonotonicMs === null) return 0
+  return calcRemainingDuration(targetMonotonicMs, nowMonotonicMs)
+}
+
+const createAlarmTargetFromWallClock = (targetTimeMs: number) => {
+  const remaining = calcRemainingUntil(targetTimeMs, Date.now())
+  return {
+    remaining,
+    targetMonotonicMs: getMonotonicNowMs() + remaining * 1000,
+  }
+}
+
+const createAlarmTargetAfter = (seconds: number) => {
+  const remaining = Math.max(0, seconds)
+  return {
+    remaining,
+    targetMonotonicMs: getMonotonicNowMs() + remaining * 1000,
+    targetTimeMs: Date.now() + remaining * 1000,
+  }
 }
 
 const notifyAlarmRing = (
@@ -107,6 +125,7 @@ const notifyAlarmRing = (
 
 const finishAlarmRing = (props: {
   armedRef: React.MutableRefObject<boolean>
+  targetMonotonicMsRef: React.MutableRefObject<number | null>
   setRemaining: React.Dispatch<React.SetStateAction<number>>
   setArmed: React.Dispatch<React.SetStateAction<boolean>>
   setRinging: React.Dispatch<React.SetStateAction<boolean>>
@@ -114,6 +133,7 @@ const finishAlarmRing = (props: {
 }) => {
   props.setRemaining(0)
   props.armedRef.current = false
+  props.targetMonotonicMsRef.current = null
   props.setArmed(false)
   props.setRinging(true)
   props.notifyRing()
@@ -121,15 +141,15 @@ const finishAlarmRing = (props: {
 
 const createAlarmTick = (props: {
   armedRef: React.MutableRefObject<boolean>
-  targetTimeMsRef: React.MutableRefObject<number | null>
-  getCurrentRemaining: (nowMs?: number) => number
+  targetMonotonicMsRef: React.MutableRefObject<number | null>
+  getCurrentRemaining: (nowMonotonicMs?: number) => number
   setRemaining: React.Dispatch<React.SetStateAction<number>>
   setArmed: React.Dispatch<React.SetStateAction<boolean>>
   setRinging: React.Dispatch<React.SetStateAction<boolean>>
   notifyRing: () => void
 }) => {
   return () => {
-    if (shouldSkipAlarmTick(props.armedRef, props.targetTimeMsRef)) return
+    if (shouldSkipAlarmTick(props.armedRef, props.targetMonotonicMsRef)) return
     const nextRemaining = props.getCurrentRemaining()
     props.setRemaining(nextRemaining)
     handleAlarmRing(nextRemaining, props)
@@ -138,15 +158,16 @@ const createAlarmTick = (props: {
 
 const shouldSkipAlarmTick = (
   armedRef: React.MutableRefObject<boolean>,
-  targetTimeMsRef: React.MutableRefObject<number | null>
+  targetMonotonicMsRef: React.MutableRefObject<number | null>
 ) => {
-  return !armedRef.current || targetTimeMsRef.current === null
+  return !armedRef.current || targetMonotonicMsRef.current === null
 }
 
 const handleAlarmRing = (
   nextRemaining: number,
   props: {
     armedRef: React.MutableRefObject<boolean>
+    targetMonotonicMsRef: React.MutableRefObject<number | null>
     setRemaining: React.Dispatch<React.SetStateAction<number>>
     setArmed: React.Dispatch<React.SetStateAction<boolean>>
     setRinging: React.Dispatch<React.SetStateAction<boolean>>
@@ -159,7 +180,7 @@ const handleAlarmRing = (
 
 const createAlarmArm = (props: {
   targetTimeMsRef: React.MutableRefObject<number | null>
-  getCurrentRemaining: (nowMs?: number) => number
+  targetMonotonicMsRef: React.MutableRefObject<number | null>
   setRemaining: React.Dispatch<React.SetStateAction<number>>
   setRinging: React.Dispatch<React.SetStateAction<boolean>>
   armedRef: React.MutableRefObject<boolean>
@@ -167,8 +188,11 @@ const createAlarmArm = (props: {
   onArm: AlarmEventHandler
 }) => {
   return () => {
-    if (props.targetTimeMsRef.current === null) return
-    props.setRemaining(props.getCurrentRemaining())
+    const targetTimeMs = props.targetTimeMsRef.current
+    if (targetTimeMs === null) return
+    const nextTarget = createAlarmTargetFromWallClock(targetTimeMs)
+    props.targetMonotonicMsRef.current = nextTarget.targetMonotonicMs
+    props.setRemaining(nextTarget.remaining)
     props.setRinging(false)
     props.armedRef.current = true
     props.setArmed(true)
@@ -178,7 +202,8 @@ const createAlarmArm = (props: {
 
 const createAlarmDisarm = (props: {
   armedRef: React.MutableRefObject<boolean>
-  getCurrentRemaining: (nowMs?: number) => number
+  targetMonotonicMsRef: React.MutableRefObject<number | null>
+  getCurrentRemaining: (nowMonotonicMs?: number) => number
   setRemaining: React.Dispatch<React.SetStateAction<number>>
   setArmed: React.Dispatch<React.SetStateAction<boolean>>
   onDisarm: AlarmEventHandler
@@ -186,6 +211,7 @@ const createAlarmDisarm = (props: {
   return () => {
     if (!props.armedRef.current) return
     props.setRemaining(props.getCurrentRemaining())
+    props.targetMonotonicMsRef.current = null
     props.armedRef.current = false
     props.setArmed(false)
     props.onDisarm(new CustomEvent('disarm', {}))
@@ -209,6 +235,7 @@ const createAlarmToggle = (
 const createAlarmReset = (props: {
   armedRef: React.MutableRefObject<boolean>
   targetTimeMsRef: React.MutableRefObject<number | null>
+  targetMonotonicMsRef: React.MutableRefObject<number | null>
   setArmed: React.Dispatch<React.SetStateAction<boolean>>
   setRinging: React.Dispatch<React.SetStateAction<boolean>>
   setRemaining: React.Dispatch<React.SetStateAction<number>>
@@ -218,6 +245,7 @@ const createAlarmReset = (props: {
   return () => {
     props.armedRef.current = false
     props.targetTimeMsRef.current = null
+    props.targetMonotonicMsRef.current = null
     props.setArmed(false)
     props.setRinging(false)
     props.setRemaining(0)
@@ -228,6 +256,7 @@ const createAlarmReset = (props: {
 
 const createScheduleAlarmAfter = (props: {
   targetTimeMsRef: React.MutableRefObject<number | null>
+  targetMonotonicMsRef: React.MutableRefObject<number | null>
   armedRef: React.MutableRefObject<boolean>
   setTargetTimeMsState: React.Dispatch<React.SetStateAction<number | null>>
   setRemaining: React.Dispatch<React.SetStateAction<number>>
@@ -236,11 +265,12 @@ const createScheduleAlarmAfter = (props: {
   onArm: AlarmEventHandler
 }) => {
   return (seconds: number) => {
-    const nextTargetTimeMs = Date.now() + Math.max(0, seconds) * 1000
-    props.targetTimeMsRef.current = nextTargetTimeMs
+    const nextTarget = createAlarmTargetAfter(seconds)
+    props.targetTimeMsRef.current = nextTarget.targetTimeMs
+    props.targetMonotonicMsRef.current = nextTarget.targetMonotonicMs
     props.armedRef.current = true
-    props.setTargetTimeMsState(nextTargetTimeMs)
-    props.setRemaining(Math.max(0, seconds))
+    props.setTargetTimeMsState(nextTarget.targetTimeMs)
+    props.setRemaining(nextTarget.remaining)
     props.setRinging(false)
     props.setArmed(true)
     props.onArm(new CustomEvent('arm', {}))
@@ -249,14 +279,20 @@ const createScheduleAlarmAfter = (props: {
 
 const createSetAlarmTargetTime = (props: {
   targetTimeMsRef: React.MutableRefObject<number | null>
+  targetMonotonicMsRef: React.MutableRefObject<number | null>
+  armedRef: React.MutableRefObject<boolean>
   setTargetTimeMsState: React.Dispatch<React.SetStateAction<number | null>>
   setRemaining: React.Dispatch<React.SetStateAction<number>>
   setRinging: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
   return (value: number) => {
+    const nextTarget = createAlarmTargetFromWallClock(value)
     props.targetTimeMsRef.current = value
+    props.targetMonotonicMsRef.current = props.armedRef.current
+      ? nextTarget.targetMonotonicMs
+      : null
     props.setTargetTimeMsState(value)
-    props.setRemaining(calcRemainingUntil(value))
+    props.setRemaining(nextTarget.remaining)
     props.setRinging(false)
   }
 }
@@ -303,19 +339,20 @@ export const AlarmContextProvider: React.FC<AlarmContextProviderProps> = (
   )
   const armedRef = React.useRef(armed)
   const targetTimeMsRef = React.useRef<number | null>(targetTimeMs)
+  const targetMonotonicMsRef = React.useRef<number | null>(null)
   const refreshInterval = resolveAlarmRefreshInterval(props.refreshInterval)
   const notificationSupported = typeof Notification !== 'undefined'
   const notificationPermission = getNotificationPermission(notificationSupported)
 
-  const getCurrentRemaining = (nowMs = Date.now()) =>
-    getAlarmCurrentRemaining(targetTimeMsRef.current, nowMs)
+  const getCurrentRemaining = (nowMonotonicMs = getMonotonicNowMs()) =>
+    getAlarmCurrentRemaining(targetMonotonicMsRef.current, nowMonotonicMs)
 
   const notifyRing = () =>
     notifyAlarmRing(notificationEnabled, notificationSupported, onRing)
 
   const tick = createAlarmTick({
     armedRef,
-    targetTimeMsRef,
+    targetMonotonicMsRef,
     getCurrentRemaining,
     setRemaining,
     setArmed,
@@ -327,7 +364,7 @@ export const AlarmContextProvider: React.FC<AlarmContextProviderProps> = (
 
   const arm = createAlarmArm({
     targetTimeMsRef,
-    getCurrentRemaining,
+    targetMonotonicMsRef,
     setRemaining,
     setRinging,
     armedRef,
@@ -337,6 +374,7 @@ export const AlarmContextProvider: React.FC<AlarmContextProviderProps> = (
 
   const disarm = createAlarmDisarm({
     armedRef,
+    targetMonotonicMsRef,
     getCurrentRemaining,
     setRemaining,
     setArmed,
@@ -347,6 +385,7 @@ export const AlarmContextProvider: React.FC<AlarmContextProviderProps> = (
   const reset = createAlarmReset({
     armedRef,
     targetTimeMsRef,
+    targetMonotonicMsRef,
     setArmed,
     setRinging,
     setRemaining,
@@ -358,6 +397,7 @@ export const AlarmContextProvider: React.FC<AlarmContextProviderProps> = (
 
   const scheduleAfter = createScheduleAlarmAfter({
     targetTimeMsRef,
+    targetMonotonicMsRef,
     armedRef,
     setTargetTimeMsState,
     setRemaining,
@@ -368,6 +408,8 @@ export const AlarmContextProvider: React.FC<AlarmContextProviderProps> = (
 
   const setTargetTimeMs = createSetAlarmTargetTime({
     targetTimeMsRef,
+    targetMonotonicMsRef,
+    armedRef,
     setTargetTimeMsState,
     setRemaining,
     setRinging,
