@@ -235,9 +235,11 @@ const measureLineHeight = (
   container.style.inset = '0'
   container.appendChild(probe)
   ownerDocument.body.appendChild(container)
-  const measuredLineHeight = probe.getBoundingClientRect().height
-  ownerDocument.body.removeChild(container)
-  return measuredLineHeight
+  try {
+    return probe.getBoundingClientRect().height
+  } finally {
+    ownerDocument.body.removeChild(container)
+  }
 }
 
 const measureLineHeightRatio = (
