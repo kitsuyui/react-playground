@@ -3,19 +3,67 @@
   "label": "stopwatch",
   "files": [
     {
+      "path": "packages/stopwatch/dist/clock.cjs",
+      "sizes": {
+        "raw": 190,
+        "gzip": 179,
+        "brotli": 143
+      }
+    },
+    {
+      "path": "packages/stopwatch/dist/clock.cjs.map",
+      "sizes": {
+        "raw": 207,
+        "gzip": 181,
+        "brotli": 159
+      }
+    },
+    {
+      "path": "packages/stopwatch/dist/clock.d.cts",
+      "sizes": {
+        "raw": 151,
+        "gzip": 135,
+        "brotli": 108
+      }
+    },
+    {
+      "path": "packages/stopwatch/dist/clock.d.ts",
+      "sizes": {
+        "raw": 150,
+        "gzip": 134,
+        "brotli": 105
+      }
+    },
+    {
+      "path": "packages/stopwatch/dist/clock.js",
+      "sizes": {
+        "raw": 95,
+        "gzip": 114,
+        "brotli": 99
+      }
+    },
+    {
+      "path": "packages/stopwatch/dist/clock.js.map",
+      "sizes": {
+        "raw": 205,
+        "gzip": 179,
+        "brotli": 159
+      }
+    },
+    {
       "path": "packages/stopwatch/dist/context.cjs",
       "sizes": {
-        "raw": 1725,
-        "gzip": 764,
-        "brotli": 683
+        "raw": 1803,
+        "gzip": 783,
+        "brotli": 711
       }
     },
     {
       "path": "packages/stopwatch/dist/context.cjs.map",
       "sizes": {
-        "raw": 7247,
-        "gzip": 1993,
-        "brotli": 1843
+        "raw": 7372,
+        "gzip": 2025,
+        "brotli": 1831
       }
     },
     {
@@ -37,17 +85,17 @@
     {
       "path": "packages/stopwatch/dist/context.js",
       "sizes": {
-        "raw": 1582,
-        "gzip": 708,
-        "brotli": 679
+        "raw": 1587,
+        "gzip": 719,
+        "brotli": 668
       }
     },
     {
       "path": "packages/stopwatch/dist/context.js.map",
       "sizes": {
-        "raw": 7183,
-        "gzip": 1973,
-        "brotli": 1827
+        "raw": 7248,
+        "gzip": 1992,
+        "brotli": 1799
       }
     },
     {
@@ -149,49 +197,49 @@
     {
       "path": "packages/stopwatch/dist/time.cjs",
       "sizes": {
-        "raw": 244,
-        "gzip": 211,
-        "brotli": 170
+        "raw": 268,
+        "gzip": 223,
+        "brotli": 191
       }
     },
     {
       "path": "packages/stopwatch/dist/time.cjs.map",
       "sizes": {
-        "raw": 438,
-        "gzip": 278,
-        "brotli": 243
+        "raw": 528,
+        "gzip": 308,
+        "brotli": 276
       }
     },
     {
       "path": "packages/stopwatch/dist/time.d.cts",
       "sizes": {
-        "raw": 246,
-        "gzip": 164,
-        "brotli": 138
+        "raw": 274,
+        "gzip": 170,
+        "brotli": 148
       }
     },
     {
       "path": "packages/stopwatch/dist/time.d.ts",
       "sizes": {
-        "raw": 245,
-        "gzip": 162,
-        "brotli": 132
+        "raw": 273,
+        "gzip": 169,
+        "brotli": 145
       }
     },
     {
       "path": "packages/stopwatch/dist/time.js",
       "sizes": {
-        "raw": 144,
-        "gzip": 141,
-        "brotli": 123
+        "raw": 172,
+        "gzip": 163,
+        "brotli": 159
       }
     },
     {
       "path": "packages/stopwatch/dist/time.js.map",
       "sizes": {
-        "raw": 436,
-        "gzip": 276,
-        "brotli": 238
+        "raw": 505,
+        "gzip": 305,
+        "brotli": 276
       }
     },
     {
@@ -244,8 +292,8 @@
     }
   ],
   "totals": {
-    "raw": 526648,
-    "gzip": 116050,
-    "brotli": 98196
+    "raw": 528186,
+    "gzip": 117159,
+    "brotli": 99097
   }
 }

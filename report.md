@@ -1,17 +1,23 @@
 # gh-build-size report
 
 - Repository: **kitsuyui/react-playground**
-- Head: `1890acdd859ff03716977db40fd375a058091a0c`
-- Generated at: 2026-05-11T05:08:15.356Z
+- Head: `01f336f184cde1bdb8479834a822b5bef1ab4b78`
+- Generated at: 2026-06-03T02:17:53.665Z
 
 | File | Raw | Gzip | Brotli |
 | --- | ---: | ---: | ---: |
-| `packages/alarm/dist/context.cjs` | 3,508 B | 1,238 B | 1,111 B |
-| `packages/alarm/dist/context.cjs.map` | 15,492 B | 3,421 B | 3,087 B |
+| `packages/alarm/dist/clock.cjs` | 190 B | 179 B | 143 B |
+| `packages/alarm/dist/clock.cjs.map` | 207 B | 181 B | 159 B |
+| `packages/alarm/dist/clock.d.cts` | 151 B | 135 B | 108 B |
+| `packages/alarm/dist/clock.d.ts` | 150 B | 134 B | 105 B |
+| `packages/alarm/dist/clock.js` | 95 B | 114 B | 99 B |
+| `packages/alarm/dist/clock.js.map` | 205 B | 179 B | 159 B |
+| `packages/alarm/dist/context.cjs` | 4,234 B | 1,371 B | 1,242 B |
+| `packages/alarm/dist/context.cjs.map` | 17,934 B | 3,729 B | 3,377 B |
 | `packages/alarm/dist/context.d.cts` | 1,222 B | 473 B | 424 B |
 | `packages/alarm/dist/context.d.ts` | 1,221 B | 471 B | 421 B |
-| `packages/alarm/dist/context.js` | 3,326 B | 1,188 B | 1,074 B |
-| `packages/alarm/dist/context.js.map` | 15,371 B | 3,387 B | 3,026 B |
+| `packages/alarm/dist/context.js` | 4,013 B | 1,317 B | 1,212 B |
+| `packages/alarm/dist/context.js.map` | 17,730 B | 3,690 B | 3,345 B |
 | `packages/alarm/dist/default.cjs` | 1,342 B | 636 B | 555 B |
 | `packages/alarm/dist/default.cjs.map` | 3,410 B | 1,245 B | 1,129 B |
 | `packages/alarm/dist/default.d.cts` | 239 B | 174 B | 138 B |
@@ -24,12 +30,12 @@
 | `packages/alarm/dist/index.js` | 213 B | 141 B | 135 B |
 | `packages/alarm/dist/lib-BqRrzelq.cjs` | 106,935 B | 27,130 B | 23,677 B |
 | `packages/alarm/dist/lib-BqRrzelq.cjs.map` | 387,205 B | 75,455 B | 62,587 B |
-| `packages/alarm/dist/time.cjs` | 344 B | 271 B | 225 B |
-| `packages/alarm/dist/time.cjs.map` | 654 B | 391 B | 340 B |
-| `packages/alarm/dist/time.d.cts` | 273 B | 180 B | 144 B |
-| `packages/alarm/dist/time.d.ts` | 272 B | 179 B | 142 B |
-| `packages/alarm/dist/time.js` | 244 B | 203 B | 176 B |
-| `packages/alarm/dist/time.js.map` | 652 B | 388 B | 336 B |
+| `packages/alarm/dist/time.cjs` | 396 B | 279 B | 228 B |
+| `packages/alarm/dist/time.cjs.map` | 863 B | 437 B | 413 B |
+| `packages/alarm/dist/time.d.cts` | 395 B | 203 B | 179 B |
+| `packages/alarm/dist/time.d.ts` | 394 B | 202 B | 177 B |
+| `packages/alarm/dist/time.js` | 291 B | 211 B | 184 B |
+| `packages/alarm/dist/time.js.map` | 861 B | 435 B | 407 B |
 | `packages/alarm/dist/toText-Ct41AYkI.js` | 415 B | 321 B | 272 B |
 | `packages/alarm/dist/toText-Ct41AYkI.js.map` | 1,402 B | 656 B | 582 B |
 | `packages/alarm/dist/toText-nvceYTqm.cjs` | 477 B | 341 B | 285 B |
@@ -243,12 +249,18 @@
 | `packages/metronome/dist/time.js.map` | 249 B | 213 B | 206 B |
 | `packages/metronome/dist/useInterval-7uwCW3CW.js` | 311 B | 217 B | 180 B |
 | `packages/metronome/dist/useInterval-7uwCW3CW.js.map` | 1,037 B | 523 B | 468 B |
-| `packages/stopwatch/dist/context.cjs` | 1,725 B | 764 B | 683 B |
-| `packages/stopwatch/dist/context.cjs.map` | 7,247 B | 1,993 B | 1,843 B |
+| `packages/stopwatch/dist/clock.cjs` | 190 B | 179 B | 143 B |
+| `packages/stopwatch/dist/clock.cjs.map` | 207 B | 181 B | 159 B |
+| `packages/stopwatch/dist/clock.d.cts` | 151 B | 135 B | 108 B |
+| `packages/stopwatch/dist/clock.d.ts` | 150 B | 134 B | 105 B |
+| `packages/stopwatch/dist/clock.js` | 95 B | 114 B | 99 B |
+| `packages/stopwatch/dist/clock.js.map` | 205 B | 179 B | 159 B |
+| `packages/stopwatch/dist/context.cjs` | 1,803 B | 783 B | 711 B |
+| `packages/stopwatch/dist/context.cjs.map` | 7,372 B | 2,025 B | 1,831 B |
 | `packages/stopwatch/dist/context.d.cts` | 828 B | 354 B | 293 B |
 | `packages/stopwatch/dist/context.d.ts` | 827 B | 352 B | 291 B |
-| `packages/stopwatch/dist/context.js` | 1,582 B | 708 B | 679 B |
-| `packages/stopwatch/dist/context.js.map` | 7,183 B | 1,973 B | 1,827 B |
+| `packages/stopwatch/dist/context.js` | 1,587 B | 719 B | 668 B |
+| `packages/stopwatch/dist/context.js.map` | 7,248 B | 1,992 B | 1,799 B |
 | `packages/stopwatch/dist/default.cjs` | 622 B | 400 B | 348 B |
 | `packages/stopwatch/dist/default.cjs.map` | 1,549 B | 728 B | 623 B |
 | `packages/stopwatch/dist/default.d.cts` | 441 B | 281 B | 228 B |
@@ -261,12 +273,12 @@
 | `packages/stopwatch/dist/index.js` | 237 B | 145 B | 135 B |
 | `packages/stopwatch/dist/lib-BqRrzelq.cjs` | 106,935 B | 27,130 B | 23,677 B |
 | `packages/stopwatch/dist/lib-BqRrzelq.cjs.map` | 387,205 B | 75,455 B | 62,587 B |
-| `packages/stopwatch/dist/time.cjs` | 244 B | 211 B | 170 B |
-| `packages/stopwatch/dist/time.cjs.map` | 438 B | 278 B | 243 B |
-| `packages/stopwatch/dist/time.d.cts` | 246 B | 164 B | 138 B |
-| `packages/stopwatch/dist/time.d.ts` | 245 B | 162 B | 132 B |
-| `packages/stopwatch/dist/time.js` | 144 B | 141 B | 123 B |
-| `packages/stopwatch/dist/time.js.map` | 436 B | 276 B | 238 B |
+| `packages/stopwatch/dist/time.cjs` | 268 B | 223 B | 191 B |
+| `packages/stopwatch/dist/time.cjs.map` | 528 B | 308 B | 276 B |
+| `packages/stopwatch/dist/time.d.cts` | 274 B | 170 B | 148 B |
+| `packages/stopwatch/dist/time.d.ts` | 273 B | 169 B | 145 B |
+| `packages/stopwatch/dist/time.js` | 172 B | 163 B | 159 B |
+| `packages/stopwatch/dist/time.js.map` | 505 B | 305 B | 276 B |
 | `packages/stopwatch/dist/toText-Ct41AYkI.js` | 415 B | 321 B | 272 B |
 | `packages/stopwatch/dist/toText-Ct41AYkI.js.map` | 1,402 B | 656 B | 582 B |
 | `packages/stopwatch/dist/toText-nvceYTqm.cjs` | 477 B | 341 B | 285 B |

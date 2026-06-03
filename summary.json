@@ -1,18 +1,24 @@
 {
-  "generated_at": "2026-05-11T05:08:15.356Z",
+  "generated_at": "2026-06-03T02:17:53.664Z",
   "repository": "kitsuyui/react-playground",
   "default_branch": "main",
   "publish_branch": "gh-build-size-assets",
   "event_name": "push",
   "base_label": "main",
-  "base_reference": "bf997ff2002de7e96bbf5d4033a5a55b9bc2061d",
+  "base_reference": "1890acdd859ff03716977db40fd375a058091a0c",
   "head_label": "main",
-  "head_reference": "1890acdd859ff03716977db40fd375a058091a0c",
+  "head_reference": "01f336f184cde1bdb8479834a822b5bef1ab4b78",
   "targets": [
     {
       "id": "total",
       "label": "Total package artifacts",
       "files": [
+        "packages/alarm/dist/clock.cjs",
+        "packages/alarm/dist/clock.cjs.map",
+        "packages/alarm/dist/clock.d.cts",
+        "packages/alarm/dist/clock.d.ts",
+        "packages/alarm/dist/clock.js",
+        "packages/alarm/dist/clock.js.map",
         "packages/alarm/dist/context.cjs",
         "packages/alarm/dist/context.cjs.map",
         "packages/alarm/dist/context.d.cts",
@@ -250,6 +256,12 @@
         "packages/metronome/dist/time.js.map",
         "packages/metronome/dist/useInterval-7uwCW3CW.js",
         "packages/metronome/dist/useInterval-7uwCW3CW.js.map",
+        "packages/stopwatch/dist/clock.cjs",
+        "packages/stopwatch/dist/clock.cjs.map",
+        "packages/stopwatch/dist/clock.d.cts",
+        "packages/stopwatch/dist/clock.d.ts",
+        "packages/stopwatch/dist/clock.js",
+        "packages/stopwatch/dist/clock.js.map",
         "packages/stopwatch/dist/context.cjs",
         "packages/stopwatch/dist/context.cjs.map",
         "packages/stopwatch/dist/context.d.cts",
@@ -409,19 +421,19 @@
       "commentable": true,
       "sizes": {
         "raw": {
-          "current": 5474268,
+          "current": 5483779,
           "base": 5474268,
-          "delta": 0
+          "delta": 9511
         },
         "gzip": {
-          "current": 1232783,
+          "current": 1235842,
           "base": 1232783,
-          "delta": 0
+          "delta": 3059
         },
         "brotli": {
-          "current": 1043830,
+          "current": 1046607,
           "base": 1043830,
-          "delta": 0
+          "delta": 2777
         }
       },
       "violations": [],
@@ -432,6 +444,12 @@
       "id": "pkg-alarm",
       "label": "alarm",
       "files": [
+        "packages/alarm/dist/clock.cjs",
+        "packages/alarm/dist/clock.cjs.map",
+        "packages/alarm/dist/clock.d.cts",
+        "packages/alarm/dist/clock.d.ts",
+        "packages/alarm/dist/clock.js",
+        "packages/alarm/dist/clock.js.map",
         "packages/alarm/dist/context.cjs",
         "packages/alarm/dist/context.cjs.map",
         "packages/alarm/dist/context.d.cts",
@@ -468,19 +486,19 @@
       "commentable": true,
       "sizes": {
         "raw": {
-          "current": 552671,
+          "current": 560644,
           "base": 552671,
-          "delta": 0
+          "delta": 7973
         },
         "gzip": {
-          "current": 121749,
+          "current": 123699,
           "base": 121749,
-          "delta": 0
+          "delta": 1950
         },
         "brotli": {
-          "current": 103274,
+          "current": 105150,
           "base": 103274,
-          "delta": 0
+          "delta": 1876
         }
       },
       "violations": [],
@@ -901,6 +919,12 @@
       "id": "pkg-stopwatch",
       "label": "stopwatch",
       "files": [
+        "packages/stopwatch/dist/clock.cjs",
+        "packages/stopwatch/dist/clock.cjs.map",
+        "packages/stopwatch/dist/clock.d.cts",
+        "packages/stopwatch/dist/clock.d.ts",
+        "packages/stopwatch/dist/clock.js",
+        "packages/stopwatch/dist/clock.js.map",
         "packages/stopwatch/dist/context.cjs",
         "packages/stopwatch/dist/context.cjs.map",
         "packages/stopwatch/dist/context.d.cts",
@@ -937,19 +961,19 @@
       "commentable": true,
       "sizes": {
         "raw": {
-          "current": 526648,
+          "current": 528186,
           "base": 526648,
-          "delta": 0
+          "delta": 1538
         },
         "gzip": {
-          "current": 116050,
+          "current": 117159,
           "base": 116050,
-          "delta": 0
+          "delta": 1109
         },
         "brotli": {
-          "current": 98196,
+          "current": 99097,
           "base": 98196,
-          "delta": 0
+          "delta": 901
         }
       },
       "violations": [],
