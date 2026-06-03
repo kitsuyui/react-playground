@@ -1,6 +1,8 @@
 import React from 'react'
 import { useInterval } from 'react-use'
 
+import { getMonotonicNowMs } from './clock'
+
 export interface StopwatchValue {
   elapsedTime: number
   running: boolean
@@ -64,7 +66,7 @@ const createStopwatchStart = (props: {
 }) => {
   return () => {
     if (props.running) return
-    const currentNowMs = Date.now()
+    const currentNowMs = getMonotonicNowMs()
     props.onStart(new CustomEvent('start', {}))
     props.setNowMs(currentNowMs)
     props.setStartedAtMs(currentNowMs)
@@ -84,7 +86,7 @@ const createStopwatchStop = (props: {
 }) => {
   return () => {
     if (!props.running || props.startedAtMs === null) return
-    const currentNowMs = Date.now()
+    const currentNowMs = getMonotonicNowMs()
     const nextElapsedMs = props.baseElapsedMs + (currentNowMs - props.startedAtMs)
     props.onStop(new CustomEvent('stop', {}))
     props.setNowMs(currentNowMs)
@@ -119,7 +121,7 @@ const createStopwatchReset = (props: {
     props.setRunning(false)
     props.setStartedAtMs(null)
     props.setBaseElapsedMs(0)
-    props.setNowMs(Date.now())
+    props.setNowMs(getMonotonicNowMs())
     props.onReset(new CustomEvent('reset', {}))
   }
 }
@@ -145,12 +147,12 @@ export const StopwatchContextProvider: React.FC<StopwatchProviderProps> = (
   const [running, setRunning] = React.useState(false)
   const [baseElapsedMs, setBaseElapsedMs] = React.useState(0)
   const [startedAtMs, setStartedAtMs] = React.useState<number | null>(null)
-  const [nowMs, setNowMs] = React.useState(Date.now())
+  const [nowMs, setNowMs] = React.useState(getMonotonicNowMs)
 
   const refreshInterval = resolveStopwatchRefreshInterval(props.refreshInterval)
 
   useInterval(() => {
-    setNowMs(Date.now())
+    setNowMs(getMonotonicNowMs())
   }, getActiveStopwatchInterval(running, refreshInterval))
 
   const start = createStopwatchStart({

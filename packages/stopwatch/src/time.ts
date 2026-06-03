@@ -1,7 +1,12 @@
-export const calcTimeDiff = (startTime: Date, endTime: Date) => {
-  return (endTime.getTime() - startTime.getTime()) / 1000
+import { getMonotonicNowMs } from './clock'
+
+export const calcTimeDiff = (startTimeMs: number, endTimeMs: number) => {
+  return (endTimeMs - startTimeMs) / 1000
 }
 
-export const calcElapsedTime = (startTime: Date) => {
-  return calcTimeDiff(startTime, new Date())
+export const calcElapsedTime = (
+  startTimeMs: number,
+  nowMs = getMonotonicNowMs()
+) => {
+  return calcTimeDiff(startTimeMs, nowMs)
 }
