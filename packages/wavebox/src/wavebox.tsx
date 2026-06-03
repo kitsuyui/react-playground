@@ -14,8 +14,8 @@ const DEFAULT_INTERVAL = 10  // Default interval in milliseconds for the wave an
  * @param props.maxHeight - The maximum height of the WaveBox.
  * @param props.minWidth - The minimum width of the WaveBox.
  * @param props.minHeight - The minimum height of the WaveBox.
- * @param props.widthCycle - The cycle duration for the width animation.
- * @param props.heightCycle - The cycle duration for the height animation.
+ * @param props.widthCycle - The cycle length for the width animation in ticks (not milliseconds). One tick is emitted per `interval` ms. For example, widthCycle=100 with interval=10ms produces a 1-second period.
+ * @param props.heightCycle - The cycle length for the height animation in ticks (not milliseconds). One tick is emitted per `interval` ms.
  * @param props.interval - The interval in milliseconds for updating the wave animation (default is 10ms).
  * @returns {React.JSX.Element} The rendered WaveBox component.
  */
@@ -76,8 +76,8 @@ export const WaveBoxContext = React.createContext<{
  * @param props.maxHeight - The maximum height of the WaveBox.
  * @param props.minWidth - The minimum width of the WaveBox.
  * @param props.minHeight - The minimum height of the WaveBox.
- * @param props.widthCycle - The cycle duration for the width animation.
- * @param props.heightCycle - The cycle duration for the height animation.
+ * @param props.widthCycle - The cycle length for the width animation in ticks (not milliseconds). One tick is emitted per `interval` ms.
+ * @param props.heightCycle - The cycle length for the height animation in ticks (not milliseconds). One tick is emitted per `interval` ms.
  * @param props.interval - The interval in milliseconds for updating the tick state (default is 10ms).
  * @returns {React.JSX.Element} The rendered WaveBoxProvider component.
  */
