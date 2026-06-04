@@ -43,6 +43,20 @@ describe('from128bitTo2bitArray', () => {
       expect(output[i]).satisfies((value: number) => value >= 0 && value <= 3)
     }
   })
+
+  it('uses little-endian bit order: bytes[0] holds the least significant 2 bits', () => {
+    // 0b01 in the LSB position → bytes[0] == 1
+    expect(from128bitTo2bitArray(BigInt(0b01))[0]).toBe(1)
+    // 0b10 in the LSB position → bytes[0] == 2
+    expect(from128bitTo2bitArray(BigInt(0b10))[0]).toBe(2)
+    // 0b11 at bits [127:126] (MSB) → bytes[63] == 3, all others == 0
+    const msb = BigInt('0b11') << BigInt(126)
+    const arr = from128bitTo2bitArray(msb)
+    expect(arr[63]).toBe(3)
+    expect(arr[62]).toBe(0)
+    expect(arr[0]).toBe(0)
+  })
+
   it('is inversible to from2bitArrayTo128bit', () => {
     const input = BigInt('0xfedcba9876543210fedcba9876543210')
     expect(input.toString(2).length).toBe(128)
