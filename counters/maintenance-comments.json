@@ -10,7 +10,7 @@
     },
     {
       "path": "packages/timer/src/context.tsx",
-      "line": 26,
+      "line": 29,
       "text": "// TODO: Support leap second: https://github.com/kitsuyui/react-playground/issues/40"
     }
   ]
