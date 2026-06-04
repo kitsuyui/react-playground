@@ -43,10 +43,7 @@ export const TextField = (props: TextFieldProps) => {
         onInputChunk?.('')
       }
     }
-    return {
-      ...current,
-      ...extra
-    }
+    return Object.assign(current, extra)
   })
 
   // Use Object.assign({}, props) instead of just { ...props } because it must create deep copy.

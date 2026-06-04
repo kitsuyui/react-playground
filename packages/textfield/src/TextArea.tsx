@@ -31,7 +31,7 @@ export const TextArea = (props: TextAreaProps) => {
   const [internalValue, setInternalValue] = React.useState(props.value ?? '')
   const [isInputting, setIsInputting] = React.useState(false)
   const innerRef = React.useRef<HTMLTextAreaElement>(null)
-  const compbinedRef = useCombinedRefs(innerRef, ref)
+  const combinedRef = useCombinedRefs(innerRef, ref)
 
   React.useImperativeHandle(ref, () => {
     const current = innerRef?.current as HTMLTextAreaElement
@@ -42,10 +42,7 @@ export const TextArea = (props: TextAreaProps) => {
         onInputChunk?.('')
       }
     }
-    return {
-      ...current,
-      ...extra
-    }
+    return Object.assign(current, extra)
   })
 
   // Use Object.assign({}, props) instead of just { ...props } because it must create deep copy.
@@ -94,7 +91,7 @@ export const TextArea = (props: TextAreaProps) => {
   return (
     <textarea
       {...propsExcludedWrapperProps}
-      ref={compbinedRef}
+      ref={combinedRef}
       value={internalValue}
       onCompositionStart={handleCompositionChange}
       onCompositionUpdate={handleCompositionChange}
