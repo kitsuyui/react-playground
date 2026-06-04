@@ -1,34 +1,28 @@
 {
-  "generated_at": "2026-06-04T12:57:47.822Z",
+  "generated_at": "2026-06-04T12:58:22.122Z",
   "repository": "kitsuyui/react-playground",
   "default_branch": "main",
   "publish_branch": "gh-counter-assets",
   "event_name": "push",
   "base_label": "main",
-  "base_reference": "50e60333ea669f41132afcdbae509e90c1ef5d54",
+  "base_reference": "db4173570244e395478d9aa03b431ed3aa5a2bf1",
   "head_label": "main",
-  "head_reference": "db4173570244e395478d9aa03b431ed3aa5a2bf1",
+  "head_reference": "e6602b8949a5a4eaa41165fbacb637bad3c85f90",
   "bootstrap_message": null,
   "base_only_paths": [],
   "counters": [
     {
       "id": "maintenance-comments",
       "label": "TODO/FIXME",
-      "current": 3,
+      "current": 2,
       "base": 3,
-      "delta": 0,
-      "dashboard_current": 3,
+      "delta": -1,
+      "dashboard_current": 2,
       "dashboard_base": 3,
-      "dashboard_delta": 0,
+      "dashboard_delta": -1,
       "commentable": true,
       "touched_files": [],
       "file_deltas": [
-        {
-          "path": "packages/biticon/src/bits.ts",
-          "current": 1,
-          "base": 0,
-          "delta": 1
-        },
         {
           "path": "packages/stopwatch/src/context.tsx",
           "current": 1,
