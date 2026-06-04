@@ -8,6 +8,9 @@ describe('isValidUUID', () => {
       '123e4567-e89b-12d3-a456-426614174000',
       '550e8400-e29b-41d4-a716-446655440000',
       '00000000-0000-0000-0000-000000000000',
+      // RFC 4122 §3 allows uppercase hex digits
+      '550E8400-E29B-41D4-A716-446655440000',
+      '123E4567-E89B-12D3-A456-426614174000',
     ]
     for (const uuid of validUUIDs) {
       expect(isValidUUID(uuid)).toBe(true)
