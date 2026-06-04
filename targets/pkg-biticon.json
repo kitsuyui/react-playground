@@ -157,25 +157,25 @@
     {
       "path": "packages/biticon/dist/bits.cjs.map",
       "sizes": {
-        "raw": 2615,
-        "gzip": 1114,
-        "brotli": 979
+        "raw": 2658,
+        "gzip": 1120,
+        "brotli": 1023
       }
     },
     {
       "path": "packages/biticon/dist/bits.d.cts",
       "sizes": {
-        "raw": 754,
-        "gzip": 374,
-        "brotli": 320
+        "raw": 994,
+        "gzip": 474,
+        "brotli": 405
       }
     },
     {
       "path": "packages/biticon/dist/bits.d.ts",
       "sizes": {
-        "raw": 753,
-        "gzip": 372,
-        "brotli": 347
+        "raw": 993,
+        "gzip": 472,
+        "brotli": 406
       }
     },
     {
@@ -189,9 +189,9 @@
     {
       "path": "packages/biticon/dist/bits.js.map",
       "sizes": {
-        "raw": 2613,
-        "gzip": 1112,
-        "brotli": 983
+        "raw": 2656,
+        "gzip": 1118,
+        "brotli": 984
       }
     },
     {
@@ -205,25 +205,25 @@
     {
       "path": "packages/biticon/dist/colors.cjs.map",
       "sizes": {
-        "raw": 568,
-        "gzip": 377,
-        "brotli": 324
+        "raw": 586,
+        "gzip": 385,
+        "brotli": 352
       }
     },
     {
       "path": "packages/biticon/dist/colors.d.cts",
       "sizes": {
-        "raw": 320,
-        "gzip": 240,
-        "brotli": 220
+        "raw": 338,
+        "gzip": 249,
+        "brotli": 225
       }
     },
     {
       "path": "packages/biticon/dist/colors.d.ts",
       "sizes": {
-        "raw": 319,
-        "gzip": 238,
-        "brotli": 217
+        "raw": 337,
+        "gzip": 248,
+        "brotli": 222
       }
     },
     {
@@ -237,9 +237,9 @@
     {
       "path": "packages/biticon/dist/colors.js.map",
       "sizes": {
-        "raw": 566,
-        "gzip": 374,
-        "brotli": 312
+        "raw": 584,
+        "gzip": 385,
+        "brotli": 327
       }
     },
     {
@@ -309,17 +309,17 @@
     {
       "path": "packages/biticon/dist/uuid.cjs",
       "sizes": {
-        "raw": 286,
-        "gzip": 229,
-        "brotli": 198
+        "raw": 287,
+        "gzip": 230,
+        "brotli": 199
       }
     },
     {
       "path": "packages/biticon/dist/uuid.cjs.map",
       "sizes": {
-        "raw": 533,
-        "gzip": 347,
-        "brotli": 307
+        "raw": 534,
+        "gzip": 348,
+        "brotli": 309
       }
     },
     {
@@ -341,23 +341,23 @@
     {
       "path": "packages/biticon/dist/uuid.js",
       "sizes": {
-        "raw": 216,
+        "raw": 217,
         "gzip": 180,
-        "brotli": 173
+        "brotli": 174
       }
     },
     {
       "path": "packages/biticon/dist/uuid.js.map",
       "sizes": {
-        "raw": 531,
-        "gzip": 345,
-        "brotli": 309
+        "raw": 532,
+        "gzip": 346,
+        "brotli": 306
       }
     }
   ],
   "totals": {
-    "raw": 46195,
-    "gzip": 21661,
-    "brotli": 18744
+    "raw": 46837,
+    "gzip": 21914,
+    "brotli": 18987
   }
 }

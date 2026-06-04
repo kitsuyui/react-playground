@@ -5,17 +5,17 @@
     {
       "path": "packages/textfield/dist/TextArea.cjs",
       "sizes": {
-        "raw": 1159,
-        "gzip": 584,
-        "brotli": 518
+        "raw": 1163,
+        "gzip": 582,
+        "brotli": 510
       }
     },
     {
       "path": "packages/textfield/dist/TextArea.cjs.map",
       "sizes": {
-        "raw": 4491,
-        "gzip": 1460,
-        "brotli": 1332
+        "raw": 4462,
+        "gzip": 1447,
+        "brotli": 1298
       }
     },
     {
@@ -37,33 +37,33 @@
     {
       "path": "packages/textfield/dist/TextArea.js",
       "sizes": {
-        "raw": 981,
-        "gzip": 522,
+        "raw": 985,
+        "gzip": 517,
         "brotli": 470
       }
     },
     {
       "path": "packages/textfield/dist/TextArea.js.map",
       "sizes": {
-        "raw": 4395,
-        "gzip": 1436,
-        "brotli": 1298
+        "raw": 4366,
+        "gzip": 1421,
+        "brotli": 1287
       }
     },
     {
       "path": "packages/textfield/dist/TextField.cjs",
       "sizes": {
-        "raw": 1171,
-        "gzip": 595,
-        "brotli": 527
+        "raw": 1175,
+        "gzip": 592,
+        "brotli": 520
       }
     },
     {
       "path": "packages/textfield/dist/TextField.cjs.map",
       "sizes": {
-        "raw": 4526,
-        "gzip": 1489,
-        "brotli": 1357
+        "raw": 4499,
+        "gzip": 1480,
+        "brotli": 1331
       }
     },
     {
@@ -85,17 +85,17 @@
     {
       "path": "packages/textfield/dist/TextField.js",
       "sizes": {
-        "raw": 993,
-        "gzip": 532,
-        "brotli": 482
+        "raw": 997,
+        "gzip": 528,
+        "brotli": 476
       }
     },
     {
       "path": "packages/textfield/dist/TextField.js.map",
       "sizes": {
-        "raw": 4430,
-        "gzip": 1462,
-        "brotli": 1328
+        "raw": 4403,
+        "gzip": 1452,
+        "brotli": 1310
       }
     },
     {
@@ -141,17 +141,17 @@
     {
       "path": "packages/textfield/dist/utils/refs.cjs",
       "sizes": {
-        "raw": 436,
-        "gzip": 339,
-        "brotli": 289
+        "raw": 439,
+        "gzip": 340,
+        "brotli": 291
       }
     },
     {
       "path": "packages/textfield/dist/utils/refs.cjs.map",
       "sizes": {
-        "raw": 1680,
-        "gzip": 864,
-        "brotli": 804
+        "raw": 1866,
+        "gzip": 970,
+        "brotli": 878
       }
     },
     {
@@ -173,23 +173,23 @@
     {
       "path": "packages/textfield/dist/utils/refs.js",
       "sizes": {
-        "raw": 335,
-        "gzip": 268,
-        "brotli": 246
+        "raw": 338,
+        "gzip": 270,
+        "brotli": 253
       }
     },
     {
       "path": "packages/textfield/dist/utils/refs.js.map",
       "sizes": {
-        "raw": 1669,
-        "gzip": 861,
-        "brotli": 767
+        "raw": 1855,
+        "gzip": 969,
+        "brotli": 907
       }
     }
   ],
   "totals": {
-    "raw": 31916,
-    "gzip": 13491,
-    "brotli": 12076
+    "raw": 32198,
+    "gzip": 13647,
+    "brotli": 12189
   }
 }

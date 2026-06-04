@@ -629,25 +629,25 @@
     {
       "path": "packages/biticon/dist/bits.cjs.map",
       "sizes": {
-        "raw": 2615,
-        "gzip": 1114,
-        "brotli": 979
+        "raw": 2658,
+        "gzip": 1120,
+        "brotli": 1023
       }
     },
     {
       "path": "packages/biticon/dist/bits.d.cts",
       "sizes": {
-        "raw": 754,
-        "gzip": 374,
-        "brotli": 320
+        "raw": 994,
+        "gzip": 474,
+        "brotli": 405
       }
     },
     {
       "path": "packages/biticon/dist/bits.d.ts",
       "sizes": {
-        "raw": 753,
-        "gzip": 372,
-        "brotli": 347
+        "raw": 993,
+        "gzip": 472,
+        "brotli": 406
       }
     },
     {
@@ -661,9 +661,9 @@
     {
       "path": "packages/biticon/dist/bits.js.map",
       "sizes": {
-        "raw": 2613,
-        "gzip": 1112,
-        "brotli": 983
+        "raw": 2656,
+        "gzip": 1118,
+        "brotli": 984
       }
     },
     {
@@ -677,25 +677,25 @@
     {
       "path": "packages/biticon/dist/colors.cjs.map",
       "sizes": {
-        "raw": 568,
-        "gzip": 377,
-        "brotli": 324
+        "raw": 586,
+        "gzip": 385,
+        "brotli": 352
       }
     },
     {
       "path": "packages/biticon/dist/colors.d.cts",
       "sizes": {
-        "raw": 320,
-        "gzip": 240,
-        "brotli": 220
+        "raw": 338,
+        "gzip": 249,
+        "brotli": 225
       }
     },
     {
       "path": "packages/biticon/dist/colors.d.ts",
       "sizes": {
-        "raw": 319,
-        "gzip": 238,
-        "brotli": 217
+        "raw": 337,
+        "gzip": 248,
+        "brotli": 222
       }
     },
     {
@@ -709,9 +709,9 @@
     {
       "path": "packages/biticon/dist/colors.js.map",
       "sizes": {
-        "raw": 566,
-        "gzip": 374,
-        "brotli": 312
+        "raw": 584,
+        "gzip": 385,
+        "brotli": 327
       }
     },
     {
@@ -781,17 +781,17 @@
     {
       "path": "packages/biticon/dist/uuid.cjs",
       "sizes": {
-        "raw": 286,
-        "gzip": 229,
-        "brotli": 198
+        "raw": 287,
+        "gzip": 230,
+        "brotli": 199
       }
     },
     {
       "path": "packages/biticon/dist/uuid.cjs.map",
       "sizes": {
-        "raw": 533,
-        "gzip": 347,
-        "brotli": 307
+        "raw": 534,
+        "gzip": 348,
+        "brotli": 309
       }
     },
     {
@@ -813,17 +813,17 @@
     {
       "path": "packages/biticon/dist/uuid.js",
       "sizes": {
-        "raw": 216,
+        "raw": 217,
         "gzip": 180,
-        "brotli": 173
+        "brotli": 174
       }
     },
     {
       "path": "packages/biticon/dist/uuid.js.map",
       "sizes": {
-        "raw": 531,
-        "gzip": 345,
-        "brotli": 309
+        "raw": 532,
+        "gzip": 346,
+        "brotli": 306
       }
     },
     {
@@ -1309,17 +1309,17 @@
     {
       "path": "packages/dekamoji/dist/dekamoji.cjs",
       "sizes": {
-        "raw": 3202,
-        "gzip": 1386,
-        "brotli": 1215
+        "raw": 3207,
+        "gzip": 1391,
+        "brotli": 1224
       }
     },
     {
       "path": "packages/dekamoji/dist/dekamoji.cjs.map",
       "sizes": {
-        "raw": 12129,
-        "gzip": 3574,
-        "brotli": 3171
+        "raw": 12112,
+        "gzip": 3584,
+        "brotli": 3182
       }
     },
     {
@@ -1341,16 +1341,16 @@
     {
       "path": "packages/dekamoji/dist/dekamoji.js",
       "sizes": {
-        "raw": 3043,
-        "gzip": 1331,
-        "brotli": 1181
+        "raw": 3048,
+        "gzip": 1338,
+        "brotli": 1190
       }
     },
     {
       "path": "packages/dekamoji/dist/dekamoji.js.map",
       "sizes": {
-        "raw": 11994,
-        "gzip": 3549,
+        "raw": 11977,
+        "gzip": 3559,
         "brotli": 3154
       }
     },
@@ -2317,17 +2317,17 @@
     {
       "path": "packages/textfield/dist/TextArea.cjs",
       "sizes": {
-        "raw": 1159,
-        "gzip": 584,
-        "brotli": 518
+        "raw": 1163,
+        "gzip": 582,
+        "brotli": 510
       }
     },
     {
       "path": "packages/textfield/dist/TextArea.cjs.map",
       "sizes": {
-        "raw": 4491,
-        "gzip": 1460,
-        "brotli": 1332
+        "raw": 4462,
+        "gzip": 1447,
+        "brotli": 1298
       }
     },
     {
@@ -2349,33 +2349,33 @@
     {
       "path": "packages/textfield/dist/TextArea.js",
       "sizes": {
-        "raw": 981,
-        "gzip": 522,
+        "raw": 985,
+        "gzip": 517,
         "brotli": 470
       }
     },
     {
       "path": "packages/textfield/dist/TextArea.js.map",
       "sizes": {
-        "raw": 4395,
-        "gzip": 1436,
-        "brotli": 1298
+        "raw": 4366,
+        "gzip": 1421,
+        "brotli": 1287
       }
     },
     {
       "path": "packages/textfield/dist/TextField.cjs",
       "sizes": {
-        "raw": 1171,
-        "gzip": 595,
-        "brotli": 527
+        "raw": 1175,
+        "gzip": 592,
+        "brotli": 520
       }
     },
     {
       "path": "packages/textfield/dist/TextField.cjs.map",
       "sizes": {
-        "raw": 4526,
-        "gzip": 1489,
-        "brotli": 1357
+        "raw": 4499,
+        "gzip": 1480,
+        "brotli": 1331
       }
     },
     {
@@ -2397,17 +2397,17 @@
     {
       "path": "packages/textfield/dist/TextField.js",
       "sizes": {
-        "raw": 993,
-        "gzip": 532,
-        "brotli": 482
+        "raw": 997,
+        "gzip": 528,
+        "brotli": 476
       }
     },
     {
       "path": "packages/textfield/dist/TextField.js.map",
       "sizes": {
-        "raw": 4430,
-        "gzip": 1462,
-        "brotli": 1328
+        "raw": 4403,
+        "gzip": 1452,
+        "brotli": 1310
       }
     },
     {
@@ -2453,17 +2453,17 @@
     {
       "path": "packages/textfield/dist/utils/refs.cjs",
       "sizes": {
-        "raw": 436,
-        "gzip": 339,
-        "brotli": 289
+        "raw": 439,
+        "gzip": 340,
+        "brotli": 291
       }
     },
     {
       "path": "packages/textfield/dist/utils/refs.cjs.map",
       "sizes": {
-        "raw": 1680,
-        "gzip": 864,
-        "brotli": 804
+        "raw": 1866,
+        "gzip": 970,
+        "brotli": 878
       }
     },
     {
@@ -2485,65 +2485,65 @@
     {
       "path": "packages/textfield/dist/utils/refs.js",
       "sizes": {
-        "raw": 335,
-        "gzip": 268,
-        "brotli": 246
+        "raw": 338,
+        "gzip": 270,
+        "brotli": 253
       }
     },
     {
       "path": "packages/textfield/dist/utils/refs.js.map",
       "sizes": {
-        "raw": 1669,
-        "gzip": 861,
-        "brotli": 767
+        "raw": 1855,
+        "gzip": 969,
+        "brotli": 907
       }
     },
     {
       "path": "packages/timer/dist/context.cjs",
       "sizes": {
-        "raw": 2690,
-        "gzip": 1110,
-        "brotli": 1017
+        "raw": 3352,
+        "gzip": 1194,
+        "brotli": 1073
       }
     },
     {
       "path": "packages/timer/dist/context.cjs.map",
       "sizes": {
-        "raw": 13235,
-        "gzip": 3126,
-        "brotli": 2879
+        "raw": 15812,
+        "gzip": 3404,
+        "brotli": 3062
       }
     },
     {
       "path": "packages/timer/dist/context.d.cts",
       "sizes": {
-        "raw": 1115,
-        "gzip": 433,
-        "brotli": 371
+        "raw": 1281,
+        "gzip": 491,
+        "brotli": 395
       }
     },
     {
       "path": "packages/timer/dist/context.d.ts",
       "sizes": {
-        "raw": 1114,
-        "gzip": 431,
-        "brotli": 367
+        "raw": 1280,
+        "gzip": 489,
+        "brotli": 393
       }
     },
     {
       "path": "packages/timer/dist/context.js",
       "sizes": {
-        "raw": 2551,
-        "gzip": 1057,
-        "brotli": 958
+        "raw": 3197,
+        "gzip": 1140,
+        "brotli": 1043
       }
     },
     {
       "path": "packages/timer/dist/context.js.map",
       "sizes": {
-        "raw": 13149,
-        "gzip": 3101,
-        "brotli": 2830
+        "raw": 15712,
+        "gzip": 3376,
+        "brotli": 3055
       }
     },
     {
@@ -2949,17 +2949,17 @@
     {
       "path": "packages/wavebox/dist/curve.cjs",
       "sizes": {
-        "raw": 220,
-        "gzip": 204,
-        "brotli": 186
+        "raw": 290,
+        "gzip": 253,
+        "brotli": 211
       }
     },
     {
       "path": "packages/wavebox/dist/curve.cjs.map",
       "sizes": {
-        "raw": 557,
-        "gzip": 341,
-        "brotli": 300
+        "raw": 701,
+        "gzip": 429,
+        "brotli": 378
       }
     },
     {
@@ -2981,17 +2981,17 @@
     {
       "path": "packages/wavebox/dist/curve.js",
       "sizes": {
-        "raw": 125,
-        "gzip": 134,
-        "brotli": 117
+        "raw": 195,
+        "gzip": 182,
+        "brotli": 173
       }
     },
     {
       "path": "packages/wavebox/dist/curve.js.map",
       "sizes": {
-        "raw": 555,
-        "gzip": 339,
-        "brotli": 295
+        "raw": 699,
+        "gzip": 427,
+        "brotli": 402
       }
     },
     {
@@ -3061,49 +3061,49 @@
     {
       "path": "packages/wavebox/dist/wavebox.cjs",
       "sizes": {
-        "raw": 1218,
-        "gzip": 512,
-        "brotli": 453
+        "raw": 1230,
+        "gzip": 526,
+        "brotli": 465
       }
     },
     {
       "path": "packages/wavebox/dist/wavebox.cjs.map",
       "sizes": {
-        "raw": 5449,
-        "gzip": 1442,
-        "brotli": 1255
+        "raw": 5813,
+        "gzip": 1550,
+        "brotli": 1345
       }
     },
     {
       "path": "packages/wavebox/dist/wavebox.d.cts",
       "sizes": {
-        "raw": 2574,
-        "gzip": 612,
-        "brotli": 487
+        "raw": 2909,
+        "gzip": 689,
+        "brotli": 561
       }
     },
     {
       "path": "packages/wavebox/dist/wavebox.d.ts",
       "sizes": {
-        "raw": 2573,
-        "gzip": 610,
-        "brotli": 483
+        "raw": 2908,
+        "gzip": 687,
+        "brotli": 559
       }
     },
     {
       "path": "packages/wavebox/dist/wavebox.js",
       "sizes": {
-        "raw": 1070,
-        "gzip": 448,
-        "brotli": 402
+        "raw": 1082,
+        "gzip": 461,
+        "brotli": 414
       }
     },
     {
       "path": "packages/wavebox/dist/wavebox.js.map",
       "sizes": {
-        "raw": 5328,
-        "gzip": 1406,
-        "brotli": 1223
+        "raw": 5692,
+        "gzip": 1513,
+        "brotli": 1315
       }
     },
     {
@@ -3220,8 +3220,8 @@
     }
   ],
   "totals": {
-    "raw": 5483779,
-    "gzip": 1235842,
-    "brotli": 1046607
+    "raw": 5493309,
+    "gzip": 1237788,
+    "brotli": 1048213
   }
 }

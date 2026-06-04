@@ -1,8 +1,8 @@
 # gh-build-size report
 
 - Repository: **kitsuyui/react-playground**
-- Head: `01f336f184cde1bdb8479834a822b5bef1ab4b78`
-- Generated at: 2026-06-03T02:17:53.665Z
+- Head: `eb88b8573bd71ad7a82364705251764547ed3a9e`
+- Generated at: 2026-06-04T13:01:28.823Z
 
 | File | Raw | Gzip | Brotli |
 | --- | ---: | ---: | ---: |
@@ -72,11 +72,11 @@
 | `packages/biticon/dist/BitIcon.js` | 697 B | 470 B | 412 B |
 | `packages/biticon/dist/BitIcon.js.map` | 2,308 B | 1,090 B | 990 B |
 | `packages/biticon/dist/bits.cjs` | 633 B | 396 B | 343 B |
-| `packages/biticon/dist/bits.cjs.map` | 2,615 B | 1,114 B | 979 B |
-| `packages/biticon/dist/bits.d.cts` | 754 B | 374 B | 320 B |
-| `packages/biticon/dist/bits.d.ts` | 753 B | 372 B | 347 B |
+| `packages/biticon/dist/bits.cjs.map` | 2,658 B | 1,120 B | 1,023 B |
+| `packages/biticon/dist/bits.d.cts` | 994 B | 474 B | 405 B |
+| `packages/biticon/dist/bits.d.ts` | 993 B | 472 B | 406 B |
 | `packages/biticon/dist/bits.js` | 558 B | 348 B | 315 B |
-| `packages/biticon/dist/bits.js.map` | 2,613 B | 1,112 B | 983 B |
+| `packages/biticon/dist/bits.js.map` | 2,656 B | 1,118 B | 984 B |
 | `packages/biticon/dist/bitShuffle.cjs` | 291 B | 245 B | 209 B |
 | `packages/biticon/dist/bitShuffle.cjs.map` | 1,158 B | 503 B | 500 B |
 | `packages/biticon/dist/bitShuffle.d.cts` | 210 B | 158 B | 132 B |
@@ -84,11 +84,11 @@
 | `packages/biticon/dist/bitShuffle.js` | 243 B | 207 B | 190 B |
 | `packages/biticon/dist/bitShuffle.js.map` | 1,132 B | 502 B | 488 B |
 | `packages/biticon/dist/colors.cjs` | 203 B | 189 B | 153 B |
-| `packages/biticon/dist/colors.cjs.map` | 568 B | 377 B | 324 B |
-| `packages/biticon/dist/colors.d.cts` | 320 B | 240 B | 220 B |
-| `packages/biticon/dist/colors.d.ts` | 319 B | 238 B | 217 B |
+| `packages/biticon/dist/colors.cjs.map` | 586 B | 385 B | 352 B |
+| `packages/biticon/dist/colors.d.cts` | 338 B | 249 B | 225 B |
+| `packages/biticon/dist/colors.d.ts` | 337 B | 248 B | 222 B |
 | `packages/biticon/dist/colors.js` | 133 B | 143 B | 137 B |
-| `packages/biticon/dist/colors.js.map` | 566 B | 374 B | 312 B |
+| `packages/biticon/dist/colors.js.map` | 584 B | 385 B | 327 B |
 | `packages/biticon/dist/index.cjs` | 182 B | 144 B | 107 B |
 | `packages/biticon/dist/index.d.cts` | 181 B | 99 B | 92 B |
 | `packages/biticon/dist/index.d.ts` | 179 B | 98 B | 107 B |
@@ -97,12 +97,12 @@
 | `packages/biticon/dist/utils-D9YecNDl.js.map` | 7,228 B | 2,131 B | 1,725 B |
 | `packages/biticon/dist/utils-HMYLao0d.cjs` | 2,938 B | 1,448 B | 1,122 B |
 | `packages/biticon/dist/utils-HMYLao0d.cjs.map` | 7,229 B | 2,133 B | 1,741 B |
-| `packages/biticon/dist/uuid.cjs` | 286 B | 229 B | 198 B |
-| `packages/biticon/dist/uuid.cjs.map` | 533 B | 347 B | 307 B |
+| `packages/biticon/dist/uuid.cjs` | 287 B | 230 B | 199 B |
+| `packages/biticon/dist/uuid.cjs.map` | 534 B | 348 B | 309 B |
 | `packages/biticon/dist/uuid.d.cts` | 218 B | 161 B | 154 B |
 | `packages/biticon/dist/uuid.d.ts` | 217 B | 159 B | 150 B |
-| `packages/biticon/dist/uuid.js` | 216 B | 180 B | 173 B |
-| `packages/biticon/dist/uuid.js.map` | 531 B | 345 B | 309 B |
+| `packages/biticon/dist/uuid.js` | 217 B | 180 B | 174 B |
+| `packages/biticon/dist/uuid.js.map` | 532 B | 346 B | 306 B |
 | `packages/biticon/dist/UUIDIcon.cjs` | 436 B | 308 B | 263 B |
 | `packages/biticon/dist/UUIDIcon.cjs.map` | 1,048 B | 525 B | 486 B |
 | `packages/biticon/dist/UUIDIcon.d.cts` | 330 B | 226 B | 230 B |
@@ -169,12 +169,12 @@
 | `packages/clock/dist/utils/step/index.d.ts` | 768 B | 334 B | 271 B |
 | `packages/clock/dist/utils/step/index.js` | 473 B | 282 B | 248 B |
 | `packages/clock/dist/utils/step/index.js.map` | 2,046 B | 776 B | 692 B |
-| `packages/dekamoji/dist/dekamoji.cjs` | 3,202 B | 1,386 B | 1,215 B |
-| `packages/dekamoji/dist/dekamoji.cjs.map` | 12,129 B | 3,574 B | 3,171 B |
+| `packages/dekamoji/dist/dekamoji.cjs` | 3,207 B | 1,391 B | 1,224 B |
+| `packages/dekamoji/dist/dekamoji.cjs.map` | 12,112 B | 3,584 B | 3,182 B |
 | `packages/dekamoji/dist/dekamoji.d.cts` | 360 B | 221 B | 188 B |
 | `packages/dekamoji/dist/dekamoji.d.ts` | 359 B | 219 B | 177 B |
-| `packages/dekamoji/dist/dekamoji.js` | 3,043 B | 1,331 B | 1,181 B |
-| `packages/dekamoji/dist/dekamoji.js.map` | 11,994 B | 3,549 B | 3,154 B |
+| `packages/dekamoji/dist/dekamoji.js` | 3,048 B | 1,338 B | 1,190 B |
+| `packages/dekamoji/dist/dekamoji.js.map` | 11,977 B | 3,559 B | 3,154 B |
 | `packages/dekamoji/dist/index.cjs` | 205 B | 156 B | 120 B |
 | `packages/dekamoji/dist/index.d.cts` | 101 B | 76 B | 71 B |
 | `packages/dekamoji/dist/index.d.ts` | 100 B | 75 B | 70 B |
@@ -300,30 +300,30 @@
 | `packages/textfield/dist/index.d.cts` | 255 B | 119 B | 113 B |
 | `packages/textfield/dist/index.d.ts` | 253 B | 118 B | 112 B |
 | `packages/textfield/dist/index.js` | 121 B | 88 B | 93 B |
-| `packages/textfield/dist/TextArea.cjs` | 1,159 B | 584 B | 518 B |
-| `packages/textfield/dist/TextArea.cjs.map` | 4,491 B | 1,460 B | 1,332 B |
+| `packages/textfield/dist/TextArea.cjs` | 1,163 B | 582 B | 510 B |
+| `packages/textfield/dist/TextArea.cjs.map` | 4,462 B | 1,447 B | 1,298 B |
 | `packages/textfield/dist/TextArea.d.cts` | 871 B | 432 B | 372 B |
 | `packages/textfield/dist/TextArea.d.ts` | 870 B | 431 B | 368 B |
-| `packages/textfield/dist/TextArea.js` | 981 B | 522 B | 470 B |
-| `packages/textfield/dist/TextArea.js.map` | 4,395 B | 1,436 B | 1,298 B |
-| `packages/textfield/dist/TextField.cjs` | 1,171 B | 595 B | 527 B |
-| `packages/textfield/dist/TextField.cjs.map` | 4,526 B | 1,489 B | 1,357 B |
+| `packages/textfield/dist/TextArea.js` | 985 B | 517 B | 470 B |
+| `packages/textfield/dist/TextArea.js.map` | 4,366 B | 1,421 B | 1,287 B |
+| `packages/textfield/dist/TextField.cjs` | 1,175 B | 592 B | 520 B |
+| `packages/textfield/dist/TextField.cjs.map` | 4,499 B | 1,480 B | 1,331 B |
 | `packages/textfield/dist/TextField.d.cts` | 887 B | 436 B | 385 B |
 | `packages/textfield/dist/TextField.d.ts` | 886 B | 434 B | 376 B |
-| `packages/textfield/dist/TextField.js` | 993 B | 532 B | 482 B |
-| `packages/textfield/dist/TextField.js.map` | 4,430 B | 1,462 B | 1,328 B |
-| `packages/textfield/dist/utils/refs.cjs` | 436 B | 339 B | 289 B |
-| `packages/textfield/dist/utils/refs.cjs.map` | 1,680 B | 864 B | 804 B |
+| `packages/textfield/dist/TextField.js` | 997 B | 528 B | 476 B |
+| `packages/textfield/dist/TextField.js.map` | 4,403 B | 1,452 B | 1,310 B |
+| `packages/textfield/dist/utils/refs.cjs` | 439 B | 340 B | 291 B |
+| `packages/textfield/dist/utils/refs.cjs.map` | 1,866 B | 970 B | 878 B |
 | `packages/textfield/dist/utils/refs.d.cts` | 383 B | 268 B | 218 B |
 | `packages/textfield/dist/utils/refs.d.ts` | 382 B | 267 B | 216 B |
-| `packages/textfield/dist/utils/refs.js` | 335 B | 268 B | 246 B |
-| `packages/textfield/dist/utils/refs.js.map` | 1,669 B | 861 B | 767 B |
-| `packages/timer/dist/context.cjs` | 2,690 B | 1,110 B | 1,017 B |
-| `packages/timer/dist/context.cjs.map` | 13,235 B | 3,126 B | 2,879 B |
-| `packages/timer/dist/context.d.cts` | 1,115 B | 433 B | 371 B |
-| `packages/timer/dist/context.d.ts` | 1,114 B | 431 B | 367 B |
-| `packages/timer/dist/context.js` | 2,551 B | 1,057 B | 958 B |
-| `packages/timer/dist/context.js.map` | 13,149 B | 3,101 B | 2,830 B |
+| `packages/textfield/dist/utils/refs.js` | 338 B | 270 B | 253 B |
+| `packages/textfield/dist/utils/refs.js.map` | 1,855 B | 969 B | 907 B |
+| `packages/timer/dist/context.cjs` | 3,352 B | 1,194 B | 1,073 B |
+| `packages/timer/dist/context.cjs.map` | 15,812 B | 3,404 B | 3,062 B |
+| `packages/timer/dist/context.d.cts` | 1,281 B | 491 B | 395 B |
+| `packages/timer/dist/context.d.ts` | 1,280 B | 489 B | 393 B |
+| `packages/timer/dist/context.js` | 3,197 B | 1,140 B | 1,043 B |
+| `packages/timer/dist/context.js.map` | 15,712 B | 3,376 B | 3,055 B |
 | `packages/timer/dist/default.cjs` | 1,001 B | 523 B | 455 B |
 | `packages/timer/dist/default.cjs.map` | 2,423 B | 850 B | 767 B |
 | `packages/timer/dist/default.d.cts` | 239 B | 174 B | 137 B |
@@ -368,12 +368,12 @@
 | `packages/treemap/dist/zip.d.ts` | 248 B | 204 B | 179 B |
 | `packages/treemap/dist/zip.js` | 130 B | 137 B | 133 B |
 | `packages/treemap/dist/zip.js.map` | 469 B | 316 B | 273 B |
-| `packages/wavebox/dist/curve.cjs` | 220 B | 204 B | 186 B |
-| `packages/wavebox/dist/curve.cjs.map` | 557 B | 341 B | 300 B |
+| `packages/wavebox/dist/curve.cjs` | 290 B | 253 B | 211 B |
+| `packages/wavebox/dist/curve.cjs.map` | 701 B | 429 B | 378 B |
 | `packages/wavebox/dist/curve.d.cts` | 266 B | 198 B | 153 B |
 | `packages/wavebox/dist/curve.d.ts` | 265 B | 197 B | 150 B |
-| `packages/wavebox/dist/curve.js` | 125 B | 134 B | 117 B |
-| `packages/wavebox/dist/curve.js.map` | 555 B | 339 B | 295 B |
+| `packages/wavebox/dist/curve.js` | 195 B | 182 B | 173 B |
+| `packages/wavebox/dist/curve.js.map` | 699 B | 427 B | 402 B |
 | `packages/wavebox/dist/index.cjs` | 294 B | 181 B | 142 B |
 | `packages/wavebox/dist/index.d.cts` | 179 B | 104 B | 96 B |
 | `packages/wavebox/dist/index.d.ts` | 177 B | 103 B | 101 B |
@@ -388,12 +388,12 @@
 | `packages/wavebox/dist/SizedBox.js.map` | 957 B | 512 B | 430 B |
 | `packages/wavebox/dist/useInterval-7uwCW3CW.js` | 311 B | 217 B | 180 B |
 | `packages/wavebox/dist/useInterval-7uwCW3CW.js.map` | 1,037 B | 523 B | 468 B |
-| `packages/wavebox/dist/wavebox.cjs` | 1,218 B | 512 B | 453 B |
-| `packages/wavebox/dist/wavebox.cjs.map` | 5,449 B | 1,442 B | 1,255 B |
-| `packages/wavebox/dist/wavebox.d.cts` | 2,574 B | 612 B | 487 B |
-| `packages/wavebox/dist/wavebox.d.ts` | 2,573 B | 610 B | 483 B |
-| `packages/wavebox/dist/wavebox.js` | 1,070 B | 448 B | 402 B |
-| `packages/wavebox/dist/wavebox.js.map` | 5,328 B | 1,406 B | 1,223 B |
+| `packages/wavebox/dist/wavebox.cjs` | 1,230 B | 526 B | 465 B |
+| `packages/wavebox/dist/wavebox.cjs.map` | 5,813 B | 1,550 B | 1,345 B |
+| `packages/wavebox/dist/wavebox.d.cts` | 2,909 B | 689 B | 561 B |
+| `packages/wavebox/dist/wavebox.d.ts` | 2,908 B | 687 B | 559 B |
+| `packages/wavebox/dist/wavebox.js` | 1,082 B | 461 B | 414 B |
+| `packages/wavebox/dist/wavebox.js.map` | 5,692 B | 1,513 B | 1,315 B |
 | `packages/zoomer/dist/index.cjs` | 233 B | 164 B | 126 B |
 | `packages/zoomer/dist/index.d.cts` | 121 B | 82 B | 85 B |
 | `packages/zoomer/dist/index.d.ts` | 120 B | 81 B | 99 B |
