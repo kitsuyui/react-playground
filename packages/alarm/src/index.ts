@@ -6,4 +6,4 @@ export {
   type AlarmContextValue,
   type AlarmValue,
 } from './context'
-export { DefaultAlarm } from './default'
+export { DefaultAlarm, type DefaultAlarmProps } from './default'
