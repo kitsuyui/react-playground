@@ -4,6 +4,7 @@ import { useInterval } from 'react-use'
 import { calcRemaining } from './time'
 
 export interface TimerValue {
+  /** Remaining time in seconds. */
   remaining: number
   running: boolean
   vibrationEnabled: boolean
@@ -15,7 +16,9 @@ export interface TimerActions {
   stop(): void
   toggle(): void
   reset(): void
+  /** Increments the timer value by the given number of seconds. */
   incrementTimerValue(value: number): void
+  /** Sets the timer value to the given number of seconds. */
   setTimerValue(value: number): void
   setVibrationEnabled(value: boolean): void
   toggleVibration(): void
