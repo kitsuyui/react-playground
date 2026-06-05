@@ -5,7 +5,22 @@ import { toText } from '@kitsuyui/number-time/toText'
 import type { AlarmContextValue } from './context'
 import { formatAlarmTarget } from './time'
 
-export const DefaultAlarm: React.FC<AlarmContextValue> = (props): React.JSX.Element => {
+export type DefaultAlarmProps = Pick<
+  AlarmContextValue,
+  | 'armed'
+  | 'ringing'
+  | 'remaining'
+  | 'targetTimeMs'
+  | 'notificationEnabled'
+  | 'notificationSupported'
+  | 'toggle'
+  | 'reset'
+  | 'stopRinging'
+  | 'scheduleAfter'
+  | 'toggleNotification'
+>
+
+export const DefaultAlarm: React.FC<DefaultAlarmProps> = (props): React.JSX.Element => {
   const {
     armed,
     ringing,
