@@ -1,8 +1,8 @@
 # gh-build-size report
 
 - Repository: **kitsuyui/react-playground**
-- Head: `eb88b8573bd71ad7a82364705251764547ed3a9e`
-- Generated at: 2026-06-04T13:01:28.823Z
+- Head: `087c023a766b01cfa7dcdca2ee571b189cb0034f`
+- Generated at: 2026-06-05T14:48:56.248Z
 
 | File | Raw | Gzip | Brotli |
 | --- | ---: | ---: | ---: |
@@ -19,14 +19,14 @@
 | `packages/alarm/dist/context.js` | 4,013 B | 1,317 B | 1,212 B |
 | `packages/alarm/dist/context.js.map` | 17,730 B | 3,690 B | 3,345 B |
 | `packages/alarm/dist/default.cjs` | 1,342 B | 636 B | 555 B |
-| `packages/alarm/dist/default.cjs.map` | 3,410 B | 1,245 B | 1,129 B |
-| `packages/alarm/dist/default.d.cts` | 239 B | 174 B | 138 B |
-| `packages/alarm/dist/default.d.ts` | 237 B | 171 B | 133 B |
+| `packages/alarm/dist/default.cjs.map` | 3,691 B | 1,316 B | 1,190 B |
+| `packages/alarm/dist/default.d.cts` | 488 B | 281 B | 246 B |
+| `packages/alarm/dist/default.d.ts` | 486 B | 278 B | 237 B |
 | `packages/alarm/dist/default.js` | 1,192 B | 586 B | 514 B |
-| `packages/alarm/dist/default.js.map` | 3,280 B | 1,227 B | 1,115 B |
+| `packages/alarm/dist/default.js.map` | 3,561 B | 1,295 B | 1,166 B |
 | `packages/alarm/dist/index.cjs` | 320 B | 192 B | 149 B |
-| `packages/alarm/dist/index.d.cts` | 338 B | 144 B | 127 B |
-| `packages/alarm/dist/index.d.ts` | 336 B | 143 B | 126 B |
+| `packages/alarm/dist/index.d.cts` | 381 B | 154 B | 128 B |
+| `packages/alarm/dist/index.d.ts` | 379 B | 152 B | 134 B |
 | `packages/alarm/dist/index.js` | 213 B | 141 B | 135 B |
 | `packages/alarm/dist/lib-BqRrzelq.cjs` | 106,935 B | 27,130 B | 23,677 B |
 | `packages/alarm/dist/lib-BqRrzelq.cjs.map` | 387,205 B | 75,455 B | 62,587 B |
