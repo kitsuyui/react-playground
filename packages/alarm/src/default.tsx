@@ -18,7 +18,9 @@ export type DefaultAlarmProps = Pick<
   | 'stopRinging'
   | 'scheduleAfter'
   | 'toggleNotification'
->
+> & {
+  timezone?: string
+}
 
 export const DefaultAlarm: React.FC<DefaultAlarmProps> = (props): React.JSX.Element => {
   const {
@@ -33,6 +35,7 @@ export const DefaultAlarm: React.FC<DefaultAlarmProps> = (props): React.JSX.Elem
     stopRinging,
     scheduleAfter,
     toggleNotification,
+    timezone,
   } = props
   return (
     <>
@@ -45,7 +48,7 @@ export const DefaultAlarm: React.FC<DefaultAlarmProps> = (props): React.JSX.Elem
           minWidth: '9em',
         }}
       >
-        {formatAlarmStatus(ringing, targetTimeMs, remaining)}
+        {formatAlarmStatus(ringing, targetTimeMs, remaining, timezone)}
       </span>
       <button type="button" onClick={() => scheduleAfter(60)}>
         +1 min
@@ -77,11 +80,12 @@ export const DefaultAlarm: React.FC<DefaultAlarmProps> = (props): React.JSX.Elem
 const formatAlarmStatus = (
   ringing: boolean,
   targetTimeMs: number | null,
-  remaining: number
+  remaining: number,
+  timezone?: string
 ) => {
   if (ringing) return 'Alarm'
   if (targetTimeMs === null) return 'No alarm'
-  return `${toText(remaining)} -> ${formatAlarmTarget(targetTimeMs)}`
+  return `${toText(remaining)} -> ${formatAlarmTarget(targetTimeMs, timezone)}`
 }
 
 const AlarmActionButton = (props: {
