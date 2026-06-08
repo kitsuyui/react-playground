@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-08T20:12:47.137Z",
+  "generated_at": "2026-06-08T20:21:57.574Z",
   "repository": "kitsuyui/react-playground",
   "default_branch": "main",
   "publish_branch": "gh-build-size-assets",
   "event_name": "push",
-  "head_reference": "6569adf16d25057651b7c3703bf1959558f770f7",
+  "head_reference": "268ab93416437d99b25b9873c10339c95e75942e",
   "files": [
     {
       "path": "packages/alarm/dist/clock.cjs",
@@ -105,49 +105,49 @@
     {
       "path": "packages/alarm/dist/default.cjs",
       "sizes": {
-        "raw": 1342,
-        "gzip": 636,
-        "brotli": 555
+        "raw": 1359,
+        "gzip": 647,
+        "brotli": 562
       }
     },
     {
       "path": "packages/alarm/dist/default.cjs.map",
       "sizes": {
-        "raw": 3691,
-        "gzip": 1316,
-        "brotli": 1190
+        "raw": 3796,
+        "gzip": 1350,
+        "brotli": 1219
       }
     },
     {
       "path": "packages/alarm/dist/default.d.cts",
       "sizes": {
-        "raw": 488,
-        "gzip": 281,
-        "brotli": 246
+        "raw": 515,
+        "gzip": 299,
+        "brotli": 265
       }
     },
     {
       "path": "packages/alarm/dist/default.d.ts",
       "sizes": {
-        "raw": 486,
-        "gzip": 278,
-        "brotli": 237
+        "raw": 513,
+        "gzip": 297,
+        "brotli": 257
       }
     },
     {
       "path": "packages/alarm/dist/default.js",
       "sizes": {
-        "raw": 1192,
-        "gzip": 586,
-        "brotli": 514
+        "raw": 1209,
+        "gzip": 598,
+        "brotli": 525
       }
     },
     {
       "path": "packages/alarm/dist/default.js.map",
       "sizes": {
-        "raw": 3561,
-        "gzip": 1295,
-        "brotli": 1166
+        "raw": 3666,
+        "gzip": 1331,
+        "brotli": 1197
       }
     },
     {
@@ -201,49 +201,49 @@
     {
       "path": "packages/alarm/dist/time.cjs",
       "sizes": {
-        "raw": 396,
-        "gzip": 279,
-        "brotli": 228
+        "raw": 479,
+        "gzip": 316,
+        "brotli": 258
       }
     },
     {
       "path": "packages/alarm/dist/time.cjs.map",
       "sizes": {
-        "raw": 863,
-        "gzip": 437,
-        "brotli": 413
+        "raw": 1051,
+        "gzip": 517,
+        "brotli": 468
       }
     },
     {
       "path": "packages/alarm/dist/time.d.cts",
       "sizes": {
-        "raw": 395,
-        "gzip": 203,
-        "brotli": 179
+        "raw": 414,
+        "gzip": 213,
+        "brotli": 184
       }
     },
     {
       "path": "packages/alarm/dist/time.d.ts",
       "sizes": {
-        "raw": 394,
-        "gzip": 202,
-        "brotli": 177
+        "raw": 413,
+        "gzip": 211,
+        "brotli": 182
       }
     },
     {
       "path": "packages/alarm/dist/time.js",
       "sizes": {
-        "raw": 291,
-        "gzip": 211,
-        "brotli": 184
+        "raw": 374,
+        "gzip": 250,
+        "brotli": 219
       }
     },
     {
       "path": "packages/alarm/dist/time.js.map",
       "sizes": {
-        "raw": 861,
-        "gzip": 435,
-        "brotli": 407
+        "raw": 1049,
+        "gzip": 515,
+        "brotli": 467
       }
     },
     {
