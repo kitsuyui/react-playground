@@ -3,6 +3,7 @@ coverage:
   paths:
     - coverage/unit/clover.xml
     - coverage/browser/clover.xml
+  acceptable: current >= 90%
 codeToTestRatio:
   code:
     - '**/src/**/*.ts'
@@ -12,6 +13,7 @@ codeToTestRatio:
     - '**/src/**/*.spec.tsx'
     - '**/src/**/*.browser.spec.ts'
     - '**/src/**/*.browser.spec.tsx'
+  acceptable: ratio >= 0.05
 testExecutionTime:
   if: true
 diff:
