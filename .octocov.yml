@@ -13,7 +13,7 @@ codeToTestRatio:
     - '**/src/**/*.spec.tsx'
     - '**/src/**/*.browser.spec.ts'
     - '**/src/**/*.browser.spec.tsx'
-  acceptable: ratio >= 0.05
+  acceptable: current >= 0.05
 testExecutionTime:
   if: true
 diff:
