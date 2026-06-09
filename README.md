@@ -103,3 +103,22 @@ bun run test
 bun run typecheck
 bun run validate
 ```
+
+### Local git hooks (lefthook)
+
+This repository uses [lefthook](https://github.com/evilmartians/lefthook) to run the same checks as CI before each commit and push.
+
+Install the hooks after cloning:
+
+```sh
+lefthook install
+```
+
+Hooks summary:
+
+| Hook | Scripts |
+|------|---------|
+| pre-commit | `bun run lint`, `bun run typecheck` |
+| pre-push | `bun run lint`, `bun run typecheck`, `bun run test` |
+
+CI still runs the full suite on every pull request and push to `main` — the hooks bring the same feedback earlier without leaving your editor.
