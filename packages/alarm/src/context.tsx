@@ -182,6 +182,8 @@ const handleAlarmRing = (
   finishAlarmRing(props)
 }
 
+// createAlarmArm arms the alarm at the previously set target time.
+// Arming resets the ringing state: the alarm is considered fresh-started.
 const createAlarmArm = (props: {
   targetTimeMsRef: React.MutableRefObject<number | null>
   targetMonotonicMsRef: React.MutableRefObject<number | null>
@@ -258,6 +260,9 @@ const createAlarmReset = (props: {
   }
 }
 
+// createScheduleAlarmAfter arms the alarm N seconds from now (equivalent to arm
+// with an implicit setTargetTimeMs). Scheduling resets the ringing state because
+// it starts a new alarm countdown cycle.
 const createScheduleAlarmAfter = (props: {
   targetTimeMsRef: React.MutableRefObject<number | null>
   targetMonotonicMsRef: React.MutableRefObject<number | null>
@@ -281,13 +286,15 @@ const createScheduleAlarmAfter = (props: {
   }
 }
 
+// createSetAlarmTargetTime updates the target time without changing the armed or
+// ringing state. Use arm() or scheduleAfter() to also start the countdown;
+// use stopRinging() to explicitly stop a ringing alarm.
 const createSetAlarmTargetTime = (props: {
   targetTimeMsRef: React.MutableRefObject<number | null>
   targetMonotonicMsRef: React.MutableRefObject<number | null>
   armedRef: React.MutableRefObject<boolean>
   setTargetTimeMsState: React.Dispatch<React.SetStateAction<number | null>>
   setRemaining: React.Dispatch<React.SetStateAction<number>>
-  setRinging: React.Dispatch<React.SetStateAction<boolean>>
 }) => {
   return (value: number) => {
     const nextTarget = createAlarmTargetFromWallClock(value)
@@ -297,7 +304,6 @@ const createSetAlarmTargetTime = (props: {
       : null
     props.setTargetTimeMsState(value)
     props.setRemaining(nextTarget.remaining)
-    props.setRinging(false)
   }
 }
 
@@ -416,7 +422,6 @@ export const AlarmContextProvider: React.FC<AlarmContextProviderProps> = (
     armedRef,
     setTargetTimeMsState,
     setRemaining,
-    setRinging,
   })
   const setNotificationEnabledAction =
     createSetNotificationEnabledAction(setNotificationEnabled)

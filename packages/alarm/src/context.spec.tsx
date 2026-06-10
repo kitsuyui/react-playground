@@ -138,6 +138,26 @@ describe('AlarmContextProvider', () => {
     expect(getContext().remaining).toBe(0)
     expect(onReset).toHaveBeenCalledTimes(1)
   })
+
+  it('setTargetTimeMs does not stop a ringing alarm', async () => {
+    const { getContext } = renderAlarmContext({ refreshInterval: 10 })
+
+    act(() => {
+      getContext().scheduleAfter(0)
+    })
+
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(20)
+    })
+
+    expect(getContext().ringing).toBe(true)
+
+    act(() => {
+      getContext().setTargetTimeMs(Date.now() + 60_000)
+    })
+
+    expect(getContext().ringing).toBe(true)
+  })
 })
 
 const renderAlarmContext = (
