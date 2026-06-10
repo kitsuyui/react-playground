@@ -5,17 +5,17 @@
     {
       "path": "packages/metronome/dist/context.cjs",
       "sizes": {
-        "raw": 3097,
-        "gzip": 1150,
-        "brotli": 1047
+        "raw": 3213,
+        "gzip": 1214,
+        "brotli": 1098
       }
     },
     {
       "path": "packages/metronome/dist/context.cjs.map",
       "sizes": {
-        "raw": 13931,
-        "gzip": 3105,
-        "brotli": 2836
+        "raw": 14154,
+        "gzip": 3225,
+        "brotli": 2975
       }
     },
     {
@@ -37,17 +37,17 @@
     {
       "path": "packages/metronome/dist/context.js",
       "sizes": {
-        "raw": 2899,
-        "gzip": 1091,
-        "brotli": 1004
+        "raw": 3015,
+        "gzip": 1153,
+        "brotli": 1060
       }
     },
     {
       "path": "packages/metronome/dist/context.js.map",
       "sizes": {
-        "raw": 13796,
-        "gzip": 3067,
-        "brotli": 2817
+        "raw": 14019,
+        "gzip": 3187,
+        "brotli": 2905
       }
     },
     {
@@ -212,8 +212,8 @@
     }
   ],
   "totals": {
-    "raw": 540869,
-    "gzip": 117423,
-    "brotli": 99532
+    "raw": 541547,
+    "gzip": 117789,
+    "brotli": 99866
   }
 }

@@ -1,8 +1,8 @@
 # gh-build-size report
 
 - Repository: **kitsuyui/react-playground**
-- Head: `6dfc32409cb1dc4b4b34c2dd90d20bed84e87cba`
-- Generated at: 2026-06-09T17:25:36.508Z
+- Head: `933a168cd656596bddbc42a35d4149f12631f169`
+- Generated at: 2026-06-10T14:43:30.472Z
 
 | File | Raw | Gzip | Brotli |
 | --- | ---: | ---: | ---: |
@@ -12,12 +12,12 @@
 | `packages/alarm/dist/clock.d.ts` | 150 B | 134 B | 105 B |
 | `packages/alarm/dist/clock.js` | 95 B | 114 B | 99 B |
 | `packages/alarm/dist/clock.js.map` | 205 B | 179 B | 159 B |
-| `packages/alarm/dist/context.cjs` | 4,234 B | 1,371 B | 1,242 B |
-| `packages/alarm/dist/context.cjs.map` | 17,934 B | 3,729 B | 3,377 B |
+| `packages/alarm/dist/context.cjs` | 4,372 B | 1,449 B | 1,305 B |
+| `packages/alarm/dist/context.cjs.map` | 18,641 B | 4,116 B | 3,674 B |
 | `packages/alarm/dist/context.d.cts` | 1,222 B | 473 B | 424 B |
 | `packages/alarm/dist/context.d.ts` | 1,221 B | 471 B | 421 B |
-| `packages/alarm/dist/context.js` | 4,013 B | 1,317 B | 1,212 B |
-| `packages/alarm/dist/context.js.map` | 17,730 B | 3,690 B | 3,345 B |
+| `packages/alarm/dist/context.js` | 4,151 B | 1,393 B | 1,270 B |
+| `packages/alarm/dist/context.js.map` | 18,437 B | 4,078 B | 3,626 B |
 | `packages/alarm/dist/default.cjs` | 1,359 B | 647 B | 562 B |
 | `packages/alarm/dist/default.cjs.map` | 3,796 B | 1,350 B | 1,219 B |
 | `packages/alarm/dist/default.d.cts` | 515 B | 299 B | 265 B |
@@ -109,12 +109,12 @@
 | `packages/biticon/dist/UUIDIcon.d.ts` | 328 B | 223 B | 188 B |
 | `packages/biticon/dist/UUIDIcon.js` | 371 B | 264 B | 233 B |
 | `packages/biticon/dist/UUIDIcon.js.map` | 921 B | 496 B | 460 B |
-| `packages/clock/dist/analog/index.cjs` | 3,284 B | 1,295 B | 1,154 B |
-| `packages/clock/dist/analog/index.cjs.map` | 12,393 B | 3,084 B | 2,690 B |
+| `packages/clock/dist/analog/index.cjs` | 3,284 B | 1,296 B | 1,153 B |
+| `packages/clock/dist/analog/index.cjs.map` | 12,433 B | 3,085 B | 2,713 B |
 | `packages/clock/dist/analog/index.d.cts` | 1,657 B | 563 B | 481 B |
 | `packages/clock/dist/analog/index.d.ts` | 1,654 B | 559 B | 478 B |
-| `packages/clock/dist/analog/index.js` | 3,052 B | 1,237 B | 1,102 B |
-| `packages/clock/dist/analog/index.js.map` | 12,165 B | 3,051 B | 2,672 B |
+| `packages/clock/dist/analog/index.js` | 3,052 B | 1,236 B | 1,102 B |
+| `packages/clock/dist/analog/index.js.map` | 12,205 B | 3,051 B | 2,677 B |
 | `packages/clock/dist/context.cjs` | 527 B | 366 B | 292 B |
 | `packages/clock/dist/context.cjs.map` | 1,325 B | 637 B | 543 B |
 | `packages/clock/dist/context.d.cts` | 534 B | 288 B | 215 B |
@@ -223,12 +223,12 @@
 | `packages/measure/dist/measure.js.map` | 1,216 B | 625 B | 555 B |
 | `packages/measure/dist/useMeasure-DchPFmlV.js` | 696 B | 432 B | 372 B |
 | `packages/measure/dist/useMeasure-DchPFmlV.js.map` | 3,444 B | 1,222 B | 1,101 B |
-| `packages/metronome/dist/context.cjs` | 3,097 B | 1,150 B | 1,047 B |
-| `packages/metronome/dist/context.cjs.map` | 13,931 B | 3,105 B | 2,836 B |
+| `packages/metronome/dist/context.cjs` | 3,213 B | 1,214 B | 1,098 B |
+| `packages/metronome/dist/context.cjs.map` | 14,154 B | 3,225 B | 2,975 B |
 | `packages/metronome/dist/context.d.cts` | 1,049 B | 415 B | 352 B |
 | `packages/metronome/dist/context.d.ts` | 1,048 B | 413 B | 350 B |
-| `packages/metronome/dist/context.js` | 2,899 B | 1,091 B | 1,004 B |
-| `packages/metronome/dist/context.js.map` | 13,796 B | 3,067 B | 2,817 B |
+| `packages/metronome/dist/context.js` | 3,015 B | 1,153 B | 1,060 B |
+| `packages/metronome/dist/context.js.map` | 14,019 B | 3,187 B | 2,905 B |
 | `packages/metronome/dist/default.cjs` | 1,010 B | 559 B | 475 B |
 | `packages/metronome/dist/default.cjs.map` | 2,416 B | 922 B | 810 B |
 | `packages/metronome/dist/default.d.cts` | 255 B | 176 B | 146 B |
@@ -255,12 +255,12 @@
 | `packages/stopwatch/dist/clock.d.ts` | 150 B | 134 B | 105 B |
 | `packages/stopwatch/dist/clock.js` | 95 B | 114 B | 99 B |
 | `packages/stopwatch/dist/clock.js.map` | 205 B | 179 B | 159 B |
-| `packages/stopwatch/dist/context.cjs` | 1,803 B | 783 B | 711 B |
-| `packages/stopwatch/dist/context.cjs.map` | 7,372 B | 2,025 B | 1,831 B |
+| `packages/stopwatch/dist/context.cjs` | 1,897 B | 834 B | 750 B |
+| `packages/stopwatch/dist/context.cjs.map` | 7,603 B | 2,134 B | 1,944 B |
 | `packages/stopwatch/dist/context.d.cts` | 828 B | 354 B | 293 B |
 | `packages/stopwatch/dist/context.d.ts` | 827 B | 352 B | 291 B |
-| `packages/stopwatch/dist/context.js` | 1,587 B | 719 B | 668 B |
-| `packages/stopwatch/dist/context.js.map` | 7,248 B | 1,992 B | 1,799 B |
+| `packages/stopwatch/dist/context.js` | 1,681 B | 774 B | 711 B |
+| `packages/stopwatch/dist/context.js.map` | 7,479 B | 2,100 B | 1,900 B |
 | `packages/stopwatch/dist/default.cjs` | 622 B | 400 B | 348 B |
 | `packages/stopwatch/dist/default.cjs.map` | 1,549 B | 728 B | 623 B |
 | `packages/stopwatch/dist/default.d.cts` | 441 B | 281 B | 228 B |
@@ -318,12 +318,12 @@
 | `packages/textfield/dist/utils/refs.d.ts` | 382 B | 267 B | 216 B |
 | `packages/textfield/dist/utils/refs.js` | 338 B | 270 B | 253 B |
 | `packages/textfield/dist/utils/refs.js.map` | 1,855 B | 969 B | 907 B |
-| `packages/timer/dist/context.cjs` | 3,352 B | 1,194 B | 1,073 B |
-| `packages/timer/dist/context.cjs.map` | 15,812 B | 3,404 B | 3,062 B |
+| `packages/timer/dist/context.cjs` | 3,507 B | 1,262 B | 1,139 B |
+| `packages/timer/dist/context.cjs.map` | 16,003 B | 3,532 B | 3,174 B |
 | `packages/timer/dist/context.d.cts` | 1,281 B | 491 B | 395 B |
 | `packages/timer/dist/context.d.ts` | 1,280 B | 489 B | 393 B |
-| `packages/timer/dist/context.js` | 3,197 B | 1,140 B | 1,043 B |
-| `packages/timer/dist/context.js.map` | 15,712 B | 3,376 B | 3,055 B |
+| `packages/timer/dist/context.js` | 3,352 B | 1,205 B | 1,101 B |
+| `packages/timer/dist/context.js.map` | 15,903 B | 3,508 B | 3,138 B |
 | `packages/timer/dist/default.cjs` | 1,001 B | 523 B | 455 B |
 | `packages/timer/dist/default.cjs.map` | 2,423 B | 850 B | 767 B |
 | `packages/timer/dist/default.d.cts` | 239 B | 174 B | 137 B |

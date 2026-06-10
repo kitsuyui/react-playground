@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-06-09T17:25:36.508Z",
+  "generated_at": "2026-06-10T14:43:30.472Z",
   "repository": "kitsuyui/react-playground",
   "default_branch": "main",
   "publish_branch": "gh-build-size-assets",
   "event_name": "push",
-  "head_reference": "6dfc32409cb1dc4b4b34c2dd90d20bed84e87cba",
+  "head_reference": "933a168cd656596bddbc42a35d4149f12631f169",
   "files": [
     {
       "path": "packages/alarm/dist/clock.cjs",
@@ -57,17 +57,17 @@
     {
       "path": "packages/alarm/dist/context.cjs",
       "sizes": {
-        "raw": 4234,
-        "gzip": 1371,
-        "brotli": 1242
+        "raw": 4372,
+        "gzip": 1449,
+        "brotli": 1305
       }
     },
     {
       "path": "packages/alarm/dist/context.cjs.map",
       "sizes": {
-        "raw": 17934,
-        "gzip": 3729,
-        "brotli": 3377
+        "raw": 18641,
+        "gzip": 4116,
+        "brotli": 3674
       }
     },
     {
@@ -89,17 +89,17 @@
     {
       "path": "packages/alarm/dist/context.js",
       "sizes": {
-        "raw": 4013,
-        "gzip": 1317,
-        "brotli": 1212
+        "raw": 4151,
+        "gzip": 1393,
+        "brotli": 1270
       }
     },
     {
       "path": "packages/alarm/dist/context.js.map",
       "sizes": {
-        "raw": 17730,
-        "gzip": 3690,
-        "brotli": 3345
+        "raw": 18437,
+        "gzip": 4078,
+        "brotli": 3626
       }
     },
     {
@@ -834,16 +834,16 @@
       "path": "packages/clock/dist/analog/index.cjs",
       "sizes": {
         "raw": 3284,
-        "gzip": 1295,
-        "brotli": 1154
+        "gzip": 1296,
+        "brotli": 1153
       }
     },
     {
       "path": "packages/clock/dist/analog/index.cjs.map",
       "sizes": {
-        "raw": 12393,
-        "gzip": 3084,
-        "brotli": 2690
+        "raw": 12433,
+        "gzip": 3085,
+        "brotli": 2713
       }
     },
     {
@@ -866,16 +866,16 @@
       "path": "packages/clock/dist/analog/index.js",
       "sizes": {
         "raw": 3052,
-        "gzip": 1237,
+        "gzip": 1236,
         "brotli": 1102
       }
     },
     {
       "path": "packages/clock/dist/analog/index.js.map",
       "sizes": {
-        "raw": 12165,
+        "raw": 12205,
         "gzip": 3051,
-        "brotli": 2672
+        "brotli": 2677
       }
     },
     {
@@ -1745,17 +1745,17 @@
     {
       "path": "packages/metronome/dist/context.cjs",
       "sizes": {
-        "raw": 3097,
-        "gzip": 1150,
-        "brotli": 1047
+        "raw": 3213,
+        "gzip": 1214,
+        "brotli": 1098
       }
     },
     {
       "path": "packages/metronome/dist/context.cjs.map",
       "sizes": {
-        "raw": 13931,
-        "gzip": 3105,
-        "brotli": 2836
+        "raw": 14154,
+        "gzip": 3225,
+        "brotli": 2975
       }
     },
     {
@@ -1777,17 +1777,17 @@
     {
       "path": "packages/metronome/dist/context.js",
       "sizes": {
-        "raw": 2899,
-        "gzip": 1091,
-        "brotli": 1004
+        "raw": 3015,
+        "gzip": 1153,
+        "brotli": 1060
       }
     },
     {
       "path": "packages/metronome/dist/context.js.map",
       "sizes": {
-        "raw": 13796,
-        "gzip": 3067,
-        "brotli": 2817
+        "raw": 14019,
+        "gzip": 3187,
+        "brotli": 2905
       }
     },
     {
@@ -2001,17 +2001,17 @@
     {
       "path": "packages/stopwatch/dist/context.cjs",
       "sizes": {
-        "raw": 1803,
-        "gzip": 783,
-        "brotli": 711
+        "raw": 1897,
+        "gzip": 834,
+        "brotli": 750
       }
     },
     {
       "path": "packages/stopwatch/dist/context.cjs.map",
       "sizes": {
-        "raw": 7372,
-        "gzip": 2025,
-        "brotli": 1831
+        "raw": 7603,
+        "gzip": 2134,
+        "brotli": 1944
       }
     },
     {
@@ -2033,17 +2033,17 @@
     {
       "path": "packages/stopwatch/dist/context.js",
       "sizes": {
-        "raw": 1587,
-        "gzip": 719,
-        "brotli": 668
+        "raw": 1681,
+        "gzip": 774,
+        "brotli": 711
       }
     },
     {
       "path": "packages/stopwatch/dist/context.js.map",
       "sizes": {
-        "raw": 7248,
-        "gzip": 1992,
-        "brotli": 1799
+        "raw": 7479,
+        "gzip": 2100,
+        "brotli": 1900
       }
     },
     {
@@ -2505,17 +2505,17 @@
     {
       "path": "packages/timer/dist/context.cjs",
       "sizes": {
-        "raw": 3352,
-        "gzip": 1194,
-        "brotli": 1073
+        "raw": 3507,
+        "gzip": 1262,
+        "brotli": 1139
       }
     },
     {
       "path": "packages/timer/dist/context.cjs.map",
       "sizes": {
-        "raw": 15812,
-        "gzip": 3404,
-        "brotli": 3062
+        "raw": 16003,
+        "gzip": 3532,
+        "brotli": 3174
       }
     },
     {
@@ -2537,17 +2537,17 @@
     {
       "path": "packages/timer/dist/context.js",
       "sizes": {
-        "raw": 3197,
-        "gzip": 1140,
-        "brotli": 1043
+        "raw": 3352,
+        "gzip": 1205,
+        "brotli": 1101
       }
     },
     {
       "path": "packages/timer/dist/context.js.map",
       "sizes": {
-        "raw": 15712,
-        "gzip": 3376,
-        "brotli": 3055
+        "raw": 15903,
+        "gzip": 3508,
+        "brotli": 3138
       }
     },
     {

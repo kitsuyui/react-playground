@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-06-09T17:25:36.508Z",
+  "generated_at": "2026-06-10T14:43:30.471Z",
   "repository": "kitsuyui/react-playground",
   "default_branch": "main",
   "publish_branch": "gh-build-size-assets",
   "event_name": "push",
   "base_label": "main",
-  "base_reference": "268ab93416437d99b25b9873c10339c95e75942e",
+  "base_reference": "6dfc32409cb1dc4b4b34c2dd90d20bed84e87cba",
   "head_label": "main",
-  "head_reference": "6dfc32409cb1dc4b4b34c2dd90d20bed84e87cba",
+  "head_reference": "933a168cd656596bddbc42a35d4149f12631f169",
   "targets": [
     {
       "id": "total",
@@ -421,19 +421,19 @@
       "commentable": true,
       "sizes": {
         "raw": {
-          "current": 5495333,
+          "current": 5499123,
           "base": 5495333,
-          "delta": 0
+          "delta": 3790
         },
         "gzip": {
-          "current": 1238545,
+          "current": 1240557,
           "base": 1238545,
-          "delta": 0
+          "delta": 2012
         },
         "brotli": {
-          "current": 1048853,
+          "current": 1050528,
           "base": 1048853,
-          "delta": 0
+          "delta": 1675
         }
       },
       "violations": [],
@@ -486,19 +486,19 @@
       "commentable": true,
       "sizes": {
         "raw": {
-          "current": 562668,
+          "current": 564358,
           "base": 562668,
-          "delta": 0
+          "delta": 1690
         },
         "gzip": {
-          "current": 124456,
+          "current": 125385,
           "base": 124456,
-          "delta": 0
+          "delta": 929
         },
         "brotli": {
-          "current": 105790,
+          "current": 106489,
           "base": 105790,
-          "delta": 0
+          "delta": 699
         }
       },
       "violations": [],
@@ -700,19 +700,19 @@
       "commentable": true,
       "sizes": {
         "raw": {
-          "current": 574206,
+          "current": 574286,
           "base": 574206,
-          "delta": 0
+          "delta": 80
         },
         "gzip": {
-          "current": 135104,
+          "current": 135105,
           "base": 135104,
-          "delta": 0
+          "delta": 1
         },
         "brotli": {
-          "current": 114366,
+          "current": 114393,
           "base": 114366,
-          "delta": 0
+          "delta": 27
         }
       },
       "violations": [],
@@ -896,19 +896,19 @@
       "commentable": true,
       "sizes": {
         "raw": {
-          "current": 540869,
+          "current": 541547,
           "base": 540869,
-          "delta": 0
+          "delta": 678
         },
         "gzip": {
-          "current": 117423,
+          "current": 117789,
           "base": 117423,
-          "delta": 0
+          "delta": 366
         },
         "brotli": {
-          "current": 99532,
+          "current": 99866,
           "base": 99532,
-          "delta": 0
+          "delta": 334
         }
       },
       "violations": [],
@@ -961,19 +961,19 @@
       "commentable": true,
       "sizes": {
         "raw": {
-          "current": 528186,
+          "current": 528836,
           "base": 528186,
-          "delta": 0
+          "delta": 650
         },
         "gzip": {
-          "current": 117159,
+          "current": 117482,
           "base": 117159,
-          "delta": 0
+          "delta": 323
         },
         "brotli": {
-          "current": 99097,
+          "current": 99393,
           "base": 99097,
-          "delta": 0
+          "delta": 296
         }
       },
       "violations": [],
@@ -1111,19 +1111,19 @@
       "commentable": true,
       "sizes": {
         "raw": {
-          "current": 549904,
+          "current": 550596,
           "base": 549904,
-          "delta": 0
+          "delta": 692
         },
         "gzip": {
-          "current": 120317,
+          "current": 120710,
           "base": 120317,
-          "delta": 0
+          "delta": 393
         },
         "brotli": {
-          "current": 101917,
+          "current": 102236,
           "base": 101917,
-          "delta": 0
+          "delta": 319
         }
       },
       "violations": [],
