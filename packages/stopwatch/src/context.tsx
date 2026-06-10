@@ -17,14 +17,18 @@ export interface StopwatchActions {
 
 export type StopwatchContextValue = StopwatchValue & StopwatchActions
 
+const missingProvider = (name: string) => (): never => {
+  throw new Error(`${name} must be used within a StopwatchContextProvider`)
+}
+
 // TODO: Support leap second: https://github.com/kitsuyui/react-playground/issues/40
 export const StopwatchContext = React.createContext<StopwatchContextValue>({
   elapsedTime: 0,
   running: false,
-  start: () => { /* do nothing */ },
-  stop: () => { /* do nothing */ },
-  toggle: () => { /* do nothing */ },
-  reset: () => { /* do nothing */ },
+  start: missingProvider('start'),
+  stop: missingProvider('stop'),
+  toggle: missingProvider('toggle'),
+  reset: missingProvider('reset'),
 })
 
 export interface StopwatchProviderProps {

@@ -21,17 +21,21 @@ export interface MetronomeActions {
 
 export type MetronomeContextValue = MetronomeValue & MetronomeActions
 
+const missingProvider = (name: string) => (): never => {
+  throw new Error(`${name} must be used within a MetronomeContextProvider`)
+}
+
 export const MetronomeContext = React.createContext<MetronomeContextValue>({
   tempo: 120,
   running: false,
   beat: 0,
   lastBeatAtMs: null,
-  start: () => { /* do nothing */ },
-  stop: () => { /* do nothing */ },
-  toggle: () => { /* do nothing */ },
-  reset: () => { /* do nothing */ },
-  setTempo: (_value: number) => { /* do nothing */ },
-  incrementTempo: (_value: number) => { /* do nothing */ },
+  start: missingProvider('start'),
+  stop: missingProvider('stop'),
+  toggle: missingProvider('toggle'),
+  reset: missingProvider('reset'),
+  setTempo: missingProvider('setTempo'),
+  incrementTempo: missingProvider('incrementTempo'),
 })
 
 export interface MetronomeContextProviderProps {

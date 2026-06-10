@@ -28,6 +28,10 @@ export interface AlarmActions {
 
 export type AlarmContextValue = AlarmValue & AlarmActions
 
+const missingProvider = (name: string) => (): never => {
+  throw new Error(`${name} must be used within an AlarmContextProvider`)
+}
+
 export const AlarmContext = React.createContext<AlarmContextValue>({
   armed: false,
   ringing: false,
@@ -36,15 +40,15 @@ export const AlarmContext = React.createContext<AlarmContextValue>({
   notificationEnabled: false,
   notificationSupported: false,
   notificationPermission: 'unsupported',
-  arm: () => { /* do nothing */ },
-  disarm: () => { /* do nothing */ },
-  toggle: () => { /* do nothing */ },
-  reset: () => { /* do nothing */ },
-  stopRinging: () => { /* do nothing */ },
-  scheduleAfter: (_seconds: number) => { /* do nothing */ },
-  setTargetTimeMs: (_value: number) => { /* do nothing */ },
-  setNotificationEnabled: (_value: boolean) => { /* do nothing */ },
-  toggleNotification: () => { /* do nothing */ },
+  arm: missingProvider('arm'),
+  disarm: missingProvider('disarm'),
+  toggle: missingProvider('toggle'),
+  reset: missingProvider('reset'),
+  stopRinging: missingProvider('stopRinging'),
+  scheduleAfter: missingProvider('scheduleAfter'),
+  setTargetTimeMs: missingProvider('setTargetTimeMs'),
+  setNotificationEnabled: missingProvider('setNotificationEnabled'),
+  toggleNotification: missingProvider('toggleNotification'),
 })
 
 export interface AlarmContextProviderProps {
