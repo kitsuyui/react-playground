@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
 
 permissions:
-  contents: write
+  contents: read
   pull-requests: write
 jobs:
   test:
