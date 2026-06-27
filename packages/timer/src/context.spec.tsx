@@ -58,6 +58,20 @@ describe('TimerContextProvider', () => {
     expect(onComplete).toHaveBeenCalledTimes(1)
   })
 
+  it('preserves an explicit zero refresh interval', () => {
+    const setIntervalSpy = vi.spyOn(globalThis, 'setInterval')
+    const { getContext } = renderTimerContext({ refreshInterval: 0 })
+
+    act(() => {
+      getContext().setTimerValue(1)
+    })
+    act(() => {
+      getContext().start()
+    })
+
+    expect(setIntervalSpy).toHaveBeenCalledWith(expect.any(Function), 0)
+  })
+
   it('supports timer actions and completion side effects', async () => {
     const onStart = vi.fn()
     const onStop = vi.fn()
