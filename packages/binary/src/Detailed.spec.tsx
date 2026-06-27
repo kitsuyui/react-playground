@@ -32,13 +32,18 @@ describe('DetailedBit component', () => {
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('renders with little endian bit order', () => {
-    const { asFragment } = render(<DetailedBit stand={true} overflow={false} littleEndianBitOrder={1} bigEndianBitOrder={0} displayBigEndianBitOrder={true} />)
+  it('renders with big endian bit order using show prop', () => {
+    const { asFragment } = render(<DetailedBit stand={true} overflow={false} littleEndianBitOrder={1} bigEndianBitOrder={0} showBigEndianBitOrder={true} />)
     expect(asFragment()).toMatchSnapshot()
   })
 
-  it('renders with big endian bit order', () => {
-    const { asFragment } = render(<DetailedBit stand={true} overflow={false} littleEndianBitOrder={0} bigEndianBitOrder={1} displayLittleEndianBitOrder={true} />)
+  it('renders with little endian bit order using show prop', () => {
+    const { asFragment } = render(<DetailedBit stand={true} overflow={false} littleEndianBitOrder={0} bigEndianBitOrder={1} showLittleEndianBitOrder={true} />)
+    expect(asFragment()).toMatchSnapshot()
+  })
+
+  it('keeps display props as fallback aliases', () => {
+    const { asFragment } = render(<DetailedBit stand={true} overflow={false} littleEndianBitOrder={1} bigEndianBitOrder={0} displayBigEndianBitOrder={true} />)
     expect(asFragment()).toMatchSnapshot()
   })
 })
