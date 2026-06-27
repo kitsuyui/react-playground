@@ -59,17 +59,18 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Lint
-        run: bun run lint
+      - parallel:
+          - name: Lint
+            run: bun run lint
 
-      - name: typecheck
-        run: bun run typecheck
+          - name: typecheck
+            run: bun run typecheck
 
-      - name: Check module isolation
-        run: bun run check-module-isolation
+          - name: Check module isolation
+            run: bun run check-module-isolation
 
-      - name: Test
-        run: bun run test
+          - name: Test
+            run: bun run test
 
       - name: Try to build docs
         run: bun run typedoc
