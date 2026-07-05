@@ -2,6 +2,8 @@ import type React from 'react'
 import { Bits, type EnhancedBitProps } from './Binary'
 
 export type DetailedBitProps = EnhancedBitProps & {
+  showLittleEndianBitOrder?: boolean | undefined
+  showBigEndianBitOrder?: boolean | undefined
   displayLittleEndianBitOrder?: boolean | undefined
   displayBigEndianBitOrder?: boolean | undefined
 }
@@ -52,8 +54,10 @@ const getDetailedBitPalette = (
 
 const getDetailedBitDisplayOptions = (props: DetailedBitProps) => {
   return {
-    displayLittleEndianBitOrder: props.displayLittleEndianBitOrder ?? false,
-    displayBigEndianBitOrder: props.displayBigEndianBitOrder ?? false,
+    displayLittleEndianBitOrder:
+      props.showLittleEndianBitOrder ?? props.displayLittleEndianBitOrder ?? false,
+    displayBigEndianBitOrder:
+      props.showBigEndianBitOrder ?? props.displayBigEndianBitOrder ?? false,
   }
 }
 
@@ -123,8 +127,8 @@ export const DetailedBitString = (props: DetailedBitStringProps): React.JSX.Elem
       bitElement={(props) => (
         <DetailedBit
           {...props}
-          displayLittleEndianBitOrder={showLittleEndianBitOrder}
-          displayBigEndianBitOrder={showBigEndianBitOrder}
+          showLittleEndianBitOrder={showLittleEndianBitOrder}
+          showBigEndianBitOrder={showBigEndianBitOrder}
         />
       )}
     />
