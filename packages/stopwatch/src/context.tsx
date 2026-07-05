@@ -51,7 +51,7 @@ const resolveStopwatchHandlers = (
 })
 
 const resolveStopwatchRefreshInterval = (refreshInterval?: number) => {
-  return refreshInterval || 10
+  return refreshInterval ?? 10
 }
 
 const getActiveStopwatchInterval = (

@@ -64,7 +64,7 @@ const resolveHandler = <T,>(handler: T | undefined, fallback: T): T => {
 }
 
 const resolveTimerRefreshInterval = (refreshInterval?: number) => {
-  return refreshInterval || 10
+  return refreshInterval ?? 10
 }
 
 const resolveVibrationPattern = (pattern?: number | number[]) => {
