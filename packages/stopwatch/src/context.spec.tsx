@@ -84,6 +84,17 @@ describe('StopwatchContextProvider', () => {
     expect(onReset).toHaveBeenCalledTimes(1)
   })
 
+  it('preserves an explicit zero refresh interval', () => {
+    const setIntervalSpy = vi.spyOn(globalThis, 'setInterval')
+    const { getContext } = renderStopwatchContext({ refreshInterval: 0 })
+
+    act(() => {
+      getContext().start()
+    })
+
+    expect(setIntervalSpy).toHaveBeenCalledWith(expect.any(Function), 0)
+  })
+
   it('keeps elapsed time monotonic when the wall clock moves backward', async () => {
     vi.setSystemTime(new Date('2026-01-01T00:00:00Z'))
     const { getContext } = renderStopwatchContext({

@@ -13,11 +13,12 @@ concurrency:
   cancel-in-progress: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
 
 permissions:
-  contents: write
+  contents: read
   pull-requests: write
 jobs:
   test:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
 
     strategy:
       fail-fast: false
@@ -59,17 +60,18 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Lint
-        run: bun run lint
+      - parallel:
+          - name: Lint
+            run: bun run lint
 
-      - name: typecheck
-        run: bun run typecheck
+          - name: typecheck
+            run: bun run typecheck
 
-      - name: Check module isolation
-        run: bun run check-module-isolation
+          - name: Check module isolation
+            run: bun run check-module-isolation
 
-      - name: Test
-        run: bun run test
+          - name: Test
+            run: bun run test
 
       - name: Try to build docs
         run: bun run typedoc
