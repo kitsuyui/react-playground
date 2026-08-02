@@ -1,5 +1,163 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`SizedTreemap > renders the boustrophedon, horizontal-first layout without crashing 1`] = `
+<DocumentFragment>
+  <div
+    style="width: 640px; height: 360px; position: absolute; overflow: hidden;"
+  >
+    <div
+      style="position: absolute; overflow: hidden; width: 233.9576873779297px; height: 145.70053100585938px; left: 0px; top: 0px;"
+    >
+      <div>
+        Test10
+      </div>
+    </div>
+    <div
+      style="position: absolute; overflow: hidden; width: 212.68878173828125px; height: 145.70053100585938px; left: 233.9576873779297px; top: 0px;"
+    >
+      <div>
+        Test9
+      </div>
+    </div>
+    <div
+      style="position: absolute; overflow: hidden; width: 193.353515625px; height: 145.70053100585938px; left: 446.646484375px; top: 0px;"
+    >
+      <div>
+        Test8
+      </div>
+    </div>
+    <div
+      style="position: absolute; overflow: hidden; width: 183.546630859375px; height: 139.53204345703125px; left: 456.453369140625px; top: 145.70053100585938px;"
+    >
+      <div>
+        Test7
+      </div>
+    </div>
+    <div
+      style="position: absolute; overflow: hidden; width: 166.860595703125px; height: 139.53204345703125px; left: 289.5927734375px; top: 145.70053100585938px;"
+    >
+      <div>
+        Test6
+      </div>
+    </div>
+    <div
+      style="position: absolute; overflow: hidden; width: 151.6914520263672px; height: 139.53204345703125px; left: 137.9013214111328px; top: 145.70053100585938px;"
+    >
+      <div>
+        Test5
+      </div>
+    </div>
+    <div
+      style="position: absolute; overflow: hidden; width: 137.9013214111328px; height: 139.53204345703125px; left: 0px; top: 145.70053100585938px;"
+    >
+      <div>
+        Test4
+      </div>
+    </div>
+    <div
+      style="position: absolute; overflow: hidden; width: 233.9576873779297px; height: 74.76742553710938px; left: 0px; top: 285.2325744628906px;"
+    >
+      <div>
+        Test3
+      </div>
+    </div>
+    <div
+      style="position: absolute; overflow: hidden; width: 212.68882751464844px; height: 74.76742553710938px; left: 233.9576873779297px; top: 285.2325744628906px;"
+    >
+      <div>
+        Test2
+      </div>
+    </div>
+    <div
+      style="position: absolute; overflow: hidden; width: 193.3534698486328px; height: 74.76742553710938px; left: 446.6465148925781px; top: 285.2325744628906px;"
+    >
+      <div>
+        Test1
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`SizedTreemap > renders the boustrophedon, vertical-first layout without crashing 1`] = `
+<DocumentFragment>
+  <div
+    style="width: 360px; height: 640px; position: absolute; overflow: hidden;"
+  >
+    <div
+      style="position: absolute; overflow: hidden; width: 145.70053100585938px; height: 233.9576873779297px; left: 0px; top: 0px;"
+    >
+      <div>
+        Test10
+      </div>
+    </div>
+    <div
+      style="position: absolute; overflow: hidden; width: 145.70053100585938px; height: 212.68878173828125px; left: 0px; top: 233.9576873779297px;"
+    >
+      <div>
+        Test9
+      </div>
+    </div>
+    <div
+      style="position: absolute; overflow: hidden; width: 145.70053100585938px; height: 193.353515625px; left: 0px; top: 446.646484375px;"
+    >
+      <div>
+        Test8
+      </div>
+    </div>
+    <div
+      style="position: absolute; overflow: hidden; width: 139.53204345703125px; height: 183.546630859375px; left: 145.70053100585938px; top: 456.453369140625px;"
+    >
+      <div>
+        Test7
+      </div>
+    </div>
+    <div
+      style="position: absolute; overflow: hidden; width: 139.53204345703125px; height: 166.860595703125px; left: 145.70053100585938px; top: 289.5927734375px;"
+    >
+      <div>
+        Test6
+      </div>
+    </div>
+    <div
+      style="position: absolute; overflow: hidden; width: 139.53204345703125px; height: 151.6914520263672px; left: 145.70053100585938px; top: 137.9013214111328px;"
+    >
+      <div>
+        Test5
+      </div>
+    </div>
+    <div
+      style="position: absolute; overflow: hidden; width: 139.53204345703125px; height: 137.9013214111328px; left: 145.70053100585938px; top: 0px;"
+    >
+      <div>
+        Test4
+      </div>
+    </div>
+    <div
+      style="position: absolute; overflow: hidden; width: 74.76742553710938px; height: 233.9576873779297px; left: 285.2325744628906px; top: 0px;"
+    >
+      <div>
+        Test3
+      </div>
+    </div>
+    <div
+      style="position: absolute; overflow: hidden; width: 74.76742553710938px; height: 212.68882751464844px; left: 285.2325744628906px; top: 233.9576873779297px;"
+    >
+      <div>
+        Test2
+      </div>
+    </div>
+    <div
+      style="position: absolute; overflow: hidden; width: 74.76742553710938px; height: 193.3534698486328px; left: 285.2325744628906px; top: 446.6465148925781px;"
+    >
+      <div>
+        Test1
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
 exports[`SizedTreemap > renders without crashing 1`] = `
 <DocumentFragment>
   <div
