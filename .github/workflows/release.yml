@@ -1,6 +1,7 @@
 name: Release
 
 on:
+  workflow_dispatch:
   pull_request:
     types: [opened, synchronize, reopened]
   release:
@@ -50,7 +51,7 @@ jobs:
           bun run validate
 
       - name: Set tag rc
-        if: github.event_name == 'pull_request'
+        if: github.event_name != 'release'
         run: |
           git config user.email "dummy@dummy"
           git config user.name "dummy"
@@ -62,7 +63,7 @@ jobs:
           git config user.email "dummy@dummy"
           git config user.name "dummy"
           VERSION="${GITHUB_REF_NAME#v}"
-          if [ "${GITHUB_EVENT_NAME}" = "pull_request" ]; then
+          if [ "${GITHUB_EVENT_NAME}" != "release" ]; then
             VERSION="0.0.0-rc.${GITHUB_RUN_NUMBER}"
           fi
           for dir in packages/*; do
