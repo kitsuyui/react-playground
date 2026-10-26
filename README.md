@@ -122,3 +122,23 @@ Hooks summary:
 | pre-push | `bun run lint`, `bun run typecheck`, `bun run test` |
 
 CI still runs the full suite on every pull request and push to `main` — the hooks bring the same feedback earlier without leaving your editor.
+
+## Initial publication of new npm packages
+
+The `Stage a new npm package` GitHub Actions workflow supports the initial
+publication of `@kitsuyui/react-alarm` and `@kitsuyui/react-metronome`. After
+this workflow reaches `main`, configure a short-lived `NPM_BOOTSTRAP_TOKEN`
+secret with the minimum npm scope permissions needed to stage these packages.
+Run the workflow once for each package, selecting a version tag that contains
+the workflow. It builds on the GitHub runner and stages the selected package
+with provenance. Staging a new package creates a publicly visible
+`0.0.0-stage` placeholder; the staged version requires a maintainer's 2FA
+approval on npm before it is published.
+
+After approval, configure each package's npm Trusted Publisher for owner
+`kitsuyui`, repository `react-playground`, and workflow `release.yml`, allowing
+direct publication. Remove the bootstrap secret and revoke its token after
+both packages are staged. If a staging attempt fails after submission, inspect
+the existing staged package on npm before retrying; the workflow refuses to
+stage an already existing package. The regular release workflow never falls
+back to this token.
