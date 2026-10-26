@@ -33,6 +33,7 @@ jobs:
           # https://nodejs.org/en/about/previous-releases
           node-version: '24.13.1'
           registry-url: 'https://registry.npmjs.org'
+          package-manager-cache: false
 
       - name: Restore Bun dependency cache
         uses: actions/cache@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
@@ -41,6 +42,10 @@ jobs:
           key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
           restore-keys: |
             ${{ runner.os }}-bun-
+
+      - name: Check npm version for Trusted Publishing
+        run: |
+          node -e 'const [major, minor, patch] = process.argv[1].split(".").map(Number); if (major < 11 || (major === 11 && (minor < 5 || (minor === 5 && patch < 1)))) process.exit(1)' "$(npm --version)"
 
       - name: install and build
         run: |
@@ -79,11 +84,9 @@ jobs:
             if grep -q '"private": true' "$dir/package.json"; then
               continue
             fi
-            (cd "$dir" && NPM_CONFIG_PROVENANCE=true bun publish --access public)
+            (cd "$dir" && npm publish --access public)
           done
         if: github.event_name == 'release' && !github.event.release.prerelease
-        env:
-          NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: deploy (dry-run)
         run: |
@@ -92,8 +95,6 @@ jobs:
             if grep -q '"private": true' "$dir/package.json"; then
               continue
             fi
-            (cd "$dir" && NPM_CONFIG_PROVENANCE=true bun publish --access public --dry-run)
+            (cd "$dir" && npm publish --access public --dry-run --tag next)
           done
         if: github.event_name != 'release' || github.event.release.prerelease
-        env:
-          NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
