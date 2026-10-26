@@ -11,6 +11,10 @@ on:
           - alarm
           - metronome
 
+concurrency:
+  group: npm-bootstrap-${{ inputs.package }}
+  cancel-in-progress: false
+
 permissions:
   contents: read
   id-token: write
@@ -51,7 +55,7 @@ jobs:
           set -eu
           case "$PACKAGE" in alarm|metronome) ;; *) exit 1;; esac
           version="${GITHUB_REF_NAME#v}"
-          [[ "$version" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
+          [[ "$version" =~ ^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]
           test "$(node -p "require('./packages/$PACKAGE/package.json').name")" = "@kitsuyui/react-$PACKAGE"
           status=$(curl -sS -o /dev/null -w '%{http_code}' "https://registry.npmjs.org/@kitsuyui%2freact-$PACKAGE")
           test "$status" = 404 || { echo "Package already exists or registry request failed: $status" >&2; exit 1; }
