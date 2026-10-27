@@ -2,6 +2,11 @@ name: Release
 
 on:
   workflow_dispatch:
+    inputs:
+      packages:
+        description: Comma-separated package directories to publish from a version tag
+        required: false
+        type: string
   pull_request:
     types: [opened, synchronize, reopened]
   release:
@@ -23,6 +28,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          fetch-depth: 0
 
       - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6
         with:
@@ -56,19 +63,26 @@ jobs:
           bun run validate
 
       - name: Set tag rc
-        if: github.event_name != 'release'
+        if: github.event_name != 'release' && !inputs.packages
         run: |
           git config user.email "dummy@dummy"
           git config user.name "dummy"
           # dummy tag for dry-run
           git tag "v0.0.0-rc.${GITHUB_RUN_NUMBER}"
 
+      - name: Verify stable release source
+        if: (github.event_name == 'release' && !github.event.release.prerelease) || (github.event_name == 'workflow_dispatch' && inputs.packages)
+        run: |
+          set -eu
+          [[ "$GITHUB_REF_NAME" =~ ^v(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]] || { echo 'Select a semantic version tag for stable publishing' >&2; exit 1; }
+          git merge-base --is-ancestor "$GITHUB_SHA" origin/main
+
       - name: set git tag version
         run: |
           git config user.email "dummy@dummy"
           git config user.name "dummy"
           VERSION="${GITHUB_REF_NAME#v}"
-          if [ "${GITHUB_EVENT_NAME}" != "release" ]; then
+          if [ "${GITHUB_EVENT_NAME}" != "release" ] && [ -z "${{ inputs.packages }}" ]; then
             VERSION="0.0.0-rc.${GITHUB_RUN_NUMBER}"
           fi
           for dir in packages/*; do
@@ -76,25 +90,49 @@ jobs:
           done
           bun run format
 
+      - name: Select packages to publish
+        id: packages
+        if: (github.event_name == 'release' && !github.event.release.prerelease) || (github.event_name == 'workflow_dispatch' && inputs.packages)
+        env:
+          REQUESTED_PACKAGES: ${{ inputs.packages }}
+        run: |
+          set -eu
+          if [ "${GITHUB_EVENT_NAME}" = release ]; then
+            requested=$(find packages -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | grep -Ev '^(alarm|metronome)$' | paste -sd, -)
+          else
+            case "$GITHUB_REF" in refs/tags/v[0-9]*) ;; *) echo 'Select a version tag for manual publishing' >&2; exit 1;; esac
+            requested="$REQUESTED_PACKAGES"
+          fi
+          test -n "$requested"
+          selected=,
+          old_ifs=$IFS
+          IFS=,
+          for package in $requested; do
+            test -n "$package"
+            case "$package" in *[!a-z0-9-]*|alarm|metronome) echo "Invalid release package: $package" >&2; exit 1;; esac
+            test -f "packages/$package/package.json"
+            grep -q '"private": true' "packages/$package/package.json" && { echo "Private package: $package" >&2; exit 1; }
+            case "$selected" in *,$package,*) echo "Duplicate package: $package" >&2; exit 1;; esac
+            selected="$selected$package,"
+          done
+          IFS=$old_ifs
+          echo "selected=${selected#,}" | sed 's/,$//' >> "$GITHUB_OUTPUT"
+
       - name: deploy
         # https://docs.npmjs.com/generating-provenance-statements
         run: |
           set -eu
-          for dir in packages/*; do
-            if grep -q '"private": true' "$dir/package.json"; then
-              continue
-            fi
-            (cd "$dir" && npm publish --access public)
+          printf '%s\n' "${{ steps.packages.outputs.selected }}" | tr ',' '\n' | while IFS= read -r package; do
+            (cd "packages/$package" && npm publish --access public)
           done
-        if: github.event_name == 'release' && !github.event.release.prerelease
+        if: (github.event_name == 'release' && !github.event.release.prerelease) || (github.event_name == 'workflow_dispatch' && inputs.packages)
 
       - name: deploy (dry-run)
         run: |
           set -eu
           for dir in packages/*; do
-            if grep -q '"private": true' "$dir/package.json"; then
-              continue
-            fi
+            if grep -q '"private": true' "$dir/package.json"; then continue; fi
+            case "$(basename "$dir")" in alarm|metronome) continue;; esac
             (cd "$dir" && npm publish --access public --dry-run --tag next)
           done
-        if: github.event_name != 'release' || github.event.release.prerelease
+        if: (github.event_name != 'release' && !inputs.packages) || github.event.release.prerelease

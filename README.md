@@ -142,3 +142,13 @@ both packages are staged. If a staging attempt fails after submission, inspect
 the existing staged package on npm before retrying; the workflow refuses to
 stage an already existing package. The regular release workflow never falls
 back to this token.
+
+## Publishing existing npm packages
+
+The `Release` workflow can publish a comma-separated list of package directory
+names from a version tag. This makes it possible to publish packages whose
+Trusted Publisher connections are ready without retrying packages that need
+separate initial-publication handling. The workflow rejects private packages,
+unknown directories, duplicate names, and the two packages reserved for staged
+initial publication. A GitHub Release continues to publish every regular
+package from its tag.
