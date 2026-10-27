@@ -92,6 +92,7 @@ jobs:
 
       - name: Select packages to publish
         id: packages
+        if: (github.event_name == 'release' && !github.event.release.prerelease) || (github.event_name == 'workflow_dispatch' && inputs.packages)
         env:
           REQUESTED_PACKAGES: ${{ inputs.packages }}
         run: |
