@@ -98,7 +98,7 @@ jobs:
         run: |
           set -eu
           if [ "${GITHUB_EVENT_NAME}" = release ]; then
-            requested=$(find packages -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | grep -Ev '^(alarm|metronome)$' | paste -sd, -)
+            requested=$(find packages -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | paste -sd, -)
           else
             case "$GITHUB_REF" in refs/tags/v[0-9]*) ;; *) echo 'Select a version tag for manual publishing' >&2; exit 1;; esac
             requested="$REQUESTED_PACKAGES"
@@ -109,7 +109,7 @@ jobs:
           IFS=,
           for package in $requested; do
             test -n "$package"
-            case "$package" in *[!a-z0-9-]*|alarm|metronome) echo "Invalid release package: $package" >&2; exit 1;; esac
+            case "$package" in *[!a-z0-9-]*) echo "Invalid release package: $package" >&2; exit 1;; esac
             test -f "packages/$package/package.json"
             grep -q '"private": true' "packages/$package/package.json" && { echo "Private package: $package" >&2; exit 1; }
             case "$selected" in *,$package,*) echo "Duplicate package: $package" >&2; exit 1;; esac
@@ -132,7 +132,6 @@ jobs:
           set -eu
           for dir in packages/*; do
             if grep -q '"private": true' "$dir/package.json"; then continue; fi
-            case "$(basename "$dir")" in alarm|metronome) continue;; esac
             (cd "$dir" && npm publish --access public --dry-run --tag next)
           done
         if: (github.event_name != 'release' && !inputs.packages) || github.event.release.prerelease
