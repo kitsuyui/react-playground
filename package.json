@@ -29,7 +29,7 @@
     "test:coverage:unit": "vitest run --coverage packages/*/src --coverage.reporter=clover --coverage.reporter=text --coverage.reportsDirectory=coverage/unit",
     "typecheck": "tsc --project tsconfig.json",
     "typedoc": "typedoc",
-    "typedoc:server": "serve -p 8000 build/typedocs",
+    "typedoc:server": "vite preview --port 8000 --outDir build/typedocs",
     "validate": "bun run --workspaces --if-present validate"
   },
   "overrides": {
@@ -49,7 +49,6 @@
     "jsdom": "^28.1.0",
     "playwright": "1.58.1",
     "rollup": "^4.52.5",
-    "serve": "^14.2.5",
     "sort-package-json": "^3.6.1",
     "ts-module-isolation": "^1.0.2",
     "tsdown": "^0.21.10",
