@@ -6,7 +6,7 @@
   "private": true,
   "devDependencies": {
     "@storybook/addon-docs": "^10.2.3",
-    "@storybook/addon-links": "^10.2.3",
+    "@storybook/addon-links": "^10.6.3",
     "@storybook/builder-vite": "^10.2.3",
     "@storybook/react-vite": "^10.2.3",
     "@types/node": "^25.2.0",
