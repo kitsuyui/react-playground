@@ -51,7 +51,7 @@
     "rollup": "^4.52.5",
     "sort-package-json": "^3.6.1",
     "ts-module-isolation": "^1.0.2",
-    "tsdown": "^0.21.10",
+    "tsdown": "^0.23.2",
     "typedoc": "^0.28.20",
     "typescript": "^5.9.3",
     "validate-package-exports": "^0.18.0",
