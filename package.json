@@ -33,6 +33,7 @@
     "validate": "bun run --workspaces --if-present validate"
   },
   "overrides": {
+    "esbuild": "0.28.2",
     "tar": "7.5.22"
   },
   "devDependencies": {
