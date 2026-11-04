@@ -26,7 +26,7 @@ jobs:
       - name: Require a version tag
         run: |
           case "$GITHUB_REF" in refs/tags/v[0-9]*) ;; *) echo 'Select a version tag as the workflow ref' >&2; exit 1;; esac
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           fetch-depth: 0
       - name: Verify tag is included in main
