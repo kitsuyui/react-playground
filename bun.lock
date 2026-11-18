@@ -96,7 +96,7 @@
       "name": "@kitsuyui/react-biticon",
       "version": "0.0.0",
       "devDependencies": {
-        "@kitsuyui/cipher": "^0.2.1",
+        "@kitsuyui/cipher": "^0.2.5",
         "@types/react": "^19.2.14",
         "@types/react-dom": "^19.2.3",
         "react": "^19.2.4",
@@ -466,7 +466,7 @@
 
     "@jridgewell/trace-mapping": ["@jridgewell/trace-mapping@0.3.31", "", { "dependencies": { "@jridgewell/resolve-uri": "^3.1.0", "@jridgewell/sourcemap-codec": "^1.4.14" } }, "sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw=="],
 
-    "@kitsuyui/cipher": ["@kitsuyui/cipher@0.2.4", "", {}, "sha512-DDVe7r1eFZXhsqtG1tXLDjqx6Q1rRspUj0yMMlupVDzMevlhJEdhBxz63KwLDbVkIboWkVw2CU4qIRnLDepYbA=="],
+    "@kitsuyui/cipher": ["@kitsuyui/cipher@0.2.5", "", {}, "sha512-K7et4kQlxvT3MniG1/4fHoZTKyq0QH7WVXCtuaSjWq6uI4Hb0BIv5OFKAlVKdINHBIOd4iSsSPb41sHhkFyzig=="],
 
     "@kitsuyui/number-time": ["@kitsuyui/number-time@0.2.4", "", {}, "sha512-VsnVVQuSle1souvZpJydu6FcYQLkUavnhVUhfCCXq9PQxuwM2EGsQ5bPHdwsBW+9AkZY0ezfRZPm4BQSAOcUdg=="],
 
