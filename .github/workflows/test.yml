@@ -77,6 +77,7 @@ jobs:
         run: bun run typedoc
 
       - name: Check package exports
+        if: matrix.node-version == '24.x'
         run: bun run validate
 
       - name: Test packaging
