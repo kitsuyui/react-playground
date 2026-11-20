@@ -84,5 +84,17 @@
       "!**/*.wav",
       "!**/pnpm-lock.yaml"
     ]
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["**/*.spec.ts", "**/*.spec.tsx"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noComponentHookFactories": "off"
+          }
+        }
+      }
+    }
+  ]
 }
