@@ -1,0 +1,28 @@
+name: Lint GitHub Actions workflows
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' || github.event_name == 'push' }}
+
+permissions:
+  contents: read
+
+jobs:
+  jactionlint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - uses: jdx/jactionlint@a65ab044e916760429068fe5794b8306abdfcbb9 # v2.3.0
+        with:
+          profile: correctness
